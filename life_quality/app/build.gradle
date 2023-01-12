@@ -7,8 +7,8 @@ plugins {
 android {
     namespace 'com.example.myapplication'
     compileSdk 32
-    viewBinding {
-        enabled = true
+    viewBinding{
+        enabled=true
     }
     defaultConfig {
         applicationId "com.example.myapplication"
