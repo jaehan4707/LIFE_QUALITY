@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, QuestionMainpage::class.java)
             startActivity(intent)
         }
+        binding.redCircle.setOnClickListener{
+            val intent =Intent(this,AdminHome::class.java)
+            startActivity(intent)
+        }
 
     }
 }

@@ -184,7 +184,7 @@
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_color"
+        android:backgroundTint="@color/main_orange"
         android:text="저장하기"
         android:textColor="@color/black"
         android:textStyle="bold"

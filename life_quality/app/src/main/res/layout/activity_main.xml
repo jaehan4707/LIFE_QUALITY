@@ -13,6 +13,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginLeft="30dp">
         <View
+            android:id="@+id/red_circle"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:background="@drawable/red_circle"/>
