@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "480674430757",
+    "firebase_url": "https://lifequality-b044e-default-rtdb.firebaseio.com",
+    "project_id": "lifequality-b044e",
+    "storage_bucket": "lifequality-b044e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480674430757:android:f04d9b69a83ca60c33a4cc",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480674430757-98lquhp1g1qc8t8o4uj7fsglobim53a3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1ydnBWKpyPwNBmz20S195_952Q28M6iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480674430757-98lquhp1g1qc8t8o4uj7fsglobim53a3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
