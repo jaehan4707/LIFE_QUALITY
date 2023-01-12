@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminHome"
+    >
+
+    <LinearLayout
+        android:id="@+id/topPanel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        >
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="8"
+        android:layout_height="match_parent"
+        android:text="관리자메뉴"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#EE931B"
+        android:textStyle="bold"/>
+    <ImageView
+        android:id="@+id/admin_home"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/home"
+        android:background="#EE913B"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <EditText
+            android:layout_width="250dp"
+            android:layout_marginStart="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="검색어를 입력력하세요." />
+        <Button
+            android:id="@+id/search"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색"
+            android:backgroundTint="#EE913B"
+            />
+        <Button
+            android:id="@+id/choice"
+            android:text="선택"
+            android:backgroundTint="@color/main_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/question_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/search_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/question_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            />
+        <ImageView
+            android:id="@+id/plus"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="right"
+            android:src="@drawable/plus" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
