@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -15,9 +16,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val database = Firebase.database("https://lifequality-b044e-default-rtdb.firebaseio.com/")
-        val myRef = database.reference
+        binding.qStart.setOnClickListener() {
+            val intent = Intent(this, QuestionMainpage::class.java)
+            startActivity(intent)
+        }
 
-        myRef.child("message").setValue("MynameisLJH")
     }
 }
