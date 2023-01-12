@@ -1,0 +1,170 @@
+<mxfile host="app.diagrams.net" modified="2023-01-06T13:51:40.550Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="M0U6HsDxTF-QxIRZChiy" version="20.8.2" type="github">
+  <diagram id="yIsyN8iWDMe7foh4Y0_g" name="페이지-1">
+    <mxGraphModel dx="1434" dy="1933" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-1" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="10" y="-230" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-2" value="앱 초기 화면&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;(로고)" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="50" y="-170" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-4" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="10" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-5" value="&lt;h1&gt;설문조사&amp;nbsp;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;" parent="1" vertex="1">
+          <mxGeometry x="50" y="50" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-6" value="설문조사 내용,의도 설명" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="90" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-7" target="DAnv7bxu9K6I0vnwAFKh-44" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-7" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="10" y="250" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-10" value="&lt;h1 style=&quot;text-align: center;&quot;&gt;인적사항&amp;nbsp;&lt;/h1&gt;&lt;p style=&quot;text-align: center;&quot;&gt;나이&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;성별&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;이름&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="50" y="290" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-14" value="유형3 (답변 개수3)" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="10" y="530" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-17" value="&lt;b style=&quot;border-color: var(--border-color); font-family: Helvetica;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; face=&quot;Verdana&quot;&gt;설문조사 진행도 표시(n/???)&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-14" vertex="1">
+          <mxGeometry y="20" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-18" value="질문내용" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-14" vertex="1">
+          <mxGeometry y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-19" value="보기&lt;br&gt;1.&lt;br&gt;2.&lt;br&gt;3." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-14" vertex="1">
+          <mxGeometry y="110" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-21" value="유형4 (답변 개수4)" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="530" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-22" value="&lt;b style=&quot;border-color: var(--border-color); font-family: Helvetica;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; face=&quot;Verdana&quot;&gt;설문조사 진행도 표시(n/???)&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-21" vertex="1">
+          <mxGeometry y="20" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-23" value="질문내용" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-21" vertex="1">
+          <mxGeometry y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-24" value="보기&lt;br&gt;1.&lt;br&gt;2.&lt;br&gt;3.&lt;br&gt;4." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-21" vertex="1">
+          <mxGeometry y="110" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-25" value="유형5 (답변 개수5)" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="485" y="530" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-26" value="&lt;b style=&quot;border-color: var(--border-color); font-family: Helvetica;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; face=&quot;Verdana&quot;&gt;설문조사 진행도 표시(n/???)&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-25" vertex="1">
+          <mxGeometry y="20" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-27" value="질문내용" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-25" vertex="1">
+          <mxGeometry y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-28" value="보기&lt;br&gt;1.&lt;br&gt;2.&lt;br&gt;3.&lt;br&gt;4.&lt;br&gt;5." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-25" vertex="1">
+          <mxGeometry y="110" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-29" value="유형6 (답변 개수6)" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="530" width="200" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-30" value="&lt;b style=&quot;border-color: var(--border-color); font-family: Helvetica;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; face=&quot;Verdana&quot;&gt;설문조사 진행도 표시(n/???)&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-29" vertex="1">
+          <mxGeometry y="20" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-31" value="질문내용" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-29" vertex="1">
+          <mxGeometry y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-32" value="보기&lt;br&gt;1.&lt;br&gt;2.&lt;br&gt;3.&lt;br&gt;4.&lt;br&gt;5.&lt;br&gt;6." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-29" vertex="1">
+          <mxGeometry y="110" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-33" value="유형 X (자신감 척도)" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="960" y="530" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-34" value="&lt;b style=&quot;border-color: var(--border-color); font-family: Helvetica;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; face=&quot;Verdana&quot;&gt;설문조사 진행도 표시(n/???)&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-33" vertex="1">
+          <mxGeometry y="20" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-35" value="질문내용" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-33" vertex="1">
+          <mxGeometry y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-36" value="보기&lt;br&gt;0~999" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-33" vertex="1">
+          <mxGeometry y="110" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-39" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-4" target="DAnv7bxu9K6I0vnwAFKh-7" edge="1">
+          <mxGeometry x="1" y="-149" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="260" as="sourcePoint" />
+            <mxPoint x="432.79999999999995" y="330.6" as="targetPoint" />
+            <mxPoint x="-19" y="-26" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-44" target="DAnv7bxu9K6I0vnwAFKh-25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-44" target="DAnv7bxu9K6I0vnwAFKh-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-44" target="DAnv7bxu9K6I0vnwAFKh-33" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-44" value="&lt;b style=&quot;&quot;&gt;질문에 답변의 개수에 따라&lt;br&gt;보여지는 화면의 구조가&amp;nbsp;&lt;br&gt;달라짐.&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="1" vertex="1">
+          <mxGeometry x="485" y="300" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-54" value="유형?(답변 개수?)" style="swimlane;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="250" y="780" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-55" value="&lt;b style=&quot;border-color: var(--border-color); font-family: Helvetica;&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; face=&quot;Verdana&quot;&gt;설문조사 진행도 표시(n/n)&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-54" vertex="1">
+          <mxGeometry y="20" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-56" value="질문내용" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-54" vertex="1">
+          <mxGeometry y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-57" value="보기" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;" parent="DAnv7bxu9K6I0vnwAFKh-54" vertex="1">
+          <mxGeometry y="110" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-58" value="마침" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Verdana;fontSize=12;align=center;" parent="DAnv7bxu9K6I0vnwAFKh-54" vertex="1">
+          <mxGeometry x="70" y="170" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-60" target="DAnv7bxu9K6I0vnwAFKh-57" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DAnv7bxu9K6I0vnwAFKh-60" value="&lt;b&gt;마지막 설문일 경우&lt;br&gt;마침 버튼을 통해서&amp;nbsp;&lt;br&gt;서버로 설문 결과를 &lt;br&gt;전송해줌.&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;fontSize=12;" parent="1" vertex="1">
+          <mxGeometry x="20" y="820" width="170" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-1" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-1" target="DAnv7bxu9K6I0vnwAFKh-4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="80" as="sourcePoint" />
+            <mxPoint x="750" y="30" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.54;entryY=-0.01;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-44" target="DAnv7bxu9K6I0vnwAFKh-21" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="500" as="sourcePoint" />
+            <mxPoint x="700" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.415;entryY=-0.005;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-44" target="DAnv7bxu9K6I0vnwAFKh-14" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="500" as="sourcePoint" />
+            <mxPoint x="700" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=15;" parent="1" source="4jhhsWHh3sBD3GLJzMRj-12" target="4jhhsWHh3sBD3GLJzMRj-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=15;" parent="1" source="4jhhsWHh3sBD3GLJzMRj-12" target="4jhhsWHh3sBD3GLJzMRj-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-12" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;설문조사 점수의 합계로 2가지 결과가 도출됨.&lt;/b&gt;&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="570" y="830" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=15;" parent="1" source="DAnv7bxu9K6I0vnwAFKh-56" target="4jhhsWHh3sBD3GLJzMRj-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-14" value="&lt;b&gt;검사가 완료되었습니다.&lt;br&gt;&lt;br&gt;당신은,&lt;br&gt;정상입니다.&lt;br&gt;꾸준히&lt;br&gt;현재 상태를 유지하세요.&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=15;" parent="1" vertex="1">
+          <mxGeometry x="450" y="1000" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="4jhhsWHh3sBD3GLJzMRj-15" value="&lt;b&gt;검사가 완료되었습니다.&lt;br&gt;&lt;br&gt;당신은,&lt;br&gt;관리가 필요합니다.&lt;br&gt;&lt;br&gt;근처 병원을 방문해보세요.&lt;br&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=15;" parent="1" vertex="1">
+          <mxGeometry x="720" y="1000" width="200" height="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
