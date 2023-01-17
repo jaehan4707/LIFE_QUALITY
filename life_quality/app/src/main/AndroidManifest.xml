@@ -13,18 +13,24 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".AdminPlusAdapter"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-        <activity android:name=".SplashActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplication.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuestionMainpage" android:label="QuestionMainpage"/>
+        <activity
+            android:name=".QuestionMainpage"
+            android:label="QuestionMainpage" />
         <activity
             android:name=".AdminPlus"
             android:exported="false">

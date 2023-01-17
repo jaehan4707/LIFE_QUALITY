@@ -10,12 +10,14 @@ import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
-    lateinit var database : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val database = Firebase.database
+        val myRef = database.getReference("message")
 
+        myRef.setValue("Hello, World!@#!@12;3hl12eqlkjqwdhklqdwj;!")
         binding.qStart.setOnClickListener() {
             val intent = Intent(this, QuestionMainpage::class.java)
             startActivity(intent)
