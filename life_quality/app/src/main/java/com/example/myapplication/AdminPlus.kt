@@ -25,7 +25,10 @@ class Answer {
         this.score = score
     }
 }
-
+data class root(
+    var title_type : String,
+    var survey_list : MutableList<survey>
+)
 data class survey(
 
     var title: String,
@@ -33,13 +36,6 @@ data class survey(
     var number : String,
     var ans_list : MutableList<Answer>
 )
-
-/*
-data class survey(
-    var sequence : String,
-    var content : String
-)
-*/
 
 class AdminPlus : AppCompatActivity() {
     var check : Boolean = false
@@ -49,9 +45,20 @@ class AdminPlus : AppCompatActivity() {
         setContentView(binding.root)
         val data= mutableListOf<Answer>()
         val result= mutableListOf<survey>()
+        val final = mutableListOf<root>()
         var num : Int =0
         var head : String=""
         var type : Int=0
+        var head_type : String=""
+        binding.questionType.addTextChangedListener(object:TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun afterTextChanged(p0: Editable?) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                head_type = binding.questionType.text.toString()
+            }
+        })
         binding.questionTitle.addTextChangedListener(object:TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -72,14 +79,11 @@ class AdminPlus : AppCompatActivity() {
             binding.inputLayout.visibility=View.VISIBLE
             type=1
         }
-
         binding.numInput.setOnClickListener {
-
             Toast.makeText(this,"입력하기버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             num =binding.responseNum.text.toString().toInt()
             Log.d("num","${num}") //이 숫자를 이용해서 리사이클러뷰 아이템을 조절해야함.
             //num개수만큼 data 더미 데이터 넘겨줘볼까!
-
             for( i in 1..num){
                 data.add(Answer("",""))
             }
@@ -100,6 +104,8 @@ class AdminPlus : AppCompatActivity() {
         binding.save.setOnClickListener {
             //저장하기 버튼을 눌렀을때
             result.add(survey(head,type.toString(),num.toString(),data))
+            final.add(root(head_type,result))
+//            Log.d("test","${final[0]}")
             Toast.makeText(this,"저장하기버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
         }
     }
