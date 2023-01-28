@@ -5,7 +5,8 @@
     android:layout_height="100dp"
     android:id="@+id/admin_recycler"
     >
-    <TextView
+    <android.widget.TextView
+        android:id="@+id/list_title"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -13,6 +14,5 @@
         android:textStyle="bold"
         android:gravity="left"
         android:textSize="30sp"
-        android:background="@color/main_orange"
-        />
+        android:background="#60EE913B" />
 </LinearLayout>

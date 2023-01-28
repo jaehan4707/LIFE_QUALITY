@@ -3,9 +3,15 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.SurfaceControlViewHost
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityAdminHomeBinding
+import com.example.myapplication.MainActivity.Companion.surveyList
 
 class AdminHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,6 +19,17 @@ class AdminHome : AppCompatActivity() {
 
         val binding = ActivityAdminHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //시작했을때 쫘악 보여주기.
+        var data = mutableListOf<TotalSurvey>()
+        for(i in 0 .. surveyList.size-1){
+            data.add((surveyList[i])) //데이터 넣기.
+        }
+        val Homeadapter = AdminHomeAdapter(data)
+        val recyclerView : RecyclerView = binding.questionRecycle
+        recyclerView.layoutManager=LinearLayoutManager(this)
+        recyclerView.adapter=Homeadapter
+        recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+
         binding.adminHome.setOnClickListener{
             //초기화면으로 돌아가야함.
             Toast.makeText(this,"홈버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
@@ -31,6 +48,9 @@ class AdminHome : AppCompatActivity() {
             Toast.makeText(this,"선택버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             binding.trash.visibility= View.VISIBLE
             binding.plus.visibility=View.GONE
+            val Choiceadapter = ChiceAdapter(data)
+            recyclerView.adapter=Choiceadapter
+            recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
         }
         binding.trash.setOnClickListener{//휴지통 버튼을 눌렀을때 선택되는 걸 다 지워준다.
             Toast.makeText(this,"삭제버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()

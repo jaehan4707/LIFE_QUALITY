@@ -51,7 +51,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.qStart.setOnClickListener() {
-            Log.d("Finish!!!", "${surveyList.get(1).surveyType}, ${surveyList.get(1).id}, ${surveyList.get(1).type}, ${surveyList.get(1).number}, ${surveyList.get(1).title}, ${surveyList.get(1).answer}")
+            Log.d("test","${surveyList.size}")
+            for(i in 0 .. surveyList.size-1){
+                Log.d("test","${surveyList.get(i).surveyType},${surveyList.get(i).id}")
+            }
             val intent = Intent(this, QuestionMainpage::class.java)
             startActivity(intent)
         }
