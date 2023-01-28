@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bm_dohyeon"
+        android:text="문항 5"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textview_grayline"
+        android:fontFamily="@font/bm_dohyeon"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="귀하가 한번에 적어도 집안에서 10분 이상 지속했던 신체활동에 대해서만 생각해 주십시오. 지난 7일간 집안에서 가벼운 물건을 나르거나 유리창을 닦거나 마루를 닦거나 집안을 닦는 것, 쓸기와 같은 중간정도의 신체활동을 한 날은 며칠입니까?"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="집에서 중간 정도 신체활동을 한 적 없음"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck"/>
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="1일"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="2일"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="3일"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="4일"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="5일"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="6일"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="7일"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

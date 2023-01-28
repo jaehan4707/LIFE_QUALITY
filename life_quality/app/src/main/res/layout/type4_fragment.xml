@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bm_dohyeon"
+        android:text="문항 1"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textview_grayline"
+        android:fontFamily="@font/bm_dohyeon"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="평소에 넘어질까봐 염려를 많이 하고 계십니까?"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="전혀 염려하지 않는다."
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck"/>
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="약간 염려하고 있다."
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="상당히 염혀라고 있다."
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="아주 많이 염려하고 있다."
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

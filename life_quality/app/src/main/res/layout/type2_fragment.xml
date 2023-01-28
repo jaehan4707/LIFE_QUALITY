@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문항 27"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/bm_dohyeon"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/textview_grayline"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="기력이 좋은 편이십니까?"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/bm_dohyeon"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                tools:ignore="TouchTargetSizeCheck"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:text="예"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <CheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/custom_checkbox"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                tools:ignore="TouchTargetSizeCheck"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:text="아니오"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
