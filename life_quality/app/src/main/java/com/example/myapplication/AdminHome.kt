@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.myapplication.databinding.ActivityAdminHomeBinding
 
@@ -27,16 +28,14 @@ class AdminHome : AppCompatActivity() {
             Toast.makeText(this,"검색버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
         }
         binding.choice.setOnClickListener {
-            //선택버튼을 누르면 화면을 전환해서 선택된 질문을 삭제해야함.
-            //누르기 전에는 색깔을 회색으로 주든 희미하게 줘야함.
             Toast.makeText(this,"선택버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
+            binding.trash.visibility= View.VISIBLE
+            binding.plus.visibility=View.GONE
         }
-        /* 리사이클러 뷰 규성
-        binding.questionRecycle.layoutManager=LinearLayoutManager(this)
-        //binding.questionRecycle.adapter=Myapater(dataset)
-        binding.questionRecycle.addItemDecoration(DividerItemDecoration(this,LinearLayoutManager.VERTICAL))
-         */
-
-
+        binding.trash.setOnClickListener{//휴지통 버튼을 눌렀을때 선택되는 걸 다 지워준다.
+            Toast.makeText(this,"삭제버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
+            binding.trash.visibility=View.GONE
+            binding.plus.visibility=View.VISIBLE
+        }
     }
 }

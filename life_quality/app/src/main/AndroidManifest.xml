@@ -13,11 +13,14 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".AdminEdit"
+            android:exported="false" />
+        <activity
             android:name=".AdminPlusAdapter"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"

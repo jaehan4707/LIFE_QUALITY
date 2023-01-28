@@ -41,7 +41,7 @@
     <LinearLayout
         android:id="@+id/search_layout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/topPanel"
@@ -62,20 +62,20 @@
             android:text="검색"
             android:backgroundTint="#EE913B"
             />
-        <Button
-            android:id="@+id/choice"
-            android:text="선택"
-            android:backgroundTint="@color/main_orange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            />
     </LinearLayout>
-
+    <Button
+        android:id="@+id/choice"
+        android:text="선택"
+        android:backgroundTint="@color/main_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/search_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
     <LinearLayout
         android:id="@+id/question_content"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/search_layout"
+        app:layout_constraintTop_toBottomOf="@id/choice"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="400dp"
         android:orientation="vertical"
@@ -93,7 +93,16 @@
             android:layout_weight="1"
             android:layout_gravity="right"
             android:src="@drawable/plus" />
-
+        <!-- 초기 휴지통은 gone 처리 -->
+        <ImageView
+            android:id="@+id/trash"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="right"
+            android:src="@drawable/trashcan"
+            android:visibility="gone"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
