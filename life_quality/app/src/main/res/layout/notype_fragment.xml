@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/notypeNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문항 27"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/bm_dohyeon"/>
+    <TextView
+        android:id="@+id/notypeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/textview_grayline"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="기력이 좋은 편이십니까?"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/bm_dohyeon"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="답변을 입력해주세요"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(숫자만 입력하세요)"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/main_orange"
+            android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/notypeAnswer"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_custom"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:padding="5dp"
+            android:hint="ex) 1"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

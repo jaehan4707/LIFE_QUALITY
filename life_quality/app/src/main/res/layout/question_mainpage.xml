@@ -13,14 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
+        <FrameLayout
+            android:id="@+id/main_frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="여기 프레그먼트"
-            android:textSize="50dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/bm_dohyeon"
-            android:layout_gravity="center"/>
+            android:layout_height="530dp"
+            android:layout_margin="16dp"/>
         <Button
             android:id="@+id/nextstage"
             android:layout_width="match_parent"

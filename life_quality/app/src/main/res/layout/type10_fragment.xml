@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp">
+
     <TextView
+        android:id="@+id/type10Number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bm_dohyeon"
@@ -14,6 +16,7 @@
         android:textSize="25dp" />
 
     <TextView
+        android:id="@+id/type10Title"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
@@ -49,6 +52,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer1"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -75,6 +79,7 @@
                     tools:ignore="TouchTargetSizeCheck"/>
 
                 <TextView
+                    android:id="@+id/type10Answer2"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -101,6 +106,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer3"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -127,6 +133,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer4"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -152,6 +159,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer5"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -177,6 +185,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer6"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -202,6 +211,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer7"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -227,6 +237,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer8"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -252,6 +263,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer9"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
@@ -277,6 +289,7 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/type10Answer10"
                     android:layout_width="320dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
