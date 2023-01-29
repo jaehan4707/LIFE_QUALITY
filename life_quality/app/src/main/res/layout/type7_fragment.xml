@@ -7,6 +7,7 @@
     android:padding="10dp">
 
     <TextView
+        android:id="@+id/type7Number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bm_dohyeon"
@@ -15,6 +16,7 @@
         android:textSize="25dp" />
 
     <TextView
+        android:id="@+id/type7Title"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
@@ -48,6 +50,7 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
+                android:id="@+id/type7Answer1"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -74,6 +77,7 @@
                 tools:ignore="TouchTargetSizeCheck"/>
 
             <TextView
+                android:id="@+id/type7Answer2"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -100,6 +104,7 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
+                android:id="@+id/type7Answer3"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -126,6 +131,7 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
+                android:id="@+id/type7Answer4"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -151,6 +157,7 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
+                android:id="@+id/type7Answer5"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -176,6 +183,7 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
+                android:id="@+id/type7Answer6"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -201,6 +209,7 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
+                android:id="@+id/type7Answer7"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"

@@ -7,6 +7,7 @@
     android:padding="10dp">
 
     <TextView
+        android:id="@+id/type3Number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="문항 10"
@@ -14,6 +15,7 @@
         android:textColor="@color/black"
         android:fontFamily="@font/bm_dohyeon"/>
     <TextView
+        android:id="@+id/type3Title"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/textview_grayline"
@@ -47,6 +49,7 @@
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/type3Answer1"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
@@ -71,6 +74,7 @@
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/type3Answer2"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
@@ -95,6 +99,7 @@
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/type3Answer3"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
