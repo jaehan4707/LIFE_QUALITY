@@ -7,16 +7,17 @@ class TotalSurvey {
     var title : String = ""
     var type : String = ""
     var answer : MutableMap<String, String> = mutableMapOf()
-
+    var selected : Boolean = false
     constructor()
 
-    constructor(surveyType : String, id : String, number : String, title : String, type : String, answer : MutableMap<String, String>) {
+    constructor(surveyType : String, id : String, number : String, title : String, type : String, answer : MutableMap<String, String>,selected : Boolean) {
         this.surveyType = surveyType
         this.id = id
         this.number = number
         this.title = title
         this.type = type
         this.answer = answer
+        this.selected=selected
     }
 }
 

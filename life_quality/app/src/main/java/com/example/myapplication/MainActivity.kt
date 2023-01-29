@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
         for(i in 0..nameList.size-1) {
+            Log.d("test","data를 불러옵니다")
             db.collection("${nameList[i]}")
                 .get()
                 .addOnSuccessListener{ result->
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d("What is name", "${nameList[i]}")
                         surveyList.add(TotalSurvey(nameList[i], document.id,
                             document.data["number"] as String,document.data["title"] as String, document.data["type"] as String,
-                            document.data["answer"] as MutableMap<String, String>)
+                            document.data["answer"] as MutableMap<String, String>,false)
                         )
                     }
                 }

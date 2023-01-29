@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.SurfaceControlViewHost
@@ -24,8 +25,8 @@ class AdminHome : AppCompatActivity() {
         for(i in 0 .. surveyList.size-1){
             data.add((surveyList[i])) //데이터 넣기.
         }
-        val Homeadapter = AdminHomeAdapter(data)
-        val recyclerView : RecyclerView = binding.questionRecycle
+        val Homeadapter = AdminHomeAdapter(data,binding)
+        var recyclerView : RecyclerView = binding.questionRecycle
         recyclerView.layoutManager=LinearLayoutManager(this)
         recyclerView.adapter=Homeadapter
         recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
@@ -33,6 +34,8 @@ class AdminHome : AppCompatActivity() {
         binding.adminHome.setOnClickListener{
             //초기화면으로 돌아가야함.
             Toast.makeText(this,"홈버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this,MainActivity::class.java) //홈화면 누르면 mainactivity로 이동.
+
         }
         binding.plus.setOnClickListener(){
             //질문추가 화면으로 넘어가야함.
@@ -48,8 +51,10 @@ class AdminHome : AppCompatActivity() {
             Toast.makeText(this,"선택버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             binding.trash.visibility= View.VISIBLE
             binding.plus.visibility=View.GONE
-            val Choiceadapter = ChiceAdapter(data)
-            recyclerView.adapter=Choiceadapter
+            binding.choice.setBackgroundColor(Color.parseColor("#EE913B"))
+            val adapter2 = ChoiceAdapter(data,binding)
+            recyclerView.layoutManager=LinearLayoutManager(this)
+            recyclerView.adapter=adapter2
             recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
         }
         binding.trash.setOnClickListener{//휴지통 버튼을 눌렀을때 선택되는 걸 다 지워준다.
