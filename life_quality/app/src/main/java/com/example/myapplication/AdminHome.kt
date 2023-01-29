@@ -17,15 +17,11 @@ import com.example.myapplication.MainActivity.Companion.surveyList
 class AdminHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        var check : Boolean = false
         val binding = ActivityAdminHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //시작했을때 쫘악 보여주기.
-        var data = mutableListOf<TotalSurvey>()
-        for(i in 0 .. surveyList.size-1){
-            data.add((surveyList[i])) //데이터 넣기.
-        }
-        val Homeadapter = AdminHomeAdapter(data,binding)
+        val Homeadapter = AdminHomeAdapter(surveyList,binding)
         var recyclerView : RecyclerView = binding.questionRecycle
         recyclerView.layoutManager=LinearLayoutManager(this)
         recyclerView.adapter=Homeadapter
@@ -35,6 +31,7 @@ class AdminHome : AppCompatActivity() {
             //초기화면으로 돌아가야함.
             Toast.makeText(this,"홈버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             val intent = Intent(this,MainActivity::class.java) //홈화면 누르면 mainactivity로 이동.
+            startActivity(intent)
 
         }
         binding.plus.setOnClickListener(){
@@ -47,16 +44,25 @@ class AdminHome : AppCompatActivity() {
             //검색버튼을 누르면 해당 질문을 불러와야함.
             Toast.makeText(this,"검색버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
         }
-        binding.choice.setOnClickListener {
+        binding.choice.setOnClickListener{
             Toast.makeText(this,"선택버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
-            binding.trash.visibility= View.VISIBLE
-            binding.plus.visibility=View.GONE
-            binding.choice.setBackgroundColor(Color.parseColor("#EE913B"))
-            val adapter2 = ChoiceAdapter(data,binding)
-            recyclerView.layoutManager=LinearLayoutManager(this)
-            recyclerView.adapter=adapter2
-            recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+            check=!check
+            if(check){
+                binding.trash.visibility= View.VISIBLE
+                binding.plus.visibility=View.GONE
+                binding.choice.setBackgroundColor(Color.parseColor("#EE913B"))
+                val adapter2 = ChoiceAdapter(surveyList,binding)
+                recyclerView.layoutManager=LinearLayoutManager(this)
+                recyclerView.adapter=adapter2
+                recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+            }
+            else{ //선택버튼 비활성화
+                binding.trash.visibility=View.GONE
+                binding.plus.visibility=View.VISIBLE
+                binding.choice.setBackgroundColor(Color.parseColor("#60EE913B"))
+            }
         }
+
         binding.trash.setOnClickListener{//휴지통 버튼을 눌렀을때 선택되는 걸 다 지워준다.
             Toast.makeText(this,"삭제버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             binding.trash.visibility=View.GONE
