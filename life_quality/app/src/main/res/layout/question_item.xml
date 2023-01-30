@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:text="질문내용"
-        android:textStyle="bold"
+        android:fontFamily="@font/bm_dohyeon"
         android:gravity="left"
-        android:textSize="30sp"
+        android:textSize="18dp"
         android:background="#60EE913B" />
 </LinearLayout>
