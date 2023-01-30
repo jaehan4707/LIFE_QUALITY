@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d("What is name", "${nameList[i]}")
                         surveyList.add(TotalSurvey(nameList[i], document.id,
                             document.data["number"] as String,document.data["title"] as String, document.data["type"] as String,
-                            document.data["answer"] as MutableMap<String, String>)
+                            document.data["answer"] as MutableMap<String, String>,false)
                         )
                     }
                 }
