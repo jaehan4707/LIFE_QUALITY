@@ -15,7 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityAdminPlusBinding
 import com.example.myapplication.MainActivity.Companion.surveyList
-
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class Answer {
@@ -27,17 +28,13 @@ class Answer {
         this.score = score
     }
 }
-data class root(
-    var title_type : String,
-    var survey_list : MutableList<survey>
-)
 data class survey(
-
-    var title: String,
-    var type : String,
-    var number : String,
-    var ans_list : MutableList<Answer>
+    var number : String="",
+    var title : String="",
+    var type : String="",
+    var answer : MutableMap<String,String> = mutableMapOf()
 )
+
 
 class AdminPlus : AppCompatActivity() {
     var check : Boolean = false
@@ -45,11 +42,8 @@ class AdminPlus : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityAdminPlusBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val data= mutableListOf<Answer>()
 
-        val map= mutableMapOf<String,String>()
-        val result= mutableListOf<survey>()
-        val final = mutableListOf<root>()
+        val data= mutableListOf<Answer>()
         var num : Int =0
         var head : String=""
         var type : String=""
@@ -72,7 +66,11 @@ class AdminPlus : AppCompatActivity() {
                 head = binding.questionTitle.text.toString()
             }
         })
-        //질문제목은 잘 들어감.
+        binding.adminHome.setOnClickListener{
+            Toast.makeText(this,"홈버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
         binding.choice.setOnClickListener {
             binding.choiceLayout.visibility= View.VISIBLE
             binding.inputLayout.visibility=View.GONE
@@ -84,11 +82,11 @@ class AdminPlus : AppCompatActivity() {
             type="1"
         }
         binding.numInput.setOnClickListener {
+            data.clear()
             Toast.makeText(this,"입력하기버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             num =binding.responseNum.text.toString().toInt()
             Log.d("num","${num}") //이 숫자를 이용해서 리사이클러뷰 아이템을 조절해야함.
-            //num개수만큼 data 더미 데이터 넘겨줘볼까!
-            for( i in 0..num){
+            for( i in 0..num-1){
                 data.add(Answer("",""))
             }
             val adapter = AdminPlusAdapter(data, binding)
@@ -99,26 +97,34 @@ class AdminPlus : AppCompatActivity() {
         }
         binding.time.setOnClickListener {
             Toast.makeText(this, "시간버튼을 눌렀습니다", Toast.LENGTH_SHORT).show()
-            //
         }
         binding.score.setOnClickListener {
             Toast.makeText(this,"점수버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
-            //
         }
         binding.save.setOnClickListener {
             //저장하기 버튼을 눌렀을때
-//            result.add(survey(head,type.toString(),num.toString(),data))
-//            final.add(root(head_type,result))
             var m = mutableMapOf<String,String>()
             for(i in 0 .. data.size-1) {
                 m.put(data[i].score, data[i].content)
             }
-            surveyList.add(TotalSurvey(head_type,surveyList.size.toString(),num.toString(),head,type,m,false))
-//            Log.d("test","${final[0]}")
+            surveyList.add(TotalSurvey(head_type,surveyList.size.toString(
+            ),num.toString(),head,type,m,false))
+            var Result = survey(num.toString(),head,type,m)
+            Log.d("test","${Result.title.toString()},${Result.number.toString()}")
+            var n =0
+            for( i in 0 .. surveyList.size-1){
+                if(surveyList[i].surveyType==head_type){
+                    n++
+                }
+            }
+            val Db = Firebase.firestore
+            Db.collection(head_type).document(n.toString())
+                .set(Result)
+                .addOnSuccessListener {Log.d("test","성공")}
+                .addOnFailureListener { Log.d("test","실패")}
             Toast.makeText(this,"저장하기버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             val intent = Intent(this,AdminHome::class.java) //홈화면 누르면 mainactivity로 이동.
             startActivity(intent)
         }
     }
 }
-//질문타입 -> head_type ,  질문 내용 -> head , 응답유형 : type (0 : 선택 / 1 : 입력 ) , 응답개수 num,

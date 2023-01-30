@@ -62,11 +62,12 @@ class AdminHome : AppCompatActivity() {
                 binding.choice.setBackgroundColor(Color.parseColor("#60EE913B"))
             }
         }
-
+        /*
         binding.trash.setOnClickListener{//휴지통 버튼을 눌렀을때 선택되는 걸 다 지워준다.
             Toast.makeText(this,"삭제버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             binding.trash.visibility=View.GONE
             binding.plus.visibility=View.VISIBLE
         }
+         */
     }
 }
