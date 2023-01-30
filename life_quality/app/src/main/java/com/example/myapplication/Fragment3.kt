@@ -18,7 +18,7 @@ class Fragment3 : Fragment() {
         var keyList = mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type3FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
-        binding.type3Number.text = "문항 " + QuestionMainpage.curNumber.toString()
+        binding.type3Number.text = "문항 " + QuestionMainpage.curCount.toString()
         binding.type3Title.text = QuestionMainpage.tempSurvey.title.toString()
 
         for((key, value) in QuestionMainpage.tempSurvey.answer) {

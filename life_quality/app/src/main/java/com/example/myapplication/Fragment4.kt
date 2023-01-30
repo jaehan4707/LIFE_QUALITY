@@ -16,7 +16,7 @@ class Fragment4 : Fragment() {
         var keyList = mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type4FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
-        binding.type4Number.text = "문항 " + QuestionMainpage.curNumber.toString()
+        binding.type4Number.text = "문항 " + QuestionMainpage.curCount.toString()
         binding.type4Title.text = QuestionMainpage.tempSurvey.title.toString()
 
         for((key, value) in QuestionMainpage.tempSurvey.answer) {

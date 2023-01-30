@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         val db = Firebase.firestore
         for(i in 0..nameList.size-1) {
-            Log.d("test","data를 불러옵니다")
             db.collection("${nameList[i]}")
                 .get()
                 .addOnSuccessListener{ result->
@@ -41,21 +40,16 @@ class MainActivity : AppCompatActivity() {
                         Log.d("What is name", "${nameList[i]}")
                         surveyList.add(TotalSurvey(nameList[i], document.id,
                             document.data["number"] as String,document.data["title"] as String, document.data["type"] as String,
-                            document.data["answer"] as MutableMap<String, String>,false)
+                            document.data["answer"] as MutableMap<String, String>)
                         )
                     }
                 }
                 .addOnFailureListener{ exception ->
                     Log.w("Get Data Error", exception)
-
                 }
         }
 
         binding.qStart.setOnClickListener() {
-            Log.d("test","${surveyList.size}")
-            for(i in 0 .. surveyList.size-1){
-                Log.d("test","${surveyList.get(i).surveyType},${surveyList.get(i).id}")
-            }
             val intent = Intent(this, QuestionMainpage::class.java)
             startActivity(intent)
         }

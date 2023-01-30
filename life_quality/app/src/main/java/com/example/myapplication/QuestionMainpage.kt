@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -20,50 +21,66 @@ class QuestionMainpage: AppCompatActivity() {
         binding = QuestionMainpageBinding.inflate(layoutInflater)
         setContentView(binding.root);
 
-        for(survey in surveyList) {
-            Log.d("surveyList Check", " ${survey.surveyType}, ${survey.answer}")
-        }
+        Log.d("total List", "${surveyList.size}")
+
+        //프로그레스바 max값 정해주는 부분 (max는 설문의 개수만큼 되어야 한다.)
+        binding.progressbar.max = surveyList.size + 1
+
+        //인적사항 입력할 때는 진행도가 1임
+        binding.progressbar.progress = 1
         if(curCount == 0) {
             setFrag(-1) //디폴트 값으로 일단 인적사항 입력 페이지를 프레그먼트로 보여준다.
         }
         // "다음" 버튼 클릭 이벤트 구현 부분
       binding.nextstage.setOnClickListener() {
-            //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
-            tempSurvey = surveyList.get(curCount)
-            curNumber = curCount + 1
-            curCount++;
-            if(tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
-                when(tempSurvey.number.toInt()) {
-                    //답변 개수에 맞는 프레그먼트를 띄워주는 메소드를 호출한다.
-                    2 -> {
-                        setFrag(2)
-                    }
-                    3 -> {
-                        setFrag(3)
-                    }
-                    4 -> {
-                        setFrag(4)
-                    }
-                    5 -> {
-                        setFrag(5)
-                    }
-                    6 -> {
-                        setFrag(6)
-                    }
-                    7 -> {
-                        setFrag(7)
-                    }
-                    8 -> {
-                        setFrag(8)
-                    }
-                    10 -> {
-                        setFrag(10)
-                    }
-                }
-            }
-            else { //답변이 입력형일 경우
-                setFrag(0)
-            }
+          //설문이 끝났을 경우 결과 확인 페이지로 이동
+          if(curCount == surveyList.size) {
+              var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+              startActivity(intent)
+          }
+          else {
+              //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+              tempSurvey = surveyList.get(curCount)
+              curCount++;
+              Log.d("curCount List", "curCount = ${curCount}")
+
+              if(tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+                  when(tempSurvey.number.toInt()) {
+                      //답변 개수에 맞는 프레그먼트를 띄워주는 메소드를 호출한다.
+                      2 -> {
+                          setFrag(2)
+                      }
+                      3 -> {
+                          setFrag(3)
+                      }
+                      4 -> {
+                          setFrag(4)
+                      }
+                      5 -> {
+                          setFrag(5)
+                      }
+                      6 -> {
+                          setFrag(6)
+                      }
+                      7 -> {
+                          setFrag(7)
+                      }
+                      8 -> {
+                          setFrag(8)
+                      }
+                      10 -> {
+                          setFrag(10)
+                      }
+                  }
+              }
+              else { //답변이 입력형일 경우
+                  setFrag(0)
+              }
+          }
+
+
+          //프로그래스바 진행도 표시
+          binding.progressbar.progress = curCount + 1
 
         }
 

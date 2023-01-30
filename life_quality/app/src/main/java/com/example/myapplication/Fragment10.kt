@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.myapplication.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.Type10FragmentBinding
 import com.example.myapplication.databinding.Type8FragmentBinding
 
@@ -17,7 +18,8 @@ class Fragment10 : Fragment() {
         var keyList = mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type10FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
-        binding.type10Number.text = "문항 " + QuestionMainpage.curNumber.toString()
+        Log.d("this is type10 curCountList", "curCount is : $curCount")
+        binding.type10Number.text = "문항 " + QuestionMainpage.curCount.toString()
         binding.type10Title.text = QuestionMainpage.tempSurvey.title.toString()
         for((key, value) in QuestionMainpage.tempSurvey.answer) {
             keyList.add(key)
@@ -31,9 +33,9 @@ class Fragment10 : Fragment() {
         binding.type10Answer5.text = valueList.get(4)
         binding.type10Answer6.text = valueList.get(5)
         binding.type10Answer7.text = valueList.get(6)
-        binding.type10Answer7.text = valueList.get(7)
-        binding.type10Answer7.text = valueList.get(8)
-        binding.type10Answer7.text = valueList.get(9)
+        binding.type10Answer8.text = valueList.get(7)
+        binding.type10Answer9.text = valueList.get(8)
+        binding.type10Answer10.text = valueList.get(9)
         var view = inflater.inflate(R.layout.type10_fragment, container, false)
         return binding.root
 
