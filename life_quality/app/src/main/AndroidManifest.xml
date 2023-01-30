@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".QuestionMainpage" android:label="QuestionMainpage"/>
+        <activity android:name=".ResultLayout" android:label="ResultLayout"/>
         <activity
             android:name=".AdminPlus"
             android:exported="false">

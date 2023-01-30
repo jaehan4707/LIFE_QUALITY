@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.myapplication.QuestionMainpage.Companion.curCount
 import com.example.myapplication.QuestionMainpage.Companion.curNumber
 import com.example.myapplication.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.databinding.Type2FragmentBinding
@@ -19,7 +20,7 @@ class Fragment2 : Fragment() {
         var binding = Type2FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
 
 
-        binding.type2Number.text = "문항 " + curNumber.toString()
+        binding.type2Number.text = "문항 " + curCount.toString()
         binding.type2Title.text = tempSurvey.title.toString()
 
         for( (key, value) in tempSurvey.answer) {

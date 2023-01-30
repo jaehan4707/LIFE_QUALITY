@@ -46,12 +46,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 .addOnFailureListener{ exception ->
                     Log.w("Get Data Error", exception)
-
                 }
         }
 
         binding.qStart.setOnClickListener() {
-            Log.d("Finish!!!", "${surveyList.get(1).surveyType}, ${surveyList.get(1).id}, ${surveyList.get(1).type}, ${surveyList.get(1).number}, ${surveyList.get(1).title}, ${surveyList.get(1).answer}")
             val intent = Intent(this, QuestionMainpage::class.java)
             startActivity(intent)
         }
