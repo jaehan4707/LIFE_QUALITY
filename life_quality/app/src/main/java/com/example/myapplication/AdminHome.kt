@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.SurfaceControlViewHost
 import android.view.View
 import android.widget.LinearLayout
@@ -17,9 +18,11 @@ import com.example.myapplication.MainActivity.Companion.surveyList
 class AdminHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var check : Boolean = false
+
         val binding = ActivityAdminHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        var check : Boolean = binding.choice.isSelected
+        Log.d("check", "초기상태 : ${check}")
+            setContentView(binding.root)
         //시작했을때 쫘악 보여주기.
         val Homeadapter = AdminHomeAdapter(surveyList,binding)
         var recyclerView : RecyclerView = binding.questionRecycle
@@ -46,20 +49,28 @@ class AdminHome : AppCompatActivity() {
         }
         binding.choice.setOnClickListener{
             Toast.makeText(this,"선택버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
-            check=!check
-            if(check){
+            binding.choice.isSelected = !binding.choice.isSelected
+
+            if(binding.choice.isSelected){
+                //binding.choice.setBackgroundColor()
                 binding.trash.visibility= View.VISIBLE
                 binding.plus.visibility=View.GONE
-                binding.choice.setBackgroundColor(Color.parseColor("#EE913B"))
                 val adapter2 = ChoiceAdapter(surveyList,binding)
                 recyclerView.layoutManager=LinearLayoutManager(this)
                 recyclerView.adapter=adapter2
                 recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
             }
             else{ //선택버튼 비활성화
+                for(i in 0 .. surveyList.size-1){
+                    surveyList[i].selected=false
+                }
                 binding.trash.visibility=View.GONE
                 binding.plus.visibility=View.VISIBLE
-                binding.choice.setBackgroundColor(Color.parseColor("#60EE913B"))
+                val adapter2 = ChoiceAdapter(surveyList,binding)
+                recyclerView.layoutManager=LinearLayoutManager(this)
+                recyclerView.adapter=adapter2
+                recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+                //binding.choice.setBackgroundColor(Color.parseColor("#60EE913B"))
             }
         }
         /*

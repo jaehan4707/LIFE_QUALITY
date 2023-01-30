@@ -1,85 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminHome"
-    >
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/topPanel"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:background="@color/main_orange"
         >
-    <TextView
-        android:layout_width="0dp"
-        android:layout_weight="8"
-        android:layout_height="match_parent"
-        android:text="관리자메뉴"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="#EE931B"
-        android:textStyle="bold"/>
-    <ImageView
-        android:id="@+id/admin_home"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:src="@drawable/home"
-        android:background="#EE913B"
-        />
-    </LinearLayout>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="관리자 메뉴"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:fontFamily="@font/bm_dohyeon"
+            />
 
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:id="@+id/admin_home"
+            android:maxWidth="35dp"
+            android:maxHeight="35dp"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            />
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/search_layout"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/topPanel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
+        android:gravity="center">
         <EditText
             android:layout_width="250dp"
-            android:layout_marginStart="50dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="검색어를 입력력하세요." />
+            android:layout_height="50dp"
+            android:hint="검색어를 입력하세요."
+            android:fontFamily="@font/bm_dohyeon"
+            android:background="@drawable/edittext_custom"
+            android:padding="7dp"/>
         <Button
             android:id="@+id/search"
-            android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="검색"
+            android:fontFamily="@font/bm_dohyeon"
             android:backgroundTint="#EE913B"
-            />
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
-    <Button
+    <android.widget.Button
         android:id="@+id/choice"
-        android:text="선택"
-        android:backgroundTint="#60EE913B"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/search_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:layout_height="35dp"
+        android:layout_gravity="right"
+        android:text="편집"
+        android:fontFamily="@font/bm_dohyeon"
+        android:textColor="@drawable/button_click_txt_color"
+        android:background="@drawable/button_click_custom"/>
     <LinearLayout
-        android:id="@+id/question_content"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/choice"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_height="400dp"
-        android:orientation="vertical"
-        >
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/question_recycle"
             android:layout_width="match_parent"
@@ -90,19 +82,19 @@
             android:id="@+id/plus"
             android:layout_width="50dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_gravity="right"
-            android:src="@drawable/plus" />
+            android:src="@drawable/plus"
+            android:layout_weight="1"/>
         <!-- 초기 휴지통은 gone 처리 -->
         <ImageView
+            android:layout_weight="1"
             android:id="@+id/trash"
             android:layout_width="50dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_gravity="right"
             android:src="@drawable/trashcan"
             android:visibility="gone"
             />
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

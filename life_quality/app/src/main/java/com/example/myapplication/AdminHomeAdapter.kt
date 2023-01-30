@@ -102,7 +102,6 @@ class ChoiceAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activ
             notifyDataSetChanged()
             binding2.plus.visibility= View.VISIBLE
             binding2.trash.visibility=View.GONE
-            binding2.choice.setBackgroundColor(Color.parseColor("#60EE913B"))
         }
 
     }
