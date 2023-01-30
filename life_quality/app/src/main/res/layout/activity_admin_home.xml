@@ -36,28 +36,28 @@
             />
     </RelativeLayout>
     <LinearLayout
-        android:id="@+id/search_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
+            android:orientation="horizontal"
         android:gravity="center">
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:hint="검색어를 입력하세요."
-            android:fontFamily="@font/bm_dohyeon"
-            android:background="@drawable/edittext_custom"
-            android:padding="7dp"/>
-        <Button
-            android:id="@+id/search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="검색"
-            android:fontFamily="@font/bm_dohyeon"
-            android:backgroundTint="#EE913B"
-            android:layout_marginLeft="5dp"/>
-    </LinearLayout>
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:hint="검색어를 입력하세요."
+                android:fontFamily="@font/bm_dohyeon"
+                android:background="@drawable/edittext_custom"
+                android:padding="7dp"/>
+            <Button
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="검색"
+                android:fontFamily="@font/bm_dohyeon"
+                android:backgroundTint="#EE913B"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
     <android.widget.Button
         android:id="@+id/choice"
         android:layout_width="wrap_content"
@@ -72,29 +72,32 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="vertical">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/question_recycle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            />
-        <ImageView
-            android:id="@+id/plus"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
-            android:layout_gravity="right"
-            android:src="@drawable/plus"
-            android:layout_weight="1"/>
-        <!-- 초기 휴지통은 gone 처리 -->
-        <ImageView
-            android:layout_weight="1"
-            android:id="@+id/trash"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
-            android:layout_gravity="right"
-            android:src="@drawable/trashcan"
-            android:visibility="gone"
-            />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/question_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                />
+            <ImageView
+                android:id="@+id/plus"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:src="@drawable/plus"
+                android:layout_weight="1"/>
+            <!-- 초기 휴지통은 gone 처리 -->
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/trash"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_gravity="right"
+                android:src="@drawable/trashcan"
+                android:visibility="gone"
+                />
     </LinearLayout>
+
+
+
 
 </LinearLayout>
