@@ -18,7 +18,13 @@ class QuestionMainpage: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //설문을 새로 시작할 때마다 초기화 해주어야 한다.
+        curCount = 0
+
         binding = QuestionMainpageBinding.inflate(layoutInflater)
+
+
         setContentView(binding.root);
 
         Log.d("total List", "${surveyList.size}")
@@ -31,6 +37,7 @@ class QuestionMainpage: AppCompatActivity() {
         if(curCount == 0) {
             setFrag(-1) //디폴트 값으로 일단 인적사항 입력 페이지를 프레그먼트로 보여준다.
         }
+
         // "다음" 버튼 클릭 이벤트 구현 부분
       binding.nextstage.setOnClickListener() {
           //설문이 끝났을 경우 결과 확인 페이지로 이동
@@ -42,6 +49,10 @@ class QuestionMainpage: AppCompatActivity() {
               //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
               tempSurvey = surveyList.get(curCount)
               curCount++;
+              //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+              if(curCount == surveyList.size) {
+                  binding.nextstage.text = "결과보기"
+              }
               Log.d("curCount List", "curCount = ${curCount}")
 
               if(tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우

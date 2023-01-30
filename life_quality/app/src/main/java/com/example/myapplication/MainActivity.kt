@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
 
         val db = Firebase.firestore
         for(i in 0..nameList.size-1) {
@@ -48,7 +48,10 @@ class MainActivity : AppCompatActivity() {
                     Log.w("Get Data Error", exception)
                 }
         }
+        Log.d("설문문항 텍스트 값", "${surveyList.size}")
+//        binding.numberSurvey.text = surveyList.size.toString() + "개"
 
+        setContentView(binding.root)
         binding.qStart.setOnClickListener() {
             val intent = Intent(this, QuestionMainpage::class.java)
             startActivity(intent)

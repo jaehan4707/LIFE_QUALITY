@@ -77,9 +77,10 @@
             android:textSize="20dp"
             android:textColor="@color/black"/>
         <TextView
+            android:id="@+id/number_survey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="27개"
+            android:text="54개"
             android:textSize="20dp"
             android:textColor="@color/main_orange"/>
         <TextView
