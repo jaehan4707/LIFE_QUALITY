@@ -2,8 +2,11 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.graphics.Color
+import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.SurfaceControlViewHost
 import android.view.View
@@ -16,20 +19,37 @@ import com.example.myapplication.databinding.ActivityAdminHomeBinding
 import com.example.myapplication.MainActivity.Companion.surveyList
 
 class AdminHome : AppCompatActivity() {
+    lateinit var editAdapter : EditAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityAdminHomeBinding.inflate(layoutInflater)
         var check : Boolean = binding.choice.isSelected
-        Log.d("check", "초기상태 : ${check}")
-            setContentView(binding.root)
+        setContentView(binding.root)
         //시작했을때 쫘악 보여주기.
         val Homeadapter = AdminHomeAdapter(surveyList,binding)
+        val editAdapter = EditAdapter(surveyList,binding)
         var recyclerView : RecyclerView = binding.questionRecycle
         recyclerView.layoutManager=LinearLayoutManager(this)
         recyclerView.adapter=Homeadapter
         recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
 
+        var stext : String=""
+        binding.searchText.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun afterTextChanged(p0: Editable?) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //stext = binding.searchText.text.toString()
+                //여기서 어뎁터 만들어야할듯?
+                Log.d("test","검색어 입력 : ${p0}")
+                editAdapter.filter.filter(p0)
+                recyclerView.layoutManager=LinearLayoutManager(this@AdminHome)
+                recyclerView.adapter=editAdapter
+                recyclerView.addItemDecoration(DividerItemDecoration(this@AdminHome, LinearLayout.VERTICAL))
+            }
+        })
         binding.adminHome.setOnClickListener{
             //초기화면으로 돌아가야함.
             Toast.makeText(this,"홈버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()

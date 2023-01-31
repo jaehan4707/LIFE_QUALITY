@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityAdminHomeBinding
 import com.example.myapplication.databinding.QuestionItemBinding
@@ -118,5 +120,63 @@ class ChoiceAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activ
         notifyDataSetChanged()
     }
 }
+class EditAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : ActivityAdminHomeBinding) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),Filterable
+{
 
+    var filterSurvey = dataset
+    var itemFilter = ItemFilter()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return HomeViewHolder(
+            QuestionItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
 
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+        Log.d("test","에디터어뎁터")
+        val viewHolder = holder as HomeViewHolder
+        holder.binding.listTitle.text = filterSurvey[position].title
+    }
+
+    override fun getItemCount(): Int {
+        return dataset.size
+    }
+
+    override fun getFilter(): Filter {
+        return itemFilter
+    }
+    inner class ItemFilter : Filter(){
+        override fun performFiltering(p0: CharSequence?): FilterResults {
+            Log.d("test"," 1 : ${filterSurvey.size}")
+            Log.d("test","2 : ${dataset.size}")
+            val filterString = p0.toString()
+            val result = FilterResults()
+           if(filterString.trim { it <= ' ' }.isNotEmpty()){ //한글자 이상이라도 들어오면
+              // filterSurvey.clear()
+               Log.d("test","입력창에 한글자라도 들어왔습니다, ${filterString}")
+               for(i in 0 .. dataset.size-1){
+
+                   if(dataset[i].title.contains(filterString)) { //포함되어 있다면
+                       filterSurvey.add(dataset[i])
+                       Log.d("test","${dataset[i].title}")
+                   }
+               }
+           }
+            result.values=filterSurvey
+            result.count= filterSurvey.size
+            Log.d("test","${result.count}")
+            return result
+        }
+
+        override fun publishResults(p0: CharSequence, p1: FilterResults) {
+            filterSurvey.clear() // 초기화
+            filterSurvey.addAll(p1.values as MutableList<TotalSurvey>)
+            Log.d("test","${filterSurvey.size}")
+            notifyDataSetChanged()
+        }
+    }
+}
