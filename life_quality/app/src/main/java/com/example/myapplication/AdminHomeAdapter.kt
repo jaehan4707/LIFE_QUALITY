@@ -58,18 +58,21 @@ class ChoiceAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activ
 
         val viewHolder = holder as HomeViewHolder
         holder.binding.listTitle.text = dataset[position].title
-        holder.binding.adminRecycler.setOnClickListener {
-            setposition(position)
-            Log.d("test", "${position}")
-        }
-        if (dataset[position].selected) { //true
-            Log.d("test", "${position} 뷰는 비활성화 -> 활성화 시키겠습니다.")
-            holder.binding.listTitle.setBackgroundColor(Color.parseColor("#EE913B"))
 
-        } else { //false
-            Log.d("test", "${position} 뷰는 활성화-> 비활성화시키겠습니다.")
-            holder.binding.listTitle.setBackgroundColor(Color.parseColor("#30EE913B"))
+        if(binding2.choice.isSelected) { //편집버튼 활성화
+            holder.binding.adminRecycler.setOnClickListener {
+                setposition(position)
+                Log.d("test", "${position}")
+            }
+            if (dataset[position].selected) { //true
+                Log.d("test", "${position} 뷰는 비활성화 -> 활성화 시키겠습니다.")
+                holder.binding.listTitle.setBackgroundColor(Color.parseColor("#EE913B"))
 
+            } else { //false
+                Log.d("test", "${position} 뷰는 활성화-> 비활성화시키겠습니다.")
+                holder.binding.listTitle.setBackgroundColor(Color.parseColor("#60EE913B"))
+
+            }
         }
         binding2.trash.setOnClickListener{
             var ary = arrayListOf<Int>()
