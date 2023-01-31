@@ -19,16 +19,16 @@ import com.example.myapplication.databinding.ActivityAdminHomeBinding
 import com.example.myapplication.MainActivity.Companion.surveyList
 
 class AdminHome : AppCompatActivity() {
-    lateinit var editAdapter : EditAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityAdminHomeBinding.inflate(layoutInflater)
         var check : Boolean = binding.choice.isSelected
+        var editAdapter = EditAdapter(surveyList, binding)
         setContentView(binding.root)
         //시작했을때 쫘악 보여주기.
         val Homeadapter = AdminHomeAdapter(surveyList,binding)
-        val editAdapter = EditAdapter(surveyList,binding)
         var recyclerView : RecyclerView = binding.questionRecycle
         recyclerView.layoutManager=LinearLayoutManager(this)
         recyclerView.adapter=Homeadapter
@@ -45,11 +45,18 @@ class AdminHome : AppCompatActivity() {
                 //여기서 어뎁터 만들어야할듯?
                 Log.d("test","검색어 입력 : ${p0}")
                 editAdapter.filter.filter(p0)
-                recyclerView.layoutManager=LinearLayoutManager(this@AdminHome)
-                recyclerView.adapter=editAdapter
-                recyclerView.addItemDecoration(DividerItemDecoration(this@AdminHome, LinearLayout.VERTICAL))
             }
         })
+
+        binding.search.setOnClickListener{
+            //Toast.makeText(this,"검색버튼을눌렀습니다",Toast.LENGTH_SHORT).show()
+            Log.d("test","검색버튼을눌렀습니다")
+
+            recyclerView.layoutManager=LinearLayoutManager(this)
+            recyclerView.adapter=editAdapter
+            recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+            //binding.searchText.text.clear()
+        }
         binding.adminHome.setOnClickListener{
             //초기화면으로 돌아가야함.
             Toast.makeText(this,"홈버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
@@ -62,10 +69,6 @@ class AdminHome : AppCompatActivity() {
             val intent=Intent(this@AdminHome,AdminPlus::class.java)
             Toast.makeText(this@AdminHome,"+버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             startActivity(intent)
-        }
-        binding.search.setOnClickListener() {
-            //검색버튼을 누르면 해당 질문을 불러와야함.
-            Toast.makeText(this,"검색버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
         }
         binding.choice.setOnClickListener{
             Toast.makeText(this,"선택버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
@@ -90,15 +93,8 @@ class AdminHome : AppCompatActivity() {
                 recyclerView.layoutManager=LinearLayoutManager(this)
                 recyclerView.adapter=adapter2
                 recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
-                //binding.choice.setBackgroundColor(Color.parseColor("#60EE913B"))
             }
         }
-        /*
-        binding.trash.setOnClickListener{//휴지통 버튼을 눌렀을때 선택되는 걸 다 지워준다.
-            Toast.makeText(this,"삭제버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
-            binding.trash.visibility=View.GONE
-            binding.plus.visibility=View.VISIBLE
-        }
-         */
+
     }
 }

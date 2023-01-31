@@ -123,8 +123,12 @@ class ChoiceAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activ
 class EditAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : ActivityAdminHomeBinding) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),Filterable
 {
 
-    var filterSurvey = dataset
+    var filterSurvey = mutableListOf<TotalSurvey>()
+    var tempList =  mutableListOf<TotalSurvey>()
     var itemFilter = ItemFilter()
+    init{
+        filterSurvey.addAll(dataset)
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return HomeViewHolder(
             QuestionItemBinding.inflate(
@@ -136,10 +140,12 @@ class EditAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activit
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
         Log.d("test","에디터어뎁터")
-        val viewHolder = holder as HomeViewHolder
-        holder.binding.listTitle.text = filterSurvey[position].title
+        Log.d("test","사이즈: ${filterSurvey.size}")
+        if(filterSurvey.size!=0) {
+            val viewHolder = holder as HomeViewHolder
+            holder.binding.listTitle.text = filterSurvey[position].title
+        }
     }
 
     override fun getItemCount(): Int {
@@ -155,27 +161,26 @@ class EditAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activit
             Log.d("test","2 : ${dataset.size}")
             val filterString = p0.toString()
             val result = FilterResults()
-           if(filterString.trim { it <= ' ' }.isNotEmpty()){ //한글자 이상이라도 들어오면
-              // filterSurvey.clear()
+           if(filterString.trim { it <= ' '}.isNotEmpty()){ //한글자 이상이라도 들어오면
                Log.d("test","입력창에 한글자라도 들어왔습니다, ${filterString}")
-               for(i in 0 .. dataset.size-1){
-
-                   if(dataset[i].title.contains(filterString)) { //포함되어 있다면
-                       filterSurvey.add(dataset[i])
-                       Log.d("test","${dataset[i].title}")
+               for(k in 0 until dataset.size){
+                   if(dataset[k].title.contains(filterString)){
+                       tempList.add(dataset[k])
+                       Log.d("test","${dataset[k].title}")
                    }
                }
            }
-            result.values=filterSurvey
-            result.count= filterSurvey.size
-            Log.d("test","${result.count}")
-            return result
+            result.values=tempList //필러팅된 결과를 value에 넣고
+            result.count= tempList.size //필터링된 결과의 수를 count에 넣음.
+            Log.d("test","${result.count}") //결과의 수 print
+            return result // -> 결과를 밑에 함수에 전송
         }
-
         override fun publishResults(p0: CharSequence, p1: FilterResults) {
             filterSurvey.clear() // 초기화
-            filterSurvey.addAll(p1.values as MutableList<TotalSurvey>)
-            Log.d("test","${filterSurvey.size}")
+            filterSurvey.addAll(tempList)
+            tempList.clear()
+            //여기서 add가 제대로 이루어지지않음.
+            Log.d("test","${filterSurvey.size}이고 끝마칩니다.")
             notifyDataSetChanged()
         }
     }
