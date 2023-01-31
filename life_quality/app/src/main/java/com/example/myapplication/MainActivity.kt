@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Window
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
 import com.google.android.material.snackbar.Snackbar
@@ -35,7 +36,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
+        //질문 개수와 질문 리스트 초기화하고 다시 받아와야함.
+        curCount = 0
+        surveyList = mutableListOf<TotalSurvey>()
 
         val db = Firebase.firestore
         for(i in 0..nameList.size-1) {
