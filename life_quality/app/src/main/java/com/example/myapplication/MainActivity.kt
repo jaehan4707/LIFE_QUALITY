@@ -9,12 +9,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
+    var waitTime : Long = 0
     companion object {
         var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit")
         var surveyList = mutableListOf<TotalSurvey>()
@@ -85,5 +87,16 @@ class MainActivity : AppCompatActivity() {
 
         dialog.show()
         dialog.window?.setLayout(1000, 1000)
+    }
+
+    override fun onBackPressed() {
+        //뒤로가기 버튼 클릭
+        if(System.currentTimeMillis() - waitTime >= 2000) {
+            waitTime = System.currentTimeMillis()
+            Snackbar.make(binding.mainActivity,"뒤로가기 버튼을 한번 더 누르면 종료됩니다.",Snackbar.LENGTH_LONG).show()
+        }
+        else {
+            finish() //종료
+        }
     }
 }
