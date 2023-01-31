@@ -1,10 +1,14 @@
 package com.example.myapplication
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.databinding.DialogStartBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -53,13 +57,33 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
         binding.qStart.setOnClickListener() {
-            val intent = Intent(this, QuestionMainpage::class.java)
-            startActivity(intent)
+            showDialog()
         }
         binding.redCircle.setOnClickListener{
             val intent =Intent(this,AdminHome::class.java)
             startActivity(intent)
         }
+    }
 
+    //커스텀 다이얼로그 띄우는 부분
+    fun showDialog() {
+        var dialogBinding = DialogStartBinding.inflate(layoutInflater)
+        var dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCancelable(false)
+
+
+        dialogBinding.dialogStart.setOnClickListener() {
+            var intent = Intent(this, QuestionMainpage::class.java)
+            startActivity(intent)
+            dialog.dismiss()
+        }
+        dialogBinding.dialogBack.setOnClickListener() {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+        dialog.window?.setLayout(1000, 1000)
     }
 }

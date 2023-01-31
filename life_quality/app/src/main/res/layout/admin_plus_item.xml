@@ -15,8 +15,11 @@
         android:layout_weight="5"
         android:layout_height="match_parent"
         android:hint="응답내용을 적어주세요."
-        android:background="#60EE913B"
+        android:background="@drawable/orange_linebutton"
         android:gravity="center"
+        android:padding="5dp"
+        android:fontFamily="@font/bm_dohyeon"
+        android:textColor="@color/black"
         />
     <EditText
         android:id= "@+id/input_score"
@@ -24,6 +27,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:hint="점수"
+        android:fontFamily="@font/bm_dohyeon"
+        android:textColor="@color/black"
+        android:padding="5dp"
+        android:background="@drawable/edittext_custom"
         />
     </LinearLayout>
 </LinearLayout>
