@@ -80,7 +80,8 @@ class MainActivity : AppCompatActivity() {
 
 
         dialogBinding.dialogStart.setOnClickListener() {
-            var intent = Intent(this, QuestionMainpage::class.java)
+            //여기를 바꿔줬음. -> 다이얼로그 시작하기 누르면 -> 목록을 정할수 있도록 해줄생각.
+            var intent = Intent(this, QuestionSelect::class.java)
             startActivity(intent)
             dialog.dismiss()
         }
