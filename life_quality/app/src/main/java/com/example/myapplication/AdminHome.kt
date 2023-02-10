@@ -1,14 +1,11 @@
 package com.example.myapplication
 
 import android.content.Intent
-import android.graphics.Color
-import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.SurfaceControlViewHost
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -60,13 +57,13 @@ class AdminHome : AppCompatActivity() {
         binding.adminHome.setOnClickListener{
             //초기화면으로 돌아가야함.
             Toast.makeText(this,"홈버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,MainActivity::class.java) //홈화면 누르면 mainactivity로 이동.
+            val intent = Intent(this, MainActivity::class.java) //홈화면 누르면 mainactivity로 이동.
             startActivity(intent)
 
         }
         binding.plus.setOnClickListener(){
             //질문추가 화면으로 넘어가야함.
-            val intent=Intent(this@AdminHome,AdminPlus::class.java)
+            val intent=Intent(this@AdminHome, AdminPlus::class.java)
             Toast.makeText(this@AdminHome,"+버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }

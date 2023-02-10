@@ -1,10 +1,6 @@
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +9,7 @@ import com.example.myapplication.databinding.AdminPlusItemBinding
 
 
 class PlusViewHolder(val binding : AdminPlusItemBinding) : RecyclerView.ViewHolder(binding.root)
-class AdminPlusAdapter(val dataset : MutableList<Answer>,val binding2 : ActivityAdminPlusBinding) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdminPlusAdapter(val dataset : MutableList<Answer>, val binding2 : ActivityAdminPlusBinding) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PlusViewHolder(
             AdminPlusItemBinding.inflate(

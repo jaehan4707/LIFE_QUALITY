@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.surveyList
+import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.QuestionMainpageBinding
 
 class QuestionMainpage: AppCompatActivity() {
@@ -20,23 +21,20 @@ class QuestionMainpage: AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //설문을 새로 시작할 때마다 초기화 해주어야 한다.
-        curCount = 0
+        curCount = 1
 
         binding = QuestionMainpageBinding.inflate(layoutInflater)
-
-
         setContentView(binding.root);
-
+        var page = surveyList.get(0).number.toInt()
         Log.d("total List", "${surveyList.size}")
 
         //프로그레스바 max값 정해주는 부분 (max는 설문의 개수만큼 되어야 한다.)
         binding.progressbar.max = surveyList.size + 1
-
+        tempSurvey = surveyList.get(0)
+        setFrag(page)
         //인적사항 입력할 때는 진행도가 1임
         binding.progressbar.progress = 1
-        if(curCount == 0) {
-            setFrag(-1) //디폴트 값으로 일단 인적사항 입력 페이지를 프레그먼트로 보여준다.
-        }
+
 
         // "다음" 버튼 클릭 이벤트 구현 부분
       binding.nextstage.setOnClickListener() {
@@ -53,46 +51,17 @@ class QuestionMainpage: AppCompatActivity() {
               if(curCount == surveyList.size) {
                   binding.nextstage.text = "결과보기"
               }
-              Log.d("curCount List", "curCount = ${curCount}")
+              Log.d("curCount List", "curCount = $curCount")
 
               if(tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
-                  when(tempSurvey.number.toInt()) {
-                      //답변 개수에 맞는 프레그먼트를 띄워주는 메소드를 호출한다.
-                      2 -> {
-                          setFrag(2)
-                      }
-                      3 -> {
-                          setFrag(3)
-                      }
-                      4 -> {
-                          setFrag(4)
-                      }
-                      5 -> {
-                          setFrag(5)
-                      }
-                      6 -> {
-                          setFrag(6)
-                      }
-                      7 -> {
-                          setFrag(7)
-                      }
-                      8 -> {
-                          setFrag(8)
-                      }
-                      10 -> {
-                          setFrag(10)
-                      }
-                  }
+                  setFrag(tempSurvey.number.toInt())
               }
               else { //답변이 입력형일 경우
                   setFrag(0)
               }
           }
-
-
           //프로그래스바 진행도 표시
           binding.progressbar.progress = curCount + 1
-
         }
 
     }

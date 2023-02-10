@@ -14,10 +14,9 @@ class ResultLayout : AppCompatActivity(){
         setContentView(binding.root)
 
         binding.nextstage.setOnClickListener() {
-            var intent = Intent(this, MainActivity::class.java)
+            var intent = Intent(this, QuestionSelect::class.java)
             startActivity(intent)
         }
-
 
     }
 }

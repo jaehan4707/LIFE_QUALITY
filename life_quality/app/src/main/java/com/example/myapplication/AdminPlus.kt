@@ -7,7 +7,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -68,7 +67,7 @@ class AdminPlus : AppCompatActivity() {
         })
         binding.adminHome.setOnClickListener{
             Toast.makeText(this,"홈버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         binding.choice.setOnClickListener {
@@ -107,8 +106,10 @@ class AdminPlus : AppCompatActivity() {
             for(i in 0 .. data.size-1) {
                 m.put(data[i].score, data[i].content)
             }
-            surveyList.add(TotalSurvey(head_type,surveyList.size.toString(
-            ),num.toString(),head,type,m,false))
+            surveyList.add(
+                TotalSurvey(head_type,surveyList.size.toString(
+            ),num.toString(),head,type,m,false)
+            )
             var Result = survey(num.toString(),head,type,m)
             Log.d("test","${Result.title.toString()},${Result.number.toString()}")
             var n =0
@@ -123,7 +124,7 @@ class AdminPlus : AppCompatActivity() {
                 .addOnSuccessListener {Log.d("test","성공")}
                 .addOnFailureListener { Log.d("test","실패")}
             Toast.makeText(this,"저장하기버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,AdminHome::class.java) //홈화면 누르면 mainactivity로 이동.
+            val intent = Intent(this, AdminHome::class.java) //홈화면 누르면 mainactivity로 이동.
             startActivity(intent)
         }
     }

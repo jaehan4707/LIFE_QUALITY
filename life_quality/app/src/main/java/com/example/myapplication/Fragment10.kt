@@ -11,7 +11,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.example.myapplication.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.Type10FragmentBinding
-import com.example.myapplication.databinding.Type8FragmentBinding
 
 class Fragment10 : Fragment() {
     lateinit var callback: OnBackPressedCallback

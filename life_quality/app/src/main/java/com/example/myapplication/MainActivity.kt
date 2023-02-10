@@ -3,16 +3,12 @@ package com.example.myapplication
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     companion object {
         var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit")
         var surveyList = mutableListOf<TotalSurvey>()
-
         var eq5dList = mutableListOf<EQ5D>()
         var eqvasList = mutableListOf<EQVAS>()
         var fallList = mutableListOf<Fall>()
@@ -40,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         curCount = 0
         surveyList = mutableListOf<TotalSurvey>()
 
+        /*
         val db = Firebase.firestore
         for(i in 0..nameList.size-1) {
             db.collection("${nameList[i]}")
@@ -47,7 +43,9 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener{ result->
                     for(document in result) {
                         Log.d("What is name", "${nameList[i]}")
-                        surveyList.add(TotalSurvey(nameList[i], document.id,
+                        surveyList.add(
+                            TotalSurvey(
+                                nameList[i], document.id,
                             document.data["number"] as String,document.data["title"] as String, document.data["type"] as String,
                             document.data["answer"] as MutableMap<String, String>,false)
                         )
@@ -57,15 +55,13 @@ class MainActivity : AppCompatActivity() {
                     Log.w("Get Data Error", exception)
                 }
         }
-        Log.d("설문문항 텍스트 값", "${surveyList.size}")
-//        binding.numberSurvey.text = surveyList.size.toString() + "개"
-
+         */
         setContentView(binding.root)
         binding.qStart.setOnClickListener() {
             showDialog()
         }
         binding.redCircle.setOnClickListener{
-            val intent =Intent(this,AdminHome::class.java)
+            val intent =Intent(this, AdminHome::class.java)
             startActivity(intent)
         }
     }

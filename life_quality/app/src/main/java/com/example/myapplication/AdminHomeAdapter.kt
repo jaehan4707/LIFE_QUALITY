@@ -1,10 +1,6 @@
 package com.example.myapplication
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.Data.*
 import com.example.myapplication.databinding.ActivityAdminHomeBinding
 import com.example.myapplication.databinding.QuestionItemBinding
 import com.google.android.gms.tasks.Task
@@ -20,7 +17,6 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.lang.Math.log
 
 
 class HomeViewHolder(val binding : QuestionItemBinding) : RecyclerView.ViewHolder(binding.root)
