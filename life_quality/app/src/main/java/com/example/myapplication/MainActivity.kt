@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
+import com.example.myapplication.databinding.ItemBinding
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.redCircle.setOnClickListener{
             val intent =Intent(this, AdminHome::class.java)
+            startActivity(intent)
+        }
+        binding.edu.setOnClickListener() {
+            val intent = Intent(this, CardActivity::class.java)
             startActivity(intent)
         }
     }

@@ -12,4 +12,54 @@
     <color name="yellow_circle">#FECA13</color>
     <color name="green_circle">#18EA46</color>
     <color name="gray">#D9D9D9</color>
+
+    <!--영양관리-->
+    <color name="color1">#34163c</color>
+    <color name="nutri_color">#e98896</color>
+    <color name="edu_nutri_color1">#f4c4cb</color>
+    <color name="edu_nutri_color2">#f5c6a4</color>
+    <color name="edu_nutri_color3">#f4c4cb</color>
+
+    <!--우울관리-->
+    <color name="color2">#743409</color>
+    <color name="emotion_color">#eb8a61</color>
+    <color name="edu_emotion_color1">#f5c5b0</color>
+    <color name="edu_emotion_color2">#fcecd8</color>
+    <color name="edu_emotion_color3">#f5c5b0</color>
+    <color name="edu_emotion_color4">#fcecd8</color>
+    <!--구강관리-->
+    <color name="color3">#0E4A5F</color>
+    <color name="mouth_color">#4bb69d</color>
+    <color name="edu_mouth_color1">#1e483e</color>
+    <color name="edu_mouth_color2">#525c57</color>
+    <color name="edu_mouth_color3">#1e483e</color>
+
+    <!--운동관리-->
+    <color name="color4">#41550F</color>
+    <color name="excer_color">#62af78</color>
+    <color name="edu_excercise_color1">#d5e4bb</color>
+    <color name="edu_excercise_color2">#b1d7bc</color>
+    <color name="edu_excercise_color3">#44502f</color>
+    <color name="edu_excercise_color4">#274630</color>
+    <color name="edu_excercise_color5">#d5e4bb</color>
+    <color name="edu_excercise_color6">#b1d7bc</color>
+    <color name="edu_excercise_color7">#44502f</color>
+    <color name="edu_excercise_color8">#274630</color>
+    <color name="edu_excercise_color9">#d5e4bb</color>
+    <color name="edu_excercise_color10">#b1d7bc</color>
+    <color name="edu_excercise_color11">#44502f</color>
+
+    <!--요실금관리-->
+    <color name="color5">#743409</color>
+    <color name="edu_yosil_color1">#f5c5b0</color>
+    <color name="edu_yosil_color2">#fcecd8</color>
+    <color name="edu_yosil_color3">#f5c5b0</color>
+    <color name="edu_yosil_color4">#fcecd8</color>
+    <color name="edu_yosil_color5">#f5c5b0</color>
+    <color name="edu_yosil_color6">#fcecd8</color>
+
+
+
+
+
 </resources>
