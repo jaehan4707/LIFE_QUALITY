@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.QuestionMainpage.Companion.curCount
@@ -10,6 +11,8 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
 import com.example.myapplication.databinding.ItemBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     var waitTime : Long = 0
     companion object {
         var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit")
+        var Total = mutableListOf<TotalSurvey>()
         var surveyList = mutableListOf<TotalSurvey>()
         var eq5dList = mutableListOf<EQ5D>()
         var eqvasList = mutableListOf<EQVAS>()
@@ -34,9 +38,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         //질문 개수와 질문 리스트 초기화하고 다시 받아와야함.
         curCount = 0
-        surveyList = mutableListOf<TotalSurvey>()
+        Total = mutableListOf<TotalSurvey>()
 
-        /*
+
         val db = Firebase.firestore
         for(i in 0..nameList.size-1) {
             db.collection("${nameList[i]}")
@@ -44,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener{ result->
                     for(document in result) {
                         Log.d("What is name", "${nameList[i]}")
-                        surveyList.add(
+                        Total.add(
                             TotalSurvey(
                                 nameList[i], document.id,
                             document.data["number"] as String,document.data["title"] as String, document.data["type"] as String,
@@ -56,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                     Log.w("Get Data Error", exception)
                 }
         }
-         */
+
         setContentView(binding.root)
         binding.qStart.setOnClickListener() {
             showDialog()
