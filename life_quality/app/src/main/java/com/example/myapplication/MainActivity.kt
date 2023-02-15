@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit")
         var Total = mutableListOf<TotalSurvey>()
+        var type : String = ""
+        var answer = mutableListOf<Int>()
         var surveyList = mutableListOf<TotalSurvey>()
         var eq5dList = mutableListOf<EQ5D>()
         var eqvasList = mutableListOf<EQVAS>()

@@ -8,6 +8,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import com.example.myapplication.MainActivity.Companion.Total
 import com.example.myapplication.MainActivity.Companion.surveyList
+import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityQuestionSelectBinding
 import com.google.firebase.firestore.ktx.firestore
@@ -54,14 +55,15 @@ class QuestionSelect : AppCompatActivity() {
                         "노쇠측정" -> dbid = 2
                     }
                     surveyList.clear()
+                    type=nameList[dbid]
                     Log.d(
                         "test",
                         "${btn.text.toString()}" + "${nameList[dbid]}" + "  dbid = " + dbid
                     )
 
-                    /* 카테고리 선택하면 카테고리별로 디비뽑음.
+                    //카테고리 선택하면 카테고리별로 디비뽑음.
                     runBlocking {
-                        val job = CoroutineScope(Dispatchers.IO).launch{
+                        val job = CoroutineScope(Dispatchers.IO).launch {
                             for (i in 0 until Total.size) {
                                 if (Total[i].surveyType == nameList[dbid]) {
                                     surveyList.add(Total[i])
@@ -74,37 +76,34 @@ class QuestionSelect : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
-                */
-                    //디비로 불러오기
-                    db.collection("${nameList[dbid]}")
-                        .get()
-                        .addOnSuccessListener { result ->
-                            for (document in result) {
-                                surveyList.add(
-                                    TotalSurvey(
-                                        nameList[dbid],
-                                        document.id,
-                                        document.data["number"] as String,
-                                        document.data["title"] as String,
-                                        document.data["type"] as String,
-                                        document.data["answer"] as MutableMap<String, String>,
-                                        false
-                                    )
-                                )
-                            }
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.w("Get Data Error", exception)
-                        }
-                        .addOnCompleteListener {
-                            var intent = Intent(this@QuestionSelect, QuestionMainpage::class.java)
-                            startActivity(intent)
-                        }
-                    //선택된 버튼 잘 뽑아옴. 버튼 text에 해당하는 내용에 db를 불러와야함. db 불러오고 questionMain으로 넘어가야함.
+//                    //디비로 불러오기
+//                    db.collection("${nameList[dbid]}")
+//                        .get()
+//                        .addOnSuccessListener { result ->
+//                            for (document in result) {
+//                                surveyList.add(
+//                                    TotalSurvey(
+//                                        nameList[dbid],
+//                                        document.id,
+//                                        document.data["number"] as String,
+//                                        document.data["title"] as String,
+//                                        document.data["type"] as String,
+//                                        document.data["answer"] as MutableMap<String, String>,
+//                                        false
+//                                    )
+//                                )
+//                            }
+//                        }
+//                        .addOnFailureListener { exception ->
+//                            Log.w("Get Data Error", exception)
+//                        }
+//                        .addOnCompleteListener {
+//                            var intent = Intent(this@QuestionSelect, QuestionMainpage::class.java)
+//                            startActivity(intent)
+//                        }
+                //선택된 버튼 잘 뽑아옴. 버튼 text에 해당하는 내용에 db를 불러와야함. db 불러오고 questionMain으로 넘어가야함.
 
-                }
             }
-
         }
         //해당 버튼의 해당하는 설문리스트를 불러와야함.
         binding.selectClear.setOnClickListener {

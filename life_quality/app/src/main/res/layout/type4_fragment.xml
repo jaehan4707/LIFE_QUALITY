@@ -28,80 +28,100 @@
         android:textColor="@color/black"
         android:textSize="20dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="60dp">
-        <RadioGroup
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <RadioButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/custom_radiobutton"
-                android:button="@null"/>
-            <RadioButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/custom_radiobutton"
-                android:button="@null"
-                android:layout_marginTop="20dp"/>
-            <RadioButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/custom_radiobutton"
-                android:button="@null"
-                android:layout_marginTop="20dp"/>
-            <RadioButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/custom_radiobutton"
-                android:button="@null"
-                android:layout_marginTop="20dp"/>
-        </RadioGroup>
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp">
-            <TextView
-                android:id="@+id/type4Answer1"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="예"
-                android:gravity="center_vertical"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
-            <TextView
-                android:id="@+id/type4Answer2"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="아니오"
-                android:gravity="center_vertical"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
-            <TextView
-                android:id="@+id/type4Answer3"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="아니오"
-                android:gravity="center_vertical"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
-            <TextView
-                android:id="@+id/type4Answer4"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="아니오"
-                android:gravity="center_vertical"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/group_f4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/rb3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/rb4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/type4Answer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="center_vertical"
+                    android:text="예"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/type4Answer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="center_vertical"
+                    android:text="아니오"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/type4Answer3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="center_vertical"
+                    android:text="아니오"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/type4Answer4"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="center_vertical"
+                    android:text="아니오"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

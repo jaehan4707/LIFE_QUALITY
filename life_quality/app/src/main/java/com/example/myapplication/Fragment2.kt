@@ -2,13 +2,17 @@ package com.example.myapplication
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.QuestionMainpage.Companion.curCount
+import com.example.myapplication.QuestionMainpage.Companion.group
+import com.example.myapplication.QuestionMainpage.Companion.keyList
 import com.example.myapplication.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.databinding.Type2FragmentBinding
 
@@ -18,7 +22,6 @@ class Fragment2 : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //프레그먼트가 처음 실행될 때 실행하는 메소드
         //res폴더에 만들어준 xml파일과 연결해주어야 함.
-        var keyList = mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type2FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
 
@@ -33,7 +36,18 @@ class Fragment2 : Fragment() {
 
         binding.type2Answer1.text = valueList.get(0)
         binding.type2Answer2.text = valueList.get(1)
+        group = binding.groupF2
+        group.setOnCheckedChangeListener { radioGroup, i ->
+            when(i){
+                binding.rb1.id -> {
+                    QuestionMainpage.Id = (keyList[0].toInt())
 
+                }
+                binding.rb2.id -> {
+                    QuestionMainpage.Id = (keyList[1].toInt())
+                }
+            }
+        }
         return binding.root
     }
 

@@ -10,85 +10,102 @@
         android:id="@+id/type3Number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bm_dohyeon"
         android:text="문항 10"
-        android:textSize="25dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/bm_dohyeon"/>
+        android:textSize="25dp" />
+
     <TextView
         android:id="@+id/type3Title"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/textview_grayline"
         android:layout_marginTop="10dp"
+        android:background="@drawable/textview_grayline"
+        android:fontFamily="@font/bm_dohyeon"
         android:gravity="center_vertical"
+        android:padding="5dp"
         android:text="지난 3개월 동안 밥맛이 없거나, 소화가 잘 안되거나, 씹고 삼키는
 것이 어려워서 식사량이 줄었습니까?"
-        android:textSize="18dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/bm_dohyeon"
-        android:padding="5dp"/>
+        android:textSize="18dp" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="60dp">
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <RadioButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/custom_radiobutton"
-                android:button="@null"/>
-            <RadioButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/custom_radiobutton"
-                android:button="@null"
-                android:layout_marginTop="20dp"/>
-            <RadioButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/custom_radiobutton"
-                android:button="@null"
-                android:layout_marginTop="20dp"/>
-        </RadioGroup>
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp">
-            <TextView
-                android:id="@+id/type3Answer1"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="예"
-                android:gravity="center_vertical"
-                android:textSize="25dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
-            <TextView
-                android:id="@+id/type3Answer2"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="아니오"
-                android:gravity="center_vertical"
-                android:textSize="25dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
-            <TextView
-                android:id="@+id/type3Answer3"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="아니오"
-                android:gravity="center_vertical"
-                android:textSize="25dp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
-        </LinearLayout>
-    </LinearLayout>
+        android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/group_f3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/rb3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/type3Answer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="center_vertical"
+                    android:text="예"
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/type3Answer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="center_vertical"
+                    android:text="아니오"
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/type3Answer3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="center_vertical"
+                    android:text="아니오"
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
