@@ -49,7 +49,7 @@ class QuestionMainpage : AppCompatActivity() {
         // "다음" 버튼 클릭 이벤트 구현 부분
         binding.nextstage.setOnClickListener() {
             //설문이 끝났을 경우 결과 확인 페이지로 이동
-            Log.d("test","라디오 버튼의 값 : ${Id}")
+            Log.d("입력","라디오 버튼의 값 : ${Id}")
             if(Id==-1){
                 Toast.makeText(this,"설문지를 선택하지 않았습니다!!",Toast.LENGTH_SHORT).show()
             }
