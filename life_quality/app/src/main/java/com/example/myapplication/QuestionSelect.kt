@@ -31,7 +31,9 @@ class QuestionSelect : AppCompatActivity() {
             "MNA",
             "MouthHealth",
             "SGDSK",
-            "SleepHabit"
+            "SleepHabit",
+            "Yosil",
+            "Nutrition"
         )
         binding.selectStart.setOnClickListener { //설문 시작하기 버튼 눌렀을 때
             Toast.makeText(this@QuestionSelect, "설문시작하기 버튼을 눌렀습니다", Toast.LENGTH_SHORT).show()
@@ -53,6 +55,8 @@ class QuestionSelect : AppCompatActivity() {
                         "신체활동설문(IPAQ)" -> dbid = 3 //IPAQ
                         "낙상" -> dbid = 1
                         "노쇠측정" -> dbid = 2
+                        "요실금" -> dbid=8
+                        "식습관" -> dbid=9
                     }
                     surveyList.clear()
                     type=nameList[dbid]

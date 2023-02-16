@@ -38,12 +38,12 @@ class QuestionMainpage : AppCompatActivity() {
         Log.d("total List", "${surveyList.size}")
 
         //프로그레스바 max값 정해주는 부분 (max는 설문의 개수만큼 되어야 한다.)
-        binding.progressbar.max = surveyList.size + 1
+        binding.progressbar.max = surveyList.size
         tempSurvey = surveyList.get(0)
         answer.clear() //정답 배열 초기화.
         setFrag(page)
         //인적사항 입력할 때는 진행도가 1임
-        binding.progressbar.progress = 1
+        binding.progressbar.progress = 0
 
 
         // "다음" 버튼 클릭 이벤트 구현 부분
@@ -78,7 +78,8 @@ class QuestionMainpage : AppCompatActivity() {
                 }
             }
             //프로그래스바 진행도 표시
-            binding.progressbar.progress = curCount + 1
+            //binding.progressbar.progress = curCount + 1
+            binding.progressbar.progress++
         }
 
     }
