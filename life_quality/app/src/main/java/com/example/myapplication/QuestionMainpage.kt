@@ -76,10 +76,11 @@ class QuestionMainpage : AppCompatActivity() {
                         setFrag(0)
                     }
                 }
+                binding.progressbar.progress++
             }
             //프로그래스바 진행도 표시
             //binding.progressbar.progress = curCount + 1
-            binding.progressbar.progress++
+
         }
 
     }

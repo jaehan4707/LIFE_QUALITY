@@ -21,6 +21,15 @@ class ResultLayout : AppCompatActivity() {
          flag= 0
         when (type) {
             "EQ5D" -> eq5d(binding)
+            "Frailty" -> binding.surveyContent.setText(R.string.Frality1)
+            "Fall" -> binding.surveyContent.setText(R.string.Fall)
+            "MNA" -> binding.surveyContent.setText(R.string.MNA)
+            "MouthHealth" -> binding.surveyContent.setText(R.string.MouthHealth)
+            "IPAQ" -> binding.surveyContent.setText(R.string.IPAQ)
+            "Nutrition" -> binding.surveyContent.setText(R.string.Nutrition)
+            "SleepHalbit"->binding.surveyContent.setText(R.string.SleepHabit)
+            "SGDSK" -> binding.surveyContent.setText(R.string.SGDSK)
+            "Yosil" -> binding.surveyContent.setText(R.string.Yosil)
         }
 
         binding.nextstage.text = "처음으로"
@@ -28,6 +37,11 @@ class ResultLayout : AppCompatActivity() {
 
         binding.nextstage.setOnClickListener() {
             var intent = Intent(this, QuestionSelect::class.java)
+            startActivity(intent)
+        }
+
+        binding.moveHealth.setOnClickListener{
+            val intent = Intent(this,CardActivity::class.java)
             startActivity(intent)
         }
 
