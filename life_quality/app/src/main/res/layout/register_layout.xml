@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:id="@+id/registerLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:fontFamily="@font/bm_dohyeon"
+        android:textColor="@color/main_orange"
+        android:textSize="35sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:padding="16dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="휴대전화" />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_custom"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:hint="'-'를 제외하고 입력해주세요."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_custom"
+                android:layout_marginTop="5dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_custom"
+                android:layout_marginTop="5dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="생년월일"
+                android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edittext_custom"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="년"
+                    android:layout_marginLeft="5dp"/>
+
+                <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edittext_custom"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="월"
+                    android:layout_marginLeft="5dp"/>
+
+                <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edittext_custom"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="일"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성별"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="25dp">
+
+                <Button
+                    android:id="@+id/register_man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="남자"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/main_orange"/>
+
+                <Button
+                    android:id="@+id/register_woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="여자"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/gray"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/finishRegister"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="가입하기"
+            android:backgroundTint="@color/main_orange"
+            android:fontFamily="@font/bm_dohyeon"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>
