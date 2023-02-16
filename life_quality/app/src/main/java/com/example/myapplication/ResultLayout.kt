@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.type
+import com.example.myapplication.databinding.Eq5dResultBinding
 import com.example.myapplication.databinding.ResultLayoutBinding
 
 class ResultLayout : AppCompatActivity() {
@@ -13,28 +14,57 @@ class ResultLayout : AppCompatActivity() {
      var  weight : Double=0.0
      var flag : Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
-        val binding = ResultLayoutBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         //여기서 점수를 쫙 계산해야함.
         Log.d("test", "${answer}")
         weight=0.0
-         flag= 0
+        flag= 0
         when (type) {
-            "EQ5D" -> eq5d(binding)
-            "Frailty" -> binding.surveyContent.setText(R.string.Frality1)
-            "Fall" -> binding.surveyContent.setText(R.string.Fall)
-            "MNA" -> binding.surveyContent.setText(R.string.MNA)
-            "MouthHealth" -> binding.surveyContent.setText(R.string.MouthHealth)
-            "IPAQ" -> binding.surveyContent.setText(R.string.IPAQ)
-            "Nutrition" -> binding.surveyContent.setText(R.string.Nutrition)
-            "SleepHalbit"->binding.surveyContent.setText(R.string.SleepHabit)
-            "SGDSK" -> binding.surveyContent.setText(R.string.SGDSK)
-            "Yosil" -> binding.surveyContent.setText(R.string.Yosil)
+            "EQ5D" -> {
+                val binding=Eq5dResultBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "Fall" -> {
+                val binding = FallBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "SleepHabit"->{
+                val binding = SleepHabitBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "IPAQ" -> {
+                val binding = IpaqBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "MouthHealth" -> {
+                val binding = MouthhealthBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "Frailty" -> {
+                val binding = FrailtyBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "SGDSK" -> {
+                val binding = SgdskBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "MNA" -> {
+                val binding = MnaBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "Nutrition"->{
+                val binding = NutritionBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+            "Yosil" ->{
+                val binding = YosilBinding.inflate(layoutInflater)
+                setContentView(bindig.root)
+            }
+
         }
 
+        /*
         binding.nextstage.text = "처음으로"
-        setContentView(binding.root)
-
         binding.nextstage.setOnClickListener() {
             var intent = Intent(this, QuestionSelect::class.java)
             startActivity(intent)
@@ -44,9 +74,9 @@ class ResultLayout : AppCompatActivity() {
             val intent = Intent(this,CardActivity::class.java)
             startActivity(intent)
         }
+        */
 
     }
-
     fun eq5d(binding: ResultLayoutBinding) {
         binding.surveyContent.setText(R.string.EQ5D)
         for (i in 0 until answer.size) {

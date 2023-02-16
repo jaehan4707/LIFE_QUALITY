@@ -58,6 +58,24 @@ class QuestionMainpage : AppCompatActivity() {
                 Id = -1
                 Log.d("test", "answer : ${answer[curCount - 1]}")
                 if (curCount == surveyList.size) {
+                    /*
+                    when (MainActivity.type) {
+                        "EQ5D" -> {
+                            val intent = Intent(this@QuestionMainpage, )
+                        }
+                        /*
+                        "Frailty" -> binding.surveyContent.setText(R.string.Frality1)
+                        "Fall" -> binding.surveyContent.setText(R.string.Fall)
+                        "MNA" -> binding.surveyContent.setText(R.string.MNA)
+                        "MouthHealth" -> binding.surveyContent.setText(R.string.MouthHealth)
+                        "IPAQ" -> binding.surveyContent.setText(R.string.IPAQ)
+                        "Nutrition" -> binding.surveyContent.setText(R.string.Nutrition)
+                        "SleepHalbit"->binding.surveyContent.setText(R.string.SleepHabit)
+                        "SGDSK" -> binding.surveyContent.setText(R.string.SGDSK)
+                        "Yosil" -> binding.surveyContent.setText(R.string.Yosil)
+                        */
+                    }
+                    */
                     var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
                     startActivity(intent)
                 } else {
