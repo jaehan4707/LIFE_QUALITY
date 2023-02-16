@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.type
-import com.example.myapplication.QuestionMainpage.Companion.keyList
 import com.example.myapplication.databinding.ResultLayoutBinding
 
 class ResultLayout : AppCompatActivity() {
@@ -19,77 +18,78 @@ class ResultLayout : AppCompatActivity() {
         var weight: Double = 0.0
         var flag : Int = 0
         if (type == "EQ5D") {
-            for (i in 0 until keyList.size) {
+            for (i in 0 until answer.size) {
                 when (i) {
-                    0 -> when (keyList[i].toInt()) {
-                        1 -> 0
-                        2 -> keyList[i].toInt() * 0.046
-                        3 -> keyList[i].toInt() * 0.058
+                    0 -> when (answer[i].toInt()) {
+                        1 -> weight+=0
+                        2 -> weight+= 0.046
+                        3 -> weight+= 0.058
                         4 -> {
-                            keyList[i].toInt() * 0.133
+                            weight+= 0.133
                             flag=1
                         }
                         5 -> {
-                            keyList[i].toInt() * 0.251
+                            weight+= 0.251
                             flag=1
                         }
                     }
-                    1 -> when (keyList[i].toInt()) {
-                        1 -> 0
-                        2 -> keyList[i].toInt() * 0.032
-                        3 -> keyList[i].toInt() * 0.050
+                    1 -> when (answer[i].toInt()) {
+                        1 -> weight+=0
+                        2 -> weight+= 0.032
+                        3 -> weight+= 0.050
                         4 -> {
-                            keyList[i].toInt() * 0.078
+                            weight+= 0.078
                             flag=1
                         }
                         5 -> {
-                            keyList[i].toInt() * 0.122
+                            weight+= 0.122
                             flag=1
                         }
                     }
-                    2 -> when (keyList[i].toInt()) {
-                        1 -> 0
-                        2 -> keyList[i].toInt() * 0.021
-                        3 -> keyList[i].toInt() * 0.051
+                    2 -> when (answer[i].toInt()) {
+                        1 -> weight+=0
+                        2 -> weight+= 0.021
+                        3 -> weight+= 0.051
                         4 -> {
-                            keyList[i].toInt() * 0.100
+                            weight+= 0.100
                             flag=1
                         }
                         5 -> {
-                            keyList[i].toInt() * 0.175
+                            weight+= 0.175
                             flag=1
                         }
                     }
-                    3 -> when (keyList[i].toInt()) {
-                        1 -> 0
-                        2 -> keyList[i].toInt() * 0.042
-                        3 -> keyList[i].toInt() * 0.053
+                    3 -> when (answer[i].toInt()) {
+                        1 -> weight+=0
+                        2 -> weight+= 0.042
+                        3 -> weight+= 0.053
                         4 -> {
-                            keyList[i].toInt() * 0.166
+                            weight+= 0.166
                             flag=1
                         }
                         5 -> {
-                            keyList[i].toInt() * 0.207
+                            weight+= 0.207
                             flag=1
                         }
 
                     }
-                    4 -> when (keyList[i].toInt()) {
-                        1 -> 0
-                        2 -> keyList[i].toInt() * 0.033
-                        3 -> keyList[i].toInt() * 0.046
+                    4 -> when (answer[i].toInt()) {
+                        1 -> weight+=0
+                        2 -> weight+= 0.033
+                        3 -> weight+= 0.046
                         4 -> {
-                            keyList[i].toInt() * 0.102
+                            weight+= 0.102
                             flag=1
                         }
                         5 -> {
-                            keyList[i].toInt() * 0.137
+                            weight+= 0.137
                             flag=1
                         }
                     }
                 }
             }
             weight= 1-(0.096+weight+0.078 * flag)
+            Log.d("test","${weight}")
         }
         binding.nextstage.text = "처음으로"
         setContentView(binding.root)

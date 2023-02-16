@@ -2,17 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="135dp"
     android:id="@+id/admin_recycler"
     >
     <android.widget.TextView
+        android:padding="10dp"
         android:id="@+id/list_title"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:text="질문내용"
         android:fontFamily="@font/bm_dohyeon"
         android:gravity="left"
         android:textSize="18dp"
-        android:background="#60EE913B" />
+        android:background="@drawable/textview_round"
+        />
 </LinearLayout>

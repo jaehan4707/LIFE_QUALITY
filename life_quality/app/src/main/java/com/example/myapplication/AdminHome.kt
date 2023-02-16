@@ -12,24 +12,28 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.MainActivity.Companion.Total
 import com.example.myapplication.databinding.ActivityAdminHomeBinding
 import com.example.myapplication.MainActivity.Companion.surveyList
 
 class AdminHome : AppCompatActivity() {
 
+    companion object{
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityAdminHomeBinding.inflate(layoutInflater)
         var check : Boolean = binding.choice.isSelected
-        var editAdapter = EditAdapter(surveyList, binding)
+        var editAdapter = EditAdapter(Total, binding)
         setContentView(binding.root)
         //시작했을때 쫘악 보여주기.
-        val Homeadapter = AdminHomeAdapter(surveyList,binding)
+        val Homeadapter = AdminHomeAdapter(Total,binding)
         var recyclerView : RecyclerView = binding.questionRecycle
         recyclerView.layoutManager=LinearLayoutManager(this)
         recyclerView.adapter=Homeadapter
-        recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+        //recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
 
         var stext : String=""
         binding.searchText.addTextChangedListener(object: TextWatcher {
@@ -51,7 +55,7 @@ class AdminHome : AppCompatActivity() {
 
             recyclerView.layoutManager=LinearLayoutManager(this)
             recyclerView.adapter=editAdapter
-            recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+            //recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
             //binding.searchText.text.clear()
         }
         binding.adminHome.setOnClickListener{
@@ -75,21 +79,21 @@ class AdminHome : AppCompatActivity() {
                 //binding.choice.setBackgroundColor()
                 binding.trash.visibility= View.VISIBLE
                 binding.plus.visibility=View.GONE
-                val adapter2 = ChoiceAdapter(surveyList,binding)
+                val adapter2 = ChoiceAdapter(Total,binding)
                 recyclerView.layoutManager=LinearLayoutManager(this)
                 recyclerView.adapter=adapter2
-                recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+                //recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
             }
             else{ //선택버튼 비활성화
-                for(i in 0 .. surveyList.size-1){
-                    surveyList[i].selected=false
+                for(i in 0 .. Total.size-1){
+                    Total[i].selected=false
                 }
                 binding.trash.visibility=View.GONE
                 binding.plus.visibility=View.VISIBLE
-                val adapter2 = ChoiceAdapter(surveyList,binding)
+                val adapter2 = ChoiceAdapter(Total,binding)
                 recyclerView.layoutManager=LinearLayoutManager(this)
                 recyclerView.adapter=adapter2
-                recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+               // recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
             }
         }
 

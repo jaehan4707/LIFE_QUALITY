@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -51,11 +52,11 @@ class ChoiceAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activ
         )
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val viewHolder = holder as HomeViewHolder
         holder.binding.listTitle.text = dataset[position].title
-
         if(binding2.choice.isSelected) { //편집버튼 활성화
             holder.binding.adminRecycler.setOnClickListener {
                 setposition(position)
@@ -63,12 +64,12 @@ class ChoiceAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activ
             }
             if (dataset[position].selected) { //true
                 Log.d("test", "${position} 뷰는 비활성화 -> 활성화 시키겠습니다.")
-                holder.binding.listTitle.setBackgroundColor(Color.parseColor("#EE913B"))
+                //holder.binding.listTitle.setBackgroundColor(Color.parseColor("#EE913B"))
 
+                holder.binding.listTitle.setBackgroundResource(R.drawable.selected_textview_round)
             } else { //false
                 Log.d("test", "${position} 뷰는 활성화-> 비활성화시키겠습니다.")
-                holder.binding.listTitle.setBackgroundColor(Color.parseColor("#60EE913B"))
-
+                holder.binding.listTitle.setBackgroundResource(R.drawable.textview_round)
             }
         }
         binding2.trash.setOnClickListener{
@@ -117,7 +118,6 @@ class ChoiceAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activ
 }
 class EditAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : ActivityAdminHomeBinding) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),Filterable
 {
-
     var filterSurvey = mutableListOf<TotalSurvey>()
     var tempList =  mutableListOf<TotalSurvey>()
     var itemFilter = ItemFilter()
@@ -136,15 +136,19 @@ class EditAdapter(val dataset : MutableList<TotalSurvey>, val binding2 : Activit
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         Log.d("test","에디터어뎁터")
-        Log.d("test","사이즈: ${filterSurvey.size}")
-        if(filterSurvey.size!=0) {
-            val viewHolder = holder as HomeViewHolder
-            holder.binding.listTitle.text = filterSurvey[position].title
+        Log.d("test","위치 : ${position}")
+        if(position<filterSurvey.size) {
+            if (filterSurvey.size != 0) {
+                val viewHolder = holder as HomeViewHolder
+                holder.binding.listTitle.text = filterSurvey[position].title
+            }
         }
+
     }
 
     override fun getItemCount(): Int {
-        return dataset.size
+        //return dataset.size
+        return filterSurvey.size
     }
 
     override fun getFilter(): Filter {
