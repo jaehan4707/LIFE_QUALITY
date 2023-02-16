@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.LoginLayoutBinding
 import com.google.android.material.snackbar.Snackbar
@@ -17,8 +18,8 @@ class LoginActivity : AppCompatActivity() {
 
         //로그인 버튼 클릭시
         binding.login.setOnClickListener() {
-            var phone = binding.login.text.toString()
-
+            var phone = binding.phoneNum.text.toString()
+            Log.d("test","$phone")
             if(phone.length != 11) { //핸드폰번호가 올바르게 입력되지 않았다면?
                 Snackbar.make(binding.loginLayout, "핸드폰 번호 또는 비밀번호가 올바르지 않습니다.", Snackbar.LENGTH_SHORT).show()
             }
