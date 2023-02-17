@@ -15,9 +15,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RegisterActivity : AppCompatActivity() {
-    lateinit var binding : RegisterLayoutBinding
+    lateinit var binding: RegisterLayoutBinding
+
     //데이터 담을 객체 선언
-    lateinit var userProfile : Data
+    lateinit var userProfile: Data
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,10 +49,9 @@ class RegisterActivity : AppCompatActivity() {
             var month = binding.registerMonth.text.toString()
             var day = binding.registerDay.text.toString()
             var sex = ""
-            if(sexSelected == 1) {
+            if (sexSelected == 1) {
                 sex = "M";
-            }
-            else {
+            } else {
                 sex = "W";
             }
             var birth = year + month + day; //19990101 형식으로 포맷 맞추기
@@ -71,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
     fun apiRegister() {
 
         //1. retrofit 객체 생성
-        val retrofit : Retrofit = Retrofit.Builder()
+        val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -79,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
 
         //2. service 객체 생성
 
-        val apiservice : ApiService = retrofit.create(ApiService::class.java)
+        val apiservice: ApiService = retrofit.create(ApiService::class.java)
 
         //3. Call 객체 생성
         var registerCall = apiservice.insertUserProfile(userProfile)
