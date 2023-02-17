@@ -17,7 +17,7 @@ public class UserProfileController {
     //id인자를 받아서 해당 유저를 json형태로 반환하는 api
     //데이터를 조회하는 api는 @GetMapping 어노테이션을 사용한다.
     @GetMapping("/user/{id}")
-    public Optional<UserProfile> selectUserProfile(@PathVariable("id") String id) {
+    public Optional<UserProfile> selectUserProfile(@PathVariable("id") int id) {
     //@PathVariable("id")는 path에서 {id}부분을 인식해서 String id로 넘긴다.
         return userProfileService.selectUserProfile(id);
     }
@@ -31,6 +31,11 @@ public class UserProfileController {
     @GetMapping("/user/all")
     public List<UserProfile> getUserList() { //유저 정보 전체를 반환
         return userProfileService.getUserList();
+    }
+
+    @PostMapping("/user/register")
+    public UserProfile insertUserProfile(@RequestBody UserProfile userprofile) {
+        return userProfileService.insertUserProfile(userprofile);
     }
 
 
