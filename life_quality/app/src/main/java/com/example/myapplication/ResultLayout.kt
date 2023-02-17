@@ -7,7 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.databinding.Eq5dResultBinding
+import com.example.myapplication.databinding.FallResultBinding
+import com.example.myapplication.databinding.FrailtyResultBinding
+import com.example.myapplication.databinding.IpaqResultBinding
+import com.example.myapplication.databinding.MnaLayoutBinding
+import com.example.myapplication.databinding.MouthhealthResultBinding
+import com.example.myapplication.databinding.NutritionLayoutBinding
 import com.example.myapplication.databinding.ResultLayoutBinding
+import com.example.myapplication.databinding.SgdskResultBinding
+import com.example.myapplication.databinding.SleephabitResultBinding
+import com.example.myapplication.databinding.YosilLayoutBinding
 
 class ResultLayout : AppCompatActivity() {
 
@@ -25,40 +34,40 @@ class ResultLayout : AppCompatActivity() {
                 setContentView(binding.root)
             }
             "Fall" -> {
-                val binding = FallBinding.inflate(layoutInflater)
+                val binding = FallResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
             }
             "SleepHabit"->{
-                val binding = SleepHabitBinding.inflate(layoutInflater)
+                val binding = SleephabitResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
             }
             "IPAQ" -> {
-                val binding = IpaqBinding.inflate(layoutInflater)
+                val binding = IpaqResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
             }
             "MouthHealth" -> {
-                val binding = MouthhealthBinding.inflate(layoutInflater)
+                val binding = MouthhealthResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
             }
             "Frailty" -> {
-                val binding = FrailtyBinding.inflate(layoutInflater)
+                val binding = FrailtyResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
             }
             "SGDSK" -> {
-                val binding = SgdskBinding.inflate(layoutInflater)
+                val binding = SgdskResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
             }
             "MNA" -> {
-                val binding = MnaBinding.inflate(layoutInflater)
+                val binding = MnaLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
             }
             "Nutrition"->{
-                val binding = NutritionBinding.inflate(layoutInflater)
+                val binding = NutritionLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
             }
             "Yosil" ->{
-                val binding = YosilBinding.inflate(layoutInflater)
-                setContentView(bindig.root)
+                val binding = YosilLayoutBinding.inflate(layoutInflater)
+                setContentView(binding.root)
             }
 
         }
