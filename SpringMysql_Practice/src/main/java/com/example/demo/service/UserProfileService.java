@@ -14,9 +14,9 @@ import java.util.Optional;
 public class UserProfileService {
     private final UserProfileRepository userProfileRepository;
 
-    public Optional<UserProfile> selectUserProfile(String id) {
+    public Optional<UserProfile> selectUserProfile(int id) {
         //@PathVariable("id")는 path에서 {id}부분을 인식해서 String id로 넘긴다.
-        return userProfileRepository.findById(id);
+        return userProfileRepository.findById(String.valueOf(id));
     }
 
     public List<UserProfile> getUserList() { //유저 정보 전체를 반환
@@ -25,6 +25,10 @@ public class UserProfileService {
 
     public Optional<UserProfile> selectPhoneUserProfile(String phone) {
         return userProfileRepository.findByPhone(phone);
+    }
+
+    public UserProfile insertUserProfile(UserProfile user) {
+        return userProfileRepository.save(user);
     }
 
 //    public void insertUserProfile() {

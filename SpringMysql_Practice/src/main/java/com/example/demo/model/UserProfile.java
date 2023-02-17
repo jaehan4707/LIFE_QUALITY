@@ -11,18 +11,22 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserProfile {
     @Id
-    private String id;
+    private int id;
     private String name;
     @Column(name = "Phone")
     private String phone;
-    private String address;
+    @Column(name = "Password")
+    private String password;
+    private String birth;
+    private String sex;
 
     @Builder
-    public UserProfile(String id, String name, String phone, String address) {
-        this.id = id;
+    public UserProfile(String name, String phone, String password, String birth, String sex) {
         this.name = name;
         this.phone = phone;
-        this.address = address;
+        this.password = password;
+        this.birth = birth;
+        this.sex = sex;
     }
 }
 
