@@ -33,7 +33,8 @@ class QuestionSelect : AppCompatActivity() {
             "SGDSK",
             "SleepHabit",
             "Yosil",
-            "Nutrition"
+            "Nutrition",
+            "NutritionHazard"
         )
         binding.selectStart.setOnClickListener { //설문 시작하기 버튼 눌렀을 때
             Toast.makeText(this@QuestionSelect, "설문시작하기 버튼을 눌렀습니다", Toast.LENGTH_SHORT).show()
@@ -51,7 +52,7 @@ class QuestionSelect : AppCompatActivity() {
                         "수면습관" -> dbid = 7 //Sleep
                         "정신건강" -> dbid = 6 //SGDSK
                         "구강건강" -> dbid = 5 //Mouth
-                        "영앙상태측정(MNA)" -> dbid = 4 //MNA
+                        "영양상태 측정(MNA)" -> dbid = 10 //MNA -> NutritionHazard로 바꿈.
                         "신체활동설문(IPAQ)" -> dbid = 3 //IPAQ
                         "낙상" -> dbid = 1
                         "노쇠측정" -> dbid = 2
