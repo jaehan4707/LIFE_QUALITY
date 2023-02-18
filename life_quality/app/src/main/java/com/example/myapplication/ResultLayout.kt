@@ -141,7 +141,7 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
-            }
+            } //완료
             "MouthHealth" -> {
                 val binding = MouthhealthResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
@@ -151,7 +151,7 @@ class ResultLayout : AppCompatActivity() {
                         binding.redLight.setBackgroundResource(R.drawable.red_circle)
                         binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                         binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.resultTxt.text = "나쁨입"
+                        binding.resultTxt.text = "나쁨"
                         binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
                     }
                     2 -> {
@@ -166,7 +166,7 @@ class ResultLayout : AppCompatActivity() {
                         binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                         binding.greenLight.setBackgroundResource(R.drawable.green_circle)
                         binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
-                        binding.resultTxt.text = "건강한상태입"
+                        binding.resultTxt.text = "건강한상태"
                     }
                 }
                 binding.nextstage.setOnClickListener {
@@ -424,7 +424,7 @@ class ResultLayout : AppCompatActivity() {
                         4 -> flag = answer[i].toInt()//가벼운 활동 횟수
                         5 -> weight += flag * answer[i] * 3.3 //가벼운 활동 시간 * 가중치
                         6 -> weight += answer[i] * 3.3 //앉아서 보내느 시간 * 가중치
-                    }// } //weight 는 MET -> 이제 여기서 판단을 해야함.
+                    }// } //weight 는 MET -> 이제 여기서 판단을 해야함. 완료
                 "MNA" ->
                     when (i) {
 
@@ -446,8 +446,8 @@ class ResultLayout : AppCompatActivity() {
                         5 -> weight+=5
                     }
                     when (weight.toInt()) {
-                        in 8..16 -> ans = 3
-                        in 17..32 -> ans = 2
+                        in 7..14 -> ans = 3
+                        in 15..28 -> ans = 2
                         else -> ans = 1
                     }
                     Log.d("test","구강건강 : $weight")
