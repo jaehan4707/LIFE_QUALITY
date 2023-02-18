@@ -492,11 +492,11 @@ class ResultLayout : AppCompatActivity() {
         }
         if(type=="IPAQ"){
             Log.d("test","MET : ${weight}")
-            ans = if((answer[0]>=3 && weight >=1500)||(answer[0]+answer[2]+answer[4]>=7 && weight >= 3000)){
+            ans = if((answer[0]>=3 && weight >=1500)||(weight >= 3000)){
                 3 //격렬하다
             } else if((answer[0]>=3 && answer[1]>=20)||
-                (answer[2]>=5 || answer[3]>=30)||
-                (answer[0]+answer[2]+answer[4]>=5 || weight>=600)) {
+                (answer[2]>=5 && answer[3]>=30)||
+                (weight>=600)) {
                 2 //중간상태
             } else {
                 1 //낮은 상태
