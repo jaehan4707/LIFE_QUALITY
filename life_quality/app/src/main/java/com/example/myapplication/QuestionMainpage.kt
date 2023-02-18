@@ -49,33 +49,49 @@ class QuestionMainpage : AppCompatActivity() {
         // "다음" 버튼 클릭 이벤트 구현 부분
         binding.nextstage.setOnClickListener() {
             //설문이 끝났을 경우 결과 확인 페이지로 이동
-            Log.d("입력","라디오 버튼의 값 : ${Id}")
-            if(Id==-1){
-                Toast.makeText(this,"설문지를 선택하지 않았습니다!!",Toast.LENGTH_SHORT).show()
+            Log.d("test", "라디오 버튼의 값 : ${Id}")
+            Log.d("test", "${tempSurvey.type}")
+            if (Id == -1) {
+                Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
             }
-            else {
+            if (tempSurvey.surveyType == "IPAQ") {
+                if (Id == 0 && tempSurvey.type=="0") { //다음 화면 진행하지 않고 jump 해야함.
+                    Log.d("test", "다음 화면을 진행하지 않습니다")
+                    answer.add(Id)
+                    answer.add(Id)
+                    curCount++
+                    Id = -1
+                    binding.progressbar.progress++
+                }
+                else{ //화며 skip 없을때
+                    answer.add(Id)
+                    Id = -1
+                }
+                if (curCount == surveyList.size) {
+                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+                    startActivity(intent)
+                } else {
+                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+                    tempSurvey = surveyList.get(curCount)
+                    curCount++;
+                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+                    if (curCount == surveyList.size) {
+                        binding.nextstage.text = "결과보기"
+                    }
+                    Log.d("curCount List", "curCount = $curCount")
+
+                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+                        setFrag(tempSurvey.number.toInt())
+                    } else { //답변이 입력형일 경우
+                        setFrag(0)
+                    }
+                }
+                binding.progressbar.progress++
+            } else if (Id != -1) {
                 answer.add(Id)
                 Id = -1
                 Log.d("test", "answer : ${answer[curCount - 1]}")
                 if (curCount == surveyList.size) {
-                    /*
-                    when (MainActivity.type) {
-                        "EQ5D" -> {
-                            val intent = Intent(this@QuestionMainpage, )
-                        }
-                        /*
-                        "Frailty" -> binding.surveyContent.setText(R.string.Frality1)
-                        "Fall" -> binding.surveyContent.setText(R.string.Fall)
-                        "MNA" -> binding.surveyContent.setText(R.string.MNA)
-                        "MouthHealth" -> binding.surveyContent.setText(R.string.MouthHealth)
-                        "IPAQ" -> binding.surveyContent.setText(R.string.IPAQ)
-                        "Nutrition" -> binding.surveyContent.setText(R.string.Nutrition)
-                        "SleepHalbit"->binding.surveyContent.setText(R.string.SleepHabit)
-                        "SGDSK" -> binding.surveyContent.setText(R.string.SGDSK)
-                        "Yosil" -> binding.surveyContent.setText(R.string.Yosil)
-                        */
-                    }
-                    */
                     var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
                     startActivity(intent)
                 } else {
@@ -98,13 +114,10 @@ class QuestionMainpage : AppCompatActivity() {
             }
             //프로그래스바 진행도 표시
             //binding.progressbar.progress = curCount + 1
-
         }
-
     }
-    fun checkR(group : RadioGroup, i : Int){
 
-    }
+
     fun setFrag(fragNum: Int) {
         //프레그먼트를 교체해주는 코딩
         //supportFragmentManager는 프레그먼트를 관리하는 객체임

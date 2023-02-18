@@ -45,7 +45,6 @@ class NotypeFragment : Fragment() {
                 binding.timeLayout.visibility = View.GONE
             }
         }
-        Log.d("입력", "next버튼 안눌렷음")
         runBlocking {
             val job = CoroutineScope(Dispatchers.IO).launch {
                 if (binding.numberlayout.visibility == View.VISIBLE) { //횟수 레이아웃이 활성화일때
@@ -86,7 +85,7 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                            time = p0.toString().toInt()
+                            time = p0.toString().toInt()*60
                             Id = time
                             Log.d("시간 입력", "${Id}")
                         }
@@ -107,7 +106,7 @@ class NotypeFragment : Fragment() {
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                             min = p0.toString().toInt()
-                            Id = time * 60 + min
+                            Id = time+min
                             Log.d("분 입력", "${Id}")
                         }
                     })

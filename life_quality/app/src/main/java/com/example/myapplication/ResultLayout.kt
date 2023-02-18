@@ -105,7 +105,30 @@ class ResultLayout : AppCompatActivity() {
             "IPAQ" -> {
                 val binding = IpaqResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
-                var traffic = result(type)
+                var traffic = result(type) //resutl IPAQ는 MET를 구함.
+                when(traffic){
+                    1->{
+                        binding.redLight.setBackgroundResource(R.drawable.red_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.resultTxt.text="낮은 수준"
+                        binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
+                    }
+                    2->{
+                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.resultTxt.text="중간 수준"
+                        binding.resultTxt.setTextColor(Color.parseColor("#FECA13"))
+                    }
+                    3->{
+                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+                        binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
+                        binding.resultTxt.text="높은 수준"
+                    }
+                }
                 binding.nextstage.setOnClickListener {
                     var intent = Intent(this, QuestionSelect::class.java)
                     startActivity(intent)
@@ -158,7 +181,7 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
-            }
+            } //완료
             "Frailty" -> {
                 val binding = FrailtyResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
@@ -210,6 +233,7 @@ class ResultLayout : AppCompatActivity() {
             "Nutrition" -> {
                 val binding = NutritionLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
+
                 binding.nextstage.setOnClickListener {
                     var intent = Intent(this, QuestionSelect::class.java)
                     startActivity(intent)
@@ -226,6 +250,30 @@ class ResultLayout : AppCompatActivity() {
             "Yosil" -> {
                 val binding = YosilLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
+                var traffic = result(type)
+                when(traffic) {
+                    1 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.red_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.resultTxt.text = "위험입"
+                        binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
+                    }
+                    2 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.resultTxt.text = "보통"
+                        binding.resultTxt.setTextColor(Color.parseColor("#FECA13"))
+                    }
+                    3 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+                        binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
+                        binding.resultTxt.text = "건강한상태입"
+                    }
+                }
                 binding.nextstage.setOnClickListener {
                     var intent = Intent(this, QuestionSelect::class.java)
                     startActivity(intent)
@@ -238,7 +286,7 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
-            }
+            } //완료
             "NutritionHazard"->{
                 val binding = MnaLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
@@ -369,8 +417,14 @@ class ResultLayout : AppCompatActivity() {
                 } //완료
                 "IPAQ" ->
                     when (i) {
-
-                    }
+                        0 -> weight += answer[i].toInt() //격렬한 활동 횟수
+                        1 -> weight = weight * answer[i].toInt() * 8 //격렬한 활동 시간 *가중치
+                        2 -> flag = answer[i].toInt() //중간횟수
+                        3 -> weight += flag * answer[i].toInt() * 4 //중간 활동 시간 * 가중치
+                        4 -> flag = answer[i].toInt()//가벼운 활동 횟수
+                        5 -> weight += flag * answer[i] * 3.3 //가벼운 활동 시간 * 가중치
+                        6 -> weight += answer[i] * 3.3 //앉아서 보내느 시간 * 가중치
+                    }// } //weight 는 MET -> 이제 여기서 판단을 해야함.
                 "MNA" ->
                     when (i) {
 
@@ -397,7 +451,7 @@ class ResultLayout : AppCompatActivity() {
                         else -> ans = 1
                     }
                     Log.d("test","구강건강 : $weight")
-                }
+                } //완료
                 "Frailty"->
                     when(i){
 
@@ -410,10 +464,20 @@ class ResultLayout : AppCompatActivity() {
                     when(i){
 
                     }
-                "Yosil"->
-                    when(i){
-
+                "Yosil"-> {
+                    when (answer[i].toInt()) {
+                        1 -> weight += 1
+                        2 -> weight += 2
+                        3 -> weight += 3
+                        4 -> weight += 4
+                        5 -> weight += 5
                     }
+                    when (weight.toInt()) {
+                        in 8..16 -> ans = 3
+                        in 17..32 -> ans = 2
+                        else -> ans = 1
+                    }
+                } //완료
                 "NutritionHazard"->{
                     when(answer[i].toInt()){
                         1-> weight=weight+1
@@ -424,6 +488,18 @@ class ResultLayout : AppCompatActivity() {
                         else -> ans = 1
                     }
                 } //완료
+            }
+        }
+        if(type=="IPAQ"){
+            Log.d("test","MET : ${weight}")
+            ans = if((answer[0]>=3 && weight >=1500)||(answer[0]+answer[2]+answer[4]>=7 && weight >= 3000)){
+                3 //격렬하다
+            } else if((answer[0]>=3 && answer[1]>=20)||
+                (answer[2]>=5 || answer[3]>=30)||
+                (answer[0]+answer[2]+answer[4]>=5 || weight>=600)) {
+                2 //중간상태
+            } else {
+                1 //낮은 상태
             }
         }
         return ans
