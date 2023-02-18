@@ -201,6 +201,30 @@ class ResultLayout : AppCompatActivity() {
             "SGDSK" -> {
                 val binding = SgdskResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
+                var traffic = result(type)
+                when(traffic) {
+                    1 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.red_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.resultTxt.text = "우울증"
+                        binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
+                    }
+                    2 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.resultTxt.text = "중증도의 우울증"
+                        binding.resultTxt.setTextColor(Color.parseColor("#FECA13"))
+                    }
+                    3 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+                        binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
+                        binding.resultTxt.text = "정상"
+                    }
+                }
                 binding.nextstage.setOnClickListener {
                     var intent = Intent(this, QuestionSelect::class.java)
                     startActivity(intent)
@@ -213,7 +237,7 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
-            }
+            }  //완료
             "MNA" -> {
                 val binding = MnaLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
@@ -445,12 +469,7 @@ class ResultLayout : AppCompatActivity() {
                         4 -> weight+=4
                         5 -> weight+=5
                     }
-                    when (weight.toInt()) {
-                        in 7..14 -> ans = 3
-                        in 15..28 -> ans = 2
-                        else -> ans = 1
-                    }
-                    Log.d("test","구강건강 : $weight")
+
                 } //완료
                 "Frailty"->
                     when(i){
@@ -460,10 +479,11 @@ class ResultLayout : AppCompatActivity() {
                     when(i){
 
                     }
-                "SGDSK"->
-                    when(i){
-
+                "SGDSK"-> {
+                    when (answer[i]) {
+                        1 -> weight += 1
                     }
+                } //완료
                 "Yosil"-> {
                     when (answer[i].toInt()) {
                         1 -> weight += 1
@@ -472,25 +492,25 @@ class ResultLayout : AppCompatActivity() {
                         4 -> weight += 4
                         5 -> weight += 5
                     }
-                    when (weight.toInt()) {
-                        in 8..16 -> ans = 3
-                        in 17..32 -> ans = 2
-                        else -> ans = 1
-                    }
+
                 } //완료
                 "NutritionHazard"->{
                     when(answer[i].toInt()){
                         1-> weight=weight+1
                     }
-                    when(weight.toInt()) {
-                        in 0..2 -> ans = 3
-                        in 3..4 -> ans = 2
-                        else -> ans = 1
-                    }
+
                 } //완료
             }
         }
-        if(type=="IPAQ"){
+        if(type=="MouthHelath"){
+            when (weight.toInt()) {
+                in 7..14 -> ans = 3
+                in 15..28 -> ans = 2
+                else -> ans = 1
+            }
+            Log.d("test","구강건강 : $weight")
+        }
+        else if(type=="IPAQ"){
             Log.d("test","MET : ${weight}")
             ans = if((answer[0]>=3 && weight >=1500)||(weight >= 3000)){
                 3 //격렬하다
@@ -500,6 +520,27 @@ class ResultLayout : AppCompatActivity() {
                 2 //중간상태
             } else {
                 1 //낮은 상태
+            }
+        }
+        else if(type=="SGDSK"){
+            when(weight.toInt()){
+                in 0 .. 5 -> ans=3
+                in 6 ..9 -> ans=2
+                else -> ans=1
+            }
+        }
+        else if(type=="NutritionHazard"){
+            when(weight.toInt()) {
+                in 0..2 -> ans = 3
+                in 3..4 -> ans = 2
+                else -> ans = 1
+            }
+        }
+        else if(type=="Yosil"){
+            when (weight.toInt()) {
+                in 8..16 -> ans = 3
+                in 17..32 -> ans = 2
+                else -> ans = 1
             }
         }
         return ans
