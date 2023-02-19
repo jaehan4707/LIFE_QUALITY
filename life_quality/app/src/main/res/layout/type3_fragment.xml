@@ -83,7 +83,7 @@
                     android:gravity="center_vertical"
                     android:text="예"
                     android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/type3Answer2"
@@ -93,7 +93,7 @@
                     android:gravity="center_vertical"
                     android:text="아니오"
                     android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/type3Answer3"
@@ -103,7 +103,7 @@
                     android:gravity="center_vertical"
                     android:text="아니오"
                     android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

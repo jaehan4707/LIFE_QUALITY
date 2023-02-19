@@ -52,12 +52,12 @@ class QuestionSelect : AppCompatActivity() {
                         "수면습관" -> dbid = 7 //Sleep
                         "정신건강" -> dbid = 6 //SGDSK
                         "구강건강" -> dbid = 5 //Mouth
-                        "영양상태 측정(MNA)" -> dbid = 10 //MNA -> NutritionHazard로 바꿈.
+                        "영양상태 측정(MNA)" -> dbid = 4 //MNA -> NutritionHazard로 바꿈.
                         "신체활동설문(IPAQ)" -> dbid = 3 //IPAQ
                         "낙상" -> dbid = 1
                         "노쇠측정" -> dbid = 2
                         "요실금" -> dbid=8
-                        "식습관" -> dbid=9
+                        "식습관" -> dbid=10
                     }
                     surveyList.clear()
                     type=nameList[dbid]

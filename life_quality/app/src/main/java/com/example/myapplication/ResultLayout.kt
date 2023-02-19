@@ -207,14 +207,14 @@ class ResultLayout : AppCompatActivity() {
                         binding.redLight.setBackgroundResource(R.drawable.red_circle)
                         binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                         binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.resultTxt.text = "우울증"
+                        binding.resultTxt.text = "심한 우울증"
                         binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
                     }
                     2 -> {
                         binding.redLight.setBackgroundResource(R.drawable.gray_circle)
                         binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
                         binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.resultTxt.text = "중증도의 우울증"
+                        binding.resultTxt.text = "가벼운 우울증"
                         binding.resultTxt.setTextColor(Color.parseColor("#FECA13"))
                     }
                     3 -> {
@@ -241,6 +241,30 @@ class ResultLayout : AppCompatActivity() {
             "MNA" -> {
                 val binding = MnaLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
+                var traffic = result(type)
+                when(traffic) {
+                    1 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.red_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.resultTxt.text = "영양 불량 상태"
+                        binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
+                    }
+                    2 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.resultTxt.text = "영양 불량 위험 상태"
+                        binding.resultTxt.setTextColor(Color.parseColor("#FECA13"))
+                    }
+                    3 -> {
+                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                        binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+                        binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
+                        binding.resultTxt.text = "정상"
+                    }
+                }
                 binding.nextstage.setOnClickListener {
                     var intent = Intent(this, QuestionSelect::class.java)
                     startActivity(intent)
@@ -253,7 +277,7 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
-            }
+            } //완료
             "Nutrition" -> {
                 val binding = NutritionLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
@@ -449,10 +473,27 @@ class ResultLayout : AppCompatActivity() {
                         5 -> weight += flag * answer[i] * 3.3 //가벼운 활동 시간 * 가중치
                         6 -> weight += answer[i] * 3.3 //앉아서 보내느 시간 * 가중치
                     }// } //weight 는 MET -> 이제 여기서 판단을 해야함. 완료
-                "MNA" ->
-                    when (i) {
-
+                "MNA" -> {
+                    when(i){
+                        5 -> {
+                            when(answer[i]){
+                                in 0 until 19->{
+                                    weight+=0
+                                }
+                                in 19 until 21->{
+                                    weight+=1
+                                }
+                                in 21 until  23->{
+                                    weight+=2
+                                }
+                                else -> weight+=3
+                            }
+                        }
+                        else ->{
+                            weight+=answer[i]
+                        }
                     }
+                }
                 "SleepHabit" ->
                     when (i) {
 
@@ -541,6 +582,13 @@ class ResultLayout : AppCompatActivity() {
                 in 8..16 -> ans = 3
                 in 17..32 -> ans = 2
                 else -> ans = 1
+            }
+        }
+        else if(type =="MNA"){
+            when(weight.toInt()){
+                in 12 .. 14 -> ans=3
+                in 8 .. 11 -> ans=2
+                in 0 .. 7 -> ans=1
             }
         }
         return ans

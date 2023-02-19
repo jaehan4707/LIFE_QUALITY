@@ -39,10 +39,18 @@ class NotypeFragment : Fragment() {
             1 -> {
                 binding.numberlayout.visibility = View.GONE
                 binding.timeLayout.visibility = View.VISIBLE
+                binding.BmiLayout.visibility=View.GONE
             } //1이면 시간 레이아웃.
             2 -> {
                 binding.numberlayout.visibility = View.VISIBLE
                 binding.timeLayout.visibility = View.GONE
+                binding.BmiLayout.visibility=View.GONE
+            }
+            3 -> {
+                Log.d("test","type은 3")
+                binding.numberlayout.visibility=View.GONE
+                binding.timeLayout.visibility=View.GONE
+                binding.BmiLayout.visibility=View.VISIBLE
             }
         }
         runBlocking {
@@ -66,7 +74,6 @@ class NotypeFragment : Fragment() {
                         }
                     })
                 }
-
                 var time = 0
                 var min = 0
                 if (binding.timeLayout.visibility == View.VISIBLE) {
@@ -111,8 +118,45 @@ class NotypeFragment : Fragment() {
                         }
                     })
                 }
+                var height = 0.0
+                var weight =0
+                if (binding.BmiLayout.visibility == View.VISIBLE) { //횟수 레이아웃이 활성화일때
+                    binding.height.addTextChangedListener(object : TextWatcher {
+                        override fun beforeTextChanged(
+                            p0: CharSequence?,
+                            p1: Int,
+                            p2: Int,
+                            p3: Int
+                        ) {
+                        }
+                        override fun afterTextChanged(p0: Editable?) {
+                        }
+
+                        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                            height=p0.toString().toDouble()/100 //M로 변환
+                        }
+                    })
+                    binding.weight.addTextChangedListener(object : TextWatcher {
+                        override fun beforeTextChanged(
+                            p0: CharSequence?,
+                            p1: Int,
+                            p2: Int,
+                            p3: Int
+                        ) {
+                        }
+                        override fun afterTextChanged(p0: Editable?) {
+                        }
+
+                        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                            Log.d("test","몸무게 : ${p0}")
+                            Id=(p0.toString().toInt()/(height*height)).toInt() //몸무게 / 키의제곱(m)
+                            //p0 몸무게
+                        }
+                    })
+                }
             }
             job.join() //job이 끝날떄까지 대기함.
+            Log.d("test","ID : ${Id}")
         }
         return binding.root
     }

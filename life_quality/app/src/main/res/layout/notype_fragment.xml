@@ -10,55 +10,58 @@
         android:id="@+id/notypeNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bm_dohyeon"
         android:text="문항 27"
-        android:textSize="25dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/bm_dohyeon"/>
+        android:textSize="25dp" />
+
     <TextView
         android:id="@+id/notypeTitle"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/textview_grayline"
         android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:text="기력이 좋은 편이십니까?"
-        android:textSize="20dp"
-        android:textColor="@color/black"
+        android:background="@drawable/textview_grayline"
         android:fontFamily="@font/bm_dohyeon"
-        android:padding="5dp"/>
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="기력이 좋은 편이십니까?"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
 
     <LinearLayout
         android:id="@+id/numberlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="답변을 입력해주세요"
             android:layout_gravity="center"
             android:fontFamily="@font/bm_dohyeon"
+            android:text="답변을 입력해주세요"
             android:textColor="@color/black"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="(숫자만 입력하세요)"
             android:layout_gravity="center"
             android:fontFamily="@font/bm_dohyeon"
+            android:text="(숫자만 입력하세요)"
             android:textColor="@color/main_orange"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
+
         <EditText
             android:id="@+id/notypeAnswer"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:background="@drawable/edittext_custom"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:padding="5dp"
-            android:hint="ex) 1"/>
+            android:background="@drawable/edittext_custom"
+            android:hint="ex) 1"
+            android:padding="5dp" />
 
     </LinearLayout>
 
@@ -66,54 +69,112 @@
         android:id="@+id/timeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="60dp"
-        android:visibility="gone"
-        >
+        android:orientation="vertical"
+        android:visibility="gone">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bm_dohyeon"
             android:text="답변을 입력해주세요"
-            android:layout_gravity="center"
-            android:fontFamily="@font/bm_dohyeon"
             android:textColor="@color/black"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="(숫자만 입력해주세요)"
             android:layout_gravity="center"
             android:fontFamily="@font/bm_dohyeon"
+            android:text="(숫자만 입력해주세요)"
             android:textColor="@color/main_orange"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            >
-        <EditText
-            android:id="@+id/notypehour"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_custom"
-            android:layout_gravity="center"
-            android:padding="5dp"
-            android:hint="ex) 시간"/>
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/notypehour"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/edittext_custom"
+                android:hint="시간"
+                android:padding="5dp" />
             <View
                 android:layout_width="20dp"
-                android:layout_height="0dp">
-            </View>
+                android:layout_height="0dp"></View>
+
             <EditText
                 android:id="@+id/notypemin"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:background="@drawable/edittext_custom"
                 android:layout_gravity="center"
-                android:padding="5dp"
-                android:hint="ex) 분"/>
+                android:background="@drawable/edittext_custom"
+                android:hint="분"
+                android:padding="5dp" />
         </LinearLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/BmiLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bm_dohyeon"
+            android:text="답변을 입력해주세요"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bm_dohyeon"
+            android:text="(숫자만 입력해주세요)"
+            android:textColor="@color/main_orange"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/height"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/edittext_custom"
+                android:hint="키(cm)"
+                android:padding="5dp" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="0dp"></View>
+
+            <EditText
+                android:id="@+id/weight"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/edittext_custom"
+                android:hint="몸무게(kg)"
+                android:padding="5dp" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
