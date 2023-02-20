@@ -32,9 +32,14 @@ class LoginActivity : AppCompatActivity() {
 
         //로그인 버튼 클릭시
         binding.login.setOnClickListener() {
+<<<<<<< HEAD
             pw = binding.inputPassword.text.toString()
             phone = binding.inputPhone.text.toString()
             Log.d("LoginTest", "inputPhone : ${phone}, inputPassword : ${pw}")
+=======
+            phone = binding.phoneNum.text.toString()
+            Log.d("test","$phone")
+>>>>>>> 0fabbf121017e6d131e776b02fc11fbed4166efb
 
             //get방식으로, 입력한 phoneNumber에 대한 user정보를 가져오는 API 호출
             runBlocking {

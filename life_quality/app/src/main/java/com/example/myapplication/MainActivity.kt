@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     var waitTime : Long = 0
     companion object {
-        var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","Nutrition","NutritionHazard")
+        var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","Nutrition","NutritionHazard","SocialNetwork","Drink","Smoke")
         var Total = mutableListOf<TotalSurvey>()
         var type : String = ""
         var answer = mutableListOf<Int>()
