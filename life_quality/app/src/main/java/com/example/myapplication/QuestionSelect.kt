@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.RadioButton
 import android.widget.Toast
+import com.example.myapplication.MainActivity.Companion.Socialnum
 import com.example.myapplication.MainActivity.Companion.Total
+import com.example.myapplication.MainActivity.Companion.drinknum
+import com.example.myapplication.MainActivity.Companion.smokenum
 import com.example.myapplication.MainActivity.Companion.surveyList
 import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.TotalSurvey
@@ -77,6 +80,12 @@ class QuestionSelect : AppCompatActivity() {
                                     for (i in 0 until Total.size) {
                                         if (Total[i].surveyType == sdohList[j]) {
                                             surveyList.add(Total[i])
+                                            if(j==0)
+                                                drinknum++
+                                            if(j==1)
+                                                Socialnum++
+                                            if(j==2)
+                                                smokenum++
                                         }
                                     }
                                 }
