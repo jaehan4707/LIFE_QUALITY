@@ -27,15 +27,8 @@ class MainActivity : AppCompatActivity() {
         var smokenum : Int =0
         var Socialnum : Int =0
         var surveyList = mutableListOf<TotalSurvey>()
-        var eq5dList = mutableListOf<EQ5D>()
-        var eqvasList = mutableListOf<EQVAS>()
-        var fallList = mutableListOf<Fall>()
-        var frailtyList = mutableListOf<Frailty>()
-        var ipaqList = mutableListOf<IPAQ>()
-        var mnaList = mutableListOf<MNA>()
-        var mouthhealthList = mutableListOf<MouthHealth>()
-        var sgdskList = mutableListOf<SGDSK>()
-        var sleephabitList = mutableListOf<SleepHabit>()
+        var address : String = " "
+        var relation : String = " "
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

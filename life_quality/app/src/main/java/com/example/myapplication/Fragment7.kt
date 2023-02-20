@@ -1,16 +1,24 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.hardware.input.InputManager
 import android.os.Bundle
+import android.renderscript.ScriptGroup.Input
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import com.example.myapplication.MainActivity.Companion.address
+import com.example.myapplication.MainActivity.Companion.relation
 import com.example.myapplication.QuestionMainpage.Companion.group
 import com.example.myapplication.QuestionMainpage.Companion.keyList
+import com.example.myapplication.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.databinding.Type7FragmentBinding
 
 class Fragment7 : Fragment() {
@@ -25,6 +33,14 @@ class Fragment7 : Fragment() {
 
         var valueList = mutableListOf<String>()
         var binding = Type7FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
+        if(tempSurvey.type.toInt()!=0){
+            binding.address.visibility=View.VISIBLE
+            binding.relationship.visibility=View.VISIBLE
+        }
+        else{
+            binding.address.visibility=View.GONE
+            binding.relationship.visibility=View.GONE
+        }
         binding.type7Number.text = "문항 " + QuestionMainpage.curCount.toString()
         binding.type7Title.text = QuestionMainpage.tempSurvey.title.toString()
 
@@ -34,13 +50,13 @@ class Fragment7 : Fragment() {
         }
 
         Log.d("test","7번째 프래그먼트")
-        binding.type7Answer1.text = valueList.get(0)
-        binding.type7Answer2.text = valueList.get(1)
-        binding.type7Answer3.text = valueList.get(2)
-        binding.type7Answer4.text = valueList.get(3)
-        binding.type7Answer5.text = valueList.get(4)
-        binding.type7Answer6.text = valueList.get(5)
-        binding.type7Answer7.text = valueList.get(6)
+        binding.rb1.text = valueList.get(0)
+        binding.rb2.text = valueList.get(1)
+        binding.rb3.text = valueList.get(2)
+        binding.rb4.text = valueList.get(3)
+        binding.rb5.text = valueList.get(4)
+        binding.rb6.text = valueList.get(5)
+        binding.rb7.text = valueList.get(6)
         var view = inflater.inflate(R.layout.type7_fragment, container, false)
         group = binding.groupF7
         group.setOnCheckedChangeListener { radioGroup, i ->
@@ -74,6 +90,34 @@ class Fragment7 : Fragment() {
 
                 }
             }
+        }
+
+        if(binding.address.visibility==View.VISIBLE && binding.relationship.visibility==View.VISIBLE)
+        {
+            binding.editAddress.addTextChangedListener(object : TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    address=p0.toString()
+                    Log.d("test","주소 1 : $address")
+                }
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+            })
+            binding.editRelation.addTextChangedListener(object : TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    relation = p0.toString()
+                    Log.d("test","관계  1 : $relation")
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+            })
         }
         return binding.root
 

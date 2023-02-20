@@ -8,8 +8,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import com.example.myapplication.MainActivity.Companion.address
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.drinknum
+import com.example.myapplication.MainActivity.Companion.relation
 import com.example.myapplication.MainActivity.Companion.smokenum
 import com.example.myapplication.MainActivity.Companion.surveyList
 import com.example.myapplication.TotalSurvey
@@ -52,137 +54,268 @@ class QuestionMainpage : AppCompatActivity() {
             Log.d("test", "라디오 버튼의 값 : ${Id}")
             Log.d("test", "${tempSurvey.type}")
             Log.d("test", "조사타입 : ${tempSurvey.surveyType}")
-            if (Id == -1) {
-                Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
-            }
-            else if (Id != -1) {
-                answer.add(Id)
-                Id = -1
-                Log.d("test", "answer : ${answer[curCount - 1]}")
-                if (curCount == surveyList.size) {
-                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
-                    startActivity(intent)
-                } else {
-                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
-                    tempSurvey = surveyList.get(curCount)
-                    curCount++;
-                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
-                    if (curCount == surveyList.size) {
-                        binding.nextstage.text = "결과보기"
-                    }
-                    Log.d("curCount List", "curCount = $curCount")
-
-                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
-                        setFrag(tempSurvey.number.toInt())
-                    } else { //답변이 입력형일 경우
-                        setFrag(0)
-                    }
-                }
-                binding.progressbar.progress++
-            }
-            if (tempSurvey.surveyType == "IPAQ") {
-                if (Id == 0 && tempSurvey.type == "0") { //다음 화면 진행하지 않고 jump 해야함.
-                    Log.d("test", "다음 화면을 진행하지 않습니다")
-                    answer.add(Id)
-                    answer.add(Id)
-                    curCount++
-                    Id = -1
-                    binding.progressbar.progress++
-                } else { //화며 skip 없을때
-                    answer.add(Id)
-                    Id = -1
-                }
-                if (curCount == surveyList.size) {
-                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
-                    startActivity(intent)
-                } else {
-                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
-                    tempSurvey = surveyList.get(curCount)
-                    curCount++;
-                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
-                    if (curCount == surveyList.size) {
-                        binding.nextstage.text = "결과보기"
-                    }
-                    Log.d("curCount List", "curCount = $curCount")
-
-                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
-                        setFrag(tempSurvey.number.toInt())
-                    } else { //답변이 입력형일 경우
-                        setFrag(0)
-                    }
-                }
-                binding.progressbar.progress++
-            }
-            else if (tempSurvey.surveyType == "Drink") {
-                Log.d("test","현재 카운트 : ${curCount}, dringk num : ${drinknum}")
-                if (Id == 0) { //없음을 눌렀을때
-                    //다음 화면 진행하지 않고 jump 해야함.
-                    Log.d("test", "다음 화면을 진행하지 않습니다")
-                    var num =curCount
-                    while(num!= drinknum){
+            when(tempSurvey.surveyType){
+                "IPAQ" -> {
+                    if (Id == 0 && tempSurvey.type == "0") { //다음 화면 진행하지 않고 jump 해야함.
+                        Log.d("test", "다음 화면을 진행하지 않습니다")
+                        answer.add(Id)
                         answer.add(Id)
                         curCount++
+                        Id = -1
                         binding.progressbar.progress++
-                        num++
+                    } else { //화며 skip 없을때
+                        answer.add(Id)
+                        Id = -1
                     }
-                    Id = -1
-                }
-
-                if (curCount == surveyList.size) {
-                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
-                    startActivity(intent)
-                } else {
-                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
-                    tempSurvey = surveyList.get(curCount)
-                    curCount++
-                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
                     if (curCount == surveyList.size) {
-                        binding.nextstage.text = "결과보기"
-                    }
-                    Log.d("curCount List", "curCount = $curCount")
+                        var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+                        startActivity(intent)
+                    } else {
+                        //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+                        tempSurvey = surveyList.get(curCount)
+                        curCount++;
+                        //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+                        if (curCount == surveyList.size) {
+                            binding.nextstage.text = "결과보기"
+                        }
+                        Log.d("curCount List", "curCount = $curCount")
 
-                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
-                        setFrag(tempSurvey.number.toInt())
-                    } else { //답변이 입력형일 경우
-                        setFrag(0)
+                        if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+                            setFrag(tempSurvey.number.toInt())
+                        } else { //답변이 입력형일 경우
+                            setFrag(0)
+                        }
                     }
+                    binding.progressbar.progress++
                 }
-                binding.progressbar.progress++
-            }
-            else if(tempSurvey.surveyType == "Smoke"){
-                if (Id == 0) { //모름을 눌렀을때
-                    //다음 화면 진행하지 않고 jump 해야함.
-                    Log.d("test", "다음 화면을 진행하지 않습니다")
-                    for (i in 0 until smokenum - 1) {
-                        answer.add(0)
+                "Drink"->{
+                    Log.d("test","현재 카운트 : ${curCount}, dringk num : ${drinknum}")
+                    if (Id == 0) { //없음을 눌렀을때
+                        //다음 화면 진행하지 않고 jump 해야함.
+                        Log.d("test", "다음 화면을 진행하지 않습니다")
+                        var num =curCount
+                        while(num!= drinknum){
+                            answer.add(Id)
+                            curCount++
+                            binding.progressbar.progress++
+                            num++
+                        }
+                        Id = -1
+                    }
+
+                    if (curCount == surveyList.size) {
+                        var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+                        startActivity(intent)
+                    } else {
+                        //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+                        tempSurvey = surveyList.get(curCount)
                         curCount++
+                        //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+                        if (curCount == surveyList.size) {
+                            binding.nextstage.text = "결과보기"
+                        }
+                        Log.d("curCount List", "curCount = $curCount")
+
+                        if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+                            setFrag(tempSurvey.number.toInt())
+                        } else { //답변이 입력형일 경우
+                            setFrag(0)
+                        }
+                    }
+                    binding.progressbar.progress++
+                }
+                "Smoke"->{
+                    if (Id == 0) { //모름을 눌렀을때
+                        //다음 화면 진행하지 않고 jump 해야함.
+                        Log.d("test", "다음 화면을 진행하지 않습니다")
+                        for (i in 0 until smokenum - 1) {
+                            answer.add(0)
+                            curCount++
+                            binding.progressbar.progress++
+                        }
+                        Id = -1
+                    }
+                    if (curCount == surveyList.size) {
+                        var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+                        startActivity(intent)
+                    } else {
+                        //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+                        tempSurvey = surveyList.get(curCount)
+                        curCount++
+                        //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+                        if (curCount == surveyList.size) {
+                            binding.nextstage.text = "결과보기"
+                        }
+                        Log.d("curCount List", "curCount = $curCount")
+
+                        if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+                            setFrag(tempSurvey.number.toInt())
+                        } else { //답변이 입력형일 경우
+                            setFrag(0)
+                        }
+                    }
+                    binding.progressbar.progress++
+                }
+                else -> {
+                    if (Id == -1) {
+                        Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
+                    }
+                    else if (Id != -1) {
+                        answer.add(Id)
+                        Id = -1
+                        Log.d("test", "answer : ${answer[curCount - 1]}")
+                        if (curCount == surveyList.size) {
+                            var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+                            startActivity(intent)
+                        } else {
+                            //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+                            tempSurvey = surveyList.get(curCount)
+                            curCount++;
+                            //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+                            if (curCount == surveyList.size) {
+                                binding.nextstage.text = "결과보기"
+                            }
+                            Log.d("curCount List", "curCount = $curCount")
+
+                            if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt() == 5) { //답변이 선택형일 경우
+                                setFrag(tempSurvey.number.toInt())
+                            } else { //답변이 입력형일 경우
+                                setFrag(0)
+                            }
+                        }
                         binding.progressbar.progress++
                     }
-                    Id = -1
                 }
-                if (curCount == surveyList.size) {
-                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
-                    startActivity(intent)
-                } else {
-                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
-                    tempSurvey = surveyList.get(curCount)
-                    curCount++
-                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
-                    if (curCount == surveyList.size) {
-                        binding.nextstage.text = "결과보기"
-                    }
-                    Log.d("curCount List", "curCount = $curCount")
-
-                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
-                        setFrag(tempSurvey.number.toInt())
-                    } else { //답변이 입력형일 경우
-                        setFrag(0)
-                    }
-                }
-                binding.progressbar.progress++
             }
-
-
+//            if (Id == -1) {
+//                Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
+//            }
+//            else if (Id != -1) {
+//                answer.add(Id)
+//                Id = -1
+//                Log.d("test", "answer : ${answer[curCount - 1]}")
+//                if (curCount == surveyList.size) {
+//                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+//                    startActivity(intent)
+//                } else {
+//                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+//                    tempSurvey = surveyList.get(curCount)
+//                    curCount++;
+//                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+//                    if (curCount == surveyList.size) {
+//                        binding.nextstage.text = "결과보기"
+//                    }
+//                    Log.d("curCount List", "curCount = $curCount")
+//
+//                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+//                        setFrag(tempSurvey.number.toInt())
+//                    } else { //답변이 입력형일 경우
+//                        setFrag(0)
+//                    }
+//                }
+//                binding.progressbar.progress++
+//            }
+//            if (tempSurvey.surveyType == "IPAQ") {
+//                if (Id == 0 && tempSurvey.type == "0") { //다음 화면 진행하지 않고 jump 해야함.
+//                    Log.d("test", "다음 화면을 진행하지 않습니다")
+//                    answer.add(Id)
+//                    answer.add(Id)
+//                    curCount++
+//                    Id = -1
+//                    binding.progressbar.progress++
+//                } else { //화며 skip 없을때
+//                    answer.add(Id)
+//                    Id = -1
+//                }
+//                if (curCount == surveyList.size) {
+//                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+//                    startActivity(intent)
+//                } else {
+//                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+//                    tempSurvey = surveyList.get(curCount)
+//                    curCount++;
+//                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+//                    if (curCount == surveyList.size) {
+//                        binding.nextstage.text = "결과보기"
+//                    }
+//                    Log.d("curCount List", "curCount = $curCount")
+//
+//                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+//                        setFrag(tempSurvey.number.toInt())
+//                    } else { //답변이 입력형일 경우
+//                        setFrag(0)
+//                    }
+//                }
+//                binding.progressbar.progress++
+//            }
+//            else if (tempSurvey.surveyType == "Drink") {
+//                Log.d("test","현재 카운트 : ${curCount}, dringk num : ${drinknum}")
+//                if (Id == 0) { //없음을 눌렀을때
+//                    //다음 화면 진행하지 않고 jump 해야함.
+//                    Log.d("test", "다음 화면을 진행하지 않습니다")
+//                    var num =curCount
+//                    while(num!= drinknum){
+//                        answer.add(Id)
+//                        curCount++
+//                        binding.progressbar.progress++
+//                        num++
+//                    }
+//                    Id = -1
+//                }
+//
+//                if (curCount == surveyList.size) {
+//                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+//                    startActivity(intent)
+//                } else {
+//                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+//                    tempSurvey = surveyList.get(curCount)
+//                    curCount++
+//                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+//                    if (curCount == surveyList.size) {
+//                        binding.nextstage.text = "결과보기"
+//                    }
+//                    Log.d("curCount List", "curCount = $curCount")
+//
+//                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+//                        setFrag(tempSurvey.number.toInt())
+//                    } else { //답변이 입력형일 경우
+//                        setFrag(0)
+//                    }
+//                }
+//                binding.progressbar.progress++
+//            }
+//            else if(tempSurvey.surveyType == "Smoke"){
+//                if (Id == 0) { //모름을 눌렀을때
+//                    //다음 화면 진행하지 않고 jump 해야함.
+//                    Log.d("test", "다음 화면을 진행하지 않습니다")
+//                    for (i in 0 until smokenum - 1) {
+//                        answer.add(0)
+//                        curCount++
+//                        binding.progressbar.progress++
+//                    }
+//                    Id = -1
+//                }
+//                if (curCount == surveyList.size) {
+//                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+//                    startActivity(intent)
+//                } else {
+//                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+//                    tempSurvey = surveyList.get(curCount)
+//                    curCount++
+//                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+//                    if (curCount == surveyList.size) {
+//                        binding.nextstage.text = "결과보기"
+//                    }
+//                    Log.d("curCount List", "curCount = $curCount")
+//
+//                    if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+//                        setFrag(tempSurvey.number.toInt())
+//                    } else { //답변이 입력형일 경우
+//                        setFrag(0)
+//                    }
+//                }
+//                binding.progressbar.progress++
+//            }
             //프로그래스바 진행도 표시
             //binding.progressbar.progress = curCount + 1
         }

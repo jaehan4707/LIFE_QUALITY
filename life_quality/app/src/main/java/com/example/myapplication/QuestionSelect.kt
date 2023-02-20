@@ -89,6 +89,7 @@ class QuestionSelect : AppCompatActivity() {
                                         }
                                     }
                                 }
+
                             } else {
                                 for (i in 0 until Total.size) {
                                     if (Total[i].surveyType == nameList[dbid]) {
