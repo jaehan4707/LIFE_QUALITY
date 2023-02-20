@@ -119,7 +119,6 @@
                 android:padding="5dp" />
         </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/BmiLayout"
         android:layout_width="match_parent"
