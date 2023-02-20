@@ -9,14 +9,14 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiService {
-    @GET("/user/{id}")
+    @GET("user/{id}")
     fun selectUserProfile(@Path("id") id : String) : Call<Data>
 
-    @GET("/user/all")
+    @GET("user/all")
     fun getUserList() : Call<List<Data>>
 
     //핸드폰번호로, user정보 가져옴!
-    @GET("/user/{phone}")
+    @GET("user/login/{phone}")
     fun selectPhoneUserProfile(@Path("phone") phone : String) : Call<Data>
 
     @POST("user/register")

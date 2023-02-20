@@ -13,12 +13,16 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlinx.coroutines.*
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding : LoginLayoutBinding
     //입력한 phone, pw를 db에 저장된 것과 비교하기.
-    lateinit var phone : String
+    lateinit var respPhone : String
+    lateinit var respPassword : String
     lateinit var pw : String
+    lateinit var phone : String
+    var loginFlag = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,26 +32,18 @@ class LoginActivity : AppCompatActivity() {
 
         //로그인 버튼 클릭시
         binding.login.setOnClickListener() {
-            phone = binding.phoneNum.text.toString()
-            Log.d("test","$phone")
+            pw = binding.inputPassword.text.toString()
+            phone = binding.inputPhone.text.toString()
+            Log.d("LoginTest", "inputPhone : ${phone}, inputPassword : ${pw}")
 
             //get방식으로, 입력한 phoneNumber에 대한 user정보를 가져오는 API 호출
-            apiLogin()
-
-            //이제 가져온 user정보에 있는 passward와 pw(내가 입력한 pw)를 비교해야함!
-            //비교해서 일치하면, 로그인 성공
-            //그렇지 않으면, 다시 로그인해야함!
-
-            if(phone.length != 11) { //핸드폰번호가 올바르게 입력되지 않았다면?
-                Snackbar.make(binding.loginLayout, "핸드폰 번호 또는 비밀번호가 올바르지 않습니다.", Snackbar.LENGTH_SHORT).show()
-            }
-            else {
-                var intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+            runBlocking {
+                val job = CoroutineScope(Dispatchers.IO).launch{
+                    apiLogin()
+                }
+                job.join()
             }
         }
-
 
         //회원가입 버튼 클릭시
         binding.goRegister.setOnClickListener() {
@@ -57,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun apiLogin() {
+    private fun apiLogin() {
 
         //1. retrofit 객체 생성
         val retrofit : Retrofit = Retrofit.Builder()
@@ -75,7 +71,38 @@ class LoginActivity : AppCompatActivity() {
         //4. 네트워크 통신
         registerCall.enqueue(object : Callback<Data> {
             override fun onResponse(call: Call<Data>, response: Response<Data>) {
-                Log.d("ApiRequest", "${response.body()}")
+                Log.d("Logintest", "Response : ${response.body()}")
+                //가져온 정보에서 phoneNumber랑 password저장
+                respPhone = response.body()?.phone.toString()
+                respPassword = response.body()?.password.toString()
+                //만약 db에 저장된 패스워드와 입력한 패스워드가 다르거나
+                //phoneNumber와 입력한 phone 번호가 다르다면 로그인 하지 않기 위해 loginFlag를 -1로 변경한다.
+                if(pw != respPassword || phone != respPhone) {
+                    Log.d("LoginTest", "this is loginFlag")
+                    loginFlag = -1
+                }
+                else {
+                    loginFlag = 1
+                }
+
+                //로그인 검사
+                if(phone.length != 11 || loginFlag == -1) { //핸드폰번호가 올바르게 입력되지 않았다면?
+                    Snackbar.make(binding.loginLayout, "핸드폰 번호 또는 비밀번호가 올바르지 않습니다.", Snackbar.LENGTH_SHORT).show()
+                    binding.inputPassword.setText("")
+                }
+                else {
+                    Snackbar.make(binding.loginLayout, "로그인 성공!", Snackbar.LENGTH_SHORT).show()
+                    runBlocking {
+                        launch {
+                            delay(500)
+                        }
+                    }
+                    var intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                Log.d("LoginTest", "dpPhone : ${respPhone}, dbPassword : ${respPassword}")
+
 //                binding.resultText.append("id : ${tickerInfo?.data?.id}\n")
 //                binding.resultText.append("name : ${tickerInfo?.data?.name}\n")
 //                binding.resultText.append("phone : ${tickerInfo?.data?.phone}\n")
