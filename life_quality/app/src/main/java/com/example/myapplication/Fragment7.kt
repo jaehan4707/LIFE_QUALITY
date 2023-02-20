@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.example.myapplication.QuestionMainpage.Companion.group
 import com.example.myapplication.QuestionMainpage.Companion.keyList
+import com.example.myapplication.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.databinding.Type7FragmentBinding
 
 class Fragment7 : Fragment() {
@@ -31,6 +32,8 @@ class Fragment7 : Fragment() {
         for ((key, value) in QuestionMainpage.tempSurvey.answer) {
             keyList.add(key)
             valueList.add(value)
+            Log.d("tempSurvey", "${tempSurvey.number}")
+            Log.d("tempSurvey", "${tempSurvey.answer}")
         }
 
         Log.d("test","7번째 프래그먼트")

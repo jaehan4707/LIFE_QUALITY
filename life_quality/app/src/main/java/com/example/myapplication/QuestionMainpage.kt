@@ -44,7 +44,7 @@ class QuestionMainpage : AppCompatActivity() {
         setFrag(page)
         //인적사항 입력할 때는 진행도가 1임
         binding.progressbar.progress = 0
-        binding.
+
 
         // "다음" 버튼 클릭 이벤트 구현 부분
         binding.nextstage.setOnClickListener() {
