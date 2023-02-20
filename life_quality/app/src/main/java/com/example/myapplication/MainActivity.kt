@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         var Total = mutableListOf<TotalSurvey>()
         var type : String = ""
         var answer = mutableListOf<Int>()
-
+        var drinknum : Int = 0
+        var smokenum : Int =0
+        var Socialnum : Int =0
         var surveyList = mutableListOf<TotalSurvey>()
         var eq5dList = mutableListOf<EQ5D>()
         var eqvasList = mutableListOf<EQVAS>()
