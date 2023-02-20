@@ -52,6 +52,12 @@ class NotypeFragment : Fragment() {
                 binding.timeLayout.visibility=View.GONE
                 binding.BmiLayout.visibility=View.VISIBLE
             }
+            4->{
+                binding.numberlayout.visibility=View.GONE
+                binding.timeLayout.visibility=View.GONE
+                binding.BmiLayout.visibility=View.GONE
+                //addres layout visibile
+            }
         }
         runBlocking {
             val job = CoroutineScope(Dispatchers.IO).launch {

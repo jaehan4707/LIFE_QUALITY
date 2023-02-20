@@ -493,7 +493,7 @@ class ResultLayout : AppCompatActivity() {
                             weight+=answer[i]
                         }
                     }
-                }
+                } //완료
                 "SleepHabit" ->
                     when (i) {
 
@@ -571,7 +571,7 @@ class ResultLayout : AppCompatActivity() {
             }
         }
         else if(type=="NutritionHazard"){
-            when(weight.toInt()) {
+            when(weight.toInt()){
                 in 0..2 -> ans = 3
                 in 3..4 -> ans = 2
                 else -> ans = 1

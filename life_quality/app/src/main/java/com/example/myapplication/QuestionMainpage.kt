@@ -54,7 +54,7 @@ class QuestionMainpage : AppCompatActivity() {
             if (Id == -1) {
                 Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
             }
-            if (tempSurvey.surveyType == "IPAQ") {
+            if (tempSurvey.surveyType == "IPAQ" ) {
                 if (Id == 0 && tempSurvey.type=="0") { //다음 화면 진행하지 않고 jump 해야함.
                     Log.d("test", "다음 화면을 진행하지 않습니다")
                     answer.add(Id)
@@ -87,7 +87,11 @@ class QuestionMainpage : AppCompatActivity() {
                     }
                 }
                 binding.progressbar.progress++
-            } else if (Id != -1) {
+            }
+            else if(tempSurvey.surveyType == "IPAQ"){
+
+            }
+            else if (Id != -1) {
                 answer.add(Id)
                 Id = -1
                 Log.d("test", "answer : ${answer[curCount - 1]}")
