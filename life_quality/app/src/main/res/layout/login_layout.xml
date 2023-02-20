@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="휴대전화" />
             <EditText
-                android:id="@+id/phone_num"
+                android:id="@+id/inputPhone"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edittext_custom"
@@ -47,11 +47,12 @@
                 android:text="비밀번호"
                 android:layout_marginTop="10dp"/>
             <EditText
+                android:id="@+id/inputPassword"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edittext_custom"
                 android:layout_marginTop="5dp"
-                android:gravity="center"/>
+                android:gravity="center" />
 
         </LinearLayout>
 
