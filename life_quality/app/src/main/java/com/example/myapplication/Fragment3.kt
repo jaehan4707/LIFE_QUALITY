@@ -1,17 +1,22 @@
 package com.example.myapplication
 
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.example.myapplication.QuestionMainpage.Companion.Id
 import com.example.myapplication.QuestionMainpage.Companion.group
 import com.example.myapplication.QuestionMainpage.Companion.keyList
+import com.example.myapplication.QuestionMainpage.Companion.tempSurvey
+import com.example.myapplication.databinding.Drink1DialogBinding
+import com.example.myapplication.databinding.Smoke1DialogBinding
 import com.example.myapplication.databinding.Type3FragmentBinding
 
 class Fragment3 : Fragment() {
@@ -35,9 +40,9 @@ class Fragment3 : Fragment() {
             valueList.add(value)
         }
 
-        binding.type3Answer1.text = valueList.get(0)
-        binding.type3Answer2.text = valueList.get(1)
-        binding.type3Answer3.text = valueList.get(2)
+        binding.rb1.text = valueList.get(0)
+        binding.rb2.text = valueList.get(1)
+        binding.rb3.text = valueList.get(2)
         var view = inflater.inflate(R.layout.type3_fragment, container, false)
         group = binding.groupF3
         group.setOnCheckedChangeListener { radioGroup, i ->
@@ -47,6 +52,8 @@ class Fragment3 : Fragment() {
                 }
                 binding.rb2.id -> {
                     Id = (keyList[1].toInt())
+                    if(tempSurvey.surveyType=="Drink")
+                        showDialog()
                 }
                 binding.rb3.id -> {
                     Id = (keyList[2].toInt())
@@ -69,5 +76,25 @@ class Fragment3 : Fragment() {
     override fun onDetach() {
         super.onDetach()
         callback.remove()
+    }
+
+    fun showDialog() {
+        var dialogBinding = Drink1DialogBinding.inflate(layoutInflater)
+        var dialog = this.context?.let { Dialog(it) }
+        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog?.setContentView(dialogBinding.root)
+        dialog?.setCancelable(false)
+
+
+        dialogBinding.drink1Start.setOnClickListener() {
+            //여기를 바꿔줬음. -> 다이얼로그 시작하기 누르면 -> 목록을 정할수 있도록 해줄생각.
+            dialog?.dismiss()
+        }
+        dialogBinding.drink1End.setOnClickListener() {
+            dialog?.dismiss()
+        }
+
+        dialog?.show()
+        dialog?.window?.setLayout(1000, 1000)
     }
 }

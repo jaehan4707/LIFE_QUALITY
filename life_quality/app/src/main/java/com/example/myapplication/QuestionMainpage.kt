@@ -148,7 +148,7 @@ class QuestionMainpage : AppCompatActivity() {
                         }
                         Log.d("curCount List", "curCount = $curCount")
 
-                        if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
+                        if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt()==4) { //답변이 선택형일 경우
                             setFrag(tempSurvey.number.toInt())
                         } else { //답변이 입력형일 경우
                             setFrag(0)

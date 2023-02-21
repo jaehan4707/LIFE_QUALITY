@@ -31,16 +31,16 @@ class Fragment10 : Fragment() {
             valueList.add(value)
         }
 
-        binding.type10Answer1.text = valueList.get(0)
-        binding.type10Answer2.text = valueList.get(1)
-        binding.type10Answer3.text = valueList.get(2)
-        binding.type10Answer4.text = valueList.get(3)
-        binding.type10Answer5.text = valueList.get(4)
-        binding.type10Answer6.text = valueList.get(5)
-        binding.type10Answer7.text = valueList.get(6)
-        binding.type10Answer8.text = valueList.get(7)
-        binding.type10Answer9.text = valueList.get(8)
-        binding.type10Answer10.text = valueList.get(9)
+        binding.rb1.text = valueList[0]
+        binding.rb2.text = valueList[1]
+        binding.rb3.text = valueList[2]
+        binding.rb4.text = valueList[3]
+        binding.rb5.text = valueList[4]
+        binding.rb6.text = valueList[5]
+        binding.rb7.text = valueList[6]
+        binding.rb8.text = valueList[7]
+        binding.rb9.text= valueList[8]
+        binding.rb10.text= valueList[9]
         var view = inflater.inflate(R.layout.type10_fragment, container, false)
         group = binding.groupF10
         group.setOnCheckedChangeListener { radioGroup, i ->

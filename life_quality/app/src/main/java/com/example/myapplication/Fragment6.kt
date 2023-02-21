@@ -29,12 +29,12 @@ class Fragment6 : Fragment() {
             valueList.add(value)
         }
 
-        binding.type6Answer1.text = valueList.get(0)
-        binding.type6Answer2.text = valueList.get(1)
-        binding.type6Answer3.text = valueList.get(2)
-        binding.type6Answer4.text = valueList.get(3)
-        binding.type6Answer5.text = valueList.get(4)
-        binding.type6Answer6.text = valueList.get(5)
+        binding.rb1.text = valueList.get(0)
+        binding.rb2.text = valueList.get(1)
+        binding.rb3.text = valueList.get(2)
+        binding.rb4.text = valueList.get(3)
+        binding.rb5.text = valueList.get(4)
+        binding.rb6.text = valueList.get(5)
         var view = inflater.inflate(R.layout.type6_fragment, container, false)
         group = binding.groupF6
         group.setOnCheckedChangeListener { radioGroup, i ->

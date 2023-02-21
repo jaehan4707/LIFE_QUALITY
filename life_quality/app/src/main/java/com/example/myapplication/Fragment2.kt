@@ -34,8 +34,8 @@ class Fragment2 : Fragment() {
             valueList.add(value)
         }
 
-        binding.type2Answer1.text = valueList.get(0)
-        binding.type2Answer2.text = valueList.get(1)
+        binding.rb1.text = valueList.get(0)
+        binding.rb2.text = valueList.get(1)
         group = binding.groupF2
         group.setOnCheckedChangeListener { radioGroup, i ->
             when(i){

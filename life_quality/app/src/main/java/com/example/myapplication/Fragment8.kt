@@ -30,14 +30,14 @@ class Fragment8 : Fragment() {
             valueList.add(value)
         }
 
-        binding.type8Answer1.text = valueList.get(0)
-        binding.type8Answer2.text = valueList.get(1)
-        binding.type8Answer3.text = valueList.get(2)
-        binding.type8Answer4.text = valueList.get(3)
-        binding.type8Answer5.text = valueList.get(4)
-        binding.type8Answer6.text = valueList.get(5)
-        binding.type8Answer7.text = valueList.get(6)
-        binding.type8Answer7.text = valueList.get(7)
+        binding.rb1.text = valueList.get(0)
+        binding.rb2.text = valueList.get(1)
+        binding.rb3.text = valueList.get(2)
+        binding.rb4.text = valueList.get(3)
+        binding.rb5.text = valueList.get(4)
+        binding.rb6.text = valueList.get(5)
+        binding.rb7.text = valueList.get(6)
+        binding.rb8.text = valueList.get(7)
         var view = inflater.inflate(R.layout.type8_fragment, container, false)
         group = binding.groupF8
         group.setOnCheckedChangeListener { radioGroup, i ->

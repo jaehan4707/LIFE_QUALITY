@@ -33,11 +33,11 @@ class Fragment5 : Fragment() {
         }
 
         Log.d("test","다섯번째 프래그먼트")
-        binding.type5Answer1.text = valueList.get(0)
-        binding.type5Answer2.text = valueList.get(1)
-        binding.type5Answer3.text = valueList.get(2)
-        binding.type5Answer4.text = valueList.get(3)
-        binding.type5Answer5.text = valueList.get(4)
+        binding.rb1.text = valueList.get(0)
+        binding.rb2.text = valueList.get(1)
+        binding.rb3.text = valueList.get(2)
+        binding.rb4.text = valueList.get(3)
+        binding.rb5.text = valueList.get(4)
         var view = inflater.inflate(R.layout.type5_fragment, container, false)
         group = binding.groupF5
         group.setOnCheckedChangeListener { radioGroup, i ->

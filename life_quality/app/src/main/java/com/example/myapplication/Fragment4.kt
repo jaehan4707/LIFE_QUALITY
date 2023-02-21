@@ -36,10 +36,10 @@ class Fragment4 : Fragment() {
             valueList.add(value)
         }
 
-        binding.type4Answer1.text = valueList.get(0)
-        binding.type4Answer2.text = valueList.get(1)
-        binding.type4Answer3.text = valueList.get(2)
-        binding.type4Answer4.text = valueList.get(3)
+        binding.rb1.text = valueList.get(0)
+        binding.rb2.text = valueList.get(1)
+        binding.rb3.text = valueList.get(2)
+        binding.rb4.text = valueList.get(3)
         Log.d("test","4번쨰 프래그먼트")
         var view = inflater.inflate(R.layout.type4_fragment, container, false)
         group = binding.groupF4
@@ -148,6 +148,6 @@ class Fragment4 : Fragment() {
         }
 
         dialog?.show()
-        dialog?.window?.setLayout(1000, 1000)
+        dialog?.window?.setLayout(1000, 1500)
     }
 }
