@@ -15,6 +15,7 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".QuestionSelect"
             android:exported="false" />

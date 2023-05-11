@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -39,23 +40,23 @@ class NotypeFragment : Fragment() {
             1 -> {
                 binding.numberlayout.visibility = View.GONE
                 binding.timeLayout.visibility = View.VISIBLE
-                binding.BmiLayout.visibility=View.GONE
+                binding.BmiLayout.visibility = View.GONE
             } //1이면 시간 레이아웃.
             2 -> {
                 binding.numberlayout.visibility = View.VISIBLE
                 binding.timeLayout.visibility = View.GONE
-                binding.BmiLayout.visibility=View.GONE
+                binding.BmiLayout.visibility = View.GONE
             }
             3 -> {
-                Log.d("test","type은 3")
-                binding.numberlayout.visibility=View.GONE
-                binding.timeLayout.visibility=View.GONE
-                binding.BmiLayout.visibility=View.VISIBLE
+                Log.d("test", "type은 3")
+                binding.numberlayout.visibility = View.GONE
+                binding.timeLayout.visibility = View.GONE
+                binding.BmiLayout.visibility = View.VISIBLE
             }
-            4->{
-                binding.numberlayout.visibility=View.GONE
-                binding.timeLayout.visibility=View.GONE
-                binding.BmiLayout.visibility=View.GONE
+            4 -> {
+                binding.numberlayout.visibility = View.GONE
+                binding.timeLayout.visibility = View.GONE
+                binding.BmiLayout.visibility = View.GONE
                 //addres layout visibile
             }
         }
@@ -72,11 +73,16 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun afterTextChanged(p0: Editable?) {
+                            var trim_text = delete_blank(p0, binding.notypeAnswer)
+                            var edit_id = try {
+                                trim_text.toInt()
+                            } catch (e: java.lang.Exception) {
+                                Log.d("problem: ", "오류발생")
+                            }
+                            Id = edit_id.toInt()
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                            Id = p0.toString().toInt()
-                            Log.d("test", "${Id}")
                         }
                     })
                 }
@@ -94,13 +100,15 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun afterTextChanged(p0: Editable?) {
-
+                            var trim_text = delete_blank(p0, binding.notypehour)
+                            time = try {
+                                trim_text.toInt() * 60
+                            } catch (e: java.lang.Exception) {
+                                Log.d("problem", "오류 발생")
+                            }
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                            time = p0.toString().toInt()*60
-                            Id = time
-                            Log.d("시간 입력", "${Id}")
                         }
                     })
                     binding.notypemin.addTextChangedListener(object : TextWatcher {
@@ -114,18 +122,21 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun afterTextChanged(p0: Editable?) {
-
+                            var trim_text = delete_blank(p0, binding.notypemin)
+                            min = try {
+                                trim_text.toInt()
+                            } catch (e: java.lang.Exception) {
+                                Log.d("problem", "오류 발생")
+                            }
+                            Id = time + min
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                            min = p0.toString().toInt()
-                            Id = time+min
-                            Log.d("분 입력", "${Id}")
                         }
                     })
                 }
                 var height = 0.0
-                var weight =0
+                var weight = 0.0
                 if (binding.BmiLayout.visibility == View.VISIBLE) { //횟수 레이아웃이 활성화일때
                     binding.height.addTextChangedListener(object : TextWatcher {
                         override fun beforeTextChanged(
@@ -135,13 +146,21 @@ class NotypeFragment : Fragment() {
                             p3: Int
                         ) {
                         }
+
                         override fun afterTextChanged(p0: Editable?) {
+
+                            var trim_text = delete_blank(p0, binding.height)
+                            height = try {
+                                (trim_text.toDouble() / 100.0)
+                            } catch (e: java.lang.Exception){
+                                Log.d("problem", "예외발생")
+                            }.toDouble()
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                            height=p0.toString().toDouble()/100 //M로 변환
                         }
                     })
+
                     binding.weight.addTextChangedListener(object : TextWatcher {
                         override fun beforeTextChanged(
                             p0: CharSequence?,
@@ -150,22 +169,40 @@ class NotypeFragment : Fragment() {
                             p3: Int
                         ) {
                         }
+
                         override fun afterTextChanged(p0: Editable?) {
+                            var trim_text = delete_blank(p0, binding.weight)
+                            weight = try {
+                                trim_text.toDouble()
+                            } catch (e: java.lang.Exception){
+                                Log.d("problem : ", "예외발생")
+                            }.toDouble()
+                            Id = (weight / (height * height)).toInt() //BMI
+                            Log.d(
+                                "problem : ",
+                                "키 : $height, 몸무게 : $weight, BMI : ${Id.toString()}"
+                            )
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                            Log.d("test","몸무게 : ${p0}")
-                            Id=(p0.toString().toInt()/(height*height)).toInt() //몸무게 / 키의제곱(m)
-                            //p0 몸무게
                         }
                     })
                 }
             }
             job.join() //job이 끝날떄까지 대기함.
-            Log.d("test","ID : ${Id}")
+            Log.d("problem", "ID : ${Id}")
         }
         return binding.root
     }
+
+    private fun delete_blank(p0: Editable?, edit: EditText): String {
+        var str1 = p0.toString()
+        var str2 = str1.trim()
+        if (str1 != str2) {
+            edit.setText(str2)
+            edit.setSelection(str2.length)
+        }
+        return str2
+    }
 }
-//여기서 Id값이 안바뀌고 넘어감.
 

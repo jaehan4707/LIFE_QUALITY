@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.compose.foundation:foundation:1.1.1'
+
 
     // ViewModel 관련
     def lifecycle_version = "2.5.1"
