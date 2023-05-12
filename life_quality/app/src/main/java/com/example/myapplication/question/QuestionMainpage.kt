@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.question
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,23 +6,19 @@ import android.util.Log
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
-import androidx.fragment.app.Fragment
-import com.example.myapplication.MainActivity.Companion.address
+import com.example.myapplication.*
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.drinknum
-import com.example.myapplication.MainActivity.Companion.relation
 import com.example.myapplication.MainActivity.Companion.smokenum
 import com.example.myapplication.MainActivity.Companion.surveyList
-import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.QuestionMainpageBinding
-import com.example.myapplication.databinding.Type2FragmentBinding
 
 class QuestionMainpage : AppCompatActivity() {
     companion object {
         lateinit var tempSurvey: TotalSurvey
         lateinit var group: RadioGroup
-        var keyList = mutableListOf<String>()
+        //var keyList = mutableListOf<String>()
+        //var valueList = mutableListOf<String>()
         var Id: Int = -1
         var curCount = 0
         lateinit var binding: QuestionMainpageBinding
@@ -33,11 +29,15 @@ class QuestionMainpage : AppCompatActivity() {
 
         //설문을 새로 시작할 때마다 초기화 해주어야 한다.
         curCount = 1
+        for(i in 0 .. surveyList.size-1){
+            Log.d("test", "${surveyList[i].title}")
+            Log.d("test", "${surveyList[i].answer.keys},${surveyList[i].answer.values}")
 
+        }
         binding = QuestionMainpageBinding.inflate(layoutInflater)
         setContentView(binding.root);
         var page = surveyList.get(0).number.toInt()
-        Log.d("total List", "${surveyList.size}")
+        Log.d("test", "${surveyList.size}")
 
         //프로그레스바 max값 정해주는 부분 (max는 설문의 개수만큼 되어야 한다.)
         binding.progressbar.max = surveyList.size
@@ -47,11 +47,10 @@ class QuestionMainpage : AppCompatActivity() {
         //인적사항 입력할 때는 진행도가 1임
         binding.progressbar.progress = 0
 
-
         // "다음" 버튼 클릭 이벤트 구현 부분
         binding.nextstage.setOnClickListener() {
             //설문이 끝났을 경우 결과 확인 페이지로 이동
-            Log.d("test", "라디오 버튼의 값 : ${Id}")
+            Log.d("test", "라디오 버튼의 값 : $Id")
             Log.d("test", "${tempSurvey.type}")
             Log.d("test", "조사타입 : ${tempSurvey.surveyType}")
             when(tempSurvey.surveyType){
@@ -89,11 +88,11 @@ class QuestionMainpage : AppCompatActivity() {
                     binding.progressbar.progress++
                 }
                 "Drink"->{
-                    Log.d("test","현재 카운트 : ${curCount}, dringk num : ${drinknum}")
+                    Log.d("test","현재 카운트 : $curCount, dringk num : ${drinknum}")
                     if (Id == 0) { //없음을 눌렀을때
                         //다음 화면 진행하지 않고 jump 해야함.
                         Log.d("test", "다음 화면을 진행하지 않습니다")
-                        var num =curCount
+                        var num = curCount
                         while(num!= drinknum){
                             answer.add(Id)
                             curCount++
@@ -156,6 +155,47 @@ class QuestionMainpage : AppCompatActivity() {
                     }
                     binding.progressbar.progress++
                 }
+                /* "Fall" ->{
+                    if (Id == -1) {
+                        Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
+                    }
+                    if(binding.progressbar.progress==0 && Id==2){ //경험이 없다고 눌렀을 4번으로 넘어가야함.
+                        Log.d("problem: ","화면을 스킵해야합니다")
+                        answer.add(Id)
+                        binding.progressbar.progress++
+                        curCount++
+                        for(i in 1 until 2){
+                            answer.add(0)
+                            curCount++
+                            binding.progressbar.progress++
+                        }
+                        Id=-1
+                    }
+                    if (curCount == surveyList.size) {
+                        var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+                        startActivity(intent)
+                    } else {
+                        //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+                        answer.add(Id)
+                        Id = -1
+                        tempSurvey = surveyList.get(curCount)
+                        curCount++
+                        //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
+                        if (curCount == surveyList.size) {
+                            binding.nextstage.text = "결과보기"
+                        }
+                        Log.d("curCount List", "curCount = $curCount")
+
+                        if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt()==4) { //답변이 선택형일 경우
+                            setFrag(tempSurvey.number.toInt())
+                        } else { //답변이 입력형일 경우
+                            setFrag(0)
+                        }
+                        binding.progressbar.progress++
+                    }
+
+                }
+                */
                 else -> {
                     if (Id == -1) {
                         Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()

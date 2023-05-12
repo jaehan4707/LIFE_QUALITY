@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.QuestionMainpage.Companion.curCount
+import com.example.myapplication.admin.AdminHome
+import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
-import com.example.myapplication.databinding.ItemBinding
+import com.example.myapplication.question.QuestionSelect
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -58,7 +59,6 @@ class MainActivity : AppCompatActivity() {
                     Log.w("Get Data Error", exception)
                 }
         }
-
         setContentView(binding.root)
         binding.qStart.setOnClickListener() {
             showDialog()

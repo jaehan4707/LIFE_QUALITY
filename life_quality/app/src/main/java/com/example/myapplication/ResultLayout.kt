@@ -14,10 +14,10 @@ import com.example.myapplication.databinding.IpaqResultBinding
 import com.example.myapplication.databinding.MnaLayoutBinding
 import com.example.myapplication.databinding.MouthhealthResultBinding
 import com.example.myapplication.databinding.NutritionLayoutBinding
-import com.example.myapplication.databinding.ResultLayoutBinding
 import com.example.myapplication.databinding.SgdskResultBinding
 import com.example.myapplication.databinding.SleephabitResultBinding
 import com.example.myapplication.databinding.YosilLayoutBinding
+import com.example.myapplication.question.QuestionSelect
 
 class ResultLayout : AppCompatActivity() {
 
@@ -26,7 +26,7 @@ class ResultLayout : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //여기서 점수를 쫙 계산해야함.
-        Log.d("test", "${answer}")
+        Log.d("test", "설문응답 : ${answer}")
         weight = 0.0
         flag = 0
         when (type) {

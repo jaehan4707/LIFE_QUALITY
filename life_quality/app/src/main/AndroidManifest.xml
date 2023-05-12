@@ -17,7 +17,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".QuestionSelect"
+            android:name=".question.QuestionSelect"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".QuestionMainpage"
+            android:name=".question.QuestionMainpage"
             android:label="QuestionMainpage" />
         <activity
             android:name=".ResultLayout"
@@ -46,7 +46,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AdminHome"
+            android:name=".admin.AdminHome"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -62,35 +62,35 @@
 
         <!--edu 액티비티 인텐드 이동 관련-->
         <activity
-            android:name=".EduEmotionActivity"
+            android:name=".edu.EduEmotionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".EduExcerciseActivity"
+            android:name=".edu.EduExcerciseActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".EduMouthActivity"
+            android:name=".edu.EduMouthActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".EduNutritionActivity"
+            android:name=".edu.EduNutritionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".EduYosilActivity"
+            android:name=".edu.EduYosilActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

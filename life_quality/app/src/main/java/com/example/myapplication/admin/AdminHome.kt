@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.admin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,14 +7,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.*
 import com.example.myapplication.MainActivity.Companion.Total
 import com.example.myapplication.databinding.ActivityAdminHomeBinding
-import com.example.myapplication.MainActivity.Companion.surveyList
 
 class AdminHome : AppCompatActivity() {
 

@@ -1,9 +1,10 @@
-package com.example.myapplication
+package com.example.myapplication.edu
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.example.myapplication.R
 import com.example.myapplication.databinding.EduMouthBinding
 
 class EduMouthActivity : AppCompatActivity() {

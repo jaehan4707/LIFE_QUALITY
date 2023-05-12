@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.question
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -90,7 +90,8 @@ class QuestionSelect : AppCompatActivity() {
                                     }
                                 }
 
-                            } else {
+                            }
+                            else {
                                 for (i in 0 until Total.size) {
                                     if (Total[i].surveyType == nameList[dbid]) {
                                         surveyList.add(Total[i])

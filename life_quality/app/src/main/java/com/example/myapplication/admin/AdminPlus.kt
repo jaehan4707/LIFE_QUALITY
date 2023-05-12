@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.admin
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.MainActivity
 import com.example.myapplication.MainActivity.Companion.Total
+import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityAdminPlusBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

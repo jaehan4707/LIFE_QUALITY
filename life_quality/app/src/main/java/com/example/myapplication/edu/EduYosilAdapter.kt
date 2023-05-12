@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.edu
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
+import com.example.myapplication.R
 
-class EduMouthAdapter : PagerAdapter{
+class EduYosilAdapter : PagerAdapter{
 
     var models = mutableListOf<Int>()
     lateinit var layoutInflater: LayoutInflater
@@ -30,10 +31,10 @@ class EduMouthAdapter : PagerAdapter{
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         layoutInflater = LayoutInflater.from(context)
-        var view = layoutInflater.inflate(R.layout.item_education, container, false)
+        var view = layoutInflater.inflate(R.layout.item_edu_yosil, container, false)
 
         //이미지뷰 가져오기
-        var imageView = view.findViewById<ImageView>(R.id.eduImage)
+        var imageView = view.findViewById<ImageView>(R.id.eduYosilImage)
         imageView.setImageResource(models.get(position))
 
         container.addView(view, 0)

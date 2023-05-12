@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,13 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import com.example.myapplication.QuestionMainpage.Companion.Id
-import com.example.myapplication.QuestionMainpage.Companion.keyList
+import com.example.myapplication.question.QuestionMainpage.Companion.Id
 import com.example.myapplication.databinding.NotypeFragmentBinding
 import com.example.myapplication.databinding.QuestionMainpageBinding
+import com.example.myapplication.question.QuestionMainpage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

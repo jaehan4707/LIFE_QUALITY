@@ -1,7 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.admin
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
+import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityAdminHomeBinding
 import com.example.myapplication.databinding.QuestionItemBinding
 import com.google.android.gms.tasks.Task

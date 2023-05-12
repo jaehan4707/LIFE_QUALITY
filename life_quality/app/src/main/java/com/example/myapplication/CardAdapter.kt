@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.viewpager.widget.PagerAdapter
-import com.google.android.material.internal.ContextUtils.getActivity
+import com.example.myapplication.edu.*
 import com.google.android.material.snackbar.Snackbar
 
 class CardAdapter : PagerAdapter{

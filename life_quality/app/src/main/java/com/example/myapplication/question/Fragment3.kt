@@ -1,9 +1,8 @@
-package com.example.myapplication
+package com.example.myapplication.question
 
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +10,12 @@ import android.view.Window
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import com.example.myapplication.QuestionMainpage.Companion.Id
-import com.example.myapplication.QuestionMainpage.Companion.group
-import com.example.myapplication.QuestionMainpage.Companion.keyList
-import com.example.myapplication.QuestionMainpage.Companion.tempSurvey
+import com.example.myapplication.question.QuestionMainpage.Companion.Id
+import com.example.myapplication.question.QuestionMainpage.Companion.group
+
+import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
+import com.example.myapplication.R
 import com.example.myapplication.databinding.Drink1DialogBinding
-import com.example.myapplication.databinding.Smoke1DialogBinding
 import com.example.myapplication.databinding.Type3FragmentBinding
 
 class Fragment3 : Fragment() {
@@ -30,6 +29,8 @@ class Fragment3 : Fragment() {
         //res폴더에 만들어준 xml파일과 연결해주어야 함.
 
 
+
+        var keyList= mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type3FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         binding.type3Number.text = "문항 " + QuestionMainpage.curCount.toString()
