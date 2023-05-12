@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         var drinknum : Int = 0
         var smokenum : Int =0
         var Socialnum : Int =0
+        var Fallum : Int =2
         var surveyList = mutableListOf<TotalSurvey>()
         var address : String = " "
         var relation : String = " "

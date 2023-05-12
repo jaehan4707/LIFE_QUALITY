@@ -40,7 +40,7 @@ class QuestionSelect : AppCompatActivity() {
             "NutritionHazard",
             "SDoH"
         )
-        var sdohList = mutableListOf<String>("Drink", "SocialNetWork", "Smoke", "IPAQ")
+        var skip_List = mutableListOf<String>("Drink", "SocialNetWork", "Smoke", "IPAQ")
         binding.selectStart.setOnClickListener { //설문 시작하기 버튼 눌렀을 때
             Toast.makeText(this@QuestionSelect, "설문시작하기 버튼을 눌렀습니다", Toast.LENGTH_SHORT).show()
             binding.selectStart.isSelected = !binding.selectStart.isSelected
@@ -76,9 +76,9 @@ class QuestionSelect : AppCompatActivity() {
                     runBlocking {
                         val job = CoroutineScope(Dispatchers.IO).launch {
                             if (dbid == 11) {
-                                for (j in 0 until sdohList.size) {
+                                for (j in 0 until skip_List.size) {
                                     for (i in 0 until Total.size) {
-                                        if (Total[i].surveyType == sdohList[j]) {
+                                        if (Total[i].surveyType == skip_List[j]) {
                                             surveyList.add(Total[i])
                                             if(j==0)
                                                 drinknum++
