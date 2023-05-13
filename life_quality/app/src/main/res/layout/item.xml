@@ -20,7 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/excercise"
-                android:scaleType="centerCrop"/>
+                android:scaleType="fitXY"/>
+                <!-- android:scaleType="centerCrop" !-->
             <TextView
                 android:id="@+id/cardTitle"
                 android:textColor="#262626"
