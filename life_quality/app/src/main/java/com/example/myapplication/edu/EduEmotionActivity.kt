@@ -2,16 +2,44 @@ package com.example.myapplication.edu
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.EduEmotionBinding
+import java.lang.Float.max
+import java.lang.Float.min
 
 class EduEmotionActivity : AppCompatActivity() {
     var emotion_models = mutableListOf<Int>()
     var emotion_colors = mutableListOf<Int>()
     var argbEvaluator = ArgbEvaluator()
 
+    private var scaleGestureDetector: ScaleGestureDetector? = null
+    private var scaleFactor = 1.0f
+
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        scaleGestureDetector?.onTouchEvent(event)
+        return true
+    }
+    inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        override fun onScale(scaleGestureDetector: ScaleGestureDetector): Boolean {
+
+            scaleFactor *= scaleGestureDetector.scaleFactor
+            Log.d("test","확대기능")
+            // 최소 0.5, 최대 2배
+            scaleFactor = max(0.5f, min(scaleFactor, 2.0f))
+
+            // 리사이클러뷰에 적용
+            //recyclerView.scaleX = scaleFactor
+            //recyclerView.scaleY = scaleFactor
+            return true
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,6 +57,8 @@ class EduEmotionActivity : AppCompatActivity() {
         emotion_colors.add(getColor(R.color.edu_emotion_color4))
 
 
+
+        scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
         var adapter = EduMouthAdapter(emotion_models, this)
         binding.emotionViewPager.adapter = adapter

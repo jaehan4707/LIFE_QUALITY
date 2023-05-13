@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.*
 import com.example.myapplication.MainActivity.Companion.answer
+import com.example.myapplication.MainActivity.Companion.check_list
 import com.example.myapplication.MainActivity.Companion.drinknum
 import com.example.myapplication.MainActivity.Companion.smokenum
 import com.example.myapplication.MainActivity.Companion.surveyList
@@ -22,6 +23,7 @@ class QuestionMainpage : AppCompatActivity() {
         var Id: Int = -1
         var curCount = 0
         var flag = false
+        var dbid =0
         lateinit var binding: QuestionMainpageBinding
     }
 

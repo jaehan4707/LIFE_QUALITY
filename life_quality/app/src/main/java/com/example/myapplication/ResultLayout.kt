@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.answer
+import com.example.myapplication.MainActivity.Companion.check_list
 import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.databinding.Eq5dResultBinding
 import com.example.myapplication.databinding.FallResultBinding
@@ -17,6 +18,7 @@ import com.example.myapplication.databinding.NutritionLayoutBinding
 import com.example.myapplication.databinding.SgdskResultBinding
 import com.example.myapplication.databinding.SleephabitResultBinding
 import com.example.myapplication.databinding.YosilLayoutBinding
+import com.example.myapplication.question.QuestionMainpage.Companion.dbid
 import com.example.myapplication.question.QuestionSelect
 
 class ResultLayout : AppCompatActivity() {
@@ -29,6 +31,7 @@ class ResultLayout : AppCompatActivity() {
         Log.d("test", "설문응답 : ${answer}")
         weight = 0.0
         flag = 0
+        check_list[dbid]=true
         when (type) {
             "EQ5D" -> {
                 val binding = Eq5dResultBinding.inflate(layoutInflater)
