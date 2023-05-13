@@ -26,6 +26,7 @@ class Fragment10 : Fragment() {
         var binding = Type10FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         Log.d("this is type10 curCountList", "curCount is : $curCount")
         binding.type10Number.text = "문항 " + QuestionMainpage.curCount.toString()
+        //binding.type10Number.text ="문항 " + QuestionMainpage.tempSurvey.id
         binding.type10Title.text = QuestionMainpage.tempSurvey.title.toString()
         for((key, value) in QuestionMainpage.tempSurvey.answer) {
             Log.d("test","$key, $value")

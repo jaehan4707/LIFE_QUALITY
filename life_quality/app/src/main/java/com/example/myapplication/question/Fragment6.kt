@@ -23,6 +23,7 @@ class Fragment6 : Fragment() {
         var valueList = mutableListOf<String>()
         var binding = Type6FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         binding.type6Number.text = "문항 " + QuestionMainpage.curCount.toString()
+        //binding.type6Number.text ="문항 " + QuestionMainpage.tempSurvey.id
         binding.type6Title.text = QuestionMainpage.tempSurvey.title.toString()
 
         for((key, value) in QuestionMainpage.tempSurvey.answer) {

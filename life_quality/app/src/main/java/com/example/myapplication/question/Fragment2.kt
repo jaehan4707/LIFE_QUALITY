@@ -27,6 +27,7 @@ class Fragment2 : Fragment() {
 
 
         binding.type2Number.text = "문항 " + curCount.toString()
+        //binding.type2Number.text = "문항 " + tempSurvey.id.toString()
         binding.type2Title.text = tempSurvey.title.toString()
 
         for( (key, value) in tempSurvey.answer) {

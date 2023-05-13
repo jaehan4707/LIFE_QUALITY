@@ -161,30 +161,28 @@ class QuestionMainpage : AppCompatActivity() {
                     if (Id == -1) {
                         Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
                     }
-                    flag=true
+                    else{
+                        answer.add(Id)
+                    }
                     if (binding.progressbar.progress == 0 && Id == 2) { //경험이 없다고 눌렀을 4번으로 넘어가야함.
                         Log.d("test: ", "화면을 스킵해야합니다")
-                        answer.add(Id)
                         for (i in 1 .. 2) {
                             answer.add(0)
                             curCount++
                             binding.progressbar.progress++
                         }
-                        flag=false
                         Id = -1
                         //여기서 화면을 넘길까?
                     }
-                    if (binding.progressbar.progress==binding.progressbar.max) {
+                    if (curCount==surveyList.size) {
                         Log.d("test","마지막 도착 :${curCount}")
                         var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
                         startActivity(intent)
                     }
                     else {
                         //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
-                        if(flag)
-                            answer.add(Id)
                         Id = -1
-                        tempSurvey = surveyList.get(curCount)
+                        tempSurvey = surveyList[curCount]
                         curCount++
                         //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
                         if (curCount == surveyList.size) {
