@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.myapplication.question.QuestionMainpage.Companion.Id
 import com.example.myapplication.databinding.NotypeFragmentBinding
@@ -80,6 +81,12 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                            var number :Int? = p0.toString().toIntOrNull()
+                            Log.d("test","edit_text ${p0}")
+                            if(number==null){ //숫자가 아니다.
+                                binding.notypeAnswer.text.clear()
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     })
                 }
@@ -106,6 +113,12 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                            var number :Int? = p0.toString().toIntOrNull()
+                            Log.d("test","edit_text ${p0}")
+                            if(number==null){ //숫자가 아니다.
+                                binding.notypehour.text.clear()
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     })
                     binding.notypemin.addTextChangedListener(object : TextWatcher {
@@ -129,6 +142,12 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                            var number :Int? = p0.toString().toIntOrNull()
+                            Log.d("test","edit_text ${p0}")
+                            if(number==null){ //숫자가 아니다.
+                                binding.notypemin.text.clear()
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     })
                 }
@@ -143,7 +162,6 @@ class NotypeFragment : Fragment() {
                             p3: Int
                         ) {
                         }
-
                         override fun afterTextChanged(p0: Editable?) {
 
                             var trim_text = delete_blank(p0, binding.height)
@@ -155,6 +173,12 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                            var number :Int? = p0.toString().toIntOrNull()
+                            Log.d("test","edit_text ${p0}")
+                            if(number==null){ //숫자가 아니다.
+                                binding.height.text.clear()
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     })
 
@@ -182,6 +206,12 @@ class NotypeFragment : Fragment() {
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                            var number :Int? = p0.toString().toIntOrNull()
+                            Log.d("test","edit_text ${p0}")
+                            if(number==null){ //숫자가 아니다.
+                                binding.weight.text.clear()
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     })
                 }

@@ -30,11 +30,6 @@ class QuestionMainpage : AppCompatActivity() {
 
         //설문을 새로 시작할 때마다 초기화 해주어야 한다.
         curCount = 1
-        for(i in 0 .. surveyList.size-1){
-            Log.d("test", "${surveyList[i].title}")
-            Log.d("test", "${surveyList[i].answer.keys},${surveyList[i].answer.values}")
-
-        }
         binding = QuestionMainpageBinding.inflate(layoutInflater)
         setContentView(binding.root);
         var page = surveyList.get(0).number.toInt()
