@@ -30,6 +30,7 @@
             android:layout_height="60dp"
             android:orientation="horizontal">
             <EditText
+                android:id="@+id/edit_past_year"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edittext_custom"
@@ -43,6 +44,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"/>
             <EditText
+                android:id="@+id/edit_past_month"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edittext_custom"
@@ -75,6 +77,7 @@
             android:layout_height="60dp"
             android:orientation="horizontal">
             <EditText
+                android:id="@+id/edit_nosmoke_year"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edittext_custom"
@@ -88,6 +91,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"/>
             <EditText
+                android:id="@+id/edit_nosmoke_month"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edittext_custom"
@@ -122,6 +126,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
+                android:id="@+id/edit_day_average_smoke"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edittext_custom"

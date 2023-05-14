@@ -3,10 +3,14 @@ package com.example.myapplication.question
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -79,7 +83,15 @@ class Fragment3 : Fragment() {
         super.onDetach()
         callback.remove()
     }
-
+    private fun delete_blank(p0: Editable?, edit: EditText): String {
+        var str1 = p0.toString()
+        var str2 = str1.trim()
+        if (str1 != str2) {
+            edit.setText(str2)
+            edit.setSelection(str2.length)
+        }
+        return str2
+    }
     fun showDialog() {
         var dialogBinding = Drink1DialogBinding.inflate(layoutInflater)
         var dialog = this.context?.let { Dialog(it) }
@@ -87,7 +99,34 @@ class Fragment3 : Fragment() {
         dialog?.setContentView(dialogBinding.root)
         dialog?.setCancelable(false)
 
+        var age=0
+        dialogBinding.editDrink.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(
+                p0: CharSequence?,
+                p1: Int,
+                p2: Int,
+                p3: Int
+            ) {
+            }
+            override fun afterTextChanged(p0: Editable?) {
 
+                var trim_text = delete_blank(p0,dialogBinding.editDrink)
+                age= try {
+                    (trim_text.toInt())
+                } catch (e: java.lang.Exception){
+                    Log.d("problem", "예외발생")
+                }
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                var number :Int? = p0.toString().toIntOrNull()
+                Log.d("test","edit_text ${p0}")
+                if(number==null){ //숫자가 아니다.
+                    dialogBinding.editDrink.text.clear()
+                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
         dialogBinding.drink1Start.setOnClickListener() {
             //여기를 바꿔줬음. -> 다이얼로그 시작하기 누르면 -> 목록을 정할수 있도록 해줄생각.
             dialog?.dismiss()

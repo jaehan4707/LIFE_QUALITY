@@ -67,6 +67,7 @@ class QuestionSelect : AppCompatActivity() {
             }
         }
         var skip_List = mutableListOf<String>("Drink", "SocialNetWork", "Smoke", "IPAQ")
+        var sdoh_List = mutableListOf<String>("Drink", "SocialNetWork", "Smoke")
         binding.selectStart.setOnClickListener { //설문 시작하기 버튼 눌렀을 때
             binding.selectStart.isSelected = !binding.selectStart.isSelected
             if (binding.selectStart.isSelected) { //설문 시작을 눌렀을대.?
@@ -79,19 +80,6 @@ class QuestionSelect : AppCompatActivity() {
                     var btn = binding.group.findViewById<RadioButton>(checkRadio)
                     dbid=0
                     when (btn.text.toString()) {
-                        /*
-                        "삶의 질" -> dbid = 0 //EQ5D
-                        "수면습관" -> dbid = 7 //Sleep
-                        "정신건강" -> dbid = 6 //SGDSK
-                        "구강건강" -> dbid = 5 //Mouth
-                        "영양상태 측정(MNA)" -> dbid = 4 //MNA -> NutritionHazard로 바꿈.
-                        "신체활동설문(IPAQ)" -> dbid = 3 //IPAQ
-                        "낙상" -> dbid = 1
-                        "노쇠측정" -> dbid = 2
-                        "요실금" -> dbid = 8
-                        "식습관" -> dbid = 10
-                        "SDoH" -> dbid = 11
-                         */
                         "삶의 질"->dbid = 0
                         "정신건강"->dbid=1
                         "수면습관"->dbid=2
@@ -123,9 +111,9 @@ class QuestionSelect : AppCompatActivity() {
                         runBlocking {
                             val job = CoroutineScope(Dispatchers.IO).launch {
                                 if (dbid == 10) {
-                                    for (j in 0 until skip_List.size) {
+                                    for (j in 0 until sdoh_List.size) {
                                         for (i in 0 until Total.size) {
-                                            if (Total[i].surveyType == skip_List[j]) {
+                                            if (Total[i].surveyType == sdoh_List[j]) {
                                                 surveyList.add(Total[i])
                                                 if (j == 0)
                                                     drinknum++

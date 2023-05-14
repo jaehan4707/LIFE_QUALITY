@@ -50,6 +50,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"/>
             <EditText
+                android:id="@+id/edit_drink"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="@drawable/edittext_custom"
