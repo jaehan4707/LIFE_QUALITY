@@ -21,25 +21,6 @@ class EduEmotionActivity : AppCompatActivity() {
     private var scaleFactor = 1.0f
 
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-
-        scaleGestureDetector?.onTouchEvent(event)
-        return true
-    }
-    inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
-        override fun onScale(scaleGestureDetector: ScaleGestureDetector): Boolean {
-
-            scaleFactor *= scaleGestureDetector.scaleFactor
-            Log.d("test","확대기능")
-            // 최소 0.5, 최대 2배
-            scaleFactor = max(0.5f, min(scaleFactor, 2.0f))
-
-            // 리사이클러뷰에 적용
-            //recyclerView.scaleX = scaleFactor
-            //recyclerView.scaleY = scaleFactor
-            return true
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -58,7 +39,7 @@ class EduEmotionActivity : AppCompatActivity() {
 
 
 
-        scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
+        //scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
         var adapter = EduMouthAdapter(emotion_models, this)
         binding.emotionViewPager.adapter = adapter

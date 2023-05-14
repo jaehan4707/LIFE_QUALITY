@@ -2,6 +2,7 @@ package com.example.myapplication.edu
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView

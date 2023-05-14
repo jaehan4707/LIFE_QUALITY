@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -16,6 +17,7 @@ class CardAdapter : PagerAdapter{
     var models = mutableListOf<Model>()
     lateinit var layoutInflater: LayoutInflater
     lateinit var context: Context
+
 
     constructor()
     constructor(models: MutableList<Model>, context: Context){

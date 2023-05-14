@@ -15,7 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:src="@drawable/edu_yosil_1"
-            android:scaleType="centerInside"/>
+
+            android:adjustViewBounds="true"
+            />
     </androidx.cardview.widget.CardView>
 
 

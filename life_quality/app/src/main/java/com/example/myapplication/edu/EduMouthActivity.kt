@@ -2,16 +2,20 @@ package com.example.myapplication.edu
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
+import android.view.ScaleGestureDetector
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.EduMouthBinding
+import com.example.myapplication.databinding.ItemEducationBinding
 
 class EduMouthActivity : AppCompatActivity() {
     var mouth_models = mutableListOf<Int>()
     var mouth_colors = mutableListOf<Int>()
     var argbEvaluator = ArgbEvaluator()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,29 +24,33 @@ class EduMouthActivity : AppCompatActivity() {
         mouth_models.add(R.drawable.edu_mouth_1)
         mouth_models.add(R.drawable.edu_mouth_2)
         mouth_models.add(R.drawable.edu_mouth_3)
-
+        Log.d("test", "구강관")
 
         mouth_colors.add(getColor(R.color.edu_mouth_color1))
         mouth_colors.add(getColor(R.color.edu_mouth_color2))
         mouth_colors.add(getColor(R.color.edu_mouth_color3))
 
+
         var adapter = EduMouthAdapter(mouth_models, this)
         binding.mouthViewPager.adapter = adapter
         binding.mouthViewPager.clipToPadding = false
         binding.mouthViewPager.setPadding(50, 0, 50, 0)
-        binding.mouthViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                if(position < adapter.count-1 && position < mouth_colors.size - 1) {
+        binding.mouthViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                if (position < adapter.count - 1 && position < mouth_colors.size - 1) {
                     binding.mouthViewPager.setBackgroundColor(
                         argbEvaluator.evaluate(
                             positionOffset,
                             mouth_colors[position],
-                            mouth_colors[position+1]
+                            mouth_colors[position + 1]
                         ) as Int
                     )
-                }
-                else {
-                    binding.mouthViewPager.setBackgroundColor(mouth_colors[mouth_colors.size-1])
+                } else {
+                    binding.mouthViewPager.setBackgroundColor(mouth_colors[mouth_colors.size - 1])
                 }
             }
 
@@ -54,8 +62,8 @@ class EduMouthActivity : AppCompatActivity() {
 
             }
 
-        })
 
+        })
 
     }
 }
