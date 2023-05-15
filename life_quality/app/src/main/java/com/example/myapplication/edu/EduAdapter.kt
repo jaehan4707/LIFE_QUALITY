@@ -1,11 +1,13 @@
 package com.example.myapplication.edu
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.PagerAdapter
 import com.example.myapplication.R
 class EduAdapter : PagerAdapter{
@@ -58,13 +60,19 @@ class EduAdapter : PagerAdapter{
         isImageExpanded=false
         dialog.dismiss() //다이얼로그 닫기.
     }
+    @SuppressLint("ResourceType")
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         layoutInflater = LayoutInflater.from(context)
         var view = layoutInflater.inflate(R.layout.item_education, container, false)
 
         //이미지뷰 가져오기
         var imageView = view.findViewById<ZoomableImageView>(R.id.eduImage)
+        val drawable = ContextCompat.getDrawable(context,models[position])
         imageView.setImageResource(models.get(position))
+        //val drawable = ContextCompat.getDrawable(context, R.drawable.my_drawable)
+
+
+        //model에는 drawable
   //      imageView.adjustViewBounds=true
 //        imageView.scaleType=imageView
         /*
