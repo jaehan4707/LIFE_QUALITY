@@ -41,7 +41,7 @@ class EduEmotionActivity : AppCompatActivity() {
 
         //scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
-        var adapter = EduMouthAdapter(emotion_models, this)
+        var adapter = EduAdapter(emotion_models, this)
         binding.emotionViewPager.adapter = adapter
         binding.emotionViewPager.clipToPadding = false
         binding.emotionViewPager.setPadding(50, 0, 50, 0)

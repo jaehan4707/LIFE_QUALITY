@@ -26,7 +26,7 @@ class EduNutritionActivity : AppCompatActivity() {
         nutrition_colors.add(getColor(R.color.edu_nutri_color3))
 
 
-        var adapter = EduMouthAdapter(nutrition_models, this)
+        var adapter = EduAdapter(nutrition_models, this)
         binding.nutriViewPager.adapter = adapter
         binding.nutriViewPager.clipToPadding = false
 //        binding.nutriViewPager.setPadding(130, 0, 130, 0)

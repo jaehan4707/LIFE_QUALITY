@@ -31,7 +31,7 @@ class EduMouthActivity : AppCompatActivity() {
         mouth_colors.add(getColor(R.color.edu_mouth_color3))
 
 
-        var adapter = EduMouthAdapter(mouth_models, this)
+        var adapter = EduAdapter(mouth_models, this)
         binding.mouthViewPager.adapter = adapter
         binding.mouthViewPager.clipToPadding = false
         binding.mouthViewPager.setPadding(50, 0, 50, 0)

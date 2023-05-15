@@ -50,27 +50,27 @@ class CardAdapter : PagerAdapter{
         view.setOnClickListener() {
             when(position) {
                 0 -> {
-                    Snackbar.make(view,"영양관리 클릭!", Snackbar.LENGTH_LONG).show()
+                    //Snackbar.make(view,"영양관리 클릭!", Snackbar.LENGTH_LONG).show()
                     val intent = Intent(context, EduNutritionActivity::class.java)
                     (context).startActivity(intent)
                 }
                 1-> {
-                    Snackbar.make(view,"우울관리 클릭!", Snackbar.LENGTH_LONG).show()
+                    //Snackbar.make(view,"우울관리 클릭!", Snackbar.LENGTH_LONG).show()
                     val intent = Intent(context, EduEmotionActivity::class.java)
                     (context).startActivity(intent)
                 }
                 2-> {
-                    Snackbar.make(view,"구강관리 클릭!", Snackbar.LENGTH_LONG).show()
+                    //Snackbar.make(view,"구강관리 클릭!", Snackbar.LENGTH_LONG).show()
                     val intent = Intent(context, EduMouthActivity::class.java)
                     (context).startActivity(intent)
                 }
                 3 -> {
-                    Snackbar.make(view,"운동관리 클릭!", Snackbar.LENGTH_LONG).show()
+                    //Snackbar.make(view,"운동관리 클릭!", Snackbar.LENGTH_LONG).show()
                     val intent = Intent(context, EduExcerciseActivity::class.java)
                     (context).startActivity(intent)
                 }
                 4 -> {
-                    Snackbar.make(view,"요실금관리 클릭!", Snackbar.LENGTH_LONG).show()
+                    //Snackbar.make(view,"요실금관리 클릭!", Snackbar.LENGTH_LONG).show()
                     val intent = Intent(context, EduYosilActivity::class.java)
                     (context).startActivity(intent)
                 }

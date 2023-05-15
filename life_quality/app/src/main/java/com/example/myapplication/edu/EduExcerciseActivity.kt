@@ -2,6 +2,7 @@ package com.example.myapplication.edu
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.myapplication.R
@@ -43,7 +44,22 @@ class EduExcerciseActivity : AppCompatActivity() {
         excercise_colors.add(getColor(R.color.edu_excercise_color11))
 
 
-        var adapter = EduMouthAdapter(excercise_models, this)
+        var adapter = EduAdapter(excercise_models, this)
+        /*
+        adapter.setBackBussttonListener(object:EduAdapter.BackButtonListenr{
+            override fun onBackPressed() {
+                Log.d("test","뒤로가기를 눌렀스빈다")
+                if(adapter.isImageExpanded){ //뒤로가기를 누르고 확장된 상태라면.
+                    Log.d("test","뒤로가기 눌렀고, 확장된 상태라 이미지 원상복구")
+                    adapter.collapseImage() //원상복구
+                }
+                else{
+                    Log.d("test","뒤로가기를 눌럿지만 이미지 확대는 안된 상태")
+                }
+
+            }
+        })
+        */
         binding.excerciseViewPager.adapter = adapter
         binding.excerciseViewPager.clipToPadding = false
         binding.excerciseViewPager.setPadding(50, 0, 50, 0)

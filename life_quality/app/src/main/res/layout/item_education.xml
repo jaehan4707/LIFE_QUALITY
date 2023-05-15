@@ -9,12 +9,12 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         android:layout_gravity="center">
-        <ImageView
+        <com.example.myapplication.edu.ZoomableImageView
             android:id="@+id/eduImage"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:src="@drawable/edu_mouth_1"
-            android:scaleType="fitXY"
+            android:scaleType="matrix"
             />
     </androidx.cardview.widget.CardView>
 

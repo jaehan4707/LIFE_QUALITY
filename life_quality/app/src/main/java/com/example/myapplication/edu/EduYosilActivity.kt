@@ -37,7 +37,7 @@ class EduYosilActivity : AppCompatActivity() {
 
 
 
-        var adapter = EduYosilAdapter(yosil_models, this)
+        var adapter = EduAdapter(yosil_models, this)
         binding.yosilViewPager.adapter = adapter
         binding.yosilViewPager.clipToPadding = false
         binding.yosilViewPager.setPadding(50, 0, 50, 0)
