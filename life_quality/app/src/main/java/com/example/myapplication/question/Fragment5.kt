@@ -33,7 +33,7 @@ class Fragment5 : Fragment() {
             valueList.add(value)
         }
 
-        Log.d("test","다섯번째 프래그먼트")
+       // Log.d("test","다섯번째 프래그먼트")
         binding.rb1.text = valueList.get(0)
         binding.rb2.text = valueList.get(1)
         binding.rb3.text = valueList.get(2)

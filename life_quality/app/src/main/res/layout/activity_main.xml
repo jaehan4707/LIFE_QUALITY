@@ -14,21 +14,21 @@
             android:layout_marginLeft="30dp">
             <View
                 android:id="@+id/red_circle"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/red_circle"
                 android:layout_gravity="center_vertical"/>
             <View
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/yellow_circle"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"/>
             <View
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/green_circle"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -43,12 +43,13 @@
                     android:maxWidth="35dp"
                     android:adjustViewBounds="true"
                     android:gravity="right"
-                    android:layout_marginLeft="240dp" />
+                    android:layout_marginLeft="225dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="내 정보"
-                    android:layout_marginLeft="237dp"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:layout_marginLeft="220dp"
                     android:layout_marginTop="3dp"/>
             </LinearLayout>
         </LinearLayout>
@@ -62,29 +63,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="안녕하세요?"
+                android:fontFamily="@font/bm_dohyeon"
                 android:textSize="40dp"
                 android:textColor="@color/main_orange"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아래 두 버튼 눌러"
+                android:text="해당 설문조사는"
                 android:textSize="20dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="가나다라마바사"
+                android:text="여러분들의 건강 상태를"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="안녕"
+                android:text="설문조사 형태로 진행해\n 건강상태를 알려줍니다"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"/>
         </LinearLayout>
 
@@ -106,8 +111,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="건강점수를 측정하여 나의 상태를 확인할 수 있습니다."
+                android:text="설문조사를 진행하여 \n나의 상태를 확인할 수 있습니다."
                 android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
                 android:fontFamily="@font/bm_dohyeon"/>
             <Button
                 android:id="@+id/edu"
@@ -123,8 +130,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="건강에 도움이 되는 여러가지 방법을 배울 수 있습니다."
+                android:text="건강에 도움이 되는 \n여러가지 방법을 배울 수 있습니다."
                 android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
                 android:fontFamily="@font/bm_dohyeon"/>
 
 

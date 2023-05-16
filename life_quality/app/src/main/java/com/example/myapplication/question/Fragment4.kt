@@ -46,7 +46,7 @@ class Fragment4 : Fragment() {
         binding.rb2.text = valueList.get(1)
         binding.rb3.text = valueList.get(2)
         binding.rb4.text = valueList.get(3)
-        Log.d("test","4번쨰 프래그먼트")
+        //Log.d("test","4번쨰 프래그먼트")
         var view = inflater.inflate(R.layout.type4_fragment, container, false)
         group = binding.groupF4
         group.setOnCheckedChangeListener { radioGroup, i ->

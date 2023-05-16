@@ -43,10 +43,6 @@ class Fragment10 : Fragment() {
         binding.rb8.text = valueList[7]
         binding.rb9.text= valueList[8]
         binding.rb10.text= valueList[9]
-        Log.d("test: ","${keyList.size}")
-        for(i in 0 .. 9){
-            Log.d("test : ","${i}번째 텍스트 : ${valueList[i]}, 값 : ${keyList.get(i)}")
-        }
         var view = inflater.inflate(R.layout.type10_fragment, container, false)
         group = binding.groupF10
         group.setOnCheckedChangeListener { radioGroup, i ->
