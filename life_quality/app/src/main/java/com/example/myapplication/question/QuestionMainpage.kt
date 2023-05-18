@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.*
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.check_list
+import com.example.myapplication.MainActivity.Companion.dbid
 import com.example.myapplication.MainActivity.Companion.drinknum
 import com.example.myapplication.MainActivity.Companion.smokenum
 import com.example.myapplication.MainActivity.Companion.surveyList
@@ -24,7 +25,7 @@ class QuestionMainpage : AppCompatActivity() {
         var Id: Int = -1
         var curCount = 0
         var flag = false
-        var dbid =0
+
         lateinit var binding: QuestionMainpageBinding
     }
     private var currentFragment: Fragment? = null
@@ -207,6 +208,7 @@ class QuestionMainpage : AppCompatActivity() {
                         Log.d("test","curCount : $curCount")
                         Log.d("test","answer : ${answer}")
                         if (curCount == surveyList.size) {
+                            Log.d("test","dbid : ${dbid }")
                             var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
                             startActivity(intent)
                         } else {

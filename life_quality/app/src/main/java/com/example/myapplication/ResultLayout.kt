@@ -7,18 +7,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.check_list
+import com.example.myapplication.MainActivity.Companion.dbid
 import com.example.myapplication.MainActivity.Companion.type
-import com.example.myapplication.databinding.Eq5dResultBinding
-import com.example.myapplication.databinding.FallResultBinding
-import com.example.myapplication.databinding.FrailtyResultBinding
-import com.example.myapplication.databinding.IpaqResultBinding
-import com.example.myapplication.databinding.MnaLayoutBinding
-import com.example.myapplication.databinding.MouthhealthResultBinding
-import com.example.myapplication.databinding.NutritionLayoutBinding
-import com.example.myapplication.databinding.SgdskResultBinding
-import com.example.myapplication.databinding.SleephabitResultBinding
-import com.example.myapplication.databinding.YosilLayoutBinding
-import com.example.myapplication.question.QuestionMainpage.Companion.dbid
+import com.example.myapplication.databinding.*
 import com.example.myapplication.question.QuestionSelect
 
 class ResultLayout : AppCompatActivity() {
@@ -28,7 +19,8 @@ class ResultLayout : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //여기서 점수를 쫙 계산해야함.
-        Log.d("test", "설문응답 : ${answer}")
+        Log.d("test", "설문응답 : ${answer}, dbid : ${dbid}")
+        val binding2 = ActivityQuestionSelectBinding.inflate(layoutInflater)
         weight = 0.0
         flag = 0
         check_list[dbid]=true
@@ -42,8 +34,8 @@ class ResultLayout : AppCompatActivity() {
                                 binding.redLight.setBackgroundResource(R.drawable.red_circle)
                                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.resultTxt.text="불행하다"
-                        binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
+                                binding.resultTxt.text="불행하다"
+                                binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
                     }
                     2->{
                         binding.redLight.setBackgroundResource(R.drawable.gray_circle)
@@ -266,6 +258,8 @@ class ResultLayout : AppCompatActivity() {
                         binding.greenLight.setBackgroundResource(R.drawable.green_circle)
                         binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
                         binding.resultTxt.text = "정상"
+                        //영양 고득점시 식습관 검사 안함.
+                        check_list[9]=true
                     }
                 }
                 binding.nextstage.setOnClickListener {

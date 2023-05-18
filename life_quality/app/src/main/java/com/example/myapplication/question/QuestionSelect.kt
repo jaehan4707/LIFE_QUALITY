@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.Socialnum
 import com.example.myapplication.MainActivity.Companion.Total
 import com.example.myapplication.MainActivity.Companion.check_list
+import com.example.myapplication.MainActivity.Companion.dbid
 import com.example.myapplication.MainActivity.Companion.drinknum
 import com.example.myapplication.MainActivity.Companion.smokenum
 import com.example.myapplication.MainActivity.Companion.surveyList
@@ -18,7 +19,6 @@ import com.example.myapplication.R
 import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityQuestionSelectBinding
 import com.example.myapplication.databinding.TestLayoutBinding
-import com.example.myapplication.question.QuestionMainpage.Companion.dbid
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.*
@@ -28,7 +28,6 @@ class QuestionSelect : AppCompatActivity() {
     //private lateinit var binding: ActivityQuestionSelectBinding
     private var check_id=-1
     private lateinit var radio_text : String
-    private var dbid=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activityScope = CoroutineScope(Dispatchers.Main)

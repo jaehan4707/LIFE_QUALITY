@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         var smokenum : Int =0
         var Socialnum : Int =0
         var Fallum : Int =2
+        var dbid =0
         var surveyList = mutableListOf<TotalSurvey>()
         var address : String = " "
         var relation : String = " "
