@@ -204,6 +204,8 @@ class QuestionMainpage : AppCompatActivity() {
                         answer.add(Id)
                         Id = -1
                         Log.d("test", "answer : ${answer[curCount - 1]}")
+                        Log.d("test","curCount : $curCount")
+                        Log.d("test","answer : ${answer}")
                         if (curCount == surveyList.size) {
                             var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
                             startActivity(intent)
@@ -233,6 +235,7 @@ class QuestionMainpage : AppCompatActivity() {
         Log.d("test","뒤로가기를 눌렀습니다")
         if (currentFragment is FragmentInform) {
             // FragmentInform에서 뒤로가기 버튼을 눌렀을 때 액티비티를 종료
+           Log.d("test","잘못된 뒤로가기")
             super.onBackPressed()
         } else {
             // 이전 프래그먼트로 이동
@@ -247,14 +250,19 @@ class QuestionMainpage : AppCompatActivity() {
                 currentFragment = fm.findFragmentById(R.id.main_frame)
             }
             */
-            Log.d("test","before tempsurvey: ${surveyList[curCount].title}")
+            Log.d("test","이전프래그먼트로 돌아갑니다, 문항 : ${curCount}을 지웁니다.")
+            //뒤로가기하면 이전 선택지에 대한 응답을 지워야합니다. 그쵸?
             curCount--
+            Log.d("test","before tempsurvey: ${surveyList[curCount].title}")
             tempSurvey=surveyList[curCount-1]
             binding.progressbar.progress--
-            Log.d("test","이전프래그먼트로 돌아갑니다, 문항 : ${curCount}")
-            Log.d("test","after tempsurvey: ${surveyList[curCount].title}")
-            if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt() == 4) { //답변이 선택형일 경우
-                setFrag(tempSurvey.number.toInt())
+            Log.d("test", "지우고 나기 전 : ${answer}")
+            answer.removeAt(answer.size-1)
+            Log.d("test","지우고 난 후 :${answer}")
+
+            Log.d("test","after tempsurvey: ${surveyList[curCount-1].title}")
+            if (surveyList[curCount].type.toInt() == 0 || surveyList[curCount].type.toInt() == 4) { //답변이 선택형일 경우
+                setFrag(surveyList[curCount].number.toInt())
             } else { //답변이 입력형일 경우
                 setFrag(0)
             }
