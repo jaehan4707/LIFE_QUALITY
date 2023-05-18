@@ -55,6 +55,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/edittext_custom"
                 android:layout_marginTop="10dp"
+                android:imeOptions="actionDone"
                 android:layout_marginLeft="5dp"/>
             <TextView
                 android:layout_width="wrap_content"

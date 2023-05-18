@@ -258,8 +258,7 @@ class ResultLayout : AppCompatActivity() {
                         binding.greenLight.setBackgroundResource(R.drawable.green_circle)
                         binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
                         binding.resultTxt.text = "정상"
-                        //영양 고득점시 식습관 검사 안함.
-                        check_list[9]=true
+                        check_list[9]=true //영양 고득점시 식습관 설문조사를 시행하지 않도록 만듬.
                     }
                 }
                 binding.nextstage.setOnClickListener {

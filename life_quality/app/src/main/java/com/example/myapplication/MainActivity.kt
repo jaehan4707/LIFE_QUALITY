@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener{ result->
                     for(document in result) {
-                        Log.d("What is name", "${nameList[i]}")
+                        //Log.d("What is name", "${nameList[i]}")
                         Total.add(
                             TotalSurvey(
                                 nameList[i], document.id,

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -98,7 +99,6 @@ class Fragment3 : Fragment() {
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog?.setContentView(dialogBinding.root)
         dialog?.setCancelable(false)
-
         var age=0
         dialogBinding.editDrink.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
@@ -119,6 +119,31 @@ class Fragment3 : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                /*
+                Log.d("test","edit_text ${p0}")
+                if(p0?.endsWith("\n")==true){ //enter로 끝날경우
+                    Log.d("test","edit text : 엔터로 끝난경")
+                    dialogBinding.editDrink.setText(p0.subSequence(0, p0.length - 1)) // Enter 키를 제외한 내용을 적용
+                    dialogBinding.editDrink.isEnabled = false // 입력 비활성화
+                    var number :Int? = dialogBinding.editDrink.toString().toIntOrNull()
+                    if(number==null){
+                        dialogBinding.editDrink.text.clear()
+                        Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                    }
+                    //엔터키 누르면 dialog 닫고 다음으로?
+                }
+                else { //숫자가 아니다.
+                    Log.d("test","edit text : 엔터가 아닙니다.")
+                    //Log.d("test","edit text : ${dialogBinding.editDrink.toString()}")
+                    var number :Int? = p0.toString().toIntOrNull()
+                    if(number==null) {
+                        dialogBinding.editDrink.text.clear()
+                        Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            */
+                //위의 주석은 enter 누를 시 바로 닫기.
                 var number :Int? = p0.toString().toIntOrNull()
                 Log.d("test","edit_text ${p0}")
                 if(number==null){ //숫자가 아니다.

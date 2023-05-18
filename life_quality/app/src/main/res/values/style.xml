@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/custom_radiobutton</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:button">@null</item>
+    </style>
+    <style name="RadioTextStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:textSize">16sp</item> <!-- 텍스트 크기를 지정합니다 -->
+        <item name="android:fontFamily">@font/bm_dohyeon</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+</resources>
