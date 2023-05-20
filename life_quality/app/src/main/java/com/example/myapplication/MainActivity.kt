@@ -66,7 +66,8 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
                 .setDeniedMessage("알림 권한을 거절하신다면\n알림 기능을 사용할 수 없습니다")
-                .setPermissions(Manifest.permission.POST_NOTIFICATIONS)
+                .setPermissions(Manifest.permission.POST_NOTIFICATIONS,Manifest.permission.SCHEDULE_EXACT_ALARM,
+                    Manifest.permission.USE_EXACT_ALARM,Manifest.permission.RECEIVE_BOOT_COMPLETED)
                 .check()
         }
 

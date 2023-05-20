@@ -1,7 +1,11 @@
 package com.example.myapplication
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -19,15 +23,22 @@ class ResultLayout : AppCompatActivity() {
     var weight: Double = 0.0
     var flag: Int = 0
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+
     // 설문 조사 완료 일시를 날짜 형식으로 변환한다
-    val surveyCompletionTime = System.currentTimeMillis()
-    val formattedCompletionTime = dateFormat.format(Date(surveyCompletionTime))
+    private val surveyCompletionTime = System.currentTimeMillis()
+    private val formattedCompletionTime = dateFormat.format(Date(surveyCompletionTime))
+
+    //val sevenDaysInMillis = 7 * 24 * 60 * 60 * 1000
+    //val triggerTime = surveyCompletionTime + sevenDaysInMillis //설문 완료 이후 7일 이후의 시간
+    private val triggerTime = System.currentTimeMillis() + 30_000 // 현재 시간에서 30초(30,000 밀리초)를 더한 값 실제 테스트에서는 7일로 바꿔야함.
+    private val triggerFormat = dateFormat.format(Date(triggerTime))
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //여기서 점수를 쫙 계산해야함.
         Log.d("test", "설문응답 : ${answer}, dbid : ${dbid}")
-        Log.d("problem","설문조사 완료 시간 : ${formattedCompletionTime}")
+        Log.d("problem","설문조사 완료 시간 : $formattedCompletionTime")
         val binding2 = ActivityQuestionSelectBinding.inflate(layoutInflater)
+        setPush() //알림보내기.
         weight = 0.0
         flag = 0
         check_list[dbid]=true
@@ -379,8 +390,26 @@ class ResultLayout : AppCompatActivity() {
                 }
             } //완료
         }
-    }
 
+
+    }
+    private fun setPush(){
+        Log.d("problem","알람 시간 : ${triggerFormat}")
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val notificationIntent = Intent(this,MyNotificationReceiver::class.java)
+        notificationIntent.putExtra("content","검사를 안한지 7일이나 지났어요!!")
+        val pendingIntent = PendingIntent.getBroadcast(
+            this,
+            0,
+            notificationIntent,
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            } else {
+                PendingIntent.FLAG_UPDATE_CURRENT
+            }
+        )
+        alarmManager.set(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent)
+    }
     fun result(type: String) : Int {
         Log.d("test","${type}")
         var ans : Int=0
