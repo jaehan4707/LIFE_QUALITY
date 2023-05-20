@@ -1,11 +1,15 @@
 package com.example.myapplication
 
+import android.Manifest
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Window
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.myapplication.admin.AdminHome
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -14,6 +18,8 @@ import com.example.myapplication.question.QuestionSelect
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.normal.TedPermission
 
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +48,25 @@ class MainActivity : AppCompatActivity() {
         curCount = 0
         Total = mutableListOf<TotalSurvey>()
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
+            // 이미 권한이 허용된 경우 처리할 로직
+            //Toast.makeText(this,"권한이 있습니다",Toast.LENGTH_SHORT).show()
+            Log.d("problem","알림권한이 있습니다")
+        } else {
+            TedPermission.create()
+                .setPermissionListener(object : PermissionListener {
+                    override fun onPermissionGranted() {
+                        Toast.makeText(this@MainActivity, "권한 요청", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                        Toast.makeText(this@MainActivity, "권한 거부", Toast.LENGTH_SHORT).show()
+                    }
+                })
+                .setDeniedMessage("알림 권한을 거절하신다면\n알림 기능을 사용할 수 없습니다")
+                .setPermissions(Manifest.permission.POST_NOTIFICATIONS)
+                .check()
+        }
 
         val db = Firebase.firestore
         for(i in 0..nameList.size-1) {
@@ -75,7 +100,25 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
+    private fun requestPermission(logic : () -> Unit){
+        TedPermission.create()
+            .setPermissionListener(object : PermissionListener {
+                override fun onPermissionGranted() {
+                    logic()
+                }
+                override fun onPermissionDenied(deniedPermissions: List<String>) {
+                    Toast.makeText(this@MainActivity,
+                        "권한을 허가해주세요.",
+                        Toast.LENGTH_SHORT)
+                        .show()
+                }
+            })
+            .setDeniedMessage("권한을 허용해주세요. [설정] > [앱 및 알림] > [고급] > [앱 권한]")
+            .setPermissions(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.READ_CALENDAR )
+            .check()
+    }
     //커스텀 다이얼로그 띄우는 부분
     fun showDialog() {
         var dialogBinding = DialogStartBinding.inflate(layoutInflater)
