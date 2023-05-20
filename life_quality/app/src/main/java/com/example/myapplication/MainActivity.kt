@@ -49,18 +49,20 @@ class MainActivity : AppCompatActivity() {
         Total = mutableListOf<TotalSurvey>()
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
+            //해당 앱에서의 권한은 알림권한밖에 없음.
             // 이미 권한이 허용된 경우 처리할 로직
-            //Toast.makeText(this,"권한이 있습니다",Toast.LENGTH_SHORT).show()
             Log.d("problem","알림권한이 있습니다")
-        } else {
+        } else { //권한이 없을 경우 권한을 요청함.
             TedPermission.create()
                 .setPermissionListener(object : PermissionListener {
                     override fun onPermissionGranted() {
-                        Toast.makeText(this@MainActivity, "권한 요청", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this@MainActivity, "권한 요청", Toast.LENGTH_SHORT).show()
+                        Log.d("problem","권한요청")
                     }
 
                     override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
-                        Toast.makeText(this@MainActivity, "권한 거부", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this@MainActivity, "권한 거부", Toast.LENGTH_SHORT).show()
+                        Log.d("problem","권한거부")
                     }
                 })
                 .setDeniedMessage("알림 권한을 거절하신다면\n알림 기능을 사용할 수 없습니다")

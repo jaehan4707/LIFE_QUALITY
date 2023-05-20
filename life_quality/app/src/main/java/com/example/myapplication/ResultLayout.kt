@@ -11,15 +11,22 @@ import com.example.myapplication.MainActivity.Companion.dbid
 import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.databinding.*
 import com.example.myapplication.question.QuestionSelect
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ResultLayout : AppCompatActivity() {
 
     var weight: Double = 0.0
     var flag: Int = 0
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+    // 설문 조사 완료 일시를 날짜 형식으로 변환한다
+    val surveyCompletionTime = System.currentTimeMillis()
+    val formattedCompletionTime = dateFormat.format(Date(surveyCompletionTime))
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //여기서 점수를 쫙 계산해야함.
         Log.d("test", "설문응답 : ${answer}, dbid : ${dbid}")
+        Log.d("problem","설문조사 완료 시간 : ${formattedCompletionTime}")
         val binding2 = ActivityQuestionSelectBinding.inflate(layoutInflater)
         weight = 0.0
         flag = 0
