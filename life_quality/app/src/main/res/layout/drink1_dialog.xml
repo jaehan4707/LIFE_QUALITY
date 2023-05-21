@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="500dp"
+    android:orientation="vertical"
+
+    android:padding="10dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="처음으로 술 1잔을 모두"
+            android:textSize="20dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="마셔본 적이 언제입니까?"
+            android:textSize="20dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="('모름'은 99로 기재))"
+            android:textSize="20dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:layout_marginTop="2dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="만"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
+            <EditText
+                android:id="@+id/edit_drink"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_custom"
+                android:layout_marginTop="10dp"
+                android:imeOptions="actionDone"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="세"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <android.widget.Button
+            android:id="@+id/drink1Start"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:textSize="15dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
+            android:background="@drawable/orange_button"
+            android:layout_marginRight="40dp"/>
+        <android.widget.Button
+            android:id="@+id/drink1End"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="닫기"
+            android:textSize="15dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:background="@drawable/gray_button"/>
+    </LinearLayout>
+
+</LinearLayout>

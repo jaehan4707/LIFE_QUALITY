@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">건강측정기</string>
+    <string name="EQ5D">본 조사는 설문자의 전반적인 삶의 수준을 평가합니다.</string>
+    <string name="Fall">본 조사는 일상생활 속에서 넘어지거나 떨어져서 발생하는 낙상 사고에 얼마나 노출되어있는지 평가합니다.</string>
+    <string name="SleepHabit">본 조사는 설문자의 수면습관을 평가합니다.</string>
+    <string name="SGDSK">본 조사는 우울 정도와 활력 등을 측정하여 설문자의 정신 건강상태를 평가합니다. </string>
+    <string name="MouthHealth">본 조사는 설문자의 구강상태를 평가합니다.</string>
+    <string name="Frality1">노쇠란 나이가 들어서 생기는 정상적인 노화 과정이 아닌 비정상적인 노화 과정을 의미합니다.  \n  본 조사는 설문자의 노쇠 정도를 측정합니다. </string>
+    <string name="IPAQ">본 조사는 설문자의 운동건강 상태를 평가합니다.</string>
+    <string name="MNA">본 조사는 설문자의 영양상태를 측정합니다.</string>
+    <string name="Nutrition">본 조사는 일상생활에서 설문자의 식습관을 평가합니다.</string>
+    <string name="Yosil">본 조사는 설문자의 요실금 위험 정도를 측정합니다.</string>
 </resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="300dp"
+    android:orientation="vertical"
+
+    android:padding="10dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="답변을 선택하고 넘어가면"
+            android:textSize="20dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="뒤로갈 수 없습니다."
+            android:textSize="20dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="신중하게 선택해 주세요☺️"
+            android:textSize="20dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/main_orange"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="설문을 시작하시겠어요?"
+            android:textSize="20dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <android.widget.Button
+            android:id="@+id/dialog_start"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="시작하기"
+            android:textSize="15dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
+            android:background="@drawable/orange_button"
+            android:layout_marginRight="40dp"/>
+        <android.widget.Button
+            android:id="@+id/dialog_back"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="돌아가기"
+            android:textSize="15dp"
+            android:fontFamily="@font/bm_dohyeon"
+            android:background="@drawable/gray_button"/>
+    </LinearLayout>
+
+</LinearLayout>
