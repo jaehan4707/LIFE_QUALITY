@@ -21,7 +21,6 @@ class MyNotificationReceiver : BroadcastReceiver() {
         Log.d("problem", "onReceive contentValue값 확인 : $contentValue")
 
         var builder: NotificationCompat.Builder? = null
-
         //푸시 알림을 보내기위해 시스템에 권한을 요청하여 생성
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         //안드로이드 오레오 버전 대응

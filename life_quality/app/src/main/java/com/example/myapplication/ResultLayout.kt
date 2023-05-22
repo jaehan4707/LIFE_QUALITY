@@ -13,17 +13,20 @@ import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.check_list
 import com.example.myapplication.MainActivity.Companion.dbid
 import com.example.myapplication.MainActivity.Companion.type
+import com.example.myapplication.SplashActivity.Companion.token
 import com.example.myapplication.databinding.*
 import com.example.myapplication.question.QuestionSelect
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.firebase.database.FirebaseDatabase
 
 class ResultLayout : AppCompatActivity() {
 
     var weight: Double = 0.0
     var flag: Int = 0
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-
+    val record_date =SimpleDateFormat("yyyy-MM-dd",Locale.getDefault())
+    val date = record_date.format(Date())
     // 설문 조사 완료 일시를 날짜 형식으로 변환한다
     private val surveyCompletionTime = System.currentTimeMillis()
     private val formattedCompletionTime = dateFormat.format(Date(surveyCompletionTime))
@@ -36,8 +39,42 @@ class ResultLayout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //여기서 점수를 쫙 계산해야함.
         Log.d("test", "설문응답 : ${answer}, dbid : ${dbid}")
+
         Log.d("problem","설문조사 완료 시간 : $formattedCompletionTime")
         val binding2 = ActivityQuestionSelectBinding.inflate(layoutInflater)
+        val database = FirebaseDatabase.getInstance()
+        /*
+        val dateRef = database.getReference("User/token/${token!!}/date")
+        dateRef.push().setValue(date).addOnSuccessListener {
+            Log.d("problem", "날짜 : ${date.toString()} 저장 성공")
+        }
+            .addOnFailureListener { exception ->
+                Log.d("problem", "날짜 : ${date} 저장 실패", exception)
+            }
+
+         */
+        val answerRef = database.getReference("User/token/${token!!}/${date}/${type}/answer")
+        answerRef.setValue(answer).addOnSuccessListener {
+            Log.d("problem", "answer 저장 성공")
+        }
+            .addOnFailureListener { exception ->
+                Log.d("problem", "answer 저장 실패", exception)
+            }
+        /*
+        val dateRef = database.getReference("User/token/${token!!}/date")
+        dateRef.setValue(date).addOnSuccessListener { Log.d("problem", "날짜 : ${date.toString()} 저장 성공") }
+            .addOnFailureListener { Log.d("problem", "날짜 : ${date} 저장 실패") }
+
+        val answerRef = database.getReference("User/token/${token!!}/date/$date")
+        val childUpdates = HashMap<String, Any>()
+        childUpdates["date"] = date
+        childUpdates["answer"] = answer
+
+        answerRef.updateChildren(childUpdates).addOnSuccessListener {
+            Log.d("problem", "날짜와 answer 저장 성공")
+        }
+            .addOnFailureListener { Log.d("problem", "날짜와 answer 저장 실패") }
+         */
         setPush() //알림보내기.
         weight = 0.0
         flag = 0
@@ -396,6 +433,7 @@ class ResultLayout : AppCompatActivity() {
     private fun setPush(){
         Log.d("problem","알람 시간 : ${triggerFormat}")
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
         val notificationIntent = Intent(this,MyNotificationReceiver::class.java)
         notificationIntent.putExtra("content","검사를 안한지 7일이나 지났어요!!")
         val pendingIntent = PendingIntent.getBroadcast(

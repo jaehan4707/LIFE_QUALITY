@@ -13,10 +13,13 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivitySplashBinding
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.FirebaseOptions
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.messaging.FirebaseMessaging
 import com.gun0912.tedpermission.PermissionListener
 import kotlinx.coroutines.*
+import java.io.FileInputStream
 
 class SplashActivity : AppCompatActivity() {
     val activityScope = CoroutineScope(Dispatchers.Main)
@@ -25,6 +28,7 @@ class SplashActivity : AppCompatActivity() {
         lateinit var databaseReference: DatabaseReference
         //lateinit var authReference: FirebaseAuth
         lateinit var fcmReference: FirebaseMessaging
+        var token : String? = null
     }
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +48,8 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-
     private fun getToken(): String?{
-        var token : String?= null
+
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener {
             task -> if(!task.isSuccessful){
                 Log.w("problem","FCM 토큰 등록 실패",task.exception)
@@ -54,8 +57,9 @@ class SplashActivity : AppCompatActivity() {
         }
             token = task.result
 
-            Log.d("problem","FCM token is ${token}")
+
         })
+
         return  token
     }
 

@@ -16,6 +16,10 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
 import com.example.myapplication.question.QuestionSelect
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.gun0912.tedpermission.PermissionListener
@@ -47,7 +51,31 @@ class MainActivity : AppCompatActivity() {
         //질문 개수와 질문 리스트 초기화하고 다시 받아와야함.
         curCount = 0
         Total = mutableListOf<TotalSurvey>()
+        val database = FirebaseDatabase.getInstance()
+        val userRef = database.getReference("User/token/${SplashActivity.token!!}") //toekn 경로에 저장한다.
 
+        Log.d("problem","FCM token is ${SplashActivity.token}")
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {  // 해당 token 값이 이미 존재하므로 작업을 멈춥니다.
+                    Log.d("problem", "해당 token 값이 이미 존재합니다. 작업을 멈춥니다.")
+                    return
+                }
+                // 해당 token 값이 존재하지 않으므로 작업을 계속 진행합니다.
+                userRef.setValue(SplashActivity.token)
+                    .addOnSuccessListener {
+                        Log.d("problem", "token 저장 성공")
+                        // 작업을 진행할 코드를 추가하세요
+                    }
+                    .addOnFailureListener {
+                        Log.d("problem", "token 저장 실패")
+                    }
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                // 읽기 작업이 취소된 경우에 호출됩니다.
+                Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
+            }
+        })
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
             //해당 앱에서의 권한은 알림권한밖에 없음.
             // 이미 권한이 허용된 경우 처리할 로직
@@ -103,6 +131,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
     private fun requestPermission(logic : () -> Unit){
         TedPermission.create()
             .setPermissionListener(object : PermissionListener {
