@@ -7,10 +7,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -93,9 +95,25 @@ class Fragment3 : Fragment() {
         }
         return str2
     }
+    fun closeDialog(rootView: View){
+        rootView.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                // 터치 이벤트가 발생하면 키보드를 숨깁니다.
+                Log.d("test","터치이벤트가 발생해서 키보드르 숨깁니다.")
+                val inputMethodManager =
+                    requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(rootView.windowToken, 0)
+                rootView.clearFocus()
+            }
+            false
+        }
+    }
     fun showDialog() {
         var dialogBinding = Drink1DialogBinding.inflate(layoutInflater)
         var dialog = this.context?.let { Dialog(it) }
+        val rootView = dialogBinding.root
+        closeDialog(rootView)
+
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog?.setContentView(dialogBinding.root)
         dialog?.setCancelable(false)
@@ -119,30 +137,6 @@ class Fragment3 : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                /*
-                Log.d("test","edit_text ${p0}")
-                if(p0?.endsWith("\n")==true){ //enter로 끝날경우
-                    Log.d("test","edit text : 엔터로 끝난경")
-                    dialogBinding.editDrink.setText(p0.subSequence(0, p0.length - 1)) // Enter 키를 제외한 내용을 적용
-                    dialogBinding.editDrink.isEnabled = false // 입력 비활성화
-                    var number :Int? = dialogBinding.editDrink.toString().toIntOrNull()
-                    if(number==null){
-                        dialogBinding.editDrink.text.clear()
-                        Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
-                    }
-                    //엔터키 누르면 dialog 닫고 다음으로?
-                }
-                else { //숫자가 아니다.
-                    Log.d("test","edit text : 엔터가 아닙니다.")
-                    //Log.d("test","edit text : ${dialogBinding.editDrink.toString()}")
-                    var number :Int? = p0.toString().toIntOrNull()
-                    if(number==null) {
-                        dialogBinding.editDrink.text.clear()
-                        Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-            */
                 //위의 주석은 enter 누를 시 바로 닫기.
                 var number :Int? = p0.toString().toIntOrNull()
                 Log.d("test","edit_text ${p0}")
@@ -154,7 +148,13 @@ class Fragment3 : Fragment() {
         })
         dialogBinding.drink1Start.setOnClickListener() {
             //여기를 바꿔줬음. -> 다이얼로그 시작하기 누르면 -> 목록을 정할수 있도록 해줄생각.
-            dialog?.dismiss()
+            if(dialogBinding.editDrink.toString().toIntOrNull()!=null)
+            {
+                dialog?.dismiss()
+            }
+            else{
+                Toast.makeText(requireContext(), "값을 입력해주세요!!", Toast.LENGTH_SHORT).show()
+            }
         }
         dialogBinding.drink1End.setOnClickListener() {
             dialog?.dismiss()

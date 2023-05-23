@@ -7,9 +7,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -105,8 +107,26 @@ class Fragment4 : Fragment() {
         }
         return str2
     }
+
+    fun closeDialog(rootView: View){
+        rootView.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                // 터치 이벤트가 발생하면 키보드를 숨깁니다.
+                Log.d("test","터치이벤트가 발생해서 키보드르 숨깁니다.")
+                val inputMethodManager =
+                    requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(rootView.windowToken, 0)
+                rootView.clearFocus()
+            }
+            false
+        }
+    }
     fun showDialog1() {
+        Log.d("test","test testtest")
         var dialogBinding = Smoke1DialogBinding.inflate(layoutInflater)
+        val rootView = dialogBinding.root
+        closeDialog(rootView)
+
         var dialog = this.context?.let { Dialog(it) }
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog?.setContentView(dialogBinding.root)
@@ -142,7 +162,12 @@ class Fragment4 : Fragment() {
         })
         dialogBinding.smoke1Start.setOnClickListener() {
             //여기를 바꿔줬음. -> 다이얼로그 시작하기 누르면 -> 목록을 정할수 있도록 해줄생각.
-            dialog?.dismiss()
+            if(dialogBinding.editSmoke1.toString().toIntOrNull()!=null) {
+                dialog?.dismiss()
+            }
+            else{
+                Toast.makeText(requireContext(), "값을 입력해주세요!!", Toast.LENGTH_SHORT).show()
+            }
         }
         dialogBinding.smoke1End.setOnClickListener() {
             dialog?.dismiss()
@@ -154,6 +179,9 @@ class Fragment4 : Fragment() {
     fun showDialog2() {
         var dialogBinding = Smoke2DialogBinding.inflate(layoutInflater)
         var dialog = this.context?.let { Dialog(it) }
+        val rootView = dialogBinding.root
+        closeDialog(rootView)
+
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog?.setContentView(dialogBinding.root)
         dialog?.setCancelable(false)
@@ -177,7 +205,6 @@ class Fragment4 : Fragment() {
         dialogBinding.editDaySmoke.addTextChangedListener(textWatcher)
         dialogBinding.editMonthSmoke.addTextChangedListener(textWatcher)
 
-
         dialogBinding.smoke2Start.setOnClickListener() {
             //여기를 바꿔줬음. -> 다이얼로그 시작하기 누르면 -> 목록을 정할수 있도록 해줄생각.
             if(dialogBinding.editDaySmoke.text.toString()!="" && dialogBinding.editMonthSmoke.text.toString()!="")
@@ -195,6 +222,9 @@ class Fragment4 : Fragment() {
     fun showDialog3() {
         var dialogBinding = Smoke3DialogBinding.inflate(layoutInflater)
         var dialog = this?.context?.let { Dialog(it) }
+        val rootView = dialogBinding.root
+        closeDialog(rootView)
+
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog?.setContentView(dialogBinding.root)
         dialog?.setCancelable(false)
