@@ -5,15 +5,21 @@ import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import com.example.myapplication.admin.AdminHome
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
+import com.example.myapplication.databinding.NotiDialogBinding
+import com.example.myapplication.databinding.Smoke1DialogBinding
 import com.example.myapplication.question.QuestionSelect
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
@@ -52,9 +58,10 @@ class MainActivity : AppCompatActivity() {
         curCount = 0
         Total = mutableListOf<TotalSurvey>()
         val database = FirebaseDatabase.getInstance()
-        val userRef = database.getReference("User/token/${SplashActivity.token!!}") //toekn 경로에 저장한다.
+        val userRef =
+            database.getReference("User/token/${SplashActivity.token!!}") //toekn 경로에 저장한다.
 
-        Log.d("problem","FCM token is ${SplashActivity.token}")
+        Log.d("problem", "FCM token is ${SplashActivity.token}")
         userRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {  // 해당 token 값이 이미 존재하므로 작업을 멈춥니다.
@@ -71,50 +78,64 @@ class MainActivity : AppCompatActivity() {
                         Log.d("problem", "token 저장 실패")
                     }
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
                 // 읽기 작업이 취소된 경우에 호출됩니다.
                 Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
             }
         })
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             //해당 앱에서의 권한은 알림권한밖에 없음.
             // 이미 권한이 허용된 경우 처리할 로직
-            Log.d("problem","알림권한이 있습니다")
+            Log.d("problem", "알림권한이 있습니다")
         } else { //권한이 없을 경우 권한을 요청함.
             TedPermission.create()
                 .setPermissionListener(object : PermissionListener {
                     override fun onPermissionGranted() {
                         //Toast.makeText(this@MainActivity, "권한 요청", Toast.LENGTH_SHORT).show()
-                        Log.d("problem","권한요청")
+                        Log.d("problem", "권한요청")
                     }
 
                     override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
                         //Toast.makeText(this@MainActivity, "권한 거부", Toast.LENGTH_SHORT).show()
-                        Log.d("problem","권한거부")
+                        Log.d("problem", "권한거부")
                     }
                 })
                 .setDeniedMessage("알림 권한을 거절하신다면\n알림 기능을 사용할 수 없습니다")
-                .setPermissions(Manifest.permission.POST_NOTIFICATIONS,Manifest.permission.SCHEDULE_EXACT_ALARM,
-                    Manifest.permission.USE_EXACT_ALARM,Manifest.permission.RECEIVE_BOOT_COMPLETED)
+                .setPermissions(
+                    Manifest.permission.POST_NOTIFICATIONS,
+                    Manifest.permission.SCHEDULE_EXACT_ALARM,
+                    Manifest.permission.USE_EXACT_ALARM,
+                    Manifest.permission.RECEIVE_BOOT_COMPLETED
+                )
                 .check()
         }
 
         val db = Firebase.firestore
-        for(i in 0..nameList.size-1) {
+        for (i in 0..nameList.size - 1) {
             db.collection("${nameList[i]}")
                 .get()
-                .addOnSuccessListener{ result->
-                    for(document in result) {
+                .addOnSuccessListener { result ->
+                    for (document in result) {
                         //Log.d("What is name", "${nameList[i]}")
                         Total.add(
                             TotalSurvey(
-                                nameList[i], document.id,
-                            document.data["number"] as String,document.data["title"] as String, document.data["type"] as String,
-                            document.data["answer"] as MutableMap<String, String>,false)
+                                nameList[i],
+                                document.id,
+                                document.data["number"] as String,
+                                document.data["title"] as String,
+                                document.data["type"] as String,
+                                document.data["answer"] as MutableMap<String, String>,
+                                false
+                            )
                         )
                     }
                 }
-                .addOnFailureListener{ exception ->
+                .addOnFailureListener { exception ->
                     Log.w("Get Data Error", exception)
                 }
         }
@@ -122,13 +143,27 @@ class MainActivity : AppCompatActivity() {
         binding.qStart.setOnClickListener() {
             showDialog()
         }
-        binding.redCircle.setOnClickListener{
-            val intent =Intent(this, AdminHome::class.java)
+        binding.redCircle.setOnClickListener {
+            val intent = Intent(this, AdminHome::class.java)
             startActivity(intent)
         }
         binding.edu.setOnClickListener() {
             val intent = Intent(this, CardActivity::class.java)
             startActivity(intent)
+        }
+        binding.helpNoti.setOnClickListener {
+            Log.d("test", "test testtest")
+            val dialogView = LayoutInflater.from(this@MainActivity).inflate(R.layout.noti_dialog, null)
+            val dialogBinding = NotiDialogBinding.inflate(layoutInflater)
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialogBinding.btnClose.setOnClickListener {
+                dialog.dismiss() // 다이얼로그를 닫기
+            }
+            dialog.setContentView(dialogBinding.root)
+            dialog.setCancelable(false)
+            dialog.show()
+            dialog.window?.setLayout(1100, 1100)
         }
     }
 
@@ -158,8 +193,6 @@ class MainActivity : AppCompatActivity() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(dialogBinding.root)
         dialog.setCancelable(false)
-
-
         dialogBinding.dialogStart.setOnClickListener() {
             //여기를 바꿔줬음. -> 다이얼로그 시작하기 누르면 -> 목록을 정할수 있도록 해줄생각.
             var intent = Intent(this, QuestionSelect::class.java)

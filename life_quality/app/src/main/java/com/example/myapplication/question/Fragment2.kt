@@ -18,22 +18,12 @@ class Fragment2 : Fragment() {
 
     lateinit var callback : OnBackPressedCallback
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        //프레그먼트가 처음 실행될 때 실행하는 메소드
-        //res폴더에 만들어준 xml파일과 연결해주어야 함.
-
-        //var keyList= mutableListOf<String>()
-        //var valueList = mutableListOf<String>()
         val keyList = ArrayList<String>(2) // 초기 용량(capacity)이 2인 ArrayList 생성
         val valueList = ArrayList<String>(2) // 초기 용량(capacity)이 2인 ArrayList 생성
-
         var binding = Type2FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
-
-
         binding.type2Number.text = "문항 " + curCount.toString()
-        //binding.type2Number.text = "문항 " + tempSurvey.id.toString()
         binding.type2Title.text = tempSurvey.title.toString()
         var keyIndex = -1
-
         for ((key, value) in tempSurvey.answer) {
             if (value == "예") {
                 keyList.add(0, key)
@@ -60,7 +50,6 @@ class Fragment2 : Fragment() {
             when(i){
                 binding.rb1.id -> {
                     QuestionMainpage.Id = (keyList[0].toInt())
-
                 }
                 binding.rb2.id -> {
                     QuestionMainpage.Id = (keyList[1].toInt())
