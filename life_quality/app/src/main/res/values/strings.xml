@@ -10,4 +10,6 @@
     <string name="MNA">본 조사는 설문자의 영양상태를 측정합니다.</string>
     <string name="Nutrition">본 조사는 일상생활에서 설문자의 식습관을 평가합니다.</string>
     <string name="Yosil">본 조사는 설문자의 요실금 위험 정도를 측정합니다.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

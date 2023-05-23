@@ -48,6 +48,9 @@ class QuestionMainpage : AppCompatActivity() {
         binding.progressbar.progress = 0
 
         // "다음" 버튼 클릭 이벤트 구현 부분
+        binding.backStage.setOnClickListener{
+            onBackBtnPressed()
+        }
         binding.nextstage.setOnClickListener() {
             //설문이 끝났을 경우 결과 확인 페이지로 이동
             Log.d("test", "라디오 버튼의 값 : $Id")
@@ -233,25 +236,13 @@ class QuestionMainpage : AppCompatActivity() {
             }
         }
     }
-    override fun onBackPressed() {
+    fun onBackBtnPressed() {
         Log.d("test","뒤로가기를 눌렀습니다")
         if (currentFragment is FragmentInform) {
             // FragmentInform에서 뒤로가기 버튼을 눌렀을 때 액티비티를 종료
            Log.d("test","잘못된 뒤로가기")
             super.onBackPressed()
         } else {
-            // 이전 프래그먼트로 이동
-            /*
-            val fm = supportFragmentManager
-            if (fm.backStackEntryCount > 0) {
-                curCount--
-                Log.d("test","이전프래그먼트로 돌아갑니다, 문항 : ${curCount}")
-                fm.popBackStack()
-                binding.progressbar.progress--
-                tempSurvey= surveyList[curCount]
-                currentFragment = fm.findFragmentById(R.id.main_frame)
-            }
-            */
             Log.d("test","이전프래그먼트로 돌아갑니다, 문항 : ${curCount}을 지웁니다.")
             //뒤로가기하면 이전 선택지에 대한 응답을 지워야합니다. 그쵸?
             curCount--

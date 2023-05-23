@@ -79,6 +79,7 @@ class ResultLayout : AppCompatActivity() {
         weight = 0.0
         flag = 0
         check_list[dbid]=true
+
         when (type) {
             "EQ5D" -> {
                 val binding = Eq5dResultBinding.inflate(layoutInflater)
