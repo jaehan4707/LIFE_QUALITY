@@ -72,18 +72,35 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             }
             dialog.window?.attributes = dialogLayoutParams
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            val RgSex = dialogBinding.rgSex
+            val RgAge = dialogBinding.rgAge
+            val RgDrink = dialogBinding.rgDrink
+            val RgFamily = dialogBinding.rgFamily
+            val RgSmoke = dialogBinding.rgSmoke
+            val RgHealth = dialogBinding.rgHealth
+            val RgStudy = dialogBinding.rgStudy
+            var selectSex = RgSex.checkedRadioButtonId
+            var selectAge = RgAge.checkedRadioButtonId
+            var selectDrink = RgDrink.checkedRadioButtonId
+            var selectFamily = RgFamily.checkedRadioButtonId
+            var selectSmoke = RgSmoke.checkedRadioButtonId
+            var selectHealth = RgHealth.checkedRadioButtonId
+            var selectStudy = RgStudy.checkedRadioButtonId
+
             dialogBinding.agreeClose.setOnClickListener {
                 val phoneNumber = dialogBinding.editPhone.text.toString()
+                Log.d("problem","전화번호 : ${dialogBinding.editPhone.text.toString()}")
                 val isValidPhoneNumber = android.util.Patterns.PHONE.matcher(phoneNumber).matches()
                 if (isValidPhoneNumber) { // 입력된게 전화번호 형식이면
+                    Log.d("problem","적절한 전화번호 양식")
                     dialog.dismiss() // 다이얼로그를 닫기
                 } else {
+                    Log.d("problem","잘못ㅣ 전화번호 양식")
                     Toast.makeText(this,"전화번호부 형식이 잘못된거같아요!!\n다시 입력해주세요",Toast.LENGTH_SHORT).show()
                 }
             }
             dialog.setContentView(dialogBinding.root)
             dialog.setCancelable(false)
-
             val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
             val displayMetrics = DisplayMetrics()
             windowManager.defaultDisplay.getMetrics(displayMetrics)
