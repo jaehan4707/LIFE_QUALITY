@@ -4,32 +4,44 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.myapplication.admin.AdminHome
+import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.SplashActivity.Companion.token
+import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.databinding.ActivityAgreeBinding
 import com.example.myapplication.databinding.AgreeDialogBinding
-import com.example.myapplication.databinding.NotiDialogBinding
+import com.example.myapplication.model.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티비티
-    val binding : ActivityAgreeBinding by lazy{
+    val binding: ActivityAgreeBinding by lazy {
         ActivityAgreeBinding.inflate(layoutInflater)
     }
+    private var Sex : String = ""
+    private var Age : String =""
+    private  var Family : String =""
+    private var Study : String =""
+    private  var Helath : String =""
+    private  var Smoke : String=""
+    private  var Drink : String=""
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val intent = Intent(this, MainActivity::class.java) //intent
         val database = FirebaseDatabase.getInstance()
         val userRef =
@@ -72,33 +84,6 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             }
             dialog.window?.attributes = dialogLayoutParams
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            val RgSex = dialogBinding.rgSex
-            val RgAge = dialogBinding.rgAge
-            val RgDrink = dialogBinding.rgDrink
-            val RgFamily = dialogBinding.rgFamily
-            val RgSmoke = dialogBinding.rgSmoke
-            val RgHealth = dialogBinding.rgHealth
-            val RgStudy = dialogBinding.rgStudy
-            var selectSex = RgSex.checkedRadioButtonId
-            var selectAge = RgAge.checkedRadioButtonId
-            var selectDrink = RgDrink.checkedRadioButtonId
-            var selectFamily = RgFamily.checkedRadioButtonId
-            var selectSmoke = RgSmoke.checkedRadioButtonId
-            var selectHealth = RgHealth.checkedRadioButtonId
-            var selectStudy = RgStudy.checkedRadioButtonId
-
-            dialogBinding.agreeClose.setOnClickListener {
-                val phoneNumber = dialogBinding.editPhone.text.toString()
-                Log.d("problem","전화번호 : ${dialogBinding.editPhone.text.toString()}")
-                val isValidPhoneNumber = android.util.Patterns.PHONE.matcher(phoneNumber).matches()
-                if (isValidPhoneNumber) { // 입력된게 전화번호 형식이면
-                    Log.d("problem","적절한 전화번호 양식")
-                    dialog.dismiss() // 다이얼로그를 닫기
-                } else {
-                    Log.d("problem","잘못ㅣ 전화번호 양식")
-                    Toast.makeText(this,"전화번호부 형식이 잘못된거같아요!!\n다시 입력해주세요",Toast.LENGTH_SHORT).show()
-                }
-            }
             dialog.setContentView(dialogBinding.root)
             dialog.setCancelable(false)
             val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
@@ -107,11 +92,70 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             val screenWidth = displayMetrics.widthPixels
             val screenHeight = displayMetrics.heightPixels
             dialog.window?.setLayout(screenWidth, screenHeight)
-
             dialog.show()
+            clickRadio(dialogBinding, dialogBinding.rgSex, "Sex")
+            clickRadio(dialogBinding, dialogBinding.rgAge, "Age")
+            clickRadio(dialogBinding, dialogBinding.rgFamily, "Family")
+            clickRadio(dialogBinding, dialogBinding.rgStudy, "Scholarship")
+            clickRadio(dialogBinding, dialogBinding.rgHealth, "Medical_insurance")
+            clickRadio(dialogBinding, dialogBinding.rgDrink, "Drink")
+            clickRadio(dialogBinding, dialogBinding.rgSmoke, "Smoke")
+
+            var selectSex = dialogBinding.rgSex.checkedRadioButtonId
+            var selectAge = dialogBinding.rgAge.checkedRadioButtonId
+            var selectFamily = dialogBinding.rgFamily.checkedRadioButtonId
+            var selectStudy = dialogBinding.rgStudy.checkedRadioButtonId
+            var selectSmoke = dialogBinding.rgSmoke.checkedRadioButtonId
+            var selectDrink = dialogBinding.rgDrink.checkedRadioButtonId
+            var selectHealth = dialogBinding.rgHealth.checkedRadioButtonId
+
+            closeDialog(dialogBinding.root)
+            dialogBinding.agreeClose.setOnClickListener {
+                val phoneNumber = dialogBinding.editPhone.text.toString()
+                val isValidPhoneNumber = android.util.Patterns.PHONE.matcher(phoneNumber).matches()
+                if (!isValidPhoneNumber || Sex.isEmpty() || Age.isEmpty() || Family.isEmpty()||Study.isEmpty()
+                    ||Helath.isEmpty()||Smoke.isEmpty()||Drink.isEmpty()) { // 입력된게 전화번호 형식이면
+                        Toast.makeText(this, "빈칸이 있어요!! 선택을 완벽하게 해주세요", Toast.LENGTH_SHORT).show()
+                    } else {
+                        user=User(token.toString(),Sex,Age,Family,Study,Helath,Smoke,Drink,phoneNumber)
+                        Log.d("problem", "${user}")
+                        dialog.dismiss() // 다이얼로그를 닫기
+                        startActivity(intent)
+                    }
+                }
+
+            }
+            binding.no.setOnClickListener {
+                Toast.makeText(this, "참여를 원치 않으신다면 해당 어플리케이션을 사용하실 수 없습니다", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
-        binding.no.setOnClickListener {
-            Toast.makeText(this,"참여를 원치 않으신다면 해당 어플리케이션을 사용하실 수 없습니다",Toast.LENGTH_SHORT).show()
+    fun closeDialog(rootView: View){
+        rootView.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                // 터치 이벤트가 발생하면 키보드를 숨깁니다.
+                Log.d("test","터치이벤트가 발생해서 키보드르 숨깁니다.")
+                val inputMethodManager =
+                    this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(rootView.windowToken, 0)
+                rootView.clearFocus()
+            }
+            false
+        }
+    }
+    fun clickRadio(binding: AgreeDialogBinding, radioGroup: RadioGroup, str: String) {
+        radioGroup.setOnCheckedChangeListener { group, checkedId -> // 라디오 버튼의 선택 상태가 변경되었을 때 호출되는 메서드입니다.
+            val radioButton = radioGroup.findViewById<RadioButton>(checkedId)
+            val selectedText = radioButton.text.toString()
+            when(str){
+                "Sex"-> Sex=selectedText
+                "Age"->Age=selectedText
+                "Family"->Family=selectedText
+                "Scholarship"->Study=selectedText
+                "Medical_insurance" ->Helath=selectedText
+                "Smoke"->Smoke=selectedText
+                "Drink"->Drink=selectedText
+            }
         }
     }
 }

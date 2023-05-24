@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
             dialog.setContentView(dialogBinding.root)
             dialog.setCancelable(false)
             dialog.show()
-            dialog.window?.setLayout(1100, 1100)
+            dialog.window?.setLayout(1100, 1400)
         }
     }
 

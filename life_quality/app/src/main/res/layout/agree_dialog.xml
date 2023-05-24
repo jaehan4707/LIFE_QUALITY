@@ -75,14 +75,14 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <RadioButton
-                    android:id="@+id/rb_man"
+                    android:id="@+id/rbman"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/bm_dohyeon"
                     android:text="남성" />
                 <RadioButton
-                    android:id="@+id/rb_woman"
+                    android:id="@+id/rbwoman"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -159,18 +159,21 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <RadioButton
+                    android:id="@+id/f_1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="홀로"
                     android:fontFamily="@font/bm_dohyeon"/>
                 <RadioButton
+                    android:id="@+id/f_2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="노부부만"
                     android:fontFamily="@font/bm_dohyeon"/>
                 <RadioButton
+                    android:id="@+id/f_3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -178,6 +181,7 @@
                     android:fontFamily="@font/bm_dohyeon"/>
                     />
                 <RadioButton
+                    android:id="@+id/f_4"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -210,6 +214,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <RadioButton
+                    android:id="@+id/study_1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -217,6 +222,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/study_2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -224,6 +230,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/study_3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -231,6 +238,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/study_4"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -264,6 +272,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <RadioButton
+                    android:id="@+id/health_1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -271,6 +280,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/health_2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -278,6 +288,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/health_3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -312,6 +323,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <RadioButton
+                    android:id="@+id/smoke_1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -319,6 +331,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/smoke_2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -326,6 +339,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/smoke_3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -333,6 +347,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/smoke_4"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -340,6 +355,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/smoke_5"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -374,6 +390,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <RadioButton
+                    android:id="@+id/drink_1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -381,6 +398,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/drink_2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -388,6 +406,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/drink_3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -395,6 +414,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/drink_4"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -402,6 +422,7 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
                 <RadioButton
+                    android:id="@+id/drink_5"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
