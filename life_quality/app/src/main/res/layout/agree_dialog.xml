@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.8"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="전화번호를 입력해주세요!"
+        android:gravity="center"
+        android:fontFamily="@font/bm_dohyeon"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        />
+    <ImageButton
+        android:id="@+id/agree_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_close_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/title"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="15dp"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:hint="전화번호"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:endIconMode="clear_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_phone"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/bm_dohyeon"
+            android:inputType="phone"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.85"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:background="@drawable/info_text"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="성별"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:text="남성" />
+
+                <RadioButton
+                    android:id="@+id/rb_woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:text="여성" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_weight="0.4"
+            android:background="@drawable/info_text"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:padding="10dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:text="연령"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/age_young"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:text="65~69세" />
+
+                <RadioButton
+                    android:id="@+id/age_old"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:text="70~74세"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:orientation="horizontal"
+            android:background="@drawable/info_text"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="가족 구성"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                />
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="홀로"
+                    android:fontFamily="@font/bm_dohyeon"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="노부부만"
+                    android:fontFamily="@font/bm_dohyeon"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="자녀들과 함께"
+                    android:fontFamily="@font/bm_dohyeon"/>
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="기타"
+                    android:fontFamily="@font/bm_dohyeon"/>
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:orientation="horizontal"
+            android:background="@drawable/info_text">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="최종학력"
+                android:padding="10dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="초등학교 졸업"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="중학교 졸업"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="고등학교 졸업"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="대학교 졸업 이상"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal"
+            android:background="@drawable/info_text">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="의료 보험 종류"
+                android:padding="10dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="건강 보험"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="의료 급여"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="미 가입"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="@drawable/info_text">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="흡연\n보통 하루에 피우는 담배 개비 수"
+                android:padding="10dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="0-5개비"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="6-10개비"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="11-20개비"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="21-29개비"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="30개비 이"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="@drawable/info_text">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="음주\n술을 얼마나 자주 마십니까?"
+                android:padding="10dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="전혀 안 마심"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="월 1회 미만"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="월 2~4회"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="주 2~3회"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="주 4회 이상"
+                    android:fontFamily="@font/bm_dohyeon"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
