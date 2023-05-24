@@ -38,7 +38,6 @@ class QuestionSelect : AppCompatActivity() {
         var tes = mutableListOf<TotalSurvey>()
         var nameList = mutableListOf<String>(
             "EQ5D","SGDSK","SleepHabit","Fall","MouthHealth","Frailty", "IPAQ", "MNA", "Yosil", "Nutrition","SDoH"
-
         )
         for(i in 0 until check_list.size){
             if(check_list[i]){ //이미 완료된 설문이라면

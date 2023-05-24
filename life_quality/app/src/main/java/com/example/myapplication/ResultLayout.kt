@@ -16,12 +16,18 @@ import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.SplashActivity.Companion.token
 import com.example.myapplication.databinding.*
 import com.example.myapplication.question.QuestionSelect
+import com.example.myapplication.result.Eq5dFragment
+import com.example.myapplication.result.FallFragment
+import com.example.myapplication.result.*
 import java.text.SimpleDateFormat
 import java.util.*
 import com.google.firebase.database.FirebaseDatabase
 
 class ResultLayout : AppCompatActivity() {
 
+    val binding: ResultLayoutBinding by lazy {
+        ResultLayoutBinding.inflate(layoutInflater)
+    }
     var weight: Double = 0.0
     var flag: Int = 0
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
@@ -38,21 +44,10 @@ class ResultLayout : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //여기서 점수를 쫙 계산해야함.
+        setContentView(binding.root)
         Log.d("test", "설문응답 : ${answer}, dbid : ${dbid}")
-
         Log.d("problem","설문조사 완료 시간 : $formattedCompletionTime")
-        val binding2 = ActivityQuestionSelectBinding.inflate(layoutInflater)
         val database = FirebaseDatabase.getInstance()
-        /*
-        val dateRef = database.getReference("User/token/${token!!}/date")
-        dateRef.push().setValue(date).addOnSuccessListener {
-            Log.d("problem", "날짜 : ${date.toString()} 저장 성공")
-        }
-            .addOnFailureListener { exception ->
-                Log.d("problem", "날짜 : ${date} 저장 실패", exception)
-            }
-
-         */
         val answerRef = database.getReference("User/token/${token!!}/${date}/${type}/answer")
         answerRef.setValue(answer).addOnSuccessListener {
             Log.d("problem", "answer 저장 성공")
@@ -60,28 +55,20 @@ class ResultLayout : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("problem", "answer 저장 실패", exception)
             }
-        /*
-        val dateRef = database.getReference("User/token/${token!!}/date")
-        dateRef.setValue(date).addOnSuccessListener { Log.d("problem", "날짜 : ${date.toString()} 저장 성공") }
-            .addOnFailureListener { Log.d("problem", "날짜 : ${date} 저장 실패") }
-
-        val answerRef = database.getReference("User/token/${token!!}/date/$date")
-        val childUpdates = HashMap<String, Any>()
-        childUpdates["date"] = date
-        childUpdates["answer"] = answer
-
-        answerRef.updateChildren(childUpdates).addOnSuccessListener {
-            Log.d("problem", "날짜와 answer 저장 성공")
-        }
-            .addOnFailureListener { Log.d("problem", "날짜와 answer 저장 실패") }
-         */
         setPush() //알림보내기.
         weight = 0.0
         flag = 0
         check_list[dbid]=true
-
+        Log.d("problem","type : ${type}")
+        result(type) //결과값구하기.
         when (type) {
             "EQ5D" -> {
+                Log.d("problem","EQ5D")
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    Eq5dFragment()
+                ).commit()
+                true
+                /*
                 val binding = Eq5dResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 var traffic = result(type)
@@ -120,8 +107,13 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+                 */
             } //완료
             "Fall" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    FallFragment()
+                ).commit()
+                /*
                 val binding = FallResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 binding.nextstage.setOnClickListener {
@@ -136,8 +128,14 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+
+                 */
             }
             "SleepHabit" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    SleepFragment()
+                ).commit()
+                /*
                 val binding = SleephabitResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 binding.nextstage.setOnClickListener {
@@ -152,8 +150,14 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+
+                 */
             }
             "IPAQ" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    IpaqFragment()
+                ).commit()
+                /*
                 val binding = IpaqResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 var traffic = result(type) //resutl IPAQ는 MET를 구함.
@@ -192,8 +196,14 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+
+                 */
             } //완료
             "MouthHealth" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    MouthHealthFragment()
+                ).commit()
+                /*
                 val binding = MouthhealthResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 var traffic = result(type)
@@ -232,8 +242,13 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+                */
             } //완료
             "Frailty" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    FrailtyFragment()
+                ).commit()
+                /*
                 val binding = FrailtyResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 binding.nextstage.setOnClickListener {
@@ -248,8 +263,14 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+
+                 */
             }
             "SGDSK" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    SgdskFragment()
+                ).commit()
+                /*
                 val binding = SgdskResultBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 var traffic = result(type)
@@ -288,8 +309,13 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+                 */
             }  //완료
             "MNA" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    MnaFragment()
+                ).commit()
+                /*
                 val binding = MnaLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 var traffic = result(type)
@@ -329,8 +355,13 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+                 */
             } //완료
             "Nutrition" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    NutritionFragment()
+                ).commit()
+                /*
                 val binding = NutritionLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
 
@@ -346,8 +377,14 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+
+                 */
             }
             "Yosil" -> {
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    YosilFragment()
+                ).commit()
+                /*
                 val binding = YosilLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 var traffic = result(type)
@@ -386,8 +423,13 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+                 */
             } //완료
             "NutritionHazard"->{
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    NutritionFragment()
+                ).commit()
+                /*
                 val binding = MnaLayoutBinding.inflate(layoutInflater)
                 setContentView(binding.root)
                 var traffic = result(type)
@@ -426,7 +468,15 @@ class ResultLayout : AppCompatActivity() {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+
+                 */
             } //완료
+            "Sdoh"->{
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    SdohFragment()
+                ).commit()
+            }
+            else->false
         }
 
 

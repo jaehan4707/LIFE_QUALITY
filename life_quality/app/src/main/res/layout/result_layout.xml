@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,82 +42,41 @@
         android:fontFamily="@font/bm_dohyeon"
         android:gravity="center"/>
 
+    <FrameLayout
+        android:id="@+id/result_frame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:layout_weight="7"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <TextView
-            android:id="@+id/survey_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:hint="설문설명"
-            android:textSize="20sp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_marginStart="10dp"
+            android:id="@+id/nextstage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_orange"
             android:fontFamily="@font/bm_dohyeon"
-            />
-        <FrameLayout
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            android:layout_weight="0.9"
-            android:layout_gravity="center"
-            android:background="@drawable/round_trafficlight">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:padding="3dp">
-                <View
-                    android:id="@+id/redLight"
-                    android:layout_width="58dp"
-                    android:layout_height="58dp"
-                    android:background="@drawable/red_circle"
-                    android:layout_gravity="center_vertical"/>
-                <View
-                    android:id="@+id/yellowLight"
-                    android:layout_width="58dp"
-                    android:layout_height="58dp"
-                    android:background="@drawable/gray_circle"
-                    android:layout_gravity="center_vertical"/>
-                <View
-                    android:id="@+id/greenLight"
-                    android:layout_width="58dp"
-                    android:layout_height="58dp"
-                    android:background="@drawable/gray_circle"
-                    android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-        </FrameLayout>
+            android:text="계속하기"
+            android:textColor="@color/black" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/move_health"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button_round_main"
-            android:layout_width="150dp"
-            android:layout_gravity="center"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:text="건강관리 이동하기"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/complete"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="완료하기"
+            android:layout_weight="1"
             android:fontFamily="@font/bm_dohyeon"
             />
-
     </LinearLayout>
-
-
-
-    <Button
-        android:id="@+id/nextstage"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="다음"
-        android:layout_gravity="bottom"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/main_orange"
-        android:fontFamily="@font/bm_dohyeon"
-        android:layout_weight="1"/>
-
-
 </LinearLayout>
