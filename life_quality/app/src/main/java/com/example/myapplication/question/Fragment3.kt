@@ -44,12 +44,15 @@ class Fragment3 : Fragment() {
         binding.type3Number.text = "문항 " + QuestionMainpage.curCount.toString()
         //binding.type3Number.text = "문항 " + tempSurvey.id
         binding.type3Title.text = QuestionMainpage.tempSurvey.title.toString()
+        Log.d("problem","fragment3 : ${tempSurvey.type.toInt()}")
 
         for ((key, value) in QuestionMainpage.tempSurvey.answer) {
             keyList.add(key)
             valueList.add(value)
         }
-        if(type!=6) {
+
+        if(tempSurvey.type.toInt()!=6) {
+            Log.d("problem","라디오 레이아웃")
             binding.radioLayout.visibility =View.VISIBLE
             binding.checkboxLayout.visibility=View.GONE
             binding.rb1.text = valueList.get(0)
@@ -73,8 +76,10 @@ class Fragment3 : Fragment() {
                     }
                 }
             }
+            return binding.root
         }
         else{
+            Log.d("problem","체크박스 레이아웃")
             binding.radioLayout.visibility =View.GONE
             binding.checkboxLayout.visibility=View.VISIBLE
             binding.checkBox1.text = valueList[0]
@@ -84,12 +89,12 @@ class Fragment3 : Fragment() {
             sum_checkbox(binding.checkBox2)
             sum_checkbox(binding.checkBox3)
             Id = when (checkCount) {
-                3 -> 2.0
-                2 ->0.5
-                else -> 0.0
+                3 -> 2
+                2 ->1
+                else -> 0
             }
+            return binding.root
         }
-        return binding.root
     }
 
     fun sum_checkbox(checkBox: CheckBox){

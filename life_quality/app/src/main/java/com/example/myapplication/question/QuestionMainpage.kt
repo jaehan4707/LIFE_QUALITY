@@ -22,7 +22,7 @@ class QuestionMainpage : AppCompatActivity() {
         lateinit var group: RadioGroup
         //var keyList = mutableListOf<String>()
         //var valueList = mutableListOf<String>()
-        var Id: Double = -1.0
+        var Id: Int = -1
         var curCount = 0
         var flag = false
 
@@ -37,11 +37,12 @@ class QuestionMainpage : AppCompatActivity() {
         binding = QuestionMainpageBinding.inflate(layoutInflater)
         setContentView(binding.root);
         var page = surveyList.get(0).number.toInt()
-        Log.d("test", "${surveyList.size}")
+        Log.d("problem", "fragment : ${page}")
 
         //프로그레스바 max값 정해주는 부분 (max는 설문의 개수만큼 되어야 한다.)
         binding.progressbar.max = surveyList.size
         tempSurvey = surveyList.get(0)
+        Log.d("problem"," tempsurvey : ${tempSurvey.type}")
         answer.clear() //정답 배열 초기화.
         setFrag(page)
         //인적사항 입력할 때는 진행도가 1임

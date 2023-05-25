@@ -479,6 +479,14 @@ class ResultLayout : AppCompatActivity() {
             else->false
         }
 
+        binding.nextstage.setOnClickListener { //계속하기 버튼
+            var intent = Intent(this, QuestionSelect::class.java)
+            startActivity(intent)
+        }
+        binding.complete.setOnClickListener { //완료하기 버튼
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
     private fun setPush(){

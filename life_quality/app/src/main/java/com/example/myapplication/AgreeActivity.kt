@@ -45,8 +45,8 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
         val intent = Intent(this, MainActivity::class.java) //intent
         val database = FirebaseDatabase.getInstance()
         val userRef =
-            database.getReference("User/token/${SplashActivity.token!!}") //toekn 경로에 저장한다.
-        Log.d("problem", "FCM token is ${SplashActivity.token}")
+            database.getReference("User/token/${token!!}") //toekn 경로에 저장한다.
+        Log.d("problem", "FCM token is ${token}")
         //여기서 토큰이 없다면 바로 넘어가야함.
         userRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -67,7 +67,6 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                         Log.d("problem", "token 저장 실패")
                     }
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
                 // 읽기 작업이 취소된 경우에 호출됩니다.
                 Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())

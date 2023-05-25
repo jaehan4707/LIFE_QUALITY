@@ -21,11 +21,14 @@ import com.example.myapplication.databinding.DialogStartBinding
 import com.example.myapplication.databinding.NotiDialogBinding
 import com.example.myapplication.databinding.Smoke1DialogBinding
 import com.example.myapplication.question.QuestionSelect
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.Tasks
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.gun0912.tedpermission.PermissionListener
@@ -35,6 +38,7 @@ import com.gun0912.tedpermission.normal.TedPermission
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     var waitTime : Long = 0
+    val tasks = mutableListOf<Task<QuerySnapshot>>()
     companion object {
         var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","Nutrition","NutritionHazard","SocialNetwork","Drink","Smoke")
         var Total = mutableListOf<TotalSurvey>()
@@ -54,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         //질문 개수와 질문 리스트 초기화하고 다시 받아와야함.
         curCount = 0
         Total = mutableListOf<TotalSurvey>()
@@ -88,10 +93,9 @@ class MainActivity : AppCompatActivity() {
                 )
                 .check()
         }
-
         val db = Firebase.firestore
         for (i in 0..nameList.size - 1) {
-            db.collection("${nameList[i]}")
+            val task = db.collection("${nameList[i]}")
                 .get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
@@ -112,11 +116,26 @@ class MainActivity : AppCompatActivity() {
                 .addOnFailureListener { exception ->
                     Log.w("Get Data Error", exception)
                 }
+            tasks.add(task)
         }
-        setContentView(binding.root)
+
+        Tasks.whenAllSuccess<QuerySnapshot>(tasks)
+            .addOnSuccessListener {
+                // 모든 데이터 읽기 작업이 완료되었을 때 실행되는 코드
+                setContentView(binding.root)
+                binding.qStart.setOnClickListener {
+                    showDialog()
+                }
+            }
+            .addOnFailureListener { exception ->
+                //Log.w("Data Retrieval Error", exception)
+                Toast.makeText(this,"데이터베이스를 불러오고있습니다..",Toast.LENGTH_SHORT).show()
+            }
+        /*
         binding.qStart.setOnClickListener() {
             showDialog()
         }
+         */
         binding.redCircle.setOnClickListener {
             val intent = Intent(this, AdminHome::class.java)
             startActivity(intent)
