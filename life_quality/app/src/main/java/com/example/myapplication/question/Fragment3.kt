@@ -13,10 +13,12 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.question.QuestionMainpage.Companion.Id
 import com.example.myapplication.question.QuestionMainpage.Companion.group
 
@@ -27,6 +29,7 @@ import com.example.myapplication.databinding.Type3FragmentBinding
 
 class Fragment3 : Fragment() {
     lateinit var callback: OnBackPressedCallback
+    var checkCount : Int =0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,8 +37,6 @@ class Fragment3 : Fragment() {
     ): View? {
         //프레그먼트가 처음 실행될 때 실행하는 메소드
         //res폴더에 만들어준 xml파일과 연결해주어야 함.
-
-
 
         var keyList= mutableListOf<String>()
         var valueList = mutableListOf<String>()
@@ -48,30 +49,59 @@ class Fragment3 : Fragment() {
             keyList.add(key)
             valueList.add(value)
         }
+        if(type!=6) {
+            binding.radioLayout.visibility =View.VISIBLE
+            binding.checkboxLayout.visibility=View.GONE
+            binding.rb1.text = valueList.get(0)
+            binding.rb2.text = valueList.get(1)
+            binding.rb3.text = valueList.get(2)
+            var view = inflater.inflate(R.layout.type3_fragment, container, false)
+            group = binding.groupF3
+            group.setOnCheckedChangeListener { radioGroup, i ->
+                when (i) {
+                    binding.rb1.id -> {
+                        Id = (keyList[0].toInt())
+                    }
+                    binding.rb2.id -> {
+                        Id = (keyList[1].toInt())
+                        if (tempSurvey.surveyType == "Drink")
+                            showDialog()
+                    }
 
-        binding.rb1.text = valueList.get(0)
-        binding.rb2.text = valueList.get(1)
-        binding.rb3.text = valueList.get(2)
-        var view = inflater.inflate(R.layout.type3_fragment, container, false)
-        group = binding.groupF3
-        group.setOnCheckedChangeListener { radioGroup, i ->
-            when (i) {
-                binding.rb1.id -> {
-                    Id = (keyList[0].toInt())
+                    binding.rb3.id -> {
+                        Id = (keyList[2].toInt())
+                    }
                 }
-                binding.rb2.id -> {
-                    Id = (keyList[1].toInt())
-                    if(tempSurvey.surveyType=="Drink")
-                        showDialog()
-                }
-                binding.rb3.id -> {
-                    Id = (keyList[2].toInt())
-                }
+            }
+        }
+        else{
+            binding.radioLayout.visibility =View.GONE
+            binding.checkboxLayout.visibility=View.VISIBLE
+            binding.checkBox1.text = valueList[0]
+            binding.checkBox2.text = valueList[1]
+            binding.checkBox3.text = valueList[2]
+            sum_checkbox(binding.checkBox1)
+            sum_checkbox(binding.checkBox2)
+            sum_checkbox(binding.checkBox3)
+            Id = when (checkCount) {
+                3 -> 2.0
+                2 ->0.5
+                else -> 0.0
             }
         }
         return binding.root
     }
 
+    fun sum_checkbox(checkBox: CheckBox){
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                checkCount++
+            } else {
+                checkCount--
+            }
+            Log.d("problem", "체크된 체크박스 개수: $checkCount")
+        }
+    }
     override fun onAttach(context: Context) {
         super.onAttach(context)
         callback = object : OnBackPressedCallback(true) {

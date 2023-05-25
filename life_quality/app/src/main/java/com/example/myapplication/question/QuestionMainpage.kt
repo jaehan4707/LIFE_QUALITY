@@ -22,7 +22,7 @@ class QuestionMainpage : AppCompatActivity() {
         lateinit var group: RadioGroup
         //var keyList = mutableListOf<String>()
         //var valueList = mutableListOf<String>()
-        var Id: Int = -1
+        var Id: Double = -1.0
         var curCount = 0
         var flag = false
 
@@ -224,7 +224,7 @@ class QuestionMainpage : AppCompatActivity() {
                             }
                             Log.d("curCount List", "curCount = $curCount")
 
-                            if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt() == 5) { //답변이 선택형일 경우
+                            if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt() == 5 || tempSurvey.type.toInt()==6) { //답변이 선택형일 경우
                                 setFrag(tempSurvey.number.toInt())
                             } else { //답변이 입력형일 경우
                                 setFrag(0)
@@ -254,7 +254,7 @@ class QuestionMainpage : AppCompatActivity() {
             Log.d("test","지우고 난 후 :${answer}")
 
             Log.d("test","after tempsurvey: ${surveyList[curCount-1].title}")
-            if (surveyList[curCount].type.toInt() == 0 || surveyList[curCount].type.toInt() == 4) { //답변이 선택형일 경우
+            if (surveyList[curCount].type.toInt() == 0 || surveyList[curCount].type.toInt() == 4 || surveyList[curCount].type.toInt()==6) { //답변이 선택형일 경우
                 setFrag(surveyList[curCount].number.toInt())
             } else { //답변이 입력형일 경우
                 setFrag(0)

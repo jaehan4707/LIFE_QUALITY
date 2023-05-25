@@ -35,7 +35,8 @@ class SplashActivity : AppCompatActivity() {
         activityScope.launch {
             delay(1000)
             //val intent = Intent(this@SplashActivity, LoginActivity::class.java)
-            val intent = Intent(this@SplashActivity,AgreeActivity::class.java)
+            //val intent = Intent(this@SplashActivity,AgreeActivity::class.java)
+            val intent = Intent(this@SplashActivity,MainActivity::class.java)
             startActivity(intent)
            finish()
         }

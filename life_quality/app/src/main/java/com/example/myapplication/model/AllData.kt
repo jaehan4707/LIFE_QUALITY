@@ -11,9 +11,9 @@ class TotalSurvey {
     var selected : Boolean = false
     constructor()
 
-     constructor(surveyType : String, id : String, number : String, title : String, type : String, answer : MutableMap<String, String>,selected : Boolean) {
+     constructor(surveyType : String,id : String,number : String, title : String, type : String, answer : MutableMap<String, String>,selected : Boolean) {
         this.surveyType = surveyType
-        this.id = id
+         this.id = id
         this.number = number
         this.title = title
         this.type = type
