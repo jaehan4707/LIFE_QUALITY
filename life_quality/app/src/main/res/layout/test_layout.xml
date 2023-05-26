@@ -104,13 +104,6 @@
             android:layout_weight="1"
             style="@style/RadioButtonStyle"
             />
-        <RadioButton
-            android:id="@+id/rb11"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            style="@style/RadioButtonStyle"
-            />
         <!-- 나머지 RadioButton도 동일하게 추가 -->
 
     </RadioGroup>
@@ -187,13 +180,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="요실금"
-                style="@style/RadioTextStyle"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="식습관"
                 style="@style/RadioTextStyle"
                 />
             <TextView

@@ -1,11 +1,18 @@
 package com.example.myapplication.result
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import android.widget.RelativeLayout
 import com.example.myapplication.R
+import com.example.myapplication.ResultLayout
+import com.example.myapplication.ResultLayout.Companion.weight
+import com.example.myapplication.databinding.FragmentEq5dBinding
+import com.example.myapplication.databinding.FragmentFallBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,44 +24,42 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FallFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FallFragment : Fragment() {
+class  FallFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var _binding: FragmentFallBinding? = null
+    private val binding: FragmentFallBinding get() = _binding!!
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
     }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fall, container, false)
-    }
+        _binding = FragmentFallBinding.inflate(inflater, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FallFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FallFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        val maxValue = binding.progressbar.max
+        val progressValue = weight.toInt()
+
+        binding.progressbar.progress = progressValue
+
+        binding.root.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                val progressBarWidth = binding.progressbar.width
+                val progress = (progressValue.toFloat() / maxValue.toFloat()) * progressBarWidth.toFloat()
+
+                val params = binding.currentPositionImage.layoutParams as RelativeLayout.LayoutParams
+                params.marginStart = progress.toInt() - binding.currentPositionImage.width / 2
+                binding.currentPositionImage.layoutParams = params
+
+                // 레이아웃 리스너를 제거합니다.
+                binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
+        })
+        return binding.root
+    }
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

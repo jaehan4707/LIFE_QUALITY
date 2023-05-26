@@ -1,11 +1,15 @@
 package com.example.myapplication.result
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplication.MainActivity
 import com.example.myapplication.R
+import com.example.myapplication.ResultLayout
+import com.example.myapplication.ResultLayout.Companion.traffic
 import com.example.myapplication.databinding.FragmentEq5dBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,16 +26,39 @@ class Eq5dFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var _binding: FragmentEq5dBinding? = null
     private val binding: FragmentEq5dBinding get() = _binding!!
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentEq5dBinding.inflate(inflater, container, false)
+
+        when(traffic) {
+            1 -> {
+                binding.redLight.setBackgroundResource(R.drawable.red_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+            }
+
+            2 -> {
+                binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+            }
+
+            3 -> {
+                binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+            }
+
+            else -> false
+        }
         return binding.root
     }
-
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()

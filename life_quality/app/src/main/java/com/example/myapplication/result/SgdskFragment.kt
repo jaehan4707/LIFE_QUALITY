@@ -1,11 +1,16 @@
 package com.example.myapplication.result
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
+import com.example.myapplication.ResultLayout
+import com.example.myapplication.ResultLayout.Companion.traffic
+import com.example.myapplication.databinding.FragmentEq5dBinding
+import com.example.myapplication.databinding.FragmentSgdskBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,42 +24,42 @@ private const val ARG_PARAM2 = "param2"
  */
 class SgdskFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var _binding: FragmentSgdskBinding? = null
+    private val binding: FragmentSgdskBinding get() = _binding!!
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
     }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sgdsk, container, false)
-    }
+        _binding = FragmentSgdskBinding.inflate(inflater, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SgdskFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SgdskFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        when(traffic) {
+            1 -> {
+                binding.redLight.setBackgroundResource(R.drawable.red_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
             }
+
+            2 -> {
+                binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+            }
+
+            3 -> {
+                binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+            }
+            else -> false
+        }
+        return binding.root
+    }
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

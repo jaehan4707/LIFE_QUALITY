@@ -11,110 +11,101 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="16dp"
-            android:layout_weight="7"
-            android:orientation="vertical"
-            android:padding="20dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="본 조사는, 일상생활 속에서\n넘어지거나 떨어져서 발생하는"
-                android:textSize="19sp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="낙상 사고"
-                    android:textColor="@color/main_orange"
-                    android:textSize="19sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="에 얼마나 노출되어있는지"
-                    android:textSize="19sp"/>
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="평가합니다."
-                android:textSize="19sp"/>
-            <FrameLayout
-                android:layout_width="200dp"
-                android:layout_height="90dp"
-                android:background="@drawable/round_trafficlight"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:padding="3dp">
-                    <View
-                        android:id="@+id/redLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/red_circle"
-                        android:layout_gravity="center_vertical"/>
-                    <View
-                        android:id="@+id/yellowLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/gray_circle"
-                        android:layout_gravity="center_vertical"/>
-                    <View
-                        android:id="@+id/greenLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/gray_circle"
-                        android:layout_gravity="center_vertical"/>
-                </LinearLayout>
-            </FrameLayout>
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="16dp"
+                android:layout_weight="7"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="설문결과, "
-                android:layout_marginTop="20dp"
-                android:textSize="19sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="낙상 위험에 대한 노출 정도는"
-                android:layout_marginTop="20dp"
-                android:textSize="19sp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/progressbar"
+                        android:layout_gravity="center"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:max="28"
+                        android:progress="20"
+                        android:scaleY="0.4"
+                        android:progressDrawable="@drawable/progress_result" />
+
+                    <ImageView
+                        android:id="@+id/currentPositionImage"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/ic_location_on_24" />
+
+                    <TextView
+                        android:id="@+id/startText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/progressbar"
+                        android:layout_alignTop="@id/progressbar"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:text="0"
+                        android:fontFamily="@font/bm_dohyeon"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/endText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@id/progressbar"
+                        android:layout_alignTop="@id/progressbar"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginTop="4dp"
+                        android:text="28"
+                        android:fontFamily="@font/bm_dohyeon"
+                        android:textColor="@color/black" />
+
+                </RelativeLayout>
+
+
+
                 <TextView
-                    android:id="@+id/result_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="위험"
-                    android:textColor="@color/main_orange"
-                    android:textSize="19sp"/>
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:text="노년기 가장 큰 건강 위협요인, 낙상\n세 가지만 기억하면 피할 수 있어요"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:background="@drawable/textview_round"/>
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="입니다."
-                    android:textSize="19sp"/>
+                    android:text="1. 바닥 청소하기\n2. 손잡이 잡기\n3. 잠들기 전 화장실 들리기"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:background="@drawable/info_text"
+                    android:padding="10dp"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="부정적 결과와 불편감 동반 시, 정밀 검사를 권장 드립니다."
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="20sp"/>
             </LinearLayout>
-            <android.widget.Button
-                android:id="@+id/goto_edu"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="건강관리로 이동하기"
-                android:layout_gravity="center"
-                android:background="@drawable/button_round_main"
-                android:fontFamily="@font/bm_dohyeon"
-                android:layout_marginTop="50dp"/>
         </LinearLayout>
     </LinearLayout>
-
 </FrameLayout>

@@ -8,28 +8,38 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.check_list
 import com.example.myapplication.MainActivity.Companion.dbid
+import com.example.myapplication.MainActivity.Companion.ipaq_list
 import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.SplashActivity.Companion.token
+import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.databinding.*
 import com.example.myapplication.question.QuestionSelect
 import com.example.myapplication.result.Eq5dFragment
 import com.example.myapplication.result.FallFragment
 import com.example.myapplication.result.*
+import com.google.android.gms.tasks.Task
 import java.text.SimpleDateFormat
 import java.util.*
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.QuerySnapshot
 
 class ResultLayout : AppCompatActivity() {
 
     val binding: ResultLayoutBinding by lazy {
         ResultLayoutBinding.inflate(layoutInflater)
     }
-    var weight: Double = 0.0
-    var flag: Int = 0
+    companion object {
+        var traffic : Int =0
+        var weight : Double=0.0
+        var flag: Int = 0
+    }
+    val tasks = mutableListOf<Task<QuerySnapshot>>()
+
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
     val record_date =SimpleDateFormat("yyyy-MM-dd",Locale.getDefault())
     val date = record_date.format(Date())
@@ -41,6 +51,7 @@ class ResultLayout : AppCompatActivity() {
     //val triggerTime = surveyCompletionTime + sevenDaysInMillis //설문 완료 이후 7일 이후의 시간
     private val triggerTime = System.currentTimeMillis() + 30_000 // 현재 시간에서 30초(30,000 밀리초)를 더한 값 실제 테스트에서는 7일로 바꿔야함.
     private val triggerFormat = dateFormat.format(Date(triggerTime))
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //여기서 점수를 쫙 계산해야함.
@@ -60,7 +71,9 @@ class ResultLayout : AppCompatActivity() {
         flag = 0
         check_list[dbid]=true
         Log.d("problem","type : ${type}")
-        result(type) //결과값구하기.
+
+        traffic= result(type) //결과값구하기.
+
         when (type) {
             "EQ5D" -> {
                 Log.d("problem","EQ5D")
@@ -154,6 +167,7 @@ class ResultLayout : AppCompatActivity() {
                  */
             }
             "IPAQ" -> {
+                ipaq_list=answer
                 supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
                     IpaqFragment()
                 ).commit()
@@ -357,29 +371,6 @@ class ResultLayout : AppCompatActivity() {
                 }
                  */
             } //완료
-            "Nutrition" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    NutritionFragment()
-                ).commit()
-                /*
-                val binding = NutritionLayoutBinding.inflate(layoutInflater)
-                setContentView(binding.root)
-
-                binding.nextstage.setOnClickListener {
-                    var intent = Intent(this, QuestionSelect::class.java)
-                    startActivity(intent)
-                }
-                binding.gotoEdu.setOnClickListener {
-                    var intent = Intent(this, CardActivity::class.java)
-                    startActivity(intent)
-                }
-                binding.complete.setOnClickListener {
-                    var intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-
-                 */
-            }
             "Yosil" -> {
                 supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
                     YosilFragment()
@@ -425,52 +416,6 @@ class ResultLayout : AppCompatActivity() {
                 }
                  */
             } //완료
-            "NutritionHazard"->{
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    NutritionFragment()
-                ).commit()
-                /*
-                val binding = MnaLayoutBinding.inflate(layoutInflater)
-                setContentView(binding.root)
-                var traffic = result(type)
-                when(traffic) {
-                    1 -> {
-                        binding.redLight.setBackgroundResource(R.drawable.red_circle)
-                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.resultTxt.text = "불량하다"
-                        binding.resultTxt.setTextColor(Color.parseColor("#EE3B3B"))
-                    }
-                    2 -> {
-                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
-                        binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.resultTxt.text = "문제가있을수있다"
-                        binding.resultTxt.setTextColor(Color.parseColor("#FECA13"))
-                    }
-                    3 -> {
-                        binding.redLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
-                        binding.greenLight.setBackgroundResource(R.drawable.green_circle)
-                        binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
-                        binding.resultTxt.text = "좋다"
-                    }
-                }
-                binding.nextstage.setOnClickListener {
-                    var intent = Intent(this, QuestionSelect::class.java)
-                    startActivity(intent)
-                }
-                binding.gotoEdu.setOnClickListener {
-                    var intent = Intent(this, CardActivity::class.java)
-                    startActivity(intent)
-                }
-                binding.complete.setOnClickListener {
-                    var intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-
-                 */
-            } //완료
             "Sdoh"->{
                 supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
                     SdohFragment()
@@ -483,8 +428,8 @@ class ResultLayout : AppCompatActivity() {
             var intent = Intent(this, QuestionSelect::class.java)
             startActivity(intent)
         }
-        binding.complete.setOnClickListener { //완료하기 버튼
-            var intent = Intent(this, MainActivity::class.java)
+        binding.goToEdu.setOnClickListener { //완료하기 버튼
+            var intent = Intent(this, CardActivity::class.java)
             startActivity(intent)
         }
 
@@ -594,6 +539,7 @@ class ResultLayout : AppCompatActivity() {
                 } //완료
                 "IPAQ" ->
                     when (i) {
+                        /*
                         0 -> weight += answer[i].toInt() //격렬한 활동 횟수
                         1 -> weight = weight * answer[i].toInt() * 8 //격렬한 활동 시간 *가중치
                         2 -> flag = answer[i].toInt() //중간횟수
@@ -601,6 +547,9 @@ class ResultLayout : AppCompatActivity() {
                         4 -> flag = answer[i].toInt()//가벼운 활동 횟수
                         5 -> weight += flag * answer[i] * 3.3 //가벼운 활동 시간 * 가중치
                         6 -> weight += answer[i] * 3.3 //앉아서 보내느 시간 * 가중치
+                         */
+                        2->weight+=answer[i]
+                        4->weight+=answer[i]
                     }// } //weight 는 MET -> 이제 여기서 판단을 해야함. 완료
                 "MNA" -> {
                     when(i){
@@ -627,97 +576,34 @@ class ResultLayout : AppCompatActivity() {
                     when (i) {
 
                     }
-                "Fall"->
-                    when(i){
-
-                    }
-                "MouthHealth"-> {
-                    when (answer[i].toInt()) {
-                        1 -> weight+=1
-                        2 -> weight+=2
-                        3 -> weight+=3
-                        4 -> weight+=4
-                        5 -> weight+=5
-                    }
-
-                } //완료
+                "Fall"->weight+=answer[i]
+                "MouthHealth"-> weight+=answer[i]
                 "Frailty"->
                     when(i){
-
+                        2->{
+                            //격렬한 활동은 list[0] * list[1] //0은 일수, 1은 분
+                            var Met : Double=0.0
+                            Met += (ipaq_list[0]* ipaq_list[1] *8 + ipaq_list[2]* ipaq_list[3]*4+ipaq_list[4]* ipaq_list[5]*3.3+ipaq_list[6])*0.0035 * answer[i] * 5
+                            //해당 칼로리.
+                            if(user.Sex=="남성"){
+                                if(Met<495)
+                                    weight+=1
+                            }
+                            else if(user.Sex=="여성"){
+                                if(Met<284)
+                                    weight+=1
+                            }
+                        }
+                        else->weight+=answer[i]
                     }
-                "Nutrition"->
-                    when(i){
-
-                    }
-                "SGDSK"-> {
+                "SGDSK"-> { weight+=answer[i]
+                    /*
                     when (answer[i]) {
                         1 -> weight += 1
                     }
+                     */
                 } //완료
-                "Yosil"-> {
-                    when (answer[i].toInt()) {
-                        1 -> weight += 1
-                        2 -> weight += 2
-                        3 -> weight += 3
-                        4 -> weight += 4
-                        5 -> weight += 5
-                    }
-
-                } //완료
-                "NutritionHazard"->{
-                    when(answer[i].toInt()){
-                        1-> weight=weight+1
-                    }
-
-                } //완료
-            }
-        }
-        if(type=="MouthHelath"){
-            when (weight.toInt()) {
-                in 7..14 -> ans = 3
-                in 15..28 -> ans = 2
-                else -> ans = 1
-            }
-            Log.d("test","구강건강 : $weight")
-        }
-        else if(type=="IPAQ"){
-            Log.d("test","MET : ${weight}")
-            ans = if((answer[0]>=3 && weight >=1500)||(weight >= 3000)){
-                3 //격렬하다
-            } else if((answer[0]>=3 && answer[1]>=20)||
-                (answer[2]>=5 && answer[3]>=30)||
-                (weight>=600)) {
-                2 //중간상태
-            } else {
-                1 //낮은 상태
-            }
-        }
-        else if(type=="SGDSK"){
-            when(weight.toInt()){
-                in 0 .. 5 -> ans=3
-                in 6 ..9 -> ans=2
-                else -> ans=1
-            }
-        }
-        else if(type=="NutritionHazard"){
-            when(weight.toInt()){
-                in 0..2 -> ans = 3
-                in 3..4 -> ans = 2
-                else -> ans = 1
-            }
-        }
-        else if(type=="Yosil"){
-            when (weight.toInt()) {
-                in 8..16 -> ans = 3
-                in 17..32 -> ans = 2
-                else -> ans = 1
-            }
-        }
-        else if(type =="MNA"){
-            when(weight.toInt()){
-                in 12 .. 14 -> ans=3
-                in 8 .. 11 -> ans=2
-                in 0 .. 7 -> ans=1
+                "Yosil"-> weight+=answer[i] //완료
             }
         }
         return ans

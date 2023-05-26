@@ -11,8 +11,6 @@ import com.example.myapplication.MainActivity.Companion.Socialnum
 import com.example.myapplication.MainActivity.Companion.Total
 import com.example.myapplication.MainActivity.Companion.check_list
 import com.example.myapplication.MainActivity.Companion.dbid
-import com.example.myapplication.MainActivity.Companion.drinknum
-import com.example.myapplication.MainActivity.Companion.smokenum
 import com.example.myapplication.MainActivity.Companion.surveyList
 import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.R
@@ -82,10 +80,6 @@ class QuestionSelect : AppCompatActivity() {
                         binding.rb10.isEnabled=false
                         binding.rb10.setBackgroundResource(R.drawable.x_box)
                     }
-                    10->{
-                        binding.rb11.isEnabled=false
-                        binding.rb11.setBackgroundResource(R.drawable.x_box)
-                    }
                 }
             }
         }
@@ -104,11 +98,9 @@ class QuestionSelect : AppCompatActivity() {
                 R.id.rb8->dbid=7
                 R.id.rb9->dbid=8
                 R.id.rb10->dbid=9
-                R.id.rb11->dbid=10
             }
         }
-        var skip_List = mutableListOf<String>("Drink", "SocialNetWork", "Smoke", "IPAQ")
-        var sdoh_List = mutableListOf<String>("Drink", "SocialNetWork", "Smoke")
+        var sdoh_List = mutableListOf<String>("SocialNetWork")
         binding.selectStart.setOnClickListener { //설문 시작하기 버튼 눌렀을 때
             binding.selectStart.isSelected = !binding.selectStart.isSelected
             if (binding.selectStart.isSelected) { //설문 시작을 눌렀을대.?
@@ -133,14 +125,10 @@ class QuestionSelect : AppCompatActivity() {
                                 if (dbid == 10) {
                                     for (j in 0 until sdoh_List.size) {
                                         for (i in 0 until Total.size) {
-                                            if (Total[i].surveyType == sdoh_List[j]) {
+                                            if (Total[i].surveyType == "SocialNetWork") {
                                                 surveyList.add(Total[i])
-                                                if (j == 0)
-                                                    drinknum++
                                                 if (j == 1)
                                                     Socialnum++
-                                                if (j == 2)
-                                                    smokenum++
                                             }
                                         }
                                     }

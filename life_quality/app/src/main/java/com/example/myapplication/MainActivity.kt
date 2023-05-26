@@ -40,12 +40,10 @@ class MainActivity : AppCompatActivity() {
     var waitTime : Long = 0
     val tasks = mutableListOf<Task<QuerySnapshot>>()
     companion object {
-        var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","Nutrition","NutritionHazard","SocialNetwork","Drink","Smoke")
+        var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","SocialNetwork")
         var Total = mutableListOf<TotalSurvey>()
         var type : String = ""
         var answer = mutableListOf<Int>()
-        var drinknum : Int = 0
-        var smokenum : Int =0
         var Socialnum : Int =0
         var Fallum : Int =2
         var dbid =0
@@ -53,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         var address : String = " "
         var relation : String = " "
         val check_list = Array<Boolean>(11) { false }
+        var ipaq_list = mutableListOf<Int>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

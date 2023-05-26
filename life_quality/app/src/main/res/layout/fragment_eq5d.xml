@@ -17,33 +17,6 @@
             android:layout_weight="7"
             android:orientation="vertical"
             android:padding="20dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="본 조사는,"
-                android:textSize="19sp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="설문자의 전반적인 "
-                    android:textSize="19sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="삶의 수준을 "
-                    android:textColor="@color/main_orange"
-                    android:textSize="19sp"/>
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="평가합니다."
-                android:textSize="19sp"/>
 
             <FrameLayout
                 android:layout_width="200dp"
@@ -79,43 +52,41 @@
             </FrameLayout>
 
             <TextView
+                android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="설문결과, "
-                android:layout_marginTop="20dp"
-                android:textSize="19sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="당신의 삶의 수준은 "
-                android:layout_marginTop="20dp"
-                android:textSize="19sp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/result_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="정상 "
-                    android:textColor="@color/main_orange"
-                    android:textSize="19sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="입니다."
-                    android:textSize="19sp"/>
-            </LinearLayout>
-            <android.widget.Button
-                android:id="@+id/goto_edu"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="건강관리로 이동하기"
                 android:layout_gravity="center"
-                android:background="@drawable/button_round_main"
+                android:layout_height="wrap_content"
+                android:text="미국의 시사주간지, \n'US news and world report'에서 소개한 삶의 질을 향상시키는 방법중 다섯가지를 소개할게요!"
+                android:gravity="center"
                 android:fontFamily="@font/bm_dohyeon"
-                android:layout_marginTop="50dp"/>
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:background="@drawable/textview_round"
+                />
+
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. 오늘이 내 인생의 마지막 날이라고 가정하기\n2. 자신을 돌보는 내밀한 시간 가지기\n3. 소소하고
+사소한 일탈에 익숙해지기\n4. 한 두사람과 끈끈한 인간관계 맺기\n5. 나누는 삶 생활화하기"
+                android:textSize="16.5sp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="start"
+                android:background="@drawable/info_text"
+                android:padding="5dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="부정적 결과와 불편감 동반 시, 정밀 검사를 권장 드립니다."
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="20sp"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

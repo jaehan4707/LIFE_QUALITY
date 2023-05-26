@@ -69,14 +69,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"/>
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:layout_marginEnd="10dp"
-            android:id="@+id/complete"
+            android:id="@+id/go_to_edu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="완료하기"
+            android:text="건강관리로\n이동하기"
             android:layout_weight="1"
             android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/main_orange"
             />
     </LinearLayout>
 </LinearLayout>
