@@ -7,12 +7,11 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.CardActivity
 import com.example.myapplication.MainActivity.Companion.Socialnum
 import com.example.myapplication.MainActivity.Companion.Total
 import com.example.myapplication.MainActivity.Companion.check_list
 import com.example.myapplication.MainActivity.Companion.dbid
-import com.example.myapplication.MainActivity.Companion.drinknum
-import com.example.myapplication.MainActivity.Companion.smokenum
 import com.example.myapplication.MainActivity.Companion.surveyList
 import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.R
@@ -37,8 +36,7 @@ class QuestionSelect : AppCompatActivity() {
         val db = Firebase.firestore
         var tes = mutableListOf<TotalSurvey>()
         var nameList = mutableListOf<String>(
-            "EQ5D","SGDSK","SleepHabit","Fall","MouthHealth","Frailty", "IPAQ", "MNA", "Yosil", "Nutrition","SDoH"
-
+        "MNA","SGDSK","Yosil","MouthHealth","IPAQ","SleepHabit","Frailty","Fall","EQ5D","SDoH"
         )
         for(i in 0 until check_list.size){
             if(check_list[i]){ //이미 완료된 설문이라면
@@ -83,10 +81,6 @@ class QuestionSelect : AppCompatActivity() {
                         binding.rb10.isEnabled=false
                         binding.rb10.setBackgroundResource(R.drawable.x_box)
                     }
-                    10->{
-                        binding.rb11.isEnabled=false
-                        binding.rb11.setBackgroundResource(R.drawable.x_box)
-                    }
                 }
             }
         }
@@ -95,21 +89,19 @@ class QuestionSelect : AppCompatActivity() {
 
         radioGroup.setOnCheckedChangeListener { group, checkedId -> // 선택된 RadioButton의 ID를 확인하여 처리합니다.
             when (checkedId) {
-                R.id.rb1 ->dbid=0
-                R.id.rb2->dbid=1
-                R.id.rb3->dbid=2
-                R.id.rb4->dbid=3
-                R.id.rb5->dbid=4
+                R.id.rb1 ->dbid=0 //mna
+                R.id.rb2->dbid=1 //정신건강
+                R.id.rb3->dbid=2 //수면습관
+                R.id.rb4->dbid=3 //구간건강
+                R.id.rb5->dbid=4 //
                 R.id.rb6->dbid=5
                 R.id.rb7->dbid=6
                 R.id.rb8->dbid=7
                 R.id.rb9->dbid=8
                 R.id.rb10->dbid=9
-                R.id.rb11->dbid=10
             }
         }
-        var skip_List = mutableListOf<String>("Drink", "SocialNetWork", "Smoke", "IPAQ")
-        var sdoh_List = mutableListOf<String>("Drink", "SocialNetWork", "Smoke")
+        var sdoh_List = mutableListOf<String>("SocialNetWork")
         binding.selectStart.setOnClickListener { //설문 시작하기 버튼 눌렀을 때
             binding.selectStart.isSelected = !binding.selectStart.isSelected
             if (binding.selectStart.isSelected) { //설문 시작을 눌렀을대.?
@@ -124,6 +116,9 @@ class QuestionSelect : AppCompatActivity() {
                         //선택을 초기화 해야함.
                         binding.selectStart.isSelected = !binding.selectStart.isSelected
                     }
+                    else if(!check_list[4] && dbid==6){
+                        Toast.makeText(this,"노쇠측정을 하기 전에 IPAQ 설문을 진행해주셔야 합니다!",Toast.LENGTH_SHORT).show()
+                    }
                     else {
                         Toast.makeText(this@QuestionSelect, "설문시작하기 버튼을 눌렀습니다", Toast.LENGTH_SHORT).show()
                         surveyList.clear()
@@ -134,14 +129,10 @@ class QuestionSelect : AppCompatActivity() {
                                 if (dbid == 10) {
                                     for (j in 0 until sdoh_List.size) {
                                         for (i in 0 until Total.size) {
-                                            if (Total[i].surveyType == sdoh_List[j]) {
+                                            if (Total[i].surveyType == "SocialNetWork") {
                                                 surveyList.add(Total[i])
-                                                if (j == 0)
-                                                    drinknum++
                                                 if (j == 1)
                                                     Socialnum++
-                                                if (j == 2)
-                                                    smokenum++
                                             }
                                         }
                                     }
@@ -164,7 +155,20 @@ class QuestionSelect : AppCompatActivity() {
         }
         //해당 버튼의 해당하는 설문리스트를 불러와야함.
         binding.selectClear.setOnClickListener{
-
+            if(survey_clear()) { //필수항목을 다 했을 경우. 앱 종료
+                val intent = Intent(this@QuestionSelect,CardActivity::class.java)
+                startActivity(intent)
+            }
+            else{
+                Toast.makeText(this,"필수 설문 문항을 다 해주셔야 합니다!!",Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+    fun survey_clear() : Boolean{
+        for(i in 0 ..5){
+            if(!check_list[i])
+                return false
+        }
+        return true
     }
 }

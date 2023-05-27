@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".result.FallFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="16dp"
+                android:layout_weight="7"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/progressbar"
+                        android:layout_gravity="center"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:max="28"
+                        android:progress="20"
+                        android:scaleY="0.4"
+                        android:progressDrawable="@drawable/progress_result" />
+
+                    <ImageView
+                        android:id="@+id/currentPositionImage"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/ic_location_on_24" />
+
+                    <TextView
+                        android:id="@+id/progressText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:fontFamily="@font/bm_dohyeon"
+                        android:textColor="@color/black"
+                        android:layout_below="@id/progressbar"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:id="@+id/startText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/progressbar"
+                        android:layout_alignTop="@id/progressbar"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:text="0"
+                        android:fontFamily="@font/bm_dohyeon"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/endText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@id/progressbar"
+                        android:layout_alignTop="@id/progressbar"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginTop="4dp"
+                        android:text="28"
+                        android:fontFamily="@font/bm_dohyeon"
+                        android:textColor="@color/black" />
+
+                </RelativeLayout>
+
+
+
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:text="노년기 가장 큰 건강 위협요인, 낙상\n세 가지만 기억하면 피할 수 있어요"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:background="@drawable/textview_round"/>
+
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. 바닥 청소하기\n2. 손잡이 잡기\n3. 잠들기 전 화장실 들리기"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:background="@drawable/info_text"
+                    android:padding="10dp"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="부정적 결과와 불편감 동반 시, 정밀 검사를 권장 드립니다."
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

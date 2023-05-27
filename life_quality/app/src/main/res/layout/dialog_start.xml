@@ -16,18 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="답변을 선택하고 넘어가면"
+            android:text="정확한 건강 상태 파악을 위해"
             android:textSize="20dp"
             android:fontFamily="@font/bm_dohyeon"
             android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="뒤로갈 수 없습니다."
-            android:textSize="20dp"
-            android:fontFamily="@font/bm_dohyeon"
-            android:textColor="@color/black"
-            android:layout_marginTop="2dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

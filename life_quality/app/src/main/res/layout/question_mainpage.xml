@@ -40,16 +40,38 @@
         android:layout_margin="10dp"
         android:layout_weight="7.5"/>
 
-    <Button
-        android:id="@+id/nextstage"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="다음"
-        android:layout_gravity="bottom"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/main_orange"
-        android:fontFamily="@font/bm_dohyeon"
-        android:layout_weight="0.5"/>
+        android:orientation="horizontal"
+        android:layout_weight="0.5">
+
+        <Button
+            android:id="@+id/back_stage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="이전"
+            android:layout_weight="0.4"
+            android:textColor="@color/black"
+            android:fontFamily="@font/bm_dohyeon"
+            android:backgroundTint="@color/main_orange"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            />
+        <Button
+            android:id="@+id/nextstage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="다음"
+            android:layout_gravity="bottom"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/main_orange"
+            android:fontFamily="@font/bm_dohyeon"
+            android:layout_weight="0.4"/>
+    </LinearLayout>
+
 
 
 </LinearLayout>

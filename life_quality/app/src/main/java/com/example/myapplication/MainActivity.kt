@@ -5,17 +5,30 @@ import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import com.example.myapplication.admin.AdminHome
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
+import com.example.myapplication.databinding.NotiDialogBinding
+import com.example.myapplication.databinding.Smoke1DialogBinding
 import com.example.myapplication.question.QuestionSelect
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.Tasks
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.gun0912.tedpermission.PermissionListener
@@ -25,84 +38,127 @@ import com.gun0912.tedpermission.normal.TedPermission
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     var waitTime : Long = 0
+    val tasks = mutableListOf<Task<QuerySnapshot>>()
     companion object {
-        var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","Nutrition","NutritionHazard","SocialNetwork","Drink","Smoke")
+        var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","SocialNetwork")
         var Total = mutableListOf<TotalSurvey>()
         var type : String = ""
-        var answer = mutableListOf<Int>()
-        var drinknum : Int = 0
-        var smokenum : Int =0
+        var answer = mutableListOf<Double>()
         var Socialnum : Int =0
         var Fallum : Int =2
         var dbid =0
         var surveyList = mutableListOf<TotalSurvey>()
         var address : String = " "
         var relation : String = " "
-        val check_list = Array<Boolean>(11) { false }
+        val check_list = Array<Boolean>(10) { false }
+        var ipaq_list = mutableListOf<Double>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         //질문 개수와 질문 리스트 초기화하고 다시 받아와야함.
         curCount = 0
         Total = mutableListOf<TotalSurvey>()
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
+        
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             //해당 앱에서의 권한은 알림권한밖에 없음.
             // 이미 권한이 허용된 경우 처리할 로직
-            Log.d("problem","알림권한이 있습니다")
+            Log.d("problem", "알림권한이 있습니다")
         } else { //권한이 없을 경우 권한을 요청함.
             TedPermission.create()
                 .setPermissionListener(object : PermissionListener {
                     override fun onPermissionGranted() {
                         //Toast.makeText(this@MainActivity, "권한 요청", Toast.LENGTH_SHORT).show()
-                        Log.d("problem","권한요청")
+                        Log.d("problem", "권한요청")
                     }
 
                     override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
                         //Toast.makeText(this@MainActivity, "권한 거부", Toast.LENGTH_SHORT).show()
-                        Log.d("problem","권한거부")
+                        Log.d("problem", "권한거부")
                     }
                 })
                 .setDeniedMessage("알림 권한을 거절하신다면\n알림 기능을 사용할 수 없습니다")
-                .setPermissions(Manifest.permission.POST_NOTIFICATIONS,Manifest.permission.SCHEDULE_EXACT_ALARM,
-                    Manifest.permission.USE_EXACT_ALARM,Manifest.permission.RECEIVE_BOOT_COMPLETED)
+                .setPermissions(
+                    Manifest.permission.POST_NOTIFICATIONS,
+                    Manifest.permission.SCHEDULE_EXACT_ALARM,
+                    Manifest.permission.USE_EXACT_ALARM,
+                    Manifest.permission.RECEIVE_BOOT_COMPLETED
+                )
                 .check()
         }
-
         val db = Firebase.firestore
-        for(i in 0..nameList.size-1) {
-            db.collection("${nameList[i]}")
+        for (i in 0..nameList.size - 1) {
+            val task = db.collection("${nameList[i]}")
                 .get()
-                .addOnSuccessListener{ result->
-                    for(document in result) {
+                .addOnSuccessListener { result ->
+                    for (document in result) {
                         //Log.d("What is name", "${nameList[i]}")
                         Total.add(
                             TotalSurvey(
-                                nameList[i], document.id,
-                            document.data["number"] as String,document.data["title"] as String, document.data["type"] as String,
-                            document.data["answer"] as MutableMap<String, String>,false)
+                                nameList[i],
+                                document.id,
+                                document.data["number"] as String,
+                                document.data["title"] as String,
+                                document.data["type"] as String,
+                                document.data["answer"] as MutableMap<String, String>,
+                                false
+                            )
                         )
                     }
                 }
-                .addOnFailureListener{ exception ->
+                .addOnFailureListener { exception ->
                     Log.w("Get Data Error", exception)
                 }
+            tasks.add(task)
         }
-        setContentView(binding.root)
+
+        Tasks.whenAllSuccess<QuerySnapshot>(tasks)
+            .addOnSuccessListener {
+                // 모든 데이터 읽기 작업이 완료되었을 때 실행되는 코드
+                setContentView(binding.root)
+                binding.qStart.setOnClickListener {
+                    showDialog()
+                }
+            }
+            .addOnFailureListener { exception ->
+                //Log.w("Data Retrieval Error", exception)
+                Toast.makeText(this,"데이터베이스를 불러오고있습니다..",Toast.LENGTH_SHORT).show()
+            }
+        /*
         binding.qStart.setOnClickListener() {
             showDialog()
         }
-        binding.redCircle.setOnClickListener{
-            val intent =Intent(this, AdminHome::class.java)
+         */
+        binding.redCircle.setOnClickListener {
+            val intent = Intent(this, AdminHome::class.java)
             startActivity(intent)
         }
         binding.edu.setOnClickListener() {
             val intent = Intent(this, CardActivity::class.java)
             startActivity(intent)
         }
+        binding.helpNoti.setOnClickListener {
+            Log.d("test", "test testtest")
+            val dialogView = LayoutInflater.from(this@MainActivity).inflate(R.layout.noti_dialog, null)
+            val dialogBinding = NotiDialogBinding.inflate(layoutInflater)
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialogBinding.btnClose.setOnClickListener {
+                dialog.dismiss() // 다이얼로그를 닫기
+            }
+            dialog.setContentView(dialogBinding.root)
+            dialog.setCancelable(false)
+            dialog.show()
+            dialog.window?.setLayout(1000, 1400)
+        }
     }
+
     private fun requestPermission(logic : () -> Unit){
         TedPermission.create()
             .setPermissionListener(object : PermissionListener {
@@ -129,8 +185,6 @@ class MainActivity : AppCompatActivity() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(dialogBinding.root)
         dialog.setCancelable(false)
-
-
         dialogBinding.dialogStart.setOnClickListener() {
             //여기를 바꿔줬음. -> 다이얼로그 시작하기 누르면 -> 목록을 정할수 있도록 해줄생각.
             var intent = Intent(this, QuestionSelect::class.java)

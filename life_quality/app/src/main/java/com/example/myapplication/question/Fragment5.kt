@@ -43,26 +43,11 @@ class Fragment5 : Fragment() {
         group = binding.groupF5
         group.setOnCheckedChangeListener { radioGroup, i ->
             when(i){
-                binding.rb1.id -> {
-                    Id = (keyList[0].toInt())
-
-                }
-                binding.rb2.id -> {
-                    Id= (keyList[1].toInt())
-
-                }
-                binding.rb3.id -> {
-                    Id= (keyList[2].toInt())
-
-                }
-                binding.rb4.id -> {
-                    Id = (keyList[3].toInt())
-
-                }
-                binding.rb5.id -> {
-                    Id = (keyList[4].toInt())
-
-                }
+                binding.rb1.id -> Id = (keyList[0].toDouble())
+                binding.rb2.id -> Id= (keyList[1].toDouble())
+                binding.rb3.id -> Id= (keyList[2].toDouble())
+                binding.rb4.id -> Id = (keyList[3].toDouble())
+                binding.rb5.id ->Id = (keyList[4].toDouble())
             }
         }
         return binding.root

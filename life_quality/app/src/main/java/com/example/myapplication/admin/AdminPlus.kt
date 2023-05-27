@@ -119,6 +119,7 @@ class AdminPlus : AppCompatActivity() {
             Total.add(
                 TotalSurvey(
                     head_type, Total.size.toString(), num.toString(), head, type, m, false
+                    //head_type, num.toString(), head, type, m, false
                 //데이터베이스에 맞게 설문 형식을 넣어줌.
                 )
             )

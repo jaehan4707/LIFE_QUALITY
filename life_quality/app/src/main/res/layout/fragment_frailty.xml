@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".result.FrailtyFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:layout_weight="7"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <FrameLayout
+                android:layout_width="200dp"
+                android:layout_height="90dp"
+                android:background="@drawable/round_trafficlight"
+                android:layout_gravity="center">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:padding="3dp">
+                    <View
+                        android:id="@+id/redLight"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="@drawable/red_circle"
+                        android:layout_gravity="center_vertical"/>
+                    <View
+                        android:id="@+id/yellowLight"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="@drawable/gray_circle"
+                        android:layout_gravity="center_vertical"/>
+                    <View
+                        android:id="@+id/greenLight"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:background="@drawable/gray_circle"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+            </FrameLayout>
+
+            <TextView
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="노쇠는 비정상적인 노화과정으로 \n방치 시 큰 병으로 발전할 수 있습니다.\n노쇠는 발생 자체를 예방하는 것이 가장 좋습니다.\n균형잡힌 운동과 더불어 단백질이 풍부한영양섭취로 노쇠를 예방해보아요!"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="start"
+                android:background="@drawable/textview_round"
+                android:padding="10dp"
+                android:textSize="19sp"/>
+
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="부정적 결과와 불편감 동반 시, 정밀 검사를 권장 드립니다."
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,12 +1,15 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -30,7 +33,21 @@ class NotypeFragment : Fragment() {
 
         var valueList = mutableListOf<String>()
         var binding = NotypeFragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
+        val rootView = binding.root
+
+        rootView.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                // 터치 이벤트가 발생하면 키보드를 숨깁니다.
+                Log.d("test","터치이벤트가 발생해서 키보드르 숨깁니다.")
+                val inputMethodManager =
+                    requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(rootView.windowToken, 0)
+                rootView.clearFocus()
+            }
+            false
+        }
         var binding2 = QuestionMainpageBinding.inflate(layoutInflater)
+
         binding.notypeNumber.text = "문항 " + QuestionMainpage.curCount.toString()
         binding.notypeTitle.text = QuestionMainpage.tempSurvey.title.toString()
         Log.d("test", "입력형 프래그먼트에 왔습니다")
@@ -77,7 +94,7 @@ class NotypeFragment : Fragment() {
                             } catch (e: java.lang.Exception) {
                                 Log.d("problem: ", "오류발생")
                             }
-                            Id = edit_id.toInt()
+                            Id = edit_id.toDouble()
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -138,7 +155,7 @@ class NotypeFragment : Fragment() {
                             } catch (e: java.lang.Exception) {
                                 Log.d("problem", "오류 발생")
                             }
-                            Id = time + min
+                            Id = (time + min).toDouble()
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -198,7 +215,7 @@ class NotypeFragment : Fragment() {
                             } catch (e: java.lang.Exception){
                                 Log.d("problem : ", "예외발생")
                             }.toDouble()
-                            Id = (weight / (height * height)).toInt() //BMI
+                            Id = (weight / (height * height)).toDouble() //BMI
                             Log.d(
                                 "problem : ",
                                 "키 : $height, 몸무게 : $weight, BMI : ${Id.toString()}"

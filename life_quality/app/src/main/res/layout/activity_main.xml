@@ -108,6 +108,7 @@
                 android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:fontFamily="@font/bm_dohyeon"/>
+            <!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,6 +117,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/bm_dohyeon"/>
+                -->
             <Button
                 android:id="@+id/edu"
                 android:layout_width="250dp"
@@ -127,6 +129,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/bm_dohyeon"
                 android:layout_marginTop="30dp"/>
+            <!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,10 +138,22 @@
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/bm_dohyeon"/>
-
-
+            -->
         </LinearLayout>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/help_noti"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_notification"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="bottom"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+</LinearLayout>
 
 
 
