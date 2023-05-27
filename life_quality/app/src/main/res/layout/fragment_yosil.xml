@@ -45,6 +45,15 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:src="@drawable/ic_location_on_24" />
+                <TextView
+                    android:id="@+id/progressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/progressbar"
+                    android:layout_marginTop="10dp" />
 
                 <TextView
                     android:id="@+id/startText"
