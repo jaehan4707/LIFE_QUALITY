@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.example.myapplication.MainActivity
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
@@ -41,18 +42,24 @@ class Eq5dFragment : Fragment() {
                 binding.redLight.setBackgroundResource(R.drawable.red_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.eq5dResult.setText(R.string.red_eq5d)
+                binding.eq5dResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
             }
 
             2 -> {
                 binding.redLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.eq5dResult.setText(R.string.yellow_eq5d)
+                binding.eq5dResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow))
             }
 
             3 -> {
                 binding.redLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+                binding.eq5dResult.setText(R.string.green_eq5d)
+                binding.eq5dResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
             }
 
             else -> false

@@ -50,10 +50,35 @@
             </FrameLayout>
 
             <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="설문결과,"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:text="당신은 "
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+            <TextView
+                android:id="@+id/frailty_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                android:text="@string/good_sleep"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="25dp"
                 android:background="@drawable/textview_round"
                 android:fontFamily="@font/bm_dohyeon"
                 android:gravity="start"
@@ -71,8 +96,9 @@
                 android:fontFamily="@font/bm_dohyeon"
                 android:textSize="19sp"
                 android:textAlignment="center"
+                android:lineSpacingExtra="8dp"
                 android:textColor="@color/black"
-                android:text="1.건강하게 마음 다스리기\n2.강한 치아 만들기\n3.가려먹지 말고 충분히 식사하기\n4.화를 높이는 담배를 멀리하기\n5.만성 질환 관리하기\n6.사람들과 자주 어울리기\n7.성실하기 운동하기"
+                android:text="1.건강하게 마음 다스리기\n2.강한 치아 만들기\n3.가려먹지 말고 충분히 식사하기\n4.화를 높이는 담배를 멀리하기\n5.만성 질환 관리하기\n6.사람들과 자주 어울리기\n7.성실하게 운동하기"
                 />
             <TextView
                 android:layout_marginTop="10dp"

@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.res.stringResource
+import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.traffic
@@ -41,16 +43,22 @@ class MnaFragment: Fragment() {
                 binding.redLight.setBackgroundResource(R.drawable.red_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.mnaResult.setText(R.string.red_mna)
+                binding.mnaResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
             }
             2 -> {
                 binding.redLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.mnaResult.setText(R.string.yellow_mna)
+                binding.mnaResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow))
             }
             3 -> {
                 binding.redLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+                binding.mnaResult.setText(R.string.green_mna)
+                binding.mnaResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
             }
             else -> false
         }

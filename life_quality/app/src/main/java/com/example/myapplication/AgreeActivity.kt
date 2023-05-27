@@ -52,7 +52,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {  // 해당 token 값이 이미 존재하므로 작업을 멈춥니다.
                     Log.d("problem", "해당 token 값이 이미 존재합니다. 작업을 멈추고, mainActivity로 이동합니다")
-                    startActivity(intent)
+                    //startActivity(intent)
                     setContentView(binding.root)
                     return
                 }
@@ -109,7 +109,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             var selectHealth = dialogBinding.rgHealth.checkedRadioButtonId
 
             closeDialog(dialogBinding.root)
-            dialogBinding.agreeClose.setOnClickListener {
+            dialogBinding.agreeClear.setOnClickListener {
                 val phoneNumber = dialogBinding.editPhone.text.toString()
 
                 val isValidPhoneNumber = android.util.Patterns.PHONE.matcher(phoneNumber).matches()

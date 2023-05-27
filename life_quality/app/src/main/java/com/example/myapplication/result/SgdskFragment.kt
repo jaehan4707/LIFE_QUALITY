@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.traffic
@@ -41,6 +42,8 @@ class SgdskFragment : Fragment() {
                 binding.redLight.setBackgroundResource(R.drawable.red_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                //binding.sgdResult.setText(R.string.red_frailty)
+                //binding.frailtyResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
             }
 
             2 -> {

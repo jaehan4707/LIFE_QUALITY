@@ -54,7 +54,30 @@
                 </LinearLayout>
             </FrameLayout>
 
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="설문결과,"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:text="당신은 "
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+            <TextView
+                android:id="@+id/sgdsk_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                android:text="@string/good_sleep"/>
             <TextView
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
