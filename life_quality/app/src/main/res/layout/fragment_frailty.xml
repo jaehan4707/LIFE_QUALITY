@@ -50,23 +50,43 @@
             </FrameLayout>
 
             <TextView
-                android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="노쇠는 비정상적인 노화과정으로 \n방치 시 큰 병으로 발전할 수 있습니다.\n노쇠는 발생 자체를 예방하는 것이 가장 좋습니다.\n균형잡힌 운동과 더불어 단백질이 풍부한영양섭취로 노쇠를 예방해보아요!"
-                android:fontFamily="@font/bm_dohyeon"
-                android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:gravity="start"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/textview_round"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="start"
                 android:padding="10dp"
-                android:textSize="19sp"/>
+                android:text="노쇠 예방 7대 수칙: 건강 기회만사성"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
 
+            <TextView
+                android:background="@drawable/info_text"
+                android:layout_marginTop="30dp"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="19sp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:text="1.건강하게 마음 다스리기\n2.강한 치아 만들기\n3.가려먹지 말고 충분히 식사하기\n4.화를 높이는 담배를 멀리하기\n5.만성 질환 관리하기\n6.사람들과 자주 어울리기\n7.성실하기 운동하기"
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="출처 : 아주대의료원 예방의학교실 이윤환 교수님"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"/>
             <TextView
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="부정적 결과와 불편감 동반 시, 정밀 검사를 권장 드립니다."
+                android:text="부정적 결과와 불편감 동반 시,\n정밀 검사를 권장 드립니다."
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:gravity="center"

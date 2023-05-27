@@ -19,7 +19,6 @@ import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
 import com.example.myapplication.databinding.NotiDialogBinding
-import com.example.myapplication.databinding.Smoke1DialogBinding
 import com.example.myapplication.question.QuestionSelect
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks

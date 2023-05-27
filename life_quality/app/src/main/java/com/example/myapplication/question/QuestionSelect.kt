@@ -165,7 +165,7 @@ class QuestionSelect : AppCompatActivity() {
         }
     }
     fun survey_clear() : Boolean{
-        for(i in 0 ..5){
+        for(i in 0 ..4){
             if(!check_list[i])
                 return false
         }

@@ -359,7 +359,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="30개비 이"
+                    android:text="30개비 이상"
                     android:fontFamily="@font/bm_dohyeon"
                     />
             </RadioGroup>

@@ -21,9 +21,6 @@ import com.example.myapplication.question.QuestionMainpage.Companion.group
 
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.R
-import com.example.myapplication.databinding.Smoke1DialogBinding
-import com.example.myapplication.databinding.Smoke2DialogBinding
-import com.example.myapplication.databinding.Smoke3DialogBinding
 import com.example.myapplication.databinding.Type4FragmentBinding
 
 class Fragment4 : Fragment() {
@@ -98,6 +95,7 @@ class Fragment4 : Fragment() {
             false
         }
     }
+    /*
     fun showDialog1() {
         Log.d("test","test testtest")
         var dialogBinding = Smoke1DialogBinding.inflate(layoutInflater)
@@ -262,4 +260,6 @@ class Fragment4 : Fragment() {
             Log.d("problem", "예외발생")
         }
     }
+
+     */
 }

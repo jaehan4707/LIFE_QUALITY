@@ -55,7 +55,7 @@ class  YosilFragment : Fragment() {
                 textParams.addRule(RelativeLayout.BELOW, R.id.progressbar)
                 textParams.addRule(RelativeLayout.CENTER_HORIZONTAL)
                 binding.progressText.layoutParams = textParams
-                binding.progressText.text = progressValue.toString()
+                binding.progressText.text = progressValue.toString()+"점"
                 // 레이아웃 리스너를 제거합니다.
                 binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }

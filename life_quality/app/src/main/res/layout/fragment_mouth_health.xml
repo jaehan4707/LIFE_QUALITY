@@ -20,6 +20,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="wrap_content">
 
                 <ProgressBar
@@ -45,6 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
+                    android:textSize="20sp"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
                     android:layout_below="@id/progressbar"
@@ -92,9 +94,10 @@
             <TextView
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="건강한 구강 관리를 위한 올바른 방법!"
+                android:padding="5dp"
+                android:text="건강한 구강 관리를 위한 \n올바른 방법!"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:textSize="20sp"

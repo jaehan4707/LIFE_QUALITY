@@ -24,7 +24,6 @@ import com.example.myapplication.question.QuestionMainpage.Companion.group
 
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.R
-import com.example.myapplication.databinding.Drink1DialogBinding
 import com.example.myapplication.databinding.Type3FragmentBinding
 
 class Fragment3 : Fragment() {
@@ -134,6 +133,7 @@ class Fragment3 : Fragment() {
             false
         }
     }
+    /*
     fun showDialog() {
         var dialogBinding = Drink1DialogBinding.inflate(layoutInflater)
         var dialog = this.context?.let { Dialog(it) }
@@ -189,4 +189,6 @@ class Fragment3 : Fragment() {
         dialog?.show()
         dialog?.window?.setLayout(1000, 1000)
     }
+
+     */
 }
