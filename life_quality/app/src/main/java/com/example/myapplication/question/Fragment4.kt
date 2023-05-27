@@ -53,10 +53,10 @@ class Fragment4 : Fragment() {
         group = binding.groupF4
         group.setOnCheckedChangeListener { radioGroup, i ->
             when(i){
-                binding.rb1.id -> QuestionMainpage.Id = (keyList[0].toInt())
-                binding.rb2.id -> QuestionMainpage.Id = (keyList[1].toInt())
-                binding.rb3.id -> QuestionMainpage.Id = (keyList[2].toInt())
-                binding.rb4.id -> QuestionMainpage.Id = (keyList[3].toInt())
+                binding.rb1.id -> QuestionMainpage.Id = (keyList[0].toDouble())
+                binding.rb2.id -> QuestionMainpage.Id = (keyList[1].toDouble())
+                binding.rb3.id -> QuestionMainpage.Id = (keyList[2].toDouble())
+                binding.rb4.id -> QuestionMainpage.Id = (keyList[3].toDouble())
             }
         }
         return binding.root

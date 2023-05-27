@@ -49,10 +49,10 @@ class Fragment2 : Fragment() {
         group.setOnCheckedChangeListener { radioGroup, i ->
             when(i){
                 binding.rb1.id -> {
-                    QuestionMainpage.Id = (keyList[0].toInt())
+                    QuestionMainpage.Id = (keyList[0].toDouble())
                 }
                 binding.rb2.id -> {
-                    QuestionMainpage.Id = (keyList[1].toInt())
+                    QuestionMainpage.Id = (keyList[1].toDouble())
                 }
             }
         }

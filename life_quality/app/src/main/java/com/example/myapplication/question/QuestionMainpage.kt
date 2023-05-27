@@ -20,7 +20,7 @@ class QuestionMainpage : AppCompatActivity() {
         lateinit var group: RadioGroup
         //var keyList = mutableListOf<String>()
         //var valueList = mutableListOf<String>()
-        var Id: Int = -1
+        var Id: Double = -1.0
         var curCount = 0
         var flag = false
 
@@ -57,16 +57,16 @@ class QuestionMainpage : AppCompatActivity() {
             Log.d("test", "조사타입 : ${tempSurvey.surveyType}")
             when(tempSurvey.surveyType){
                 "IPAQ" -> {
-                    if (Id == 0 && tempSurvey.type == "0") { //다음 화면 진행하지 않고 jump 해야함.
+                    if (Id == 0.0 && tempSurvey.type == "0") { //다음 화면 진행하지 않고 jump 해야함.
                         Log.d("test", "다음 화면을 진행하지 않습니다")
                         answer.add(Id)
                         answer.add(Id)
                         curCount++
-                        Id = -1
+                        Id = -1.0
                         binding.progressbar.progress++
                     } else { //화며 skip 없을때
                         answer.add(Id)
-                        Id = -1
+                        Id = -1.0
                     }
                     if (curCount == surveyList.size) {
                         var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
@@ -90,12 +90,12 @@ class QuestionMainpage : AppCompatActivity() {
                     binding.progressbar.progress++
                 }
                 else -> { //IPAQ
-                    if (Id == -1) {
+                    if (Id == -1.0) {
                         Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
                     }
-                    else if (Id != -1) {
+                    else if (Id != -1.0) {
                         answer.add(Id)
-                        Id = -1
+                        Id = -1.0
                         Log.d("test", "answer : ${answer[curCount - 1]}")
                         Log.d("test","curCount : $curCount")
                         Log.d("test","answer : ${answer}")

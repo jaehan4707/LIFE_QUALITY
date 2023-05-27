@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","SocialNetwork")
         var Total = mutableListOf<TotalSurvey>()
         var type : String = ""
-        var answer = mutableListOf<Int>()
+        var answer = mutableListOf<Double>()
         var Socialnum : Int =0
         var Fallum : Int =2
         var dbid =0
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         var address : String = " "
         var relation : String = " "
         val check_list = Array<Boolean>(11) { false }
-        var ipaq_list = mutableListOf<Int>()
+        var ipaq_list = mutableListOf<Double>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

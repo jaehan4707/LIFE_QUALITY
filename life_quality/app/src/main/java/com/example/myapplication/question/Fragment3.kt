@@ -62,18 +62,9 @@ class Fragment3 : Fragment() {
             group = binding.groupF3
             group.setOnCheckedChangeListener { radioGroup, i ->
                 when (i) {
-                    binding.rb1.id -> {
-                        Id = (keyList[0].toInt())
-                    }
-                    binding.rb2.id -> {
-                        Id = (keyList[1].toInt())
-                        if (tempSurvey.surveyType == "Drink")
-                            showDialog()
-                    }
-
-                    binding.rb3.id -> {
-                        Id = (keyList[2].toInt())
-                    }
+                    binding.rb1.id -> Id = (keyList[0].toDouble())
+                    binding.rb2.id -> Id = (keyList[1].toDouble())
+                    binding.rb3.id -> Id = (keyList[2].toDouble())
                 }
             }
             return binding.root
@@ -89,9 +80,9 @@ class Fragment3 : Fragment() {
             sum_checkbox(binding.checkBox2)
             sum_checkbox(binding.checkBox3)
             Id = when (checkCount) {
-                3 -> 2
-                2 ->1
-                else -> 0
+                3 -> 2.0
+                2 ->1.0
+                else -> 0.0
             }
             return binding.root
         }

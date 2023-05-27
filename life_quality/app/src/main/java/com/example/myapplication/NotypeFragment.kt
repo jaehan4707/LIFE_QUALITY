@@ -94,7 +94,7 @@ class NotypeFragment : Fragment() {
                             } catch (e: java.lang.Exception) {
                                 Log.d("problem: ", "오류발생")
                             }
-                            Id = edit_id.toInt()
+                            Id = edit_id.toDouble()
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -155,7 +155,7 @@ class NotypeFragment : Fragment() {
                             } catch (e: java.lang.Exception) {
                                 Log.d("problem", "오류 발생")
                             }
-                            Id = time + min
+                            Id = (time + min).toDouble()
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -215,7 +215,7 @@ class NotypeFragment : Fragment() {
                             } catch (e: java.lang.Exception){
                                 Log.d("problem : ", "예외발생")
                             }.toDouble()
-                            Id = (weight / (height * height)).toInt() //BMI
+                            Id = (weight / (height * height)).toDouble() //BMI
                             Log.d(
                                 "problem : ",
                                 "키 : $height, 몸무게 : $weight, BMI : ${Id.toString()}"

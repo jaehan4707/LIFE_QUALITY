@@ -47,46 +47,16 @@ class Fragment10 : Fragment() {
         group = binding.groupF10
         group.setOnCheckedChangeListener { radioGroup, i ->
             when (i) {
-                binding.rb1.id -> {
-                    QuestionMainpage.Id = (keyList[0].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb2.id -> {
-                    QuestionMainpage.Id = (keyList[1].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb3.id -> {
-                    QuestionMainpage.Id = (keyList[2].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb4.id -> {
-                    QuestionMainpage.Id = (keyList[3].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb5.id -> {
-                    QuestionMainpage.Id = (keyList[4].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb6.id -> {
-                    QuestionMainpage.Id = (keyList[5].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb7.id -> {
-                    QuestionMainpage.Id = (keyList[6].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb8.id -> {
-                    QuestionMainpage.Id = (keyList[7].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb9.id -> {
-                    QuestionMainpage.Id = (keyList[8].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
-                binding.rb10.id -> {
-                    QuestionMainpage.Id = (keyList[9].toInt())
-                    Log.d("test: ", "라디오 누르기, ${QuestionMainpage.Id}")
-                }
+                binding.rb1.id -> QuestionMainpage.Id = (keyList[0].toDouble())
+                binding.rb2.id -> QuestionMainpage.Id = (keyList[1].toDouble())
+                binding.rb3.id -> QuestionMainpage.Id = (keyList[2].toDouble())
+                binding.rb4.id -> QuestionMainpage.Id = (keyList[3].toDouble())
+                binding.rb5.id -> QuestionMainpage.Id = (keyList[4].toDouble())
+                binding.rb6.id -> QuestionMainpage.Id = (keyList[5].toDouble())
+                binding.rb7.id -> QuestionMainpage.Id = (keyList[6].toDouble())
+                binding.rb8.id -> QuestionMainpage.Id = (keyList[7].toDouble())
+                binding.rb9.id -> QuestionMainpage.Id = (keyList[8].toDouble())
+                binding.rb10.id -> QuestionMainpage.Id = (keyList[9].toDouble())
             }
 
         }

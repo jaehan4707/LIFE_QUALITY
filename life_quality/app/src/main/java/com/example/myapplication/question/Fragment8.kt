@@ -43,34 +43,14 @@ class Fragment8 : Fragment() {
         group = binding.groupF8
         group.setOnCheckedChangeListener { radioGroup, i ->
             when(i){
-                binding.rb1.id -> {
-                    QuestionMainpage.Id = (keyList[0].toInt())
-
-                }
-                binding.rb2.id -> {
-                    QuestionMainpage.Id = (keyList[1].toInt())
-
-                }
-                binding.rb3.id -> {
-                    QuestionMainpage.Id = (keyList[2].toInt())
-
-                }
-                binding.rb4.id -> {
-                    QuestionMainpage.Id = (keyList[3].toInt())
-
-                }
-                binding.rb5.id -> {
-                    QuestionMainpage.Id = (keyList[4].toInt())
-                }
-                binding.rb6.id->{
-                    QuestionMainpage.Id = (keyList[5].toInt())
-                }
-                binding.rb7.id->{
-                    QuestionMainpage.Id = (keyList[6].toInt())
-                }
-                binding.rb8.id->{
-                    QuestionMainpage.Id = (keyList[7].toInt())
-                }
+                binding.rb1.id -> QuestionMainpage.Id = (keyList[0].toDouble())
+                binding.rb2.id -> QuestionMainpage.Id = (keyList[1].toDouble())
+                binding.rb3.id -> QuestionMainpage.Id = (keyList[2].toDouble())
+                binding.rb4.id -> QuestionMainpage.Id = (keyList[3].toDouble())
+                binding.rb5.id -> QuestionMainpage.Id = (keyList[4].toDouble())
+                binding.rb6.id -> QuestionMainpage.Id = (keyList[5].toDouble())
+                binding.rb7.id -> QuestionMainpage.Id = (keyList[6].toDouble())
+                binding.rb8.id->QuestionMainpage.Id = (keyList[7].toDouble())
             }
         }
         return binding.root
