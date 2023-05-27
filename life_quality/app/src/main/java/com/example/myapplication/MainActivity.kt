@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         var surveyList = mutableListOf<TotalSurvey>()
         var address : String = " "
         var relation : String = " "
-        val check_list = Array<Boolean>(11) { false }
+        val check_list = Array<Boolean>(10) { false }
         var ipaq_list = mutableListOf<Double>()
     }
 

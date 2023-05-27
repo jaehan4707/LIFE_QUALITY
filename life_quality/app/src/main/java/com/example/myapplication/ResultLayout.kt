@@ -168,8 +168,8 @@ class ResultLayout : AppCompatActivity() {
             }
             var third = when(answer[3].toInt()){
                 in 0 until 5 -> 3
-                in 5..6 ->2
-                in 6..7 ->1
+                in 5 until 6 ->2
+                in 6 until 7 ->1
                 else ->0
             }
             var four = when( (answer[3]/(answer[2]-answer[0])*100).toInt()){
@@ -323,9 +323,6 @@ class ResultLayout : AppCompatActivity() {
                         else
                             ans = 3
                     } //완료
-                    "SleepHabit" -> {
-                    }
-
                     "Fall" -> weight += answer[i]
                     "MouthHealth" -> weight += answer[i]
                     "Frailty" -> {
@@ -343,12 +340,18 @@ class ResultLayout : AppCompatActivity() {
                                         weight += 1
                                 }
                             }
-
                             else -> weight += answer[i]
                         }
                     }
 
-                    "SGDSK" -> weight += answer[i]
+                    "SGDSK" -> {
+                        weight += answer[i]
+                        when(weight.toInt()){
+                            in 0..5 -> ans=3
+                            in 6..9 -> ans=2
+                            in 10 .. 15->ans=1
+                        }
+                    }
                     "Yosil" -> weight += answer[i]
                 }
             }

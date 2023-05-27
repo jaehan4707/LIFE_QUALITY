@@ -96,9 +96,9 @@ class QuestionMainpage : AppCompatActivity() {
                     else if (Id != -1.0) {
                         answer.add(Id)
                         Id = -1.0
-                        Log.d("test", "answer : ${answer[curCount - 1]}")
-                        Log.d("test","curCount : $curCount")
-                        Log.d("test","answer : ${answer}")
+                        Log.d("problem", "answer : ${answer[curCount - 1]}")
+                        Log.d("problem","curCount : $curCount")
+                        Log.d("problem","answer : ${answer}")
                         if (curCount == surveyList.size) {
                             Log.d("test","dbid : ${dbid }")
                             var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
@@ -111,8 +111,6 @@ class QuestionMainpage : AppCompatActivity() {
                             if (curCount == surveyList.size) {
                                 binding.nextstage.text = "결과보기"
                             }
-                            Log.d("curCount List", "curCount = $curCount")
-
                             if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt() == 5 || tempSurvey.type.toInt()==6) { //답변이 선택형일 경우
                                 setFrag(tempSurvey.number.toInt())
                             } else { //답변이 입력형일 경우
