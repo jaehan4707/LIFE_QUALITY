@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.example.myapplication.question.QuestionMainpage.Companion.Id
 import com.example.myapplication.databinding.NotypeFragmentBinding
@@ -106,6 +109,37 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
+                    binding.notypeAnswer.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.notypeAnswer.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) {
+                                // 입력된 텍스트가 없는 경우
+                                // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) {
+                                    // 입력된 텍스트가 숫자인 경우
+                                    // 처리 로직 추가
+                                    Id=inputText.toDouble()
+                                } else {
+                                    // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            val inputMethodManager =
+                                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
+                        }
+                    }
                 }
                 var time = 0
                 var min = 0
@@ -138,6 +172,37 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
+                    binding.notypehour.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.notypehour.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) {
+                                // 입력된 텍스트가 없는 경우
+                                // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) {
+                                    // 입력된 텍스트가 숫자인 경우
+                                    // 처리 로직 추가
+                                    Id=inputText.toDouble()*60
+                                } else {
+                                    // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            val inputMethodManager =
+                                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
+                        }
+                    }
                     binding.notypemin.addTextChangedListener(object : TextWatcher {
                         override fun beforeTextChanged(
                             p0: CharSequence?,
@@ -167,6 +232,37 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
+                    binding.notypemin.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.notypemin.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) {
+                                // 입력된 텍스트가 없는 경우
+                                // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) {
+                                    // 입력된 텍스트가 숫자인 경우
+                                    // 처리 로직 추가
+                                    Id=time+inputText.toDouble()
+                                } else {
+                                    // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            val inputMethodManager =
+                                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
+                        }
+                    }
                 }
                 var height = 0.0
                 var weight = 0.0
@@ -198,6 +294,37 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
+                    binding.height.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.height.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) {
+                                // 입력된 텍스트가 없는 경우
+                                // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) {
+                                    // 입력된 텍스트가 숫자인 경우
+                                    // 처리 로직 추가
+                                    Id=inputText.toDouble()/100.0
+                                } else {
+                                    // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            val inputMethodManager =
+                                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
+                        }
+                    }
 
                     binding.weight.addTextChangedListener(object : TextWatcher {
                         override fun beforeTextChanged(
@@ -231,6 +358,37 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
+                    binding.weight.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.weight.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) {
+                                // 입력된 텍스트가 없는 경우
+                                // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) {
+                                    // 입력된 텍스트가 숫자인 경우
+                                    // 처리 로직 추가
+                                    Id=inputText.toDouble() / (height*height)
+                                } else {
+                                    // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            val inputMethodManager =
+                                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
+                        }
+                    }
                 }
             }
             job.join() //job이 끝날떄까지 대기함.

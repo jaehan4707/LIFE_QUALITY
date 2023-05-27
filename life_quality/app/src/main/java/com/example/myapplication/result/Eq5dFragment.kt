@@ -1,7 +1,11 @@
 package com.example.myapplication.result
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +48,13 @@ class Eq5dFragment : Fragment() {
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.eq5dResult.setText(R.string.red_eq5d)
                 binding.eq5dResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+                val text="낮은"
+                val startIndex = text.indexOf("낮은")
+                val endIndex = startIndex + "낮은".length
+                val colorSpan = ForegroundColorSpan(Color.RED) // 색깔 지정
+                val spannableString = SpannableString(binding.eq5dResult.text)
+                spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                binding.eq5dResult.text = spannableString
             }
 
             2 -> {
@@ -52,14 +63,26 @@ class Eq5dFragment : Fragment() {
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.eq5dResult.setText(R.string.yellow_eq5d)
                 binding.eq5dResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow))
+                val text="보통"
+                val startIndex = text.indexOf("보통")
+                val endIndex = startIndex + "보통".length
+                val colorSpan = ForegroundColorSpan(Color.YELLOW) // 색깔 지정
+                val spannableString = SpannableString(binding.eq5dResult.text)
+                spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                binding.eq5dResult.text = spannableString
             }
-
             3 -> {
                 binding.redLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.green_circle)
                 binding.eq5dResult.setText(R.string.green_eq5d)
-                binding.eq5dResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+                val text="높은"
+                val startIndex = text.indexOf("높은")
+                val endIndex = startIndex + "높은".length
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green)) // 색깔 지정
+                val spannableString = SpannableString(binding.eq5dResult.text)
+                spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                binding.eq5dResult.text = spannableString
             }
 
             else -> false
