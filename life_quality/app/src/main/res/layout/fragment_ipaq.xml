@@ -16,40 +16,8 @@
             android:layout_weight="7"
             android:orientation="vertical"
             android:padding="20dp">
-            <FrameLayout
-                android:layout_width="200dp"
-                android:layout_height="90dp"
-                android:background="@drawable/round_trafficlight"
-                android:layout_gravity="center">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:padding="3dp">
-                    <View
-                        android:id="@+id/redLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/red_circle"
-                        android:layout_gravity="center_vertical"/>
-                    <View
-                        android:id="@+id/yellowLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/gray_circle"
-                        android:layout_gravity="center_vertical"/>
-                    <View
-                        android:id="@+id/greenLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/gray_circle"
-                        android:layout_gravity="center_vertical"/>
-                </LinearLayout>
-            </FrameLayout>
 
             <TextView
-                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="이 문항은 점수가 높을수록\n신체활동을 많이 한다는 것을 뜻합니다"

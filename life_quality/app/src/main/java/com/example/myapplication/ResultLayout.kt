@@ -288,17 +288,8 @@ class ResultLayout : AppCompatActivity() {
                     } //완료
                     "IPAQ" -> {
                         when (i) {
-                            /*
-                                            0 -> weight += answer[i].toInt() //격렬한 활동 횟수
-                                            1 -> weight = weight * answer[i].toInt() * 8 //격렬한 활동 시간 *가중치
-                                            2 -> flag = answer[i].toInt() //중간횟수
-                                            3 -> weight += flag * answer[i].toInt() * 4 //중간 활동 시간 * 가중치
-                                            4 -> flag = answer[i].toInt()//가벼운 활동 횟수
-                                            5 -> weight += flag * answer[i] * 3.3 //가벼운 활동 시간 * 가중치
-                                            6 -> weight += answer[i] * 3.3 //앉아서 보내느 시간 * 가중치
-                                             */
-                            2 -> weight += answer[i]
-                            4 -> weight += answer[i]
+                            1 -> weight += answer[i]
+                            3 -> weight += answer[i]
                         }
                     }// } //weight 는 MET -> 이제 여기서 판단을 해야함. 완료
                     "MNA" -> {

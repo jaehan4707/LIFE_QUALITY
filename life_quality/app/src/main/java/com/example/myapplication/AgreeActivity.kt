@@ -52,7 +52,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {  // 해당 token 값이 이미 존재하므로 작업을 멈춥니다.
                     Log.d("problem", "해당 token 값이 이미 존재합니다. 작업을 멈추고, mainActivity로 이동합니다")
-                    //startActivity(intent)
+                    startActivity(intent)
                     setContentView(binding.root)
                     return
                 }
@@ -111,12 +111,22 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             closeDialog(dialogBinding.root)
             dialogBinding.agreeClose.setOnClickListener {
                 val phoneNumber = dialogBinding.editPhone.text.toString()
+
                 val isValidPhoneNumber = android.util.Patterns.PHONE.matcher(phoneNumber).matches()
                 if (!isValidPhoneNumber || Sex.isEmpty() || Age.isEmpty() || Family.isEmpty()||Study.isEmpty()
                     ||Helath.isEmpty()||Smoke.isEmpty()||Drink.isEmpty()) { // 입력된게 전화번호 형식이면
                         Toast.makeText(this, "빈칸이 있어요!! 선택을 완벽하게 해주세요", Toast.LENGTH_SHORT).show()
                     } else {
-                        user=User(token.toString(),Sex,Age,Family,Study,Helath,Smoke,Drink,phoneNumber)
+                        user=User(Sex,Age,Family,Study,Helath,Smoke,Drink,phoneNumber)
+                    val infoRef =
+                        database.getReference("User/token/${token!!}/infomation/") //toekn 경로에 저장한다.
+                    infoRef.setValue(user).addOnSuccessListener {
+                        Log.d("problem", "answer 저장 성공")
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d("problem", "answer 저장 실패", exception)
+                        }
+
                         Log.d("problem", "${user}")
                         dialog.dismiss() // 다이얼로그를 닫기
                         startActivity(intent)

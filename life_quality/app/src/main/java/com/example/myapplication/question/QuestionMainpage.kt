@@ -45,7 +45,6 @@ class QuestionMainpage : AppCompatActivity() {
         setFrag(page)
         //인적사항 입력할 때는 진행도가 1임
         binding.progressbar.progress = 0
-
         // "다음" 버튼 클릭 이벤트 구현 부분
         binding.backStage.setOnClickListener{
             onBackBtnPressed()
@@ -55,40 +54,37 @@ class QuestionMainpage : AppCompatActivity() {
             Log.d("test", "라디오 버튼의 값 : $Id")
             Log.d("test", "${tempSurvey.type}")
             Log.d("test", "조사타입 : ${tempSurvey.surveyType}")
-            when(tempSurvey.surveyType){
-                "IPAQ" -> {
-                    if (Id == 0.0 && tempSurvey.type == "0") { //다음 화면 진행하지 않고 jump 해야함.
-                        Log.d("test", "다음 화면을 진행하지 않습니다")
-                        answer.add(Id)
-                        answer.add(Id)
-                        curCount++
-                        Id = -1.0
-                        binding.progressbar.progress++
-                    } else { //화며 skip 없을때
-                        answer.add(Id)
-                        Id = -1.0
-                    }
+            if (Id == -1.0) {
+                Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
+            }
+            else if (Id != -1.0) {
+                answer.add(Id)
+                Id = -1.0
+                Log.d("problem", "answer : ${answer[curCount - 1]}")
+                Log.d("problem","curCount : $curCount")
+                Log.d("problem","answer : ${answer}")
+                if (curCount == surveyList.size) {
+                    Log.d("test","dbid : ${dbid }")
+                    var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
+                    startActivity(intent)
+                } else {
+                    //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
+                    tempSurvey = surveyList.get(curCount)
+                    curCount++;
+                    //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
                     if (curCount == surveyList.size) {
-                        var intent = Intent(this@QuestionMainpage, ResultLayout::class.java)
-                        startActivity(intent)
-                    } else {
-                        //이제부터 버튼을 클릭할 떄마다 설문 type과 답변 개수에 따라 각각 다른 프레그먼트를 보여주어야 한다.
-                        tempSurvey = surveyList.get(curCount)
-                        curCount++;
-                        //마지막 문항일 경우에는 다음 버튼이 "결과보기"로 변경되어야 함
-                        if (curCount == surveyList.size) {
-                            binding.nextstage.text = "결과보기"
-                        }
-                        Log.d("curCount List", "curCount = $curCount")
-
-                        if (tempSurvey.type.toInt() == 0) { //답변이 선택형일 경우
-                            setFrag(tempSurvey.number.toInt())
-                        } else { //답변이 입력형일 경우
-                            setFrag(0)
-                        }
+                        binding.nextstage.text = "결과보기"
                     }
-                    binding.progressbar.progress++
+                    if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt() == 5 || tempSurvey.type.toInt()==6) { //답변이 선택형일 경우
+                        setFrag(tempSurvey.number.toInt())
+                    } else { //답변이 입력형일 경우
+                        setFrag(0)
+                    }
                 }
+                binding.progressbar.progress++
+            }
+        /*
+            when(tempSurvey.surveyType){
                 else -> { //IPAQ
                     if (Id == -1.0) {
                         Toast.makeText(this, "설문지를 선택하지 않았습니다!!", Toast.LENGTH_SHORT).show()
@@ -120,7 +116,8 @@ class QuestionMainpage : AppCompatActivity() {
                         binding.progressbar.progress++
                     }
                 }
-            }
+               }
+             */
         }
     }
     fun onBackBtnPressed() {
