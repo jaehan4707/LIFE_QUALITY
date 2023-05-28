@@ -380,11 +380,13 @@ class ResultLayout : AppCompatActivity() {
 
                     "SGDSK" -> {
                         weight += answer[i]
+                        /*
                         when(weight.toInt()){
                             in 0..5 -> ans=3
                             in 6..9 -> ans=2
                             in 10 .. 15->ans=1
                         }
+                         */
                     }
                     "Yosil" -> weight += answer[i]
                 }

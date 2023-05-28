@@ -41,6 +41,11 @@ class SgdskFragment : Fragment() {
     ): View? {
         _binding = FragmentSgdskBinding.inflate(inflater, container, false)
 
+        when(ResultLayout.weight.toInt()){
+            in 0..5 -> traffic=3
+            in 6..9 -> traffic=2
+            in 10 .. 15-> traffic=1
+        }
         when(traffic) {
             1 -> {
                 binding.redLight.setBackgroundResource(R.drawable.red_circle)

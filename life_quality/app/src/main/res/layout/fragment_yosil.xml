@@ -116,6 +116,7 @@
                 android:text="필수 설문 문항을 마친 후,\n'건강 도우미'에 준비된 '요실금 관리법'을 통해 배워봅시다"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
+                android:textAlignment="center"
                 android:textSize="19sp"/>
 
             <TextView

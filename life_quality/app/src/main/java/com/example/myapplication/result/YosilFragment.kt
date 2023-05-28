@@ -46,9 +46,8 @@ class  YosilFragment : Fragment() {
         val progressValue = weight.toInt()
 
         binding.progressbar.progress = progressValue
-        val text="떨어짐"
-        val startIndex = binding.info.text.indexOf("떨어짐")
-        val endIndex = startIndex + "떨어짐".length
+        val startIndex = binding.info.text.indexOf("높을수록")
+        val endIndex = binding.info.text.indexOf("떨어짐")+ "떨어짐".length
         val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red)) // 색깔 지정
         val spannableString = SpannableString(binding.info.text)
         spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
