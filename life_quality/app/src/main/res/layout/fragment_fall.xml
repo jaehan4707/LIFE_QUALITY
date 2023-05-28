@@ -84,7 +84,15 @@
                 </RelativeLayout>
 
 
-
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="이 문항은 점수가 높을 수록 낙상에 대한 두려움이 높음을 뜻합니다"/>
                 <TextView
                     android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
@@ -98,16 +106,17 @@
                     android:background="@drawable/textview_round"/>
 
                 <TextView
-                    android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/info_text"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:padding="10dp"
                     android:text="1.과음을 삼가고, 일어나거나 움직이기 시작할 때 천천히 행동하기\n2.위험장소에는 안전장치 및 밝은\n조명 설치,전선 물건 등 정리하기\n3.근력과 유연성을 높이기 위해서\n꾸준한 운동 실시하기"
                     android:textAlignment="center"
-                    android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
-                    android:background="@drawable/info_text"
-                    android:padding="10dp"
-                    android:textSize="20sp"/>
+                    android:lineSpacingExtra="8dp"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_marginTop="10dp"
@@ -122,7 +131,7 @@
                     android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="부정적 결과와 불편감 동반 시,\n정밀 검사를 권장 드립니다."
+                    android:text="부정적 결과와 불편감 동반 시,\n의사와의 상담을 권유 드립니다"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
                     android:gravity="center"

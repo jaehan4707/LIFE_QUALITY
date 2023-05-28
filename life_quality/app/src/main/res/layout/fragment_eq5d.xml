@@ -92,11 +92,12 @@
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1. 오늘이 내 인생의 마지막 날이라고 가정하기\n2. 자신을 돌보는 내밀한 시간 가지기\n3. 소소하고
+                android:text="1. 오늘이 내 인생의 마지막 날이라고 \n가정하기\n2. 자신을 돌보는 내밀한 시간 가지기\n3. 소소하고
 사소한 일탈에 익숙해지기\n4. 한 두사람과 끈끈한 인간관계 맺기\n5. 나누는 삶 생활화하기"
-                android:textSize="16.5sp"
+                android:textSize="19sp"
                 android:fontFamily="@font/bm_dohyeon"
-                android:gravity="start"
+                android:textAlignment="center"
+                android:lineSpacingExtra="8dp"
                 android:background="@drawable/info_text"
                 android:padding="5dp"
                 android:textColor="@color/black"/>
