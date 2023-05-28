@@ -25,6 +25,7 @@ import com.example.myapplication.question.QuestionMainpage.Companion.group
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.R
 import com.example.myapplication.databinding.Type3FragmentBinding
+import java.util.Collections
 
 class Fragment3 : Fragment() {
     lateinit var callback: OnBackPressedCallback
@@ -49,7 +50,14 @@ class Fragment3 : Fragment() {
             keyList.add(key)
             valueList.add(value)
         }
-
+        for(i in 0 until keyList.size){ //벨류 값이 작은대로 스왑.
+            for(j in i+1 until keyList.size){
+                if(keyList[i]>keyList[j]){
+                    Collections.swap(keyList,i,j)
+                    Collections.swap(valueList,i,j)
+                }
+            }
+        }
         if(tempSurvey.type.toInt()!=6) {
             Log.d("problem","라디오 레이아웃")
             binding.radioLayout.visibility =View.VISIBLE
@@ -74,8 +82,8 @@ class Fragment3 : Fragment() {
             binding.checkboxLayout.visibility=View.VISIBLE
 
             binding.checkBox1.text = valueList[0]
-            binding.checkBox2.text = valueList[2] //여기 수정
-            binding.checkBox3.text = valueList[1]
+            binding.checkBox2.text = valueList[1] //여기 수정
+            binding.checkBox3.text = valueList[2]
             sum_checkbox(binding.checkBox1)
             sum_checkbox(binding.checkBox2)
             sum_checkbox(binding.checkBox3)
