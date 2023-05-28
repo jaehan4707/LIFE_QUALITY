@@ -77,6 +77,7 @@
         <Button
             android:layout_marginEnd="10dp"
             android:id="@+id/go_to_edu"
+            android:textSize="20sp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="건강관리로\n이동하기"

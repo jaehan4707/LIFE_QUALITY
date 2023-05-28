@@ -122,10 +122,11 @@ class QuestionMainpage : AppCompatActivity() {
     }
     fun onBackBtnPressed() {
         Log.d("test","뒤로가기를 눌렀습니다")
-        if (currentFragment is FragmentInform) {
+        if (curCount==1) {
             // FragmentInform에서 뒤로가기 버튼을 눌렀을 때 액티비티를 종료
-           Log.d("test","잘못된 뒤로가기")
-            super.onBackPressed()
+            val intent = Intent(this, QuestionSelect::class.java) //intent
+            startActivity(intent)
+
         } else {
             Log.d("test","이전프래그먼트로 돌아갑니다, 문항 : ${curCount}을 지웁니다.")
             //뒤로가기하면 이전 선택지에 대한 응답을 지워야합니다. 그쵸?

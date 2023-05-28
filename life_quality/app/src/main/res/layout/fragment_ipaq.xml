@@ -17,14 +17,6 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="이 문항은 점수가 높을수록\n신체활동을 많이 한다는 것을 뜻합니다"
-                android:fontFamily="@font/bm_dohyeon"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/black"/>
 
             <LinearLayout
                 android:layout_marginTop="30dp"

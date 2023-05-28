@@ -72,9 +72,10 @@ class Fragment3 : Fragment() {
             Log.d("problem","체크박스 레이아웃")
             binding.radioLayout.visibility =View.GONE
             binding.checkboxLayout.visibility=View.VISIBLE
+
             binding.checkBox1.text = valueList[0]
-            binding.checkBox2.text = valueList[1]
-            binding.checkBox3.text = valueList[2]
+            binding.checkBox2.text = valueList[2] //여기 수정
+            binding.checkBox3.text = valueList[1]
             sum_checkbox(binding.checkBox1)
             sum_checkbox(binding.checkBox2)
             sum_checkbox(binding.checkBox3)

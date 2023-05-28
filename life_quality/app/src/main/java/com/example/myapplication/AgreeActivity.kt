@@ -87,7 +87,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                             Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
                         }
                     })
-                    //startActivity(intent)
+                    startActivity(intent)
                     setContentView(binding.root)
                     return
                 }

@@ -85,6 +85,7 @@
 
 
                 <TextView
+                    android:id="@+id/info"
                     android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,7 +93,7 @@
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="이 문항은 점수가 높을 수록 낙상에 대한 두려움이 높음을 뜻합니다"/>
+                    android:text="이 문항은 점수가 높을수록 낙상에 대한 두려움이 높음을 뜻합니다"/>
                 <TextView
                     android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
@@ -123,7 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="출처 : 질병관리청 [어르신 낙상 주의] 낙상 사고 \n예방으로 건강한 안정생활 하세요"
+                    android:text="출처 : 질병관리청 [어르신 낙상 주의] 낙상 사고 \n예방으로 안정생활 하세요"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"/>
 
