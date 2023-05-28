@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,11 +42,12 @@ class  FrailtyFragment : Fragment() {
     ): View? {
         _binding = FragmentFrailtyBinding.inflate(inflater, container, false)
 
+        Log.d("problem","노쇠측정 : ${weight}")
         when(weight.toInt()) {
             0 -> {
-                binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.redLight.setBackgroundResource(R.drawable.red_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
-                binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.frailtyResult.setText(R.string.red_frailty)
                 val text="노쇠"
                 val startIndex = text.indexOf("노쇠")

@@ -26,7 +26,9 @@ import com.example.myapplication.model.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.model.mutation.Precondition.exists
 
 class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티비티
     val binding: ActivityAgreeBinding by lazy {
@@ -39,6 +41,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
     private  var Helath : String =""
     private  var Smoke : String=""
     private  var Drink : String=""
+    private var phone : String =""
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +49,44 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
         val database = FirebaseDatabase.getInstance()
         val userRef =
             database.getReference("User/token/${token!!}") //toekn 경로에 저장한다.
+
         Log.d("problem", "FCM token is ${token}")
         //여기서 토큰이 없다면 바로 넘어가야함.
         userRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {  // 해당 token 값이 이미 존재하므로 작업을 멈춥니다.
-                    Log.d("problem", "해당 token 값이 이미 존재합니다. 작업을 멈추고, mainActivity로 이동합니다")
+                if (dataSnapshot.exists()) {
+                    Log.d("problem", "해당 token 값이 이미 존재합니다. 작업을 멈추고, MainActivity로 이동합니다.")
+                    val userInfoRef = database.getReference("User/token/$token/infomation")
+                    userInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                Log.d("problem", "해당 info 값이 이미 존재합니다. 작업을 멈추고, MainActivity로 이동합니다.")
+                                val infoType = object : GenericTypeIndicator<Map<String, String>>() {}
+                                val info = dataSnapshot.getValue(infoType)
+                                if (info != null) {
+                                    // info에 저장된 정보를 사용합니다.
+                                    for ((key, value) in info) {
+                                        Log.d("problem", "Key: $key, Value: $value")
+                                        when(key){
+                                            "age"->Age=value
+                                            "smoke"->Smoke=value
+                                            "family_relation"->Family=value
+                                            "Drink"->Drink=value
+                                            "sex"->Sex=value
+                                            "medical_insurance"->Helath=value
+                                            "phone"->phone=value
+                                            "scholarship"->Study=value
+                                        }
+                                    }
+                                }
+                            }
+                            user=User(Sex,Age,Family,Study,Helath,Smoke,Drink,phone)
+                            Log.d("problem", "user : ${user}")
+                        }
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
+                        }
+                    })
                     startActivity(intent)
                     setContentView(binding.root)
                     return

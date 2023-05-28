@@ -1,6 +1,9 @@
 package com.example.myapplication
 
 
+
+
+
 class TotalSurvey {
     var surveyType : String = ""
     var id : String = ""

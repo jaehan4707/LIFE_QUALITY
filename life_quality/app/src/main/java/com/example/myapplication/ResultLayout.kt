@@ -13,20 +13,29 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.check_list
 import com.example.myapplication.MainActivity.Companion.dbid
-import com.example.myapplication.MainActivity.Companion.ipaq_list
 import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.SplashActivity.Companion.token
 import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.databinding.*
+import com.example.myapplication.model.User
 import com.example.myapplication.question.QuestionSelect
 import com.example.myapplication.result.Eq5dFragment
 import com.example.myapplication.result.FallFragment
 import com.example.myapplication.result.*
 import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import java.text.SimpleDateFormat
 import java.util.*
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.GenericTypeIndicator
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.QuerySnapshot
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import kotlin.collections.ArrayList
 
 class ResultLayout : AppCompatActivity() {
 
@@ -39,7 +48,7 @@ class ResultLayout : AppCompatActivity() {
         var flag: Int = 0
     }
     val tasks = mutableListOf<Task<QuerySnapshot>>()
-
+    lateinit var ipaq_result : ArrayList<Double>
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
     val record_date =SimpleDateFormat("yyyy-MM-dd",Locale.getDefault())
     val date = record_date.format(Date())
@@ -71,9 +80,27 @@ class ResultLayout : AppCompatActivity() {
         flag = 0
         check_list[dbid]=true
         Log.d("problem","type : ${type}")
-
-        traffic= result(type) //결과값구하기.
-
+        if (type == "Frailty") {
+            val surveyRef = database.getReference("User/token/${token!!}/${date}/IPAQ/answer")
+            val result = ArrayList<Double>()
+            surveyRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (userSnapshot in dataSnapshot.children) {
+                        val value = userSnapshot.getValue(Double::class.java)
+                        value?.let {
+                            result.add(it)
+                        }
+                    }
+                    Log.d("problem", "ipaq_result: $result")
+                    ipaq_result=result
+                    // ipaq_result에 저장된 값을 사용합니다.
+                    traffic=result(type)
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
+                }
+            })
+        }
         when (type) {
             "EQ5D" -> {
                 Log.d("problem","EQ5D")
@@ -93,7 +120,6 @@ class ResultLayout : AppCompatActivity() {
                 ).commit()
             }
             "IPAQ" -> {
-                ipaq_list=answer
                 supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
                     IpaqFragment()
                 ).commit()
@@ -124,6 +150,12 @@ class ResultLayout : AppCompatActivity() {
                     SdohFragment()
                 ).commit()
             }
+            "Frailty"->{
+                Log.d("problem","노쇠측정")
+                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                    FrailtyFragment()
+                ).commit()
+            }
             else->false
         }
 
@@ -135,7 +167,10 @@ class ResultLayout : AppCompatActivity() {
             var intent = Intent(this, CardActivity::class.java)
             startActivity(intent)
         }
-
+        if(type!="Frailty"){
+            traffic=result(type)
+        }
+    //traffic= result(type) //결과값구하기.
     }
     private fun setPush(){
         Log.d("problem","알람 시간 : ${triggerFormat}")
@@ -154,6 +189,11 @@ class ResultLayout : AppCompatActivity() {
             }
         )
         alarmManager.set(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent)
+    }
+    private fun processResults(ipaqResultList: List<Double>, infoResultList: List<String>) {
+        // 결과를 사용하여 원하는 작업을 수행합니다.
+        // 예: RecyclerView에 값을 표시하거나 다른 처리를 수행합니다.
+        Log.d("problem","${ipaqResultList}, ${infoResultList}")
     }
     fun result(type: String) : Int {
         Log.d("test", "${type}")
@@ -317,11 +357,14 @@ class ResultLayout : AppCompatActivity() {
                     "Fall" -> weight += answer[i]
                     "MouthHealth" -> weight += answer[i]
                     "Frailty" -> {
+                        Log.d("problem","노쇠측정 결과 계산")
                         when (i) {
                             2 -> {
                                 //격렬한 활동은 list[0] * list[1] //0은 일수, 1은 분
                                 var Met: Double = 0.0
-                                Met += (ipaq_list[0] * ipaq_list[1] * 8 + ipaq_list[2] * ipaq_list[3] * 4 + ipaq_list[4] * ipaq_list[5] * 3.3 + ipaq_list[6]) * 0.0035 * answer[i] * 5
+                                //Log.d("problem", "user : ${user}")
+                                Log.d("problem","list : ${ipaq_result}")
+                                Met += (ipaq_result[0] *ipaq_result[1] * 8 + ipaq_result[2] * ipaq_result[3]* 4 + ipaq_result[4] * ipaq_result[5] * 3.3 + ipaq_result[6]) * 0.0035 * answer[i] * 5
                                 //해당 칼로리.
                                 if (user.Sex == "남성") {
                                     if (Met < 495)

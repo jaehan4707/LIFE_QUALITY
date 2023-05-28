@@ -27,4 +27,7 @@
     <string name="red_frailty">노쇠한 상태입니다</string>
     <string name="yellow_frailty">노쇠 전 상태입니다</string>
     <string name="green_frailty">건강 상태입니다</string>
+    <string name="red_sgdsk">심한우울 상태입니다</string>
+    <string name="yellow_sgdsk">가벼운 우울 상태입니다.</string>
+    <string name="green_sgdsk">정상 상태입니다</string>
 </resources>

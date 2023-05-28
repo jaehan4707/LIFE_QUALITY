@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.admin.AdminHome
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         var address : String = " "
         var relation : String = " "
         val check_list = Array<Boolean>(10) { false }
-        var ipaq_list = mutableListOf<Double>()
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         //질문 개수와 질문 리스트 초기화하고 다시 받아와야함.
         curCount = 0
         Total = mutableListOf<TotalSurvey>()
-        
+            //Log.d("problem","user : ${user}")
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.POST_NOTIFICATIONS
