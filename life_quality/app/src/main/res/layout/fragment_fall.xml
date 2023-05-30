@@ -93,6 +93,7 @@
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    android:breakStrategy="simple"
                     android:text="이 문항은 점수가 높을수록 낙상에 대한 두려움이 높음을 뜻합니다"/>
                 <TextView
                     android:layout_marginTop="50dp"
@@ -102,6 +103,7 @@
                     android:gravity="center"
                     android:text="낙상사고 예방이 최선입니다"
                     android:fontFamily="@font/bm_dohyeon"
+                    android:breakStrategy="balanced"
                     android:textColor="@color/black"
                     android:textSize="19sp"
                     android:background="@drawable/textview_round"/>

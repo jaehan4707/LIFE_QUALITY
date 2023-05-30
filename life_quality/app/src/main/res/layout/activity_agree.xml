@@ -34,18 +34,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <TextView
-                android:id="@+id/agree_body"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/info_text"
-                android:fontFamily="@font/bm_dohyeon"
-                android:lineSpacingExtra="5dp"
-                android:gravity="start"
-                android:padding="2dp"
-                android:text="@string/agree_info"
-                android:textColor="@color/black"
-                android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/agree_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/info_text"
+                    android:breakStrategy="balanced"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="start"
+                    android:lineSpacingExtra="5dp"
+                    android:padding="2dp"
+                    android:text="@string/agree_info"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -55,6 +57,7 @@
                     android:gravity="start"
                     android:lineSpacingExtra="5dp"
                     android:padding="5dp"
+                    android:breakStrategy="balanced"
                     android:text="@string/agree_question"
                     android:textColor="@color/black"
                     android:textSize="17sp" />

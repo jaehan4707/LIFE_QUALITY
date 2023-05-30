@@ -66,7 +66,7 @@ class EduAdapter : PagerAdapter{
         var view = layoutInflater.inflate(R.layout.item_education, container, false)
 
         //이미지뷰 가져오기
-        var imageView = view.findViewById<ZoomableImageView>(R.id.eduImage)
+        var imageView = view.findViewById<ImageView>(R.id.eduImage)
         val drawable = ContextCompat.getDrawable(context,models[position])
         imageView.setImageResource(models.get(position))
         //val drawable = ContextCompat.getDrawable(context, R.drawable.my_drawable)

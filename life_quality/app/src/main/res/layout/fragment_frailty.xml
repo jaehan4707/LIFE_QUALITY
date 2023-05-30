@@ -56,6 +56,9 @@
                 android:text="본 설문의 결과는 신체활동 결과와 \n합산되어 나타납니다"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:breakStrategy="balanced"
                 android:textSize="19sp" />
 
             <TextView
@@ -76,15 +79,15 @@
                 android:text="@string/good_sleep"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/textview_round"
                 android:fontFamily="@font/bm_dohyeon"
-                android:gravity="start"
+                android:gravity="center"
                 android:padding="10dp"
-                android:text="노쇠 예방 7대 수칙: 건강 기회만사성"
+                android:text="노쇠 예방 7대 수칙\n건강 기회만사성"
                 android:textColor="@color/black"
                 android:textSize="19sp" />
 

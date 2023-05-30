@@ -80,9 +80,10 @@
                 android:text="@string/good_sleep"/>
             <TextView
                 android:layout_marginTop="50dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="정신건강 향상을 위한 올바른 방법!"
+                android:breakStrategy="balanced"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:textSize="20sp"

@@ -47,7 +47,6 @@ class Eq5dFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.eq5dResult.setText(R.string.red_eq5d)
-                binding.eq5dResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
                 val text="낮은"
                 val startIndex = text.indexOf("낮은")
                 val endIndex = startIndex + "낮은".length
@@ -62,11 +61,10 @@ class Eq5dFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.eq5dResult.setText(R.string.yellow_eq5d)
-                binding.eq5dResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow))
                 val text="보통"
                 val startIndex = text.indexOf("보통")
                 val endIndex = startIndex + "보통".length
-                val colorSpan = ForegroundColorSpan(Color.YELLOW) // 색깔 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.main_orange)) // 색깔 지정
                 val spannableString = SpannableString(binding.eq5dResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.eq5dResult.text = spannableString

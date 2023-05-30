@@ -8,6 +8,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.CardActivity
+import com.example.myapplication.MainActivity
 import com.example.myapplication.MainActivity.Companion.Socialnum
 import com.example.myapplication.MainActivity.Companion.Total
 import com.example.myapplication.MainActivity.Companion.check_list
@@ -36,7 +37,7 @@ class QuestionSelect : AppCompatActivity() {
         val db = Firebase.firestore
         var tes = mutableListOf<TotalSurvey>()
         var nameList = mutableListOf<String>(
-        "MNA","SGDSK","Yosil","MouthHealth","IPAQ","SleepHabit","Frailty","Fall","EQ5D","SDoH"
+        "MNA","SGDSK","Yosil","MouthHealth","IPAQ","SleepHabit","Frailty","Fall","EQ5D","SocialNetwork"
         )
         for(i in 0 until check_list.size){
             if(check_list[i]){ //이미 완료된 설문이라면
@@ -101,7 +102,6 @@ class QuestionSelect : AppCompatActivity() {
                 R.id.rb10->dbid=9
             }
         }
-        var sdoh_List = mutableListOf<String>("SocialNetWork")
         binding.selectStart.setOnClickListener { //설문 시작하기 버튼 눌렀을 때
             binding.selectStart.isSelected = !binding.selectStart.isSelected
             if (binding.selectStart.isSelected) { //설문 시작을 눌렀을대.?
@@ -126,22 +126,9 @@ class QuestionSelect : AppCompatActivity() {
                         //카테고리 선택하면 카테고리별로 디비뽑음.
                         runBlocking {
                             val job = CoroutineScope(Dispatchers.IO).launch {
-                                if (dbid == 10) {
-                                    for (j in 0 until sdoh_List.size) {
-                                        for (i in 0 until Total.size) {
-                                            if (Total[i].surveyType == "SocialNetWork") {
-                                                surveyList.add(Total[i])
-                                                if (j == 1)
-                                                    Socialnum++
-                                            }
-                                        }
-                                    }
-
-                                } else {
-                                    for (i in 0 until Total.size) {
-                                        if (Total[i].surveyType == nameList[dbid]) {
-                                            surveyList.add(Total[i])
-                                        }
+                                for (i in 0 until Total.size) {
+                                    if (Total[i].surveyType == nameList[dbid]) {
+                                        surveyList.add(Total[i])
                                     }
                                 }
                             }
@@ -170,5 +157,10 @@ class QuestionSelect : AppCompatActivity() {
                 return false
         }
         return true
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this@QuestionSelect,MainActivity.javaClass)
+        startActivity(intent)
     }
 }

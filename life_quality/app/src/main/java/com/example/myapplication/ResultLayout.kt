@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.AgreeActivity.Companion.phone
 import com.example.myapplication.MainActivity.Companion.answer
 import com.example.myapplication.MainActivity.Companion.check_list
 import com.example.myapplication.MainActivity.Companion.dbid
@@ -56,9 +57,9 @@ class ResultLayout : AppCompatActivity() {
     private val surveyCompletionTime = System.currentTimeMillis()
     private val formattedCompletionTime = dateFormat.format(Date(surveyCompletionTime))
 
-    //val sevenDaysInMillis = 7 * 24 * 60 * 60 * 1000
+    val sevenDaysInMillis = 7 * 24 * 60 * 60 * 1000
     //val triggerTime = surveyCompletionTime + sevenDaysInMillis //설문 완료 이후 7일 이후의 시간
-    private val triggerTime = System.currentTimeMillis() + 30_000 // 현재 시간에서 30초(30,000 밀리초)를 더한 값 실제 테스트에서는 7일로 바꿔야함.
+    private val triggerTime = System.currentTimeMillis() + sevenDaysInMillis // 현재 시간에서 30초(30,000 밀리초)를 더한 값 실제 테스트에서는 7일로 바꿔야함.
     private val triggerFormat = dateFormat.format(Date(triggerTime))
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +69,8 @@ class ResultLayout : AppCompatActivity() {
         Log.d("test", "설문응답 : ${answer}, dbid : ${dbid}")
         Log.d("problem","설문조사 완료 시간 : $formattedCompletionTime")
         val database = FirebaseDatabase.getInstance()
-        val answerRef = database.getReference("User/token/${token!!}/${date}/${type}/answer")
+        //val answerRef = database.getReference("User/phone/${phone}/information/${date}/${type}/answer").push()
+        val answerRef = database.getReference("User/phone/$phone/information/$date/$type")
         answerRef.setValue(answer).addOnSuccessListener {
             Log.d("problem", "answer 저장 성공")
         }
@@ -347,11 +349,11 @@ class ResultLayout : AppCompatActivity() {
                                 weight += answer[i]
                             }
                         }
-                        if (weight < 15.0)
+                        if (weight < 15.0) //영양 불량
                             ans = 1
-                        else if (weight in 15.0..21.5)
+                        else if (weight in 15.0..21.5) //영양불량 위험
                             ans = 2
-                        else
+                        else //정상
                             ans = 3
                     } //완료
                     "Fall" -> weight += answer[i]

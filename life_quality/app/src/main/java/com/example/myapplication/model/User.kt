@@ -8,5 +8,4 @@ data class User(
     var Medical_insurance : String,
     var Smoke : String,
     var Drink : String,
-    var phone : String,
 )

@@ -104,28 +104,28 @@
                 android:text="연령"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
-            <RadioGroup
-                android:id="@+id/rg_age"
-                android:layout_width="0dp"
+           <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/age_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_weight="4"
+            android:hint="나이"
+            app:endIconMode="clear_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_age"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <RadioButton
-                    android:id="@+id/age_young"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:text="65~69세" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/bm_dohyeon"
+                android:inputType="number"
+                >
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <RadioButton
-                    android:id="@+id/age_old"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:text="70~74세"/>
-            </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
@@ -300,17 +300,19 @@
             android:layout_weight="1"
             android:orientation="horizontal"
             android:background="@drawable/info_text">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:text="흡연\n보통 하루에 피우는 담배 개비 수"
-                android:padding="10dp"
-                android:gravity="center_vertical"
+                android:breakStrategy="simple"
                 android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="흡연\n보통 하루에 피우는 \n담배 개비 수"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <RadioGroup
                 android:id="@+id/rg_smoke"
                 android:layout_width="0dp"
@@ -371,7 +373,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:text="음주\n술을 얼마나 자주 마십니까?"
+                android:text="음주\n술을 얼마나 자주\n마십니까?"
                 android:padding="10dp"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/bm_dohyeon"
