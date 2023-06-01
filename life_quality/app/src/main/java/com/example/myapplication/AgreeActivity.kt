@@ -29,7 +29,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.model.mutation.Precondition.exists
+import com.google.firebase.ktx.Firebase
 
 class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티비티
     val binding: ActivityAgreeBinding by lazy {
@@ -51,11 +53,10 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
         val intent = Intent(this, MainActivity::class.java) //intent
         val database = FirebaseDatabase.getInstance()
         val phoneRef = database.getReference("User/phone") //toekn 경로에 저장한다.
-        //val replacedString = binding.agreeBody.text.split(" ").joinToString("\u00A0")
-        //binding.agreeBody.text.replace(" ","\n$wordToWra")
-
         setContentView(binding.root)
         Log.d("problem", "FCM token is ${token}")
+        val Db = Firebase.firestore
+        val phnumRef = Db.collection("User").document(token!!)
 
         //만약 토큰이 없다면 여기로 와야함.
 
@@ -162,8 +163,19 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                         }
                             .addOnFailureListener { Log.d("problem","휴대폰 저장 실패") }
 
-                    val infoRef =
-                        database.getReference("User/phone/${phone}/information/") //toekn 경로에 저장한다.
+
+                    val updates = hashMapOf<String, Any>(
+                        "phone" to phone.toString() // 여기에 원하는 휴대폰 번호 값을 입력하세요
+                    )
+                    phnumRef.update(updates)
+                        .addOnSuccessListener {
+                            Log.d("problem", "phone 필드 추가 완료")
+                            // 추가 작업 완료 후 수행할 코드를 여기에 작성하세요
+                        }
+                        .addOnFailureListener { e ->
+                            Log.d("problem", "phone 필드 추가 실패: $e")
+                        }
+                    val infoRef = database.getReference("User/phone/${phone}/information/") //toekn 경로에 저장한다.
                     infoRef.setValue(user).addOnSuccessListener {
                         Log.d("problem", "answer 저장 성공")
                         }

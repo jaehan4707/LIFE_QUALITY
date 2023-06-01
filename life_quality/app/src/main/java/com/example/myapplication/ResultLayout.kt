@@ -52,13 +52,10 @@ class ResultLayout : AppCompatActivity() {
     lateinit var ipaq_result : ArrayList<Double>
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
     val record_date =SimpleDateFormat("yyyy-MM-dd",Locale.getDefault())
-    val date = record_date.format(Date())
-    // 설문 조사 완료 일시를 날짜 형식으로 변환한다
+    val date = record_date.format(Date()) // 설문 조사 완료 일시를 날짜 형식으로 변환한다
     private val surveyCompletionTime = System.currentTimeMillis()
     private val formattedCompletionTime = dateFormat.format(Date(surveyCompletionTime))
-
     val sevenDaysInMillis = 7 * 24 * 60 * 60 * 1000
-    //val triggerTime = surveyCompletionTime + sevenDaysInMillis //설문 완료 이후 7일 이후의 시간
     private val triggerTime = System.currentTimeMillis() + sevenDaysInMillis // 현재 시간에서 30초(30,000 밀리초)를 더한 값 실제 테스트에서는 7일로 바꿔야함.
     private val triggerFormat = dateFormat.format(Date(triggerTime))
 
@@ -70,7 +67,7 @@ class ResultLayout : AppCompatActivity() {
         Log.d("problem","설문조사 완료 시간 : $formattedCompletionTime")
         val database = FirebaseDatabase.getInstance()
         //val answerRef = database.getReference("User/phone/${phone}/information/${date}/${type}/answer").push()
-        val answerRef = database.getReference("User/phone/$phone/information/$date/$type")
+        val answerRef = database.getReference("User/phone/$phone/$date/$type")
         answerRef.setValue(answer).addOnSuccessListener {
             Log.d("problem", "answer 저장 성공")
         }
@@ -83,7 +80,7 @@ class ResultLayout : AppCompatActivity() {
         check_list[dbid]=true
         Log.d("problem","type : ${type}")
         if (type == "Frailty") {
-            val surveyRef = database.getReference("User/token/${token!!}/${date}/IPAQ/answer")
+            val surveyRef = database.getReference("User/phone/${phone!!}/${date}/IPAQ/answer")
             val result = ArrayList<Double>()
             surveyRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -380,16 +377,7 @@ class ResultLayout : AppCompatActivity() {
                         }
                     }
 
-                    "SGDSK" -> {
-                        weight += answer[i]
-                        /*
-                        when(weight.toInt()){
-                            in 0..5 -> ans=3
-                            in 6..9 -> ans=2
-                            in 10 .. 15->ans=1
-                        }
-                         */
-                    }
+                    "SGDSK" -> weight += answer[i]
                     "Yosil" -> weight += answer[i]
                 }
             }

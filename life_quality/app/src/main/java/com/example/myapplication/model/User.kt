@@ -7,5 +7,5 @@ data class User(
     var Scholarship : String,
     var Medical_insurance : String,
     var Smoke : String,
-    var Drink : String,
+    var Drink : String
 )
