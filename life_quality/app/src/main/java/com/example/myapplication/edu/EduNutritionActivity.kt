@@ -20,10 +20,20 @@ class EduNutritionActivity : AppCompatActivity() {
         nutrition_models.add(R.drawable.edu_nutrition_1)
         nutrition_models.add(R.drawable.edu_nutrition_2)
         nutrition_models.add(R.drawable.edu_nutrition_3)
+        nutrition_models.add(R.drawable.edu_nutrition_4)
+        nutrition_models.add(R.drawable.edu_nutrition_5)
+        nutrition_models.add(R.drawable.edu_nutrition_6)
+        nutrition_models.add(R.drawable.edu_nutrition_7)
+        nutrition_models.add(R.drawable.edu_nutrition_8)
 
         nutrition_colors.add(getColor(R.color.edu_nutri_color1))
         nutrition_colors.add(getColor(R.color.edu_nutri_color2))
         nutrition_colors.add(getColor(R.color.edu_nutri_color3))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color1))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color2))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color3))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color1))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color2))
 
 
         var adapter = EduAdapter(nutrition_models, this)
