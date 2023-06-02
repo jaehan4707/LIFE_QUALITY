@@ -68,7 +68,7 @@
             android:backgroundTint="@color/main_orange"
             android:fontFamily="@font/bm_dohyeon"
             android:text="계속하기"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/black" />
         <View
             android:layout_width="0dp"
@@ -84,7 +84,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/bm_dohyeon"
             android:textColor="@color/black"
-            android:backgroundTint="@color/main_orange"
-            />
+            android:backgroundTint="@color/main_orange"/>
+            <!-- android:backgroundTint="@android:color/transparent" -->
     </LinearLayout>
 </LinearLayout>

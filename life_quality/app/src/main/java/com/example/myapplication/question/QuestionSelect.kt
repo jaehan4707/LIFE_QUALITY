@@ -18,7 +18,6 @@ import com.example.myapplication.MainActivity.Companion.type
 import com.example.myapplication.R
 import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityQuestionSelectBinding
-import com.example.myapplication.databinding.TestLayoutBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.*
@@ -32,7 +31,7 @@ class QuestionSelect : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val activityScope = CoroutineScope(Dispatchers.Main)
         //var binding = ActivityQuestionSelectBinding.inflate(layoutInflater)
-        var binding =TestLayoutBinding.inflate(layoutInflater)
+        var binding =ActivityQuestionSelectBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val db = Firebase.firestore
         var tes = mutableListOf<TotalSurvey>()

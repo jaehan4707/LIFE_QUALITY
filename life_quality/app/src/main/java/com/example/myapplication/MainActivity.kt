@@ -140,7 +140,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.edu.setOnClickListener() {
-            val intent = Intent(this, CardActivity::class.java)
+            val intent = Intent(this, TestActivity::class.java)
             startActivity(intent)
         }
         binding.helpNoti.setOnClickListener {

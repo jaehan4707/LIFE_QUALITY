@@ -12,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
+            android:layout_margin="12dp"
             android:layout_weight="7"
             android:orientation="vertical"
             android:padding="20dp">
@@ -79,11 +79,15 @@
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:padding="5dp"
+                android:maxLines="3"
                 android:layout_height="wrap_content"
                 android:text="필수 설문 문항을 마친 후, '건강 도우미'에\n준비된 '운동 건강관리법'을 \n통해 배워봅시다!"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textSize="17sp"
                 android:textColor="@color/black"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeMaxTextSize="19dp"
                 android:gravity="center"
                 />
             <TextView

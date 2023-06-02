@@ -13,13 +13,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
+            android:layout_margin="12dp"
             android:layout_weight="7"
             android:orientation="vertical"
             android:padding="20dp">
             <TextView
                 android:id="@+id/info"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="혹시 주변에 의지할 수 있는 \n사람이 있나요?"
@@ -65,9 +65,9 @@
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:gravity="center"
+                android:lineSpacingExtra="8dp"
                 android:background="@drawable/button_round_main"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>
-
 </FrameLayout>

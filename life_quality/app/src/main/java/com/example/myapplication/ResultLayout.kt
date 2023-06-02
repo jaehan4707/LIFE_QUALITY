@@ -144,7 +144,7 @@ class ResultLayout : AppCompatActivity() {
                     YosilFragment()
                 ).commit()
             } //완료
-            "Sdoh"->{
+            "SocialNetwork"->{
                 supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
                     SdohFragment()
                 ).commit()

@@ -15,8 +15,17 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name = "Theme.MyApplication.Splash">
-        <item name = "colorPrimaryVariant">@color/main_orange</item>
+    <style name="Theme.MyApplication.Splash">
+        <item name="colorPrimaryVariant">@color/main_orange</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
+
+    <style name="Theme.MyApplication.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MyApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MyApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
