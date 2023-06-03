@@ -60,10 +60,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
         val phnumRef = Db.collection("User").document(token!!)
         Log.d("problem","tototot : ${Total.size}")
         //만약 토큰이 없다면 여기로 와야함.
-
-            //User에는 휴대폰 번호를 넣고 그 다음에 informatiuon을 넣고싶음.
-
-
+        //User에는 휴대폰 번호를 넣고 그 다음에 informatiuon을 넣고싶음.
         /*
         userRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -159,16 +156,10 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                         Toast.makeText(this, "빈칸이 있어요!! 선택을 완벽하게 해주세요", Toast.LENGTH_SHORT).show()
                     } else {
                         user=User(Sex,Age,Family,Study,Helath,Smoke,Drink)
-                        phoneRef.setValue(phone).addOnSuccessListener{
-                            Log.d("problem","휴대폰 저장 성공")
-                        }
-                            .addOnFailureListener { Log.d("problem","휴대폰 저장 실패") }
-
-
-                    val updates = hashMapOf<String, Any>(
-                        "phone" to phone.toString() // 여기에 원하는 휴대폰 번호 값을 입력하세요
-                    )
-                    phnumRef.update(updates)
+                        val updates = hashMapOf<String, Any>(
+                            "phone" to phone.toString() // 여기에 원하는 휴대폰 번호 값을 입력하세요
+                        )
+                    phnumRef.update(updates) //이 코드는 파이어스토어에 추가함.
                         .addOnSuccessListener {
                             Log.d("problem", "phone 필드 추가 완료")
                             // 추가 작업 완료 후 수행할 코드를 여기에 작성하세요
@@ -178,7 +169,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                         }
                     val infoRef = database.getReference("User/phone/${phone}/information/") //toekn 경로에 저장한다.
                     infoRef.setValue(user).addOnSuccessListener {
-                        Log.d("problem", "answer 저장 성공")
+                        Log.d("problem", "info 저장 성공")
                         }
                         .addOnFailureListener { exception ->
                             Log.d("problem", "answer 저장 실패", exception)
