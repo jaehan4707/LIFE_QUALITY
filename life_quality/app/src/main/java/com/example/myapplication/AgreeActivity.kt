@@ -3,14 +3,11 @@ package com.example.myapplication
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.text.LineBreaker.BREAK_STRATEGY_BALANCED
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -25,13 +22,8 @@ import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.databinding.ActivityAgreeBinding
 import com.example.myapplication.databinding.AgreeDialogBinding
 import com.example.myapplication.model.User
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.GenericTypeIndicator
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.model.mutation.Precondition.exists
 import com.google.firebase.ktx.Firebase
 
 class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티비티
@@ -53,7 +45,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
         super.onCreate(savedInstanceState)
         val intent = Intent(this, MainActivity::class.java) //intent
         val database = FirebaseDatabase.getInstance()
-        val phoneRef = database.getReference("User/phone") //toekn 경로에 저장한다.
+        //val phoneRef = database.getReference("User/phone") //toekn 경로에 저장한다.
         setContentView(binding.root)
         Log.d("problem", "FCM token is ${token}")
         val Db = Firebase.firestore
@@ -119,7 +111,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
         })
         */
         binding.yes.setOnClickListener {
-            val dialogView = LayoutInflater.from(this@AgreeActivity).inflate(R.layout.agree_dialog, null)
+            //val dialogView = LayoutInflater.from(this@AgreeActivity).inflate(R.layout.agree_dialog, null)
             val dialogBinding = AgreeDialogBinding.inflate(layoutInflater)
             val dialog = Dialog(this)
             val dialogLayoutParams = WindowManager.LayoutParams().apply {
@@ -138,12 +130,12 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             val screenHeight = displayMetrics.heightPixels
             dialog.window?.setLayout(screenWidth, screenHeight)
             dialog.show()
-            clickRadio(dialogBinding, dialogBinding.rgSex, "Sex")
-            clickRadio(dialogBinding, dialogBinding.rgFamily, "Family")
-            clickRadio(dialogBinding, dialogBinding.rgStudy, "Scholarship")
-            clickRadio(dialogBinding, dialogBinding.rgHealth, "Medical_insurance")
-            clickRadio(dialogBinding, dialogBinding.rgDrink, "Drink")
-            clickRadio(dialogBinding, dialogBinding.rgSmoke, "Smoke")
+            clickRadio(dialogBinding.rgSex, "Sex")
+            clickRadio(dialogBinding.rgFamily, "Family")
+            clickRadio(dialogBinding.rgStudy, "Scholarship")
+            clickRadio(dialogBinding.rgHealth, "Medical_insurance")
+            clickRadio(dialogBinding.rgDrink, "Drink")
+            clickRadio(dialogBinding.rgSmoke, "Smoke")
 
             closeDialog(dialogBinding)
             dialogBinding.agreeClear.setOnClickListener { //완료하기 버튼.
@@ -157,7 +149,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                     } else {
                         user=User(Sex,Age,Family,Study,Helath,Smoke,Drink)
                         val updates = hashMapOf<String, Any>(
-                            "phone" to phone.toString() // 여기에 원하는 휴대폰 번호 값을 입력하세요
+                            "phone" to phone // 여기에 원하는 휴대폰 번호 값을 입력하세요
                         )
                     phnumRef.update(updates) //이 코드는 파이어스토어에 추가함.
                         .addOnSuccessListener {
@@ -200,8 +192,8 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
         }
     }
 
-    fun clickRadio(binding: AgreeDialogBinding, radioGroup: RadioGroup, str: String) {
-        radioGroup.setOnCheckedChangeListener { group, checkedId -> // 라디오 버튼의 선택 상태가 변경되었을 때 호출되는 메서드입니다.
+    private fun clickRadio(radioGroup: RadioGroup, str: String) {
+        radioGroup.setOnCheckedChangeListener { _, checkedId -> // 라디오 버튼의 선택 상태가 변경되었을 때 호출되는 메서드입니다.
             val radioButton = radioGroup.findViewById<RadioButton>(checkedId)
             val selectedText = radioButton.text.toString()
             when(str){
