@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import com.example.myapplication.MainActivity.Companion.address
-import com.example.myapplication.MainActivity.Companion.relation
+import com.example.myapplication.SplashActivity.Companion.address
+import com.example.myapplication.SplashActivity.Companion.relation
 import com.example.myapplication.question.QuestionMainpage.Companion.group
 
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey

@@ -126,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="출처 : 질병관리청 [어르신 낙상 주의] 낙상 사고 \n예방으로 안정생활 하세요"
+                    android:text="출처 : 질병관리청 [어르신 낙상 주의] 낙상 사고 \n예방으로 안전생활 하세요"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"/>
 

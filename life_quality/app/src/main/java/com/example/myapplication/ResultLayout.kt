@@ -11,11 +11,11 @@ import android.util.Log
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.AgreeActivity.Companion.phone
-import com.example.myapplication.MainActivity.Companion.answer
-import com.example.myapplication.MainActivity.Companion.check_list
-import com.example.myapplication.MainActivity.Companion.dbid
-import com.example.myapplication.MainActivity.Companion.type
+import com.example.myapplication.SplashActivity.Companion.answer
+import com.example.myapplication.SplashActivity.Companion.check_list
+import com.example.myapplication.SplashActivity.Companion.dbid
 import com.example.myapplication.SplashActivity.Companion.token
+import com.example.myapplication.SplashActivity.Companion.type
 import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.databinding.*
 import com.example.myapplication.model.User
@@ -327,8 +327,8 @@ class ResultLayout : AppCompatActivity() {
                     } //완료
                     "IPAQ" -> {
                         when (i) {
-                            1 -> weight += answer[i]
-                            3 -> weight += answer[i]
+                            1 -> weight += answer[i]*answer[i-1]
+                            3 -> weight += answer[i]*answer[i-1]
                         }
                     }// } //weight 는 MET -> 이제 여기서 판단을 해야함. 완료
                     "MNA" -> {
@@ -384,5 +384,4 @@ class ResultLayout : AppCompatActivity() {
         }
         return ans
     }
-
 }

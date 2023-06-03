@@ -9,13 +9,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.CardActivity
 import com.example.myapplication.MainActivity
-import com.example.myapplication.MainActivity.Companion.Socialnum
-import com.example.myapplication.MainActivity.Companion.Total
-import com.example.myapplication.MainActivity.Companion.check_list
-import com.example.myapplication.MainActivity.Companion.dbid
-import com.example.myapplication.MainActivity.Companion.surveyList
-import com.example.myapplication.MainActivity.Companion.type
+import com.example.myapplication.SplashActivity.Companion.Total
+import com.example.myapplication.SplashActivity.Companion.check_list
 import com.example.myapplication.R
+import com.example.myapplication.SplashActivity
+import com.example.myapplication.SplashActivity.Companion.dbid
+import com.example.myapplication.SplashActivity.Companion.nameList
+import com.example.myapplication.SplashActivity.Companion.surveyList
+import com.example.myapplication.SplashActivity.Companion.type
 import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityQuestionSelectBinding
 import com.google.firebase.firestore.ktx.firestore
@@ -35,9 +36,6 @@ class QuestionSelect : AppCompatActivity() {
         setContentView(binding.root)
         val db = Firebase.firestore
         var tes = mutableListOf<TotalSurvey>()
-        var nameList = mutableListOf<String>(
-        "MNA","SGDSK","Yosil","MouthHealth","IPAQ","SleepHabit","Frailty","Fall","EQ5D","SocialNetwork"
-        )
         for(i in 0 until check_list.size){
             if(check_list[i]){ //이미 완료된 설문이라면
                 when(i){
@@ -119,20 +117,26 @@ class QuestionSelect : AppCompatActivity() {
                         Toast.makeText(this,"노쇠측정을 하기 전에 IPAQ 설문을 진행해주셔야 합니다!",Toast.LENGTH_SHORT).show()
                     }
                     else {
+                        Log.d("problem","클릭클릭")
                         Toast.makeText(this@QuestionSelect, "설문시작하기 버튼을 눌렀습니다", Toast.LENGTH_SHORT).show()
                         surveyList.clear()
                         type = nameList[dbid]
+                        Log.d("problem","${type}")
+                        Log.d("problem", "Total : ${Total.size}")
                         //카테고리 선택하면 카테고리별로 디비뽑음.
-                        runBlocking {
-                            val job = CoroutineScope(Dispatchers.IO).launch {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            val filteredSurveyList = withContext(Dispatchers.IO) {
+                                val tempList = mutableListOf<TotalSurvey>()
                                 for (i in 0 until Total.size) {
-                                    if (Total[i].surveyType == nameList[dbid]) {
-                                        surveyList.add(Total[i])
+                                    if (SplashActivity.Total[i].surveyType == nameList[dbid]) {
+                                        tempList.add(Total[i])
                                     }
                                 }
+                                tempList
                             }
-                            job.join() //job이 끝날떄까지 대기함.
-                            var intent = Intent(this@QuestionSelect, QuestionMainpage::class.java)
+                            surveyList.addAll(filteredSurveyList)
+                            Log.d("problem", "작업 : ${surveyList.size}")
+                            val intent = Intent(this@QuestionSelect, QuestionMainpage::class.java)
                             startActivity(intent)
                         }
                     }
@@ -159,7 +163,7 @@ class QuestionSelect : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this@QuestionSelect,MainActivity.javaClass)
+        val intent = Intent(this@QuestionSelect,MainActivity::class.java)
         startActivity(intent)
     }
 }

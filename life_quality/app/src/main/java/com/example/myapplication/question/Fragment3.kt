@@ -18,7 +18,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import com.example.myapplication.MainActivity.Companion.type
+import com.example.myapplication.SplashActivity.Companion.type
 import com.example.myapplication.question.QuestionMainpage.Companion.Id
 import com.example.myapplication.question.QuestionMainpage.Companion.group
 
