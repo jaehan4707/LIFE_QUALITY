@@ -2,6 +2,7 @@ package com.example.myapplication.question
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,20 +14,17 @@ import com.example.myapplication.question.QuestionMainpage.Companion.group
 
 import com.example.myapplication.R
 import com.example.myapplication.databinding.Type6FragmentBinding
+import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.viewModel.RadioViewModel
 
 class Fragment6 : Fragment() {
     lateinit var callback: OnBackPressedCallback
-    private val sharedViewModel: RadioViewModel by lazy {
-        ViewModelProvider(this).get(RadioViewModel::class.java)
-    }
+    private lateinit var sharedViewModel: RadioViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        //프레그먼트가 처음 실행될 때 실행하는 메소드
-        //res폴더에 만들어준 xml파일과 연결해주어야 함.
-
         //var keyList= mutableListOf<String>()
         //var valueList = mutableListOf<String>()
+        sharedViewModel = ViewModelProvider(requireActivity()).get(RadioViewModel::class.java)
         val keyList = arrayOfNulls<String>(6) // 크기가 6인 배열 생성
         val valueList = arrayOfNulls<String>(6) // 크기가 6인 배열 생성
         var binding = Type6FragmentBinding.inflate(layoutInflater) // 만들어준 xml파일을 binding한다.
@@ -61,8 +59,7 @@ class Fragment6 : Fragment() {
                         valueList[5] = value
                     }
                 }
-            } else {
-                // 예외 처리: 배열의 크기를 벗어나는 경우는 추가하지 않음
+            } else { // 예외 처리: 배열의 크기를 벗어나는 경우는 추가하지 않음
                 if (keyIndex < 5) {
                     keyIndex++
                     keyList[keyIndex] = key
@@ -79,6 +76,7 @@ class Fragment6 : Fragment() {
         var view = inflater.inflate(R.layout.type6_fragment, container, false)
         group = binding.groupF6
         group.setOnCheckedChangeListener { radioGroup, i ->
+            sharedViewModel.setRadioButton(curCount,i)
             when(i){
                 binding.rb1.id -> QuestionMainpage.Id = (keyList[0]!!.toDouble())
                 binding.rb2.id -> QuestionMainpage.Id = (keyList[1]!!.toDouble())
@@ -87,6 +85,11 @@ class Fragment6 : Fragment() {
                 binding.rb5.id -> QuestionMainpage.Id = (keyList[4]!!.toDouble())
                 binding.rb6.id->QuestionMainpage.Id = (keyList[5]!!.toDouble())
             }
+        }
+        val selectedRadioButtonId = sharedViewModel.getRadioButton(curCount)
+        Log.d("problem","라디오체크할래 ${selectedRadioButtonId}")
+        if(selectedRadioButtonId !=-1){
+            group.check(selectedRadioButtonId)
         }
         return binding.root
 

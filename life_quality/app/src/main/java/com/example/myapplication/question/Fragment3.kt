@@ -32,9 +32,7 @@ import java.util.Collections
 class Fragment3 : Fragment() {
     lateinit var callback: OnBackPressedCallback
     var checkCount : Int =0
-    private val sharedViewModel: RadioViewModel by lazy {
-        ViewModelProvider(this).get(RadioViewModel::class.java)
-    }
+    private lateinit var  sharedViewModel : RadioViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +40,7 @@ class Fragment3 : Fragment() {
     ): View? {
         //프레그먼트가 처음 실행될 때 실행하는 메소드
         //res폴더에 만들어준 xml파일과 연결해주어야 함.
-
+        sharedViewModel = ViewModelProvider(requireActivity()).get(RadioViewModel::class.java)
         var keyList= mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type3FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
@@ -73,13 +71,18 @@ class Fragment3 : Fragment() {
             var view = inflater.inflate(R.layout.type3_fragment, container, false)
             group = binding.groupF3
             group.setOnCheckedChangeListener { radioGroup, i ->
+                sharedViewModel.setRadioButton(QuestionMainpage.curCount,i)
                 when (i) {
                     binding.rb1.id -> Id = (keyList[0].toDouble())
                     binding.rb2.id -> Id = (keyList[1].toDouble())
                     binding.rb3.id -> Id = (keyList[2].toDouble())
                 }
             }
-            return binding.root
+            val selectedRadioButtonId = sharedViewModel.getRadioButton(QuestionMainpage.curCount)
+            Log.d("problem","라디오체크할래 ${selectedRadioButtonId}")
+            if(selectedRadioButtonId !=-1){
+                group.check(selectedRadioButtonId)
+            }
         }
         else{
             Log.d("problem","체크박스 레이아웃")
@@ -89,23 +92,30 @@ class Fragment3 : Fragment() {
             binding.checkBox1.text = valueList[0]
             binding.checkBox2.text = valueList[1] //여기 수정
             binding.checkBox3.text = valueList[2]
-            sum_checkbox(binding.checkBox1)
-            sum_checkbox(binding.checkBox2)
-            sum_checkbox(binding.checkBox3)
+            sum_checkbox(binding.checkBox1,0)
+            sum_checkbox(binding.checkBox2,1)
+            sum_checkbox(binding.checkBox3,2)
+
+            if(sharedViewModel.getCheckList(0)) binding.checkBox1.isChecked=true
+            if(sharedViewModel.getCheckList(1)) binding.checkBox2.isChecked=true
+            if(sharedViewModel.getCheckList(2)) binding.checkBox3.isChecked=true
             Id = when (checkCount) {
                 3 -> 2.0
                 2 ->1.0
                 else -> 0.0
             }
-            return binding.root
         }
+
+        return binding.root
     }
 
-    fun sum_checkbox(checkBox: CheckBox){
+    fun sum_checkbox(checkBox: CheckBox,idx : Int){
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 checkCount++
+                sharedViewModel.setCheckList(idx,true)
             } else {
+                sharedViewModel.setCheckList(idx,false)
                 checkCount--
             }
             Log.d("problem", "체크된 체크박스 개수: $checkCount")

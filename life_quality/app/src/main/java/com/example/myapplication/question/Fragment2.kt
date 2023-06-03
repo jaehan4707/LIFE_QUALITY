@@ -22,13 +22,6 @@ class Fragment2 : Fragment() {
     lateinit var callback : OnBackPressedCallback
 
     private lateinit var  sharedViewModel : RadioViewModel
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("problem","onViewCreated")
-        //return binding.root
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d("problem","oncreateView")
         sharedViewModel = ViewModelProvider(requireActivity()).get(RadioViewModel::class.java)

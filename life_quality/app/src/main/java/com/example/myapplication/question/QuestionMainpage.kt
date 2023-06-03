@@ -25,8 +25,6 @@ class QuestionMainpage : AppCompatActivity() {
     companion object {
         lateinit var tempSurvey: TotalSurvey
         lateinit var group: RadioGroup
-        //var keyList = mutableListOf<String>()
-        //var valueList = mutableListOf<String>()
         var Id: Double = -1.0
         var curCount = 0
         var flag = false

@@ -27,21 +27,19 @@ import com.example.myapplication.viewModel.RadioViewModel
 
 class Fragment4 : Fragment() {
     lateinit var callback: OnBackPressedCallback
-    private val sharedViewModel: RadioViewModel by lazy {
-        ViewModelProvider(this).get(RadioViewModel::class.java)
-    }
+
+    private lateinit var  sharedViewModel : RadioViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //프레그먼트가 처음 실행될 때 실행하는 메소드
         //res폴더에 만들어준 xml파일과 연결해주어야 함.
-
+        sharedViewModel = ViewModelProvider(requireActivity()).get(RadioViewModel::class.java)
         var keyList= mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type4FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         binding.type4Number.text = "문항 " + QuestionMainpage.curCount.toString()
-        //binding.type4Number.text ="문항 " + tempSurvey.id
-        binding.type4Title.text = QuestionMainpage.tempSurvey.title.toString()
+        binding.type4Title.text = tempSurvey.title
 
-        for((key, value) in QuestionMainpage.tempSurvey.answer) {
+        for((key, value) in tempSurvey.answer) {
             keyList.add(key)
             valueList.add(value)
         }
@@ -54,6 +52,7 @@ class Fragment4 : Fragment() {
         var view = inflater.inflate(R.layout.type4_fragment, container, false)
         group = binding.groupF4
         group.setOnCheckedChangeListener { radioGroup, i ->
+            sharedViewModel.setRadioButton(QuestionMainpage.curCount,i)
             when(i){
                 binding.rb1.id -> QuestionMainpage.Id = (keyList[0].toDouble())
                 binding.rb2.id -> QuestionMainpage.Id = (keyList[1].toDouble())
@@ -61,8 +60,12 @@ class Fragment4 : Fragment() {
                 binding.rb4.id -> QuestionMainpage.Id = (keyList[3].toDouble())
             }
         }
+        val selectedRadioButtonId = sharedViewModel.getRadioButton(QuestionMainpage.curCount)
+        Log.d("problem","라디오체크할래 ${selectedRadioButtonId}")
+        if(selectedRadioButtonId !=-1){
+            group.check(selectedRadioButtonId)
+        }
         return binding.root
-
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
