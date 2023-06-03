@@ -7,14 +7,21 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.*
 import com.example.myapplication.SplashActivity.Companion.answer
 import com.example.myapplication.SplashActivity.Companion.check_list
 import com.example.myapplication.SplashActivity.Companion.dbid
 import com.example.myapplication.SplashActivity.Companion.surveyList
 import com.example.myapplication.databinding.QuestionMainpageBinding
+import com.example.myapplication.viewModel.RadioViewModel
 
 class QuestionMainpage : AppCompatActivity() {
+
+    private val sharedViewModel: RadioViewModel by lazy {
+        ViewModelProvider(this).get(RadioViewModel::class.java)
+    }
+
     companion object {
         lateinit var tempSurvey: TotalSurvey
         lateinit var group: RadioGroup
@@ -104,8 +111,8 @@ class QuestionMainpage : AppCompatActivity() {
             Log.d("test","지우고 난 후 :${answer}")
 
             Log.d("test","after tempsurvey: ${surveyList[curCount-1].title}")
-            if (surveyList[curCount].type.toInt() == 0 || surveyList[curCount].type.toInt() == 4 || surveyList[curCount].type.toInt()==6) { //답변이 선택형일 경우
-                setFrag(surveyList[curCount].number.toInt())
+            if (surveyList[curCount-1].type.toInt() == 0 || surveyList[curCount-1].type.toInt() == 4 || surveyList[curCount-1].type.toInt()==6) { //답변이 선택형일 경우
+                setFrag(surveyList[curCount-1].number.toInt())
             } else { //답변이 입력형일 경우
                 setFrag(0)
             }

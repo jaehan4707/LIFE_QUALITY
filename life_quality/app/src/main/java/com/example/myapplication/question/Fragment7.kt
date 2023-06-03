@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.SplashActivity.Companion.address
 import com.example.myapplication.SplashActivity.Companion.relation
 import com.example.myapplication.question.QuestionMainpage.Companion.group
@@ -18,9 +19,13 @@ import com.example.myapplication.question.QuestionMainpage.Companion.group
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.R
 import com.example.myapplication.databinding.Type7FragmentBinding
+import com.example.myapplication.viewModel.RadioViewModel
 
 class Fragment7 : Fragment() {
     lateinit var callback: OnBackPressedCallback
+    private val sharedViewModel: RadioViewModel by lazy {
+        ViewModelProvider(this).get(RadioViewModel::class.java)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

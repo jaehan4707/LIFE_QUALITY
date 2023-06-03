@@ -18,6 +18,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.SplashActivity.Companion.type
 import com.example.myapplication.question.QuestionMainpage.Companion.Id
 import com.example.myapplication.question.QuestionMainpage.Companion.group
@@ -25,11 +26,15 @@ import com.example.myapplication.question.QuestionMainpage.Companion.group
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.R
 import com.example.myapplication.databinding.Type3FragmentBinding
+import com.example.myapplication.viewModel.RadioViewModel
 import java.util.Collections
 
 class Fragment3 : Fragment() {
     lateinit var callback: OnBackPressedCallback
     var checkCount : Int =0
+    private val sharedViewModel: RadioViewModel by lazy {
+        ViewModelProvider(this).get(RadioViewModel::class.java)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

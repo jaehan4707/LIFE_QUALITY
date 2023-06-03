@@ -8,13 +8,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.question.QuestionMainpage.Companion.group
 
 import com.example.myapplication.R
 import com.example.myapplication.databinding.Type8FragmentBinding
+import com.example.myapplication.viewModel.RadioViewModel
 
 class Fragment8 : Fragment() {
     lateinit var callback: OnBackPressedCallback
+    private val sharedViewModel: RadioViewModel by lazy {
+        ViewModelProvider(this).get(RadioViewModel::class.java)
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //프레그먼트가 처음 실행될 때 실행하는 메소드
         //res폴더에 만들어준 xml파일과 연결해주어야 함.

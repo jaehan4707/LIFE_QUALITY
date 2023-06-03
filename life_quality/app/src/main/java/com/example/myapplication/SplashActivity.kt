@@ -8,9 +8,11 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.snapshots.Snapshot
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.AgreeActivity.Companion.phone
 import com.example.myapplication.model.User
 import com.example.myapplication.databinding.ActivitySplashBinding
+import com.example.myapplication.viewModel.RadioViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
@@ -31,8 +33,10 @@ class SplashActivity : AppCompatActivity() {
     val activityScope = CoroutineScope(Dispatchers.Main)
     val TAG = "SplashActivity"
     val tasks = mutableListOf<Task<QuerySnapshot>>()
-
-    companion object {
+    private val sharedViewModel: RadioViewModel by lazy {
+        ViewModelProvider(this).get(RadioViewModel::class.java)
+    }
+    companion object     {
         lateinit var user: User
         lateinit var databaseReference: DatabaseReference
         //lateinit var authReference: FirebaseAuth
