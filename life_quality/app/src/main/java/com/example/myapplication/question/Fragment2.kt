@@ -15,22 +15,21 @@ import com.example.myapplication.question.QuestionMainpage.Companion.group
 
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.databinding.Type2FragmentBinding
-import com.example.myapplication.viewModel.RadioViewModel
+import com.example.myapplication.viewModel.QuestionViewModel
 
 class Fragment2 : Fragment() {
 
     lateinit var callback : OnBackPressedCallback
 
-    private lateinit var  sharedViewModel : RadioViewModel
+    private lateinit var  sharedViewModel : QuestionViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d("problem","oncreateView")
-        sharedViewModel = ViewModelProvider(requireActivity()).get(RadioViewModel::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(QuestionViewModel::class.java)
         val keyList = ArrayList<String>(2) // 초기 용량(capacity)이 2인 ArrayList 생성
         val valueList = ArrayList<String>(2) // 초기 용량(capacity)이 2인 ArrayList 생성
         var binding = Type2FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         binding.type2Number.text = "문항 " + curCount.toString()
         binding.type2Title.text = tempSurvey.title.toString()
-
         var keyIndex = -1
         for ((key, value) in tempSurvey.answer) {
             if (value == "예") {
@@ -51,7 +50,6 @@ class Fragment2 : Fragment() {
                 valueList.add(value)
             }
         }
-
         binding.rb1.text = valueList.get(0)
         binding.rb2.text = valueList.get(1)
         group = binding.groupF2
@@ -69,8 +67,7 @@ class Fragment2 : Fragment() {
             }
         }
         val selectedRadioButtonId = sharedViewModel.getRadioButton(curCount)
-        Log.d("problem","라디오체크할래 ${selectedRadioButtonId}")
-        if(selectedRadioButtonId !=-1){
+        if(selectedRadioButtonId !=-1){ //radio버튼 값 유지.
             group.check(selectedRadioButtonId)
         }
         return binding.root

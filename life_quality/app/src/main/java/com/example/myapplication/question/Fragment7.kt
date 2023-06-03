@@ -17,14 +17,13 @@ import com.example.myapplication.SplashActivity.Companion.relation
 import com.example.myapplication.question.QuestionMainpage.Companion.group
 
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
-import com.example.myapplication.R
 import com.example.myapplication.databinding.Type7FragmentBinding
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
-import com.example.myapplication.viewModel.RadioViewModel
+import com.example.myapplication.viewModel.QuestionViewModel
 
 class Fragment7 : Fragment() {
     lateinit var callback: OnBackPressedCallback
-    private lateinit var sharedViewModel: RadioViewModel
+    private lateinit var sharedViewModel: QuestionViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,7 +31,7 @@ class Fragment7 : Fragment() {
     ): View? {
         //프레그먼트가 처음 실행될 때 실행하는 메소드
         //res폴더에 만들어준 xml파일과 연결해주어야 함.
-        sharedViewModel = ViewModelProvider(requireActivity()).get(RadioViewModel::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(QuestionViewModel::class.java)
         var keyList= mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type7FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.

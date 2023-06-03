@@ -10,16 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.*
 import com.example.myapplication.SplashActivity.Companion.answer
-import com.example.myapplication.SplashActivity.Companion.check_list
 import com.example.myapplication.SplashActivity.Companion.dbid
 import com.example.myapplication.SplashActivity.Companion.surveyList
 import com.example.myapplication.databinding.QuestionMainpageBinding
-import com.example.myapplication.viewModel.RadioViewModel
+import com.example.myapplication.viewModel.QuestionViewModel
 
 class QuestionMainpage : AppCompatActivity() {
 
-    private val sharedViewModel: RadioViewModel by lazy {
-        ViewModelProvider(this).get(RadioViewModel::class.java)
+    private val sharedViewModel: QuestionViewModel by lazy {
+        ViewModelProvider(this).get(QuestionViewModel::class.java)
     }
 
     companion object {

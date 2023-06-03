@@ -15,13 +15,13 @@ import com.example.myapplication.question.QuestionMainpage.Companion.group
 import com.example.myapplication.R
 import com.example.myapplication.databinding.Type8FragmentBinding
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
-import com.example.myapplication.viewModel.RadioViewModel
+import com.example.myapplication.viewModel.QuestionViewModel
 
 class Fragment8 : Fragment() {
     lateinit var callback: OnBackPressedCallback
-    private lateinit var sharedViewModel: RadioViewModel
+    private lateinit var sharedViewModel: QuestionViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        sharedViewModel=ViewModelProvider(requireActivity()).get(RadioViewModel::class.java)
+        sharedViewModel=ViewModelProvider(requireActivity()).get(QuestionViewModel::class.java)
         var keyList= mutableListOf<String>()
         var valueList = mutableListOf<String>()
         var binding = Type8FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.

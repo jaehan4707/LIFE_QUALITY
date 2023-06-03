@@ -8,4 +8,5 @@ data class Data(
     var birth : String,
     var sex : String
 )
+
 //1111 1111 111

@@ -7,12 +7,11 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.snapshots.Snapshot
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.AgreeActivity.Companion.phone
 import com.example.myapplication.model.User
 import com.example.myapplication.databinding.ActivitySplashBinding
-import com.example.myapplication.viewModel.RadioViewModel
+import com.example.myapplication.viewModel.QuestionViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
@@ -27,14 +26,13 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.*
-import java.lang.reflect.Array.set
 
 class SplashActivity : AppCompatActivity() {
     val activityScope = CoroutineScope(Dispatchers.Main)
     val TAG = "SplashActivity"
     val tasks = mutableListOf<Task<QuerySnapshot>>()
-    private val sharedViewModel: RadioViewModel by lazy {
-        ViewModelProvider(this).get(RadioViewModel::class.java)
+    private val sharedViewModel: QuestionViewModel by lazy {
+        ViewModelProvider(this).get(QuestionViewModel::class.java)
     }
     companion object     {
         lateinit var user: User

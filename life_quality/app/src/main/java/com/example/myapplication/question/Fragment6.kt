@@ -16,15 +16,15 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.Type6FragmentBinding
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
-import com.example.myapplication.viewModel.RadioViewModel
+import com.example.myapplication.viewModel.QuestionViewModel
 
 class Fragment6 : Fragment() {
     lateinit var callback: OnBackPressedCallback
-    private lateinit var sharedViewModel: RadioViewModel
+    private lateinit var sharedViewModel: QuestionViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //var keyList= mutableListOf<String>()
         //var valueList = mutableListOf<String>()
-        sharedViewModel = ViewModelProvider(requireActivity()).get(RadioViewModel::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(QuestionViewModel::class.java)
         val keyList = arrayOfNulls<String>(6) // 크기가 6인 배열 생성
         val valueList = arrayOfNulls<String>(6) // 크기가 6인 배열 생성
         var binding = Type6FragmentBinding.inflate(layoutInflater) // 만들어준 xml파일을 binding한다.
