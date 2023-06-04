@@ -80,7 +80,7 @@ class ResultLayout : AppCompatActivity() {
         check_list[dbid]=true
         Log.d("problem","type : ${type}")
         if (type == "Frailty") {
-            val surveyRef = database.getReference("User/phone/${phone!!}/${date}/IPAQ/answer")
+            val surveyRef = database.getReference("User/phone/${phone!!}/${date}/IPAQ")
             val result = ArrayList<Double>()
             surveyRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {

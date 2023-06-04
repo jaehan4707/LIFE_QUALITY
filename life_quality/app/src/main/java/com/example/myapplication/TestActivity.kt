@@ -16,6 +16,5 @@ class TestActivity : AppCompatActivity() {
 
         binding = ActivityTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 }

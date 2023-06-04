@@ -16,7 +16,7 @@
     \n연구 책임자 : 교수 이은주\n공동 연구자 : 이수연, 이시진, 조희경* 표시의 문항은 필수 응답 문항입니다.\n* 설문지 작성 시 문의사항이 있다면 heeeki@knu.ac.kr으로 문의해주시길 바랍니다.</string>
     <string name="agree_question">본 연구는 스마트폰 어플리케이션을 통한 자가 건강관리가 초기 노인의 건강 상태에 미치는 영향을 알아보기 위한 중재 연구입니다.\n설문지는 익명으로 작성되며, 언제든지 설문을 철회할 수 있습니다. 또한 응답한 내용과 결과는 연구를 위한 자료로만 사용될 것입니다. 개인정보보호법에 의거하여 개인 정보의 보유 및 이용 기간은 연구가 끝난 후 6개월 이내 폐기될 것입니다. 위의 내용을 확인하였으며\n이에 동의하시고 연구에 참여하시겠습니까?</string>
     <string name="good_sleep">잘 주무시고 계시네요!</string>
-    <string name="bad_sleep">아래의 수면건강 5계명을 읽어보세요!</string>
+    <string name="bad_sleep">아래의 수면건강 5계명을 \n읽어보세요!</string>
     <string name="red_mna">영양불량의 가능성이 있는 \n상태입니다</string>
     <string name="yellow_mna">영양불량 위험의 가능성이 있는 \n상태입니다</string>
     <string name="green_mna">정상적인 영양 관리를 하고 있는 \n상태입니다</string>
