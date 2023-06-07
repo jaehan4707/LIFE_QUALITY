@@ -28,31 +28,39 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
-
             <TextView
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="나이가 들수록 실질적인 \n도움이 필요합니다"
+                android:text="나이가 들수록 실질적인 \n도움이 필요합니다\n가족과 친구, 이웃 등 가까운 사람과 함께\n시간을 보내거나, 다양한 사회 활동에\n참여하여, 사회적 관계를 넓히는 것을 \n권장드립니다."
+                android:lineSpacingExtra="8dp"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:background="@drawable/textview_round"/>
 
+            <TextView
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:layout_marginBottom="10dp"
+                android:text="사회 활동 참여의 이점"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
                 android:background="@drawable/info_text"
                 android:fontFamily="@font/bm_dohyeon"
                 android:gravity="center"
                 android:lineSpacingExtra="8dp"
                 android:padding="5dp"
                 android:layout_gravity="center"
-                android:text="활력,행복감 상승\n겪을 수 있는 상실감, 고립감에서 \n벗어날 수 있는 기회의 장"
+                android:text="1. 활력,행복감 상승\n2. 겪을 수 있는 상실감, 고립감에서 \n벗어날 수 있는 기회의 장"
                 android:textColor="@color/black"
                 android:textSize="19sp" />
 

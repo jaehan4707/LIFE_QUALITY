@@ -197,15 +197,15 @@ class ResultLayout : AppCompatActivity() {
     fun result(type: String) : Int {
         Log.d("test", "${type}")
         var ans: Int = 0
-        if (type == "SleepHabit") {
-            var first = answer[13]
-            var second = when(answer[1].toInt()){
+        if (type == "SleepHabit") { //13문항이 바꼇음 따라서 13 이후로는 +1해야함.
+            var first = answer[14] //#6
+            var second = when(answer[1].toInt()){ //#2+5a
                 in 0 .. 15 -> 0+answer[4]
                 in 16 .. 30-> 1+answer[4]
                 in 31 .. 60->2+answer[4]
                 else -> 3+answer[4]
             }
-            var third = when(answer[3].toInt()){
+            var third = when(answer[3].toInt()){ //#4
                 in 0 until 5 -> 3
                 in 5 until 6 ->2
                 in 6 until 7 ->1
@@ -218,7 +218,7 @@ class ResultLayout : AppCompatActivity() {
                 else ->0
             }
             var n = 0.0
-            for(i in 5 .. 12){
+            for(i in 5 .. 13){ //#5b~5j
                 n+=answer[i]
             }
             var five = when(n.toInt()){
@@ -227,8 +227,8 @@ class ResultLayout : AppCompatActivity() {
                 in 10 ..18 ->2
                 else ->3
             }
-            var six = answer[14]
-            var seven = when((answer[15]+answer[16]).toInt()){
+            var six = answer[15]
+            var seven = when((answer[16]+answer[17]).toInt()){
                 0->0
                 in 1..2 -> 1
                 in 3..4 ->2

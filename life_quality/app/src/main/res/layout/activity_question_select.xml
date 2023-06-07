@@ -127,7 +127,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="영양상태 측정(MNA)"
+                android:text="영양상태"
                 style="@style/RadioTextStyle"
                 />
                 <TextView
@@ -211,7 +211,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:text="신체활동설문(IPAQ)"
+                    android:text="신체활동"
                     style="@style/RadioTextStyle"
                     />
                 <TextView
@@ -240,7 +240,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="노쇠측정"
+                android:text="노쇠"
                 style="@style/RadioTextStyle"
                 />
             <TextView
@@ -261,7 +261,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="SDoH"
+                android:text="사회적건강"
                 style="@style/RadioTextStyle"
                 />
 

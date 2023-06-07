@@ -79,7 +79,7 @@ class QuestionMainpage : AppCompatActivity() {
                     if (curCount == surveyList.size) {
                         binding.nextstage.text = "결과보기"
                     }
-                    if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt() == 5 || tempSurvey.type.toInt()==6) { //답변이 선택형일 경우
+                    if (tempSurvey.type.toInt() == 0 || tempSurvey.type.toInt() == 5 || tempSurvey.type.toInt()==6 || tempSurvey.type.toInt()==4) { //답변이 선택형일 경우
                         setFrag(tempSurvey.number.toInt())
                     } else { //답변이 입력형일 경우
                         setFrag(0)
