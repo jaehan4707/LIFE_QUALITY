@@ -6,167 +6,124 @@
     android:layout_height="match_parent"
     tools:context=".TestActivity">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/top"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHeight_percent="0.1">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:background="@drawable/baseline_arrow_back_24"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="건강관리"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/bm_dohyeon"
+            android:gravity="center"
+            android:layout_weight="5"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@id/top">
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:padding="5dp"
-            android:layout_height="match_parent">
-            <ImageView
-                android:id='@+id/nutrition'
-                android:layout_width="0dp"
-                app:layout_constraintWidth_percent="0.5"
-                android:layout_height="150dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:src="@drawable/nutrition" />
-            <ImageView
-                android:id="@+id/yosil_1"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.5"
-                android:src="@drawable/yosil"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_weight="1"/>
-            <TextView
-                android:background="@drawable/textview_round"
-                android:id="@+id/nut_text"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                app:layout_constraintTop_toBottomOf="@id/nutrition"
-                app:layout_constraintWidth_percent="0.5"
-                android:text="나이가 들수록 떨어지는 입맛!\n건강한 식생활 함께 지켜봐요!"
-                android:fontFamily="@font/bm_dohyeon"
-                android:padding="5dp"
-                android:gravity="center_vertical"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                />
-            <TextView
-                android:background="@drawable/textview_round"
-                android:id="@+id/yosil_1_text"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                app:layout_constraintTop_toBottomOf="@id/yosil_1"
-                app:layout_constraintWidth_percent="0.5"
-                android:text="말 못할 고민\n골반저근을 통해 예방해봐요"
-                android:fontFamily="@font/bm_dohyeon"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/info_text"
+                android:backgroundTint="@color/gray"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id='@+id/emotion'
-                android:layout_width="0dp"
-                app:layout_constraintWidth_percent="0.5"
-                android:layout_height="150dp"
-                app:layout_constraintTop_toBottomOf="@id/nut_text"
-                app:layout_constraintStart_toStartOf="parent"
-                android:src="@drawable/emotion" />
-            <ImageView
-                android:id="@+id/mouth"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                app:layout_constraintTop_toBottomOf="@id/yosil_1_text"
-                app:layout_constraintWidth_percent="0.5"
-                android:src="@drawable/mouth"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_weight="1"/>
-            <TextView
-                android:background="@drawable/textview_round"
-                android:id="@+id/emotion_text"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                app:layout_constraintTop_toBottomOf="@id/emotion"
-                app:layout_constraintWidth_percent="0.5"
-                android:text="혹시 내가 우을증?\n예방과 치료방법 살펴봐요"
-                android:fontFamily="@font/bm_dohyeon"
-                android:gravity="center_vertical"
-                android:textColor="@color/black"
-                android:padding="5dp"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                />
-            <TextView
-                android:background="@drawable/textview_round"
-                android:id="@+id/mouth_text"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                app:layout_constraintTop_toBottomOf="@id/mouth"
-                app:layout_constraintWidth_percent="0.5"
-                android:text="자신감 있는 미소를 위해!\n깨긋하고 관리하고 밝게 \n웃어봐요"
-                android:fontFamily="@font/bm_dohyeon"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/circle_nutrition"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_nutrition"
+                    android:background="@color/gray"
+                    app:civ_border_overlay="true"
+                    app:civ_border_width="5dp"
+                    app:civ_border_color="#FFFFFF"
+                    android:tooltipText="영양관리"
+                    />
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:text="영양관리"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_weight="3"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
-            <ImageView
-                android:id='@+id/exercise'
-                android:layout_width="0dp"
-                app:layout_constraintWidth_percent="0.5"
-                android:layout_height="150dp"
-                app:layout_constraintTop_toBottomOf="@id/emotion_text"
-                app:layout_constraintStart_toStartOf="parent"
-                android:src="@drawable/excercise" />
-            <ImageView
-                android:id="@+id/yosil_2"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                app:layout_constraintTop_toBottomOf="@id/mouth_text"
-                app:layout_constraintWidth_percent="0.5"
-                android:src="@drawable/yosil"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_weight="1"/>
-            <TextView
-                android:background="@drawable/textview_round"
-                android:id="@+id/exercise_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/exercise"
-                app:layout_constraintWidth_percent="0.5"
-                android:text="자신에게 맞는 올바른 운동 실천.\n안전하게 건강 챙겨봐요!"
-                android:fontFamily="@font/bm_dohyeon"
-                android:padding="15dp"
-                android:gravity="center_vertical"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/info_text"
+                android:backgroundTint="#0BECB0"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/yosil_2_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:autoSizeMaxTextSize="15sp"
-                android:autoSizeMinTextSize="12sp"
-                android:background="@drawable/textview_round"
-                android:fontFamily="@font/bm_dohyeon"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:padding="15dp"
-                android:text="말 못할 고민\n방광훈련을 통해 예방해봐요"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/exercise_text"
-                app:layout_constraintTop_toBottomOf="@id/yosil_2"
-                app:layout_constraintVertical_bias="0"
-                app:layout_constraintWidth_percent="0.5" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/circle_mental"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_mental"
+                    app:civ_border_overlay="true"
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:civ_border_color="#FFFFFF"
+                    android:tooltipText="정신건강"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:text="정신건강"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_weight="3"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
