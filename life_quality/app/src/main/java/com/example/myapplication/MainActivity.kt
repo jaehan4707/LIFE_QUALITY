@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.edu.setOnClickListener() {
-            val intent = Intent(this, TestActivity::class.java)
+            val intent = Intent(this, EduActivity::class.java)
             startActivity(intent)
         }
         binding.helpNoti.setOnClickListener {
