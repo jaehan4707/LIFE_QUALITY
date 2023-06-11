@@ -42,16 +42,20 @@
         android:fontFamily="@font/bm_dohyeon"
         android:gravity="center"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9">
     <FrameLayout
         android:id="@+id/result_frame"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9" />
-
+        android:layout_height="match_parent"
+        />
+    </ScrollView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:orientation="horizontal"
         >
         <Button
@@ -64,6 +68,7 @@
             android:backgroundTint="@color/main_orange"
             android:fontFamily="@font/bm_dohyeon"
             android:text="계속하기"
+            android:textSize="25sp"
             android:textColor="@color/black" />
         <View
             android:layout_width="0dp"
@@ -72,13 +77,14 @@
         <Button
             android:layout_marginEnd="10dp"
             android:id="@+id/go_to_edu"
+            android:textSize="20sp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="건강관리로\n이동하기"
             android:layout_weight="1"
             android:fontFamily="@font/bm_dohyeon"
             android:textColor="@color/black"
-            android:backgroundTint="@color/main_orange"
-            />
+            android:backgroundTint="@color/main_orange"/>
+            <!-- android:backgroundTint="@android:color/transparent" -->
     </LinearLayout>
 </LinearLayout>

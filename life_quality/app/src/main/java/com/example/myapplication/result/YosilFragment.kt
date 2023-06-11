@@ -2,12 +2,16 @@ package com.example.myapplication.result
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.weight
@@ -42,7 +46,12 @@ class  YosilFragment : Fragment() {
         val progressValue = weight.toInt()
 
         binding.progressbar.progress = progressValue
-
+        val startIndex = binding.info.text.indexOf("높을수록")
+        val endIndex = binding.info.text.indexOf("떨어짐")+ "떨어짐".length
+        val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red)) // 색깔 지정
+        val spannableString = SpannableString(binding.info.text)
+        spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.info.text = spannableString
         binding.root.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 val progressBarWidth = binding.progressbar.width
@@ -55,7 +64,7 @@ class  YosilFragment : Fragment() {
                 textParams.addRule(RelativeLayout.BELOW, R.id.progressbar)
                 textParams.addRule(RelativeLayout.CENTER_HORIZONTAL)
                 binding.progressText.layoutParams = textParams
-                binding.progressText.text = progressValue.toString()
+                binding.progressText.text = progressValue.toString()+"점"
                 // 레이아웃 리스너를 제거합니다.
                 binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }

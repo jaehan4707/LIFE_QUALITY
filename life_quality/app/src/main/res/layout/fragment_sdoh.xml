@@ -13,108 +13,69 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
+            android:layout_margin="12dp"
             android:layout_weight="7"
             android:orientation="vertical"
             android:padding="20dp">
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/info"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="본 조사는,"
-                android:textSize="19sp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
+                android:text="혹시 주변에 의지할 수 있는 \n사람이 있나요?"
+                android:fontFamily="@font/bm_dohyeon"
+                android:maxLines="3"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="설문자의 "
-                    android:textSize="19sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="사회적성향"
-                    android:textColor="@color/main_orange"
-                    android:textSize="19sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="을 평가합니다."
-                    android:textSize="19sp"/>
-            </LinearLayout>
-            <FrameLayout
-                android:layout_width="200dp"
-                android:layout_height="90dp"
-                android:background="@drawable/round_trafficlight"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:padding="3dp">
-                    <View
-                        android:id="@+id/redLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/red_circle"
-                        android:layout_gravity="center_vertical"/>
-                    <View
-                        android:id="@+id/yellowLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/gray_circle"
-                        android:layout_gravity="center_vertical"/>
-                    <View
-                        android:id="@+id/greenLight"
-                        android:layout_width="58dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/gray_circle"
-                        android:layout_gravity="center_vertical"/>
-                </LinearLayout>
-            </FrameLayout>
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="나이가 들수록 실질적인 \n도움이 필요합니다\n가족과 친구, 이웃 등 가까운 사람과 함께\n시간을 보내거나, 다양한 사회 활동에\n참여하여, 사회적 관계를 넓히는 것을 \n권장드립니다."
+                android:lineSpacingExtra="8dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:background="@drawable/textview_round"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="설문결과, "
-                android:layout_marginTop="20dp"
-                android:textSize="19sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="당신의 사회적성향은"
-                android:layout_marginTop="20dp"
-                android:textSize="19sp"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/result_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="정상 "
-                    android:textColor="@color/main_orange"
-                    android:textSize="19sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="입니다."
-                    android:textSize="19sp"/>
-            </LinearLayout>
-            <android.widget.Button
-                android:id="@+id/goto_edu"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="건강관리로 이동하기"
-                android:layout_gravity="center"
-                android:background="@drawable/button_round_main"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 android:fontFamily="@font/bm_dohyeon"
-                android:layout_marginTop="50dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="사회 활동 참여의 이점"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/info_text"
+                android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:text="1. 활력,행복감 상승\n2. 겪을 수 있는 상실감, 고립감에서 \n벗어날 수 있는 기회의 장"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <TextView
+                android:padding="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="또한 가까운 보건소를 방문하여 \n다양하게 진행되는\n프로그램에 참여해보세요!\n삶의 활력을 얻고,\n실질적 지원도 받을 수 있습니다."
+                android:fontFamily="@font/bm_dohyeon"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:background="@drawable/button_round_main"
+                android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>
-
 </FrameLayout>

@@ -37,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -80,5 +83,8 @@ dependencies {
     implementation 'io.github.ParkSangGwon:tedpermission-rx2:3.3.0'
     // RxJava3
     implementation 'io.github.ParkSangGwon:tedpermission-rx3:3.3.0'
+
+    //원형 이미지뷰
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 }

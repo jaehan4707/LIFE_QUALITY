@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#00000000" /> <!-- 배경색을 투명하게 설정 -->
+    <corners android:radius="100dp" /> <!-- 테두리를 둥글게 만들기 위한 반지름 설정 -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/black" />
+</shape>

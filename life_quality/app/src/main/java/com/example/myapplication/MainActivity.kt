@@ -14,12 +14,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.admin.AdminHome
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.DialogStartBinding
 import com.example.myapplication.databinding.NotiDialogBinding
-import com.example.myapplication.databinding.Smoke1DialogBinding
 import com.example.myapplication.question.QuestionSelect
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
@@ -39,20 +39,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     var waitTime : Long = 0
     val tasks = mutableListOf<Task<QuerySnapshot>>()
-    companion object {
-        var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","SocialNetwork")
-        var Total = mutableListOf<TotalSurvey>()
-        var type : String = ""
-        var answer = mutableListOf<Double>()
-        var Socialnum : Int =0
-        var Fallum : Int =2
-        var dbid =0
-        var surveyList = mutableListOf<TotalSurvey>()
-        var address : String = " "
-        var relation : String = " "
-        val check_list = Array<Boolean>(10) { false }
-        var ipaq_list = mutableListOf<Double>()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,8 +46,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         //질문 개수와 질문 리스트 초기화하고 다시 받아와야함.
         curCount = 0
-        Total = mutableListOf<TotalSurvey>()
-        
+
+            //Log.d("problem","user : ${user}")
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.POST_NOTIFICATIONS
@@ -92,6 +78,8 @@ class MainActivity : AppCompatActivity() {
                 )
                 .check()
         }
+        /*
+        //데이터 읽기.
         val db = Firebase.firestore
         for (i in 0..nameList.size - 1) {
             val task = db.collection("${nameList[i]}")
@@ -130,17 +118,16 @@ class MainActivity : AppCompatActivity() {
                 //Log.w("Data Retrieval Error", exception)
                 Toast.makeText(this,"데이터베이스를 불러오고있습니다..",Toast.LENGTH_SHORT).show()
             }
-        /*
+         */
         binding.qStart.setOnClickListener() {
             showDialog()
         }
-         */
         binding.redCircle.setOnClickListener {
             val intent = Intent(this, AdminHome::class.java)
             startActivity(intent)
         }
         binding.edu.setOnClickListener() {
-            val intent = Intent(this, CardActivity::class.java)
+            val intent = Intent(this, EduActivity::class.java)
             startActivity(intent)
         }
         binding.helpNoti.setOnClickListener {

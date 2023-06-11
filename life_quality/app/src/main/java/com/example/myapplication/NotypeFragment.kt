@@ -5,32 +5,43 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.question.QuestionMainpage.Companion.Id
 import com.example.myapplication.databinding.NotypeFragmentBinding
-import com.example.myapplication.databinding.QuestionMainpageBinding
+import com.example.myapplication.model.Bmi
+import com.example.myapplication.model.Time
 import com.example.myapplication.question.QuestionMainpage
+import com.example.myapplication.question.QuestionMainpage.Companion.curCount
+import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
+import com.example.myapplication.viewModel.QuestionViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class NotypeFragment : Fragment() {
+
+    private lateinit var sharedViewModel : QuestionViewModel
+    private var height = 0.0
+    private var weight = 0.0
+    var time = 0
+    var min = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //프레그먼트가 처음 실행될 때 실행하는 메소드
-        //res폴더에 만들어준 xml파일과 연결해주어야 함.
-
+        sharedViewModel=ViewModelProvider(requireActivity()).get(QuestionViewModel::class.java)
         var valueList = mutableListOf<String>()
         var binding = NotypeFragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         val rootView = binding.root
@@ -46,47 +57,61 @@ class NotypeFragment : Fragment() {
             }
             false
         }
-        var binding2 = QuestionMainpageBinding.inflate(layoutInflater)
 
         binding.notypeNumber.text = "문항 " + QuestionMainpage.curCount.toString()
-        binding.notypeTitle.text = QuestionMainpage.tempSurvey.title.toString()
+        binding.notypeTitle.text = QuestionMainpage.tempSurvey.title
         Log.d("test", "입력형 프래그먼트에 왔습니다")
         when (QuestionMainpage.tempSurvey.type.toInt()) {
-            1 -> {
+            1 -> { //1이면 시간 레이아웃.
                 binding.numberlayout.visibility = View.GONE
                 binding.timeLayout.visibility = View.VISIBLE
                 binding.BmiLayout.visibility = View.GONE
-            } //1이면 시간 레이아웃.
-            2 -> {
+                val time : Time = sharedViewModel.getTimeMap(curCount)
+                Log.d("viewModel", "${time.hour}, ${time.min}")
+                if(time.hour!=-1 && time.min !=-1){ //값이 있다면.
+                    Log.d("viewModel","타임 레이아웃")
+                    binding.notypehour.setText(time.hour.toString())
+                    binding.notypemin.setText(time.min.toString())
+                    Id=time.calTime()
+                }
+            }
+            2 -> { //2면 단순 횟수 입력 레이아웃
                 binding.numberlayout.visibility = View.VISIBLE
                 binding.timeLayout.visibility = View.GONE
                 binding.BmiLayout.visibility = View.GONE
+                val temp = sharedViewModel.getNumberMap(curCount)
+                if(temp!=-1){
+                    binding.notypeAnswer.setText(temp.toString())
+                    Id=temp.toDouble()
+                }
             }
-            3 -> {
+            3 -> { //키와 몸무게 레이아웃
                 Log.d("test", "type은 3")
                 binding.numberlayout.visibility = View.GONE
                 binding.timeLayout.visibility = View.GONE
                 binding.BmiLayout.visibility = View.VISIBLE
+                val bmi : Bmi = sharedViewModel.getBmiMap(curCount)
+                Log.d("problem","몸무게 뷰모델 : ${bmi.returnBmi()}")
+                if(bmi.height!=0.0 && bmi.weight!=0.0){
+                    binding.height.setText(bmi.height.toInt().toString())
+                    binding.weight.setText(bmi.weight.toInt().toString())
+                    Id=bmi.calBmi()
+                    Log.d("viewModel","bmi : ${Id}")
+                }
             }
+            /*
             4 -> {
                 binding.numberlayout.visibility = View.GONE
                 binding.timeLayout.visibility = View.GONE
                 binding.BmiLayout.visibility = View.GONE
-                //addres layout visibile
             }
+             */
         }
         runBlocking {
             val job = CoroutineScope(Dispatchers.IO).launch {
                 if (binding.numberlayout.visibility == View.VISIBLE) { //횟수 레이아웃이 활성화일때
                     binding.notypeAnswer.addTextChangedListener(object : TextWatcher {
-                        override fun beforeTextChanged(
-                            p0: CharSequence?,
-                            p1: Int,
-                            p2: Int,
-                            p3: Int
-                        ) {
-                        }
-
+                        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                         override fun afterTextChanged(p0: Editable?) {
                             var trim_text = delete_blank(p0, binding.notypeAnswer)
                             var edit_id = try {
@@ -95,8 +120,8 @@ class NotypeFragment : Fragment() {
                                 Log.d("problem: ", "오류발생")
                             }
                             Id = edit_id.toDouble()
+                            sharedViewModel.setNumberMap(curCount, Id.toInt())
                         }
-
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                             var number :Int? = p0.toString().toIntOrNull()
                             Log.d("test","edit_text ${p0}")
@@ -106,20 +131,35 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
+                    binding.notypeAnswer.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.notypeAnswer.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) { // 입력된 텍스트가 없는 경우
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) { // 입력된 텍스트가 숫자인 경우 // 처리 로직 추가
+                                    Id=inputText.toDouble()
+                                } else {  // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
+                        }
+                    }
+                    sharedViewModel.setNumberMap(curCount,Id.toInt())
                 }
-                var time = 0
-                var min = 0
+
                 if (binding.timeLayout.visibility == View.VISIBLE) {
                     binding.notypehour.addTextChangedListener(object : TextWatcher {
-                        override fun beforeTextChanged(
-                            p0: CharSequence?,
-                            p1: Int,
-                            p2: Int,
-                            p3: Int
-                        ) {
-
-                        }
-
+                        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int){}
                         override fun afterTextChanged(p0: Editable?) {
                             var trim_text = delete_blank(p0, binding.notypehour)
                             time = try {
@@ -127,8 +167,8 @@ class NotypeFragment : Fragment() {
                             } catch (e: java.lang.Exception) {
                                 Log.d("problem", "오류 발생")
                             }
+                            sharedViewModel.setTimeMap(curCount,time/60,min) //연결하기.
                         }
-
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                             var number :Int? = p0.toString().toIntOrNull()
                             Log.d("test","edit_text ${p0}")
@@ -138,16 +178,32 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
-                    binding.notypemin.addTextChangedListener(object : TextWatcher {
-                        override fun beforeTextChanged(
-                            p0: CharSequence?,
-                            p1: Int,
-                            p2: Int,
-                            p3: Int
-                        ) {
-
+                    binding.notypehour.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.notypehour.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) { // 입력된 텍스트가 없는 경우 // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) { // 입력된 텍스트가 숫자인 경우 // 처리 로직 추가
+                                    Id=inputText.toDouble()*60
+                                    sharedViewModel.setTimeMap(curCount,time/60,min) //연결하기.
+                                } else { // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
                         }
-
+                    }
+                    binding.notypemin.addTextChangedListener(object : TextWatcher {
+                        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                         override fun afterTextChanged(p0: Editable?) {
                             var trim_text = delete_blank(p0, binding.notypemin)
                             min = try {
@@ -156,8 +212,8 @@ class NotypeFragment : Fragment() {
                                 Log.d("problem", "오류 발생")
                             }
                             Id = (time + min).toDouble()
+                            sharedViewModel.setTimeMap(curCount,time/60,min) //연결하기.
                         }
-
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                             var number :Int? = p0.toString().toIntOrNull()
                             Log.d("test","edit_text ${p0}")
@@ -167,28 +223,45 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
+                    binding.notypemin.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.notypemin.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) { // 입력된 텍스트가 없는 경우 // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) { // 입력된 텍스트가 숫자인 경우// 처리 로직 추가
+                                    Id=time+inputText.toDouble()
+                                    sharedViewModel.setTimeMap(curCount,time/60,min) //연결하기.
+                                } else {  // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
+                        }
+                    }
+
                 }
-                var height = 0.0
-                var weight = 0.0
+
                 if (binding.BmiLayout.visibility == View.VISIBLE) { //횟수 레이아웃이 활성화일때
                     binding.height.addTextChangedListener(object : TextWatcher {
-                        override fun beforeTextChanged(
-                            p0: CharSequence?,
-                            p1: Int,
-                            p2: Int,
-                            p3: Int
-                        ) {
-                        }
+                        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                         override fun afterTextChanged(p0: Editable?) {
-
                             var trim_text = delete_blank(p0, binding.height)
                             height = try {
                                 (trim_text.toDouble() / 100.0)
                             } catch (e: java.lang.Exception){
                                 Log.d("problem", "예외발생")
                             }.toDouble()
+                            sharedViewModel.setBmiMap(curCount,height, weight)
                         }
-
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                             var number :Int? = p0.toString().toIntOrNull()
                             Log.d("test","edit_text ${p0}")
@@ -198,16 +271,32 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
-
-                    binding.weight.addTextChangedListener(object : TextWatcher {
-                        override fun beforeTextChanged(
-                            p0: CharSequence?,
-                            p1: Int,
-                            p2: Int,
-                            p3: Int
-                        ) {
+                    binding.height.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.height.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) { // 입력된 텍스트가 없는 경우 // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) { // 입력된 텍스트가 숫자인 경우 // 처리 로직 추가
+                                    Id=inputText.toDouble()/100.0
+                                    sharedViewModel.setBmiMap(curCount,height, weight)
+                                } else { // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
                         }
-
+                    }
+                    binding.weight.addTextChangedListener(object : TextWatcher {
+                        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                         override fun afterTextChanged(p0: Editable?) {
                             var trim_text = delete_blank(p0, binding.weight)
                             weight = try {
@@ -215,13 +304,12 @@ class NotypeFragment : Fragment() {
                             } catch (e: java.lang.Exception){
                                 Log.d("problem : ", "예외발생")
                             }.toDouble()
-                            Id = (weight / (height * height)).toDouble() //BMI
-                            Log.d(
-                                "problem : ",
-                                "키 : $height, 몸무게 : $weight, BMI : ${Id.toString()}"
-                            )
-                        }
+                            sharedViewModel.setBmiMap(curCount,height, weight)
+                            //Id = (weight / (height * height)).toDouble() //BMI\
+                            Id = sharedViewModel.getBmiMap(curCount).calBmi()
+                            Log.d("viewModel"," ${curCount}, ${sharedViewModel.getBmiMap(curCount).height},${sharedViewModel.getBmiMap(curCount).weight}")
 
+                        }
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                             var number :Int? = p0.toString().toIntOrNull()
                             Log.d("test","edit_text ${p0}")
@@ -231,10 +319,36 @@ class NotypeFragment : Fragment() {
                             }
                         }
                     })
+                    binding.weight.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_DONE || event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                            // Enter(엔터) 키를 누른 경우 또는 완료(완료) 액션을 수행한 경우
+                            Log.d("problem","엔터키")
+                            val inputText = binding.weight.text.toString().trim() // 입력된 텍스트 가져오기 (앞뒤 공백 제거)
+                            if (inputText.isEmpty()) { // 입력된 텍스트가 없는 경우 // 처리 로직 추가
+                                Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                val isNumber = inputText.toIntOrNull() != null // 입력된 텍스트가 숫자인지 확인
+                                if (isNumber) { // 입력된 텍스트가 숫자인 경우 // 처리 로직 추가
+                                    //Id=inputText.toDouble() / (height*height)
+                                    sharedViewModel.setBmiMap(curCount,height, weight)
+                                    Id=sharedViewModel.getBmiMap(curCount).calBmi()
+                                } else { // 입력된 텍스트가 숫자가 아닌 경우
+                                    binding.notypeAnswer.text.clear()
+                                    Toast.makeText(requireContext(), "숫자만 입력해주세요!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(binding.notypeAnswer.windowToken, 0) // 키보드 숨기기
+                            true // 이벤트 처리 완료
+                        } else {
+                            false // 이벤트 처리 안 함
+                        }
+                    }
+
                 }
             }
             job.join() //job이 끝날떄까지 대기함.
-            Log.d("problem", "ID : ${Id}")
+            Log.d("viewModel", "ID : ${Id}")
         }
         return binding.root
     }

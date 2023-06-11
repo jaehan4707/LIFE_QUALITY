@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.*
-import com.example.myapplication.MainActivity.Companion.Total
+import com.example.myapplication.SplashActivity.Companion.Total
 import com.example.myapplication.databinding.ActivityAdminHomeBinding
 
 class AdminHome : AppCompatActivity() {

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.MainActivity
-import com.example.myapplication.MainActivity.Companion.Total
+import com.example.myapplication.SplashActivity.Companion.Total
 import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityAdminPlusBinding
 import com.google.firebase.firestore.ktx.firestore

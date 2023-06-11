@@ -3,14 +3,10 @@ package com.example.myapplication.edu
 import android.animation.ArgbEvaluator
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
-import android.view.ScaleGestureDetector
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.EduMouthBinding
-import com.example.myapplication.databinding.ItemEducationBinding
 
 class EduMouthActivity : AppCompatActivity() {
     var mouth_models = mutableListOf<Int>()
@@ -24,12 +20,19 @@ class EduMouthActivity : AppCompatActivity() {
         mouth_models.add(R.drawable.edu_mouth_1)
         mouth_models.add(R.drawable.edu_mouth_2)
         mouth_models.add(R.drawable.edu_mouth_3)
+        mouth_models.add(R.drawable.edu_mouth_4)
+        mouth_models.add(R.drawable.edu_mouth_5)
+        mouth_models.add(R.drawable.edu_mouth_6)
+        mouth_models.add(R.drawable.edu_mouth_7)
         Log.d("test", "구강관")
 
         mouth_colors.add(getColor(R.color.edu_mouth_color1))
         mouth_colors.add(getColor(R.color.edu_mouth_color2))
         mouth_colors.add(getColor(R.color.edu_mouth_color3))
-
+        mouth_colors.add(getColor(R.color.edu_mouth_color1))
+        mouth_colors.add(getColor(R.color.edu_mouth_color2))
+        mouth_colors.add(getColor(R.color.edu_mouth_color3))
+        mouth_colors.add(getColor(R.color.edu_mouth_color1))
 
         var adapter = EduAdapter(mouth_models, this)
         binding.mouthViewPager.adapter = adapter

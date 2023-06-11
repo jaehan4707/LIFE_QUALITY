@@ -17,13 +17,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="15dp"
+            android:layout_margin="12dp"
             android:layout_weight="7"
             android:orientation="vertical"
             android:padding="15dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="wrap_content">
 
                 <ProgressBar
@@ -49,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
+                    android:textSize="20sp"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
                     android:layout_below="@id/progressbar"
@@ -82,15 +84,31 @@
 
 
             <TextView
+                android:id="@+id/info"
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="이 문항은 점수가 높을수록 요실금으로 인한 삶의 질이 떨어짐을 뜻합니다"
+                android:text="이 문항은 점수가 높을수록 요실금으로\n인한 삶의 질이 떨어짐을 뜻합니다"
                 android:gravity="center"
                 android:fontFamily="@font/bm_dohyeon"
                 android:maxLines="3"
                 android:textColor="@color/black"
-                android:textSize="19dp"/>
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_marginTop="30dp"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="요실금 관리를 위한 올바른 방법"
+                android:fontFamily="@font/bm_dohyeon"
+                android:background="@drawable/textview_round"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+
+
             <TextView
                 android:layout_marginTop="70dp"
                 android:layout_width="match_parent"
@@ -98,13 +116,14 @@
                 android:text="필수 설문 문항을 마친 후,\n'건강 도우미'에 준비된 '요실금 관리법'을 통해 배워봅시다"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
+                android:textAlignment="center"
                 android:textSize="19sp"/>
 
             <TextView
                 android:layout_marginTop="70dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="부정적 결과와 불편감 동반 시, 정밀 검사를 권장 드립니다."
+                android:text="부정적 결과와 불편감 동반 시,\n의사와의 상담을 권유 드립니다"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:gravity="center"

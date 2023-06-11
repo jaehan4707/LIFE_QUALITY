@@ -28,6 +28,7 @@ class  IpaqFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var _binding: FragmentIpaqBinding? = null
     private val binding: FragmentIpaqBinding get() = _binding!!
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
@@ -38,7 +39,6 @@ class  IpaqFragment : Fragment() {
     ): View? {
         _binding = FragmentIpaqBinding.inflate(inflater, container, false)
 
-        Log.d("problem","IPAQ  :${weight.toInt()}")
         if(weight.toInt()>=150) //활동군
         {
             binding.resultTxt.text="활동군"

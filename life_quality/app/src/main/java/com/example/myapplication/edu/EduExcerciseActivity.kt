@@ -23,12 +23,6 @@ class EduExcerciseActivity : AppCompatActivity() {
         excercise_models.add(R.drawable.edu_excercise_3)
         excercise_models.add(R.drawable.edu_excercise_4)
         excercise_models.add(R.drawable.edu_excercise_5)
-        excercise_models.add(R.drawable.edu_excercise_6)
-        excercise_models.add(R.drawable.edu_excercise_7)
-        excercise_models.add(R.drawable.edu_excercise_8)
-        excercise_models.add(R.drawable.edu_excercise_9)
-        excercise_models.add(R.drawable.edu_excercise_10)
-        excercise_models.add(R.drawable.edu_excercise_11)
 
 
         excercise_colors.add(getColor(R.color.edu_excercise_color1))
@@ -36,12 +30,6 @@ class EduExcerciseActivity : AppCompatActivity() {
         excercise_colors.add(getColor(R.color.edu_excercise_color3))
         excercise_colors.add(getColor(R.color.edu_excercise_color4))
         excercise_colors.add(getColor(R.color.edu_excercise_color5))
-        excercise_colors.add(getColor(R.color.edu_excercise_color6))
-        excercise_colors.add(getColor(R.color.edu_excercise_color7))
-        excercise_colors.add(getColor(R.color.edu_excercise_color8))
-        excercise_colors.add(getColor(R.color.edu_excercise_color9))
-        excercise_colors.add(getColor(R.color.edu_excercise_color10))
-        excercise_colors.add(getColor(R.color.edu_excercise_color11))
 
 
         var adapter = EduAdapter(excercise_models, this)

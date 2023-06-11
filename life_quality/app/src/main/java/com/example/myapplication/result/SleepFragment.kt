@@ -1,6 +1,7 @@
 package com.example.myapplication.result
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,9 +40,11 @@ class SleepFragment : Fragment() {
         //점수를 계산하자.
         if(weight>= 8.5) {//good
             binding.sleepResult.text="잘 주무시고 계시네요!"
+            binding.sleepResult.setTextColor(Color.GREEN)
         }
         else{
             binding.sleepResult.text="아래의 수면건강 5계명을 읽어보세요!"
+            binding.sleepResult.setTextColor(Color.RED)
         }
         return binding.root
     }

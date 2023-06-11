@@ -44,33 +44,52 @@
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:text="예"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="15sp"
                 />
             <RadioButton
                 android:id="@+id/rb2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="15sp"
+
                 />
             <RadioButton
                 android:id="@+id/rb3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="15sp"
                 />
             <RadioButton
                 android:id="@+id/rb4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="15sp"
+                />
             <RadioButton
                 android:id="@+id/rb5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="15sp"
+                />
             <RadioButton
                 android:id="@+id/rb6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="15sp"
+                />
             <RadioButton
                 android:id="@+id/rb7"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bm_dohyeon"
+                android:textSize="15sp"
+                />
         </RadioGroup>
     </ScrollView>
 

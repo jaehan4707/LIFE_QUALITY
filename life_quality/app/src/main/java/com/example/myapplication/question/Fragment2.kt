@@ -2,22 +2,29 @@ package com.example.myapplication.question
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.question.QuestionMainpage.Companion.group
 
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.databinding.Type2FragmentBinding
+import com.example.myapplication.viewModel.QuestionViewModel
 
 class Fragment2 : Fragment() {
 
     lateinit var callback : OnBackPressedCallback
+
+    private lateinit var  sharedViewModel : QuestionViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        Log.d("problem","oncreateView")
+        sharedViewModel = ViewModelProvider(requireActivity()).get(QuestionViewModel::class.java)
         val keyList = ArrayList<String>(2) // 초기 용량(capacity)이 2인 ArrayList 생성
         val valueList = ArrayList<String>(2) // 초기 용량(capacity)이 2인 ArrayList 생성
         var binding = Type2FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
@@ -50,14 +57,23 @@ class Fragment2 : Fragment() {
             when(i){
                 binding.rb1.id -> {
                     QuestionMainpage.Id = (keyList[0].toDouble())
+                    sharedViewModel.setRadioButton(curCount,i)
+                    Log.d("problem","뷰뷰모델 : ${curCount}, ${sharedViewModel.getRadioButton(curCount)}")
                 }
                 binding.rb2.id -> {
                     QuestionMainpage.Id = (keyList[1].toDouble())
+                    sharedViewModel.setRadioButton(curCount,i)
                 }
             }
         }
+        val selectedRadioButtonId = sharedViewModel.getRadioButton(curCount)
+        if(selectedRadioButtonId !=-1){ //radio버튼 값 유지.
+            group.check(selectedRadioButtonId)
+        }
         return binding.root
     }
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

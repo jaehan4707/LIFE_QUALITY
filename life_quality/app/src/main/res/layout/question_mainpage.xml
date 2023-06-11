@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="0.5">
+        android:layout_weight="0.8">
 
         <Button
             android:id="@+id/back_stage"
@@ -52,6 +52,7 @@
             android:layout_height="match_parent"
             android:text="이전"
             android:layout_weight="0.4"
+            android:textSize="30sp"
             android:textColor="@color/black"
             android:fontFamily="@font/bm_dohyeon"
             android:backgroundTint="@color/main_orange"/>
@@ -65,6 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="다음"
+            android:textSize="30sp"
             android:layout_gravity="bottom"
             android:textColor="@color/black"
             android:backgroundTint="@color/main_orange"

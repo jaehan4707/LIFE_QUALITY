@@ -30,25 +30,20 @@
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageButton
-        android:id="@+id/agree_close"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_close_24"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/text_layout"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.9"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_layout">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,28 +104,28 @@
                 android:text="연령"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
-            <RadioGroup
-                android:id="@+id/rg_age"
-                android:layout_width="0dp"
+           <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/age_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_weight="4"
+            android:hint="나이"
+            app:endIconMode="clear_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_age"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <RadioButton
-                    android:id="@+id/age_young"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:text="65~69세" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/bm_dohyeon"
+                android:inputType="number"
+                >
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <RadioButton
-                    android:id="@+id/age_old"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:text="70~74세"/>
-            </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
@@ -305,17 +300,19 @@
             android:layout_weight="1"
             android:orientation="horizontal"
             android:background="@drawable/info_text">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:text="흡연\n보통 하루에 피우는 담배 개비 수"
-                android:padding="10dp"
-                android:gravity="center_vertical"
+                android:breakStrategy="simple"
                 android:fontFamily="@font/bm_dohyeon"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="흡연\n보통 하루에 피우는 \n담배 개비 수"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <RadioGroup
                 android:id="@+id/rg_smoke"
                 android:layout_width="0dp"
@@ -359,7 +356,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="30개비 이"
+                    android:text="30개비 이상"
                     android:fontFamily="@font/bm_dohyeon"
                     />
             </RadioGroup>
@@ -376,7 +373,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:text="음주\n술을 얼마나 자주 마십니까?"
+                android:text="음주\n술을 얼마나 자주\n마십니까?"
                 android:padding="10dp"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/bm_dohyeon"
@@ -430,8 +427,18 @@
                     android:fontFamily="@font/bm_dohyeon"
                     />
             </RadioGroup>
+
         </LinearLayout>
-
+        <Button
+            android:id="@+id/agree_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="완료"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/main_orange"
+            android:layout_gravity="center"
+            />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

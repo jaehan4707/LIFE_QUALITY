@@ -17,13 +17,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_margin="16dp"
+                android:layout_margin="12dp"
                 android:layout_weight="7"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="15dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:gravity="center"
                     android:layout_height="wrap_content">
 
                     <ProgressBar
@@ -50,6 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
+                        android:textSize="20sp"
                         android:fontFamily="@font/bm_dohyeon"
                         android:textColor="@color/black"
                         android:layout_below="@id/progressbar"
@@ -82,34 +84,57 @@
                 </RelativeLayout>
 
 
-
                 <TextView
-                    android:layout_marginTop="50dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:text="노년기 가장 큰 건강 위협요인, 낙상\n세 가지만 기억하면 피할 수 있어요"
+                    android:id="@+id/info"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textColor="@color/black"
                     android:textSize="20sp"
-                    android:background="@drawable/textview_round"/>
-
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:breakStrategy="simple"
+                    android:text="이 문항은 점수가 높을수록 낙상에 대한 두려움이 높음을 뜻합니다"/>
                 <TextView
                     android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1. 바닥 청소하기\n2. 손잡이 잡기\n3. 잠들기 전 화장실 들리기"
+                    android:padding="7dp"
+                    android:gravity="center"
+                    android:text="낙상사고 예방이 최선입니다"
                     android:fontFamily="@font/bm_dohyeon"
+                    android:breakStrategy="balanced"
                     android:textColor="@color/black"
+                    android:textSize="19sp"
+                    android:background="@drawable/textview_round"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
                     android:background="@drawable/info_text"
+                    android:fontFamily="@font/bm_dohyeon"
                     android:padding="10dp"
-                    android:textSize="20sp"/>
+                    android:text="1.과음을 삼가고, 일어나거나 움직이기 시작할 때 천천히 행동하기\n2.위험장소에는 안전장치 및 밝은\n조명 설치,전선 물건 등 정리하기\n3.근력과 유연성을 높이기 위해서\n꾸준한 운동 실시하기"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:lineSpacingExtra="8dp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="출처 : 질병관리청 [어르신 낙상 주의] 낙상 사고 \n예방으로 안전생활 하세요"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="부정적 결과와 불편감 동반 시, 정밀 검사를 권장 드립니다."
+                    android:text="부정적 결과와 불편감 동반 시,\n의사와의 상담을 권유 드립니다"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
                     android:gravity="center"
