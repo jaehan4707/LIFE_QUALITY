@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="10dp"
+        android:lineSpacingExtra="10dp"
         android:background="@drawable/textview_grayline"
         android:fontFamily="@font/bm_dohyeon"
         android:gravity="center_vertical"
@@ -51,35 +52,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/rb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/rb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
 
                 <RadioButton
                     android:id="@+id/rb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
             </RadioGroup>
 
         </LinearLayout>

@@ -3,11 +3,15 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.LoginLayoutBinding
+import com.example.myapplication.model.User
 import com.example.retrofitpractice.Model.Data
 import com.example.retrofitpractice.service.ApiService
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,107 +20,55 @@ import retrofit2.converter.gson.GsonConverterFactory
 import kotlinx.coroutines.*
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var binding : LoginLayoutBinding
-    //입력한 phone, pw를 db에 저장된 것과 비교하기.
-    lateinit var respPhone : String
-    lateinit var respPassword : String
-    lateinit var pw : String
-    lateinit var phone : String
-    var loginFlag = 1
+    lateinit var binding: LoginLayoutBinding
+    companion object{
+        lateinit var user: User
+        val Db = Firebase.firestore
+        val userCollectionRef = Db.collection("User")
+        var phone: String = ""
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = LoginLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        //로그인 버튼 클릭시
-        binding.login.setOnClickListener() {
-            pw = binding.inputPassword.text.toString()
+        binding.login.setOnClickListener {
             phone = binding.inputPhone.text.toString()
-            Log.d("LoginTest", "inputPhone : ${phone}, inputPassword : ${pw}")
-
-            //get방식으로, 입력한 phoneNumber에 대한 user정보를 가져오는 API 호출
-            runBlocking {
-                val job = CoroutineScope(Dispatchers.IO).launch{
-                    apiLogin()
+            Log.d("problem","휴대폰 번호 : ${phone}")
+            val userDocRef = userCollectionRef.document(phone)
+            val informationCollection = userDocRef.collection("Information")
+            val personalInfoDocRef = informationCollection.document("개인정보")
+            personalInfoDocRef.get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        Log.d("problem","있다있어")
+                        val data = documentSnapshot.data
+                        if (data != null) { // User 객체 생성
+                            val user = User(
+                                data["sex"].toString(), data["age"].toString(),
+                                data["family_relation"].toString(),
+                                data["scholarship"].toString(),
+                                data["medical_insurance"].toString(),
+                                data["drink"].toString(),
+                                data["smoke"].toString()
+                            )
+                            Log.d("problem","User : ${user}")
+                            val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    } else {
+                        // 문서가 존재하지 않음
+                        Toast.makeText(this, "휴대폰 번호를 확인해주세요!", Toast.LENGTH_SHORT).show()
+                    }
                 }
-                job.join()
-            }
+                .addOnFailureListener { e -> Log.e("problem","실패")}
         }
 
-        //회원가입 버튼 클릭시
-        binding.goRegister.setOnClickListener() {
-            var intent = Intent(this, RegisterActivity::class.java)
+        binding.goRegister.setOnClickListener {
+            val intent = Intent(this@LoginActivity,AgreeActivity::class.java)
             startActivity(intent)
             finish()
         }
-    }
-
-    private fun apiLogin() {
-
-        //1. retrofit 객체 생성
-        val retrofit : Retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        //2. service 객체 생성
-
-        val apiservice : ApiService = retrofit.create(ApiService::class.java)
-
-        //3. Call 객체 생성
-        var registerCall = apiservice.selectPhoneUserProfile(phone)
-
-        //4. 네트워크 통신
-        registerCall.enqueue(object : Callback<Data> {
-            override fun onResponse(call: Call<Data>, response: Response<Data>) {
-                Log.d("Logintest", "Response : ${response.body()}")
-                //가져온 정보에서 phoneNumber랑 password저장
-                respPhone = response.body()?.phone.toString()
-                respPassword = response.body()?.password.toString()
-                //만약 db에 저장된 패스워드와 입력한 패스워드가 다르거나
-                //phoneNumber와 입력한 phone 번호가 다르다면 로그인 하지 않기 위해 loginFlag를 -1로 변경한다.
-                if(pw != respPassword || phone != respPhone) {
-                    Log.d("LoginTest", "this is loginFlag")
-                    loginFlag = -1
-                }
-                else {
-                    loginFlag = 1
-                }
-
-                //로그인 검사
-                if(phone.length != 11 || loginFlag == -1) { //핸드폰번호가 올바르게 입력되지 않았다면?
-                    Snackbar.make(binding.loginLayout, "핸드폰 번호 또는 비밀번호가 올바르지 않습니다.", Snackbar.LENGTH_SHORT).show()
-                    binding.inputPassword.setText("")
-                }
-                else {
-                    Snackbar.make(binding.loginLayout, "로그인 성공!", Snackbar.LENGTH_SHORT).show()
-                    runBlocking {
-                        launch {
-                            delay(500)
-                        }
-                    }
-                    var intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                Log.d("LoginTest", "dpPhone : ${respPhone}, dbPassword : ${respPassword}")
-
-//                binding.resultText.append("id : ${tickerInfo?.data?.id}\n")
-//                binding.resultText.append("name : ${tickerInfo?.data?.name}\n")
-//                binding.resultText.append("phone : ${tickerInfo?.data?.phone}\n")
-//                binding.resultText.append("address : ${tickerInfo?.data?.address}\n")
-            }
-
-            override fun onFailure(call: Call<Data>, t: Throwable) {
-                //호출에 실패했을 때
-                Log.d("ApiRequest", "호출 실패 씨발!!")
-                call.cancel()
-            }
-
-        })
-
-
     }
 }

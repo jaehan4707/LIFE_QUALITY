@@ -86,11 +86,7 @@ class Fragment3 : Fragment() {
             if(sharedViewModel.getCheckList(0)) binding.checkBox1.isChecked=true
             if(sharedViewModel.getCheckList(1)) binding.checkBox2.isChecked=true
             if(sharedViewModel.getCheckList(2)) binding.checkBox3.isChecked=true
-            Id = when (checkCount) {
-                3 -> 2.0
-                2 ->1.0
-                else -> 0.0
-            }
+
         }
         return binding.root
     }
@@ -103,6 +99,11 @@ class Fragment3 : Fragment() {
             } else {
                 sharedViewModel.setCheckList(idx,false)
                 checkCount--
+            }
+            Id = when (checkCount) {
+                3 -> 2.0
+                2 ->1.0
+                else -> 0.0
             }
             Log.d("problem", "체크된 체크박스 개수: $checkCount")
         }

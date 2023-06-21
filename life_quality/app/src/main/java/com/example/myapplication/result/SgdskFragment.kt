@@ -59,9 +59,7 @@ class SgdskFragment : Fragment() {
                 val spannableString = SpannableString(binding.sgdskResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.sgdskResult.text = spannableString
-
             }
-
             2 -> {
                 binding.redLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)

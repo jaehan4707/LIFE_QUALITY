@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.AgreeActivity.Companion.phone
 import com.example.myapplication.model.User
 import com.example.myapplication.databinding.ActivitySplashBinding
 import com.example.myapplication.viewModel.QuestionViewModel
@@ -37,16 +36,13 @@ class SplashActivity : AppCompatActivity() {
     companion object     {
         lateinit var user: User
         lateinit var databaseReference: DatabaseReference
-        //lateinit var authReference: FirebaseAuth
+
         lateinit var fcmReference: FirebaseMessaging
         var token : String? = null
-        //var nameList = mutableListOf<String>("EQ5D", "EQVAS", "Fall", "Frailty", "IPAQ", "MNA", "MouthHealth", "SGDSK", "SleepHabit","Yosil","SocialNetwork")
         var nameList = mutableListOf<String>("MNA", "SGDSK", "Yosil","MouthHealth", "IPAQ", "SleepHabit", "Frailty", "Fall","EQ5D","SocialNetwork")
         var Total = mutableListOf<TotalSurvey>()
         var type : String = ""
         var answer = mutableListOf<Double>()
-        var Socialnum : Int =0
-        var Fallum : Int =2
         var dbid =0
         var surveyList = mutableListOf<TotalSurvey>()
         var address : String = " "
@@ -61,85 +57,7 @@ class SplashActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance()
         fcmReference = FirebaseMessaging.getInstance()
         user=User("","","","","","","")
-
-        /*
-        getToken { token ->
-            if (token!= null) {
-                val Db = Firebase.firestore
-                val result = hashMapOf(
-                    "title" to token.toString()
-                )
-                Log.d("problem", "${result}")
-                Db.collection("User").document("token")
-                    .set(result)
-                    .addOnSuccessListener { Log.d("problem", "저장성공") }
-                    .addOnFailureListener { Log.d("problem", "저장실패") }
-                activityScope.launch {
-                    delay(1000)
-                    //val intent = Intent(this@SplashActivity, LoginActivity::class.java)
-                    val intent = Intent(this@SplashActivity, AgreeActivity::class.java)
-                    //val intent = Intent(this@SplashActivity,MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-            else {
-
-            }
-        }
-         */
-        /*
-        getToken { token ->
-            if (token != null) {
-                val Db = Firebase.firestore
-                val tokenRef = Db.collection("User").document("token")
-
-                tokenRef
-                    .get()
-                    .addOnSuccessListener { document ->
-                        if (document.exists()) { //존재할경우
-                            val currentTokens = document.get("title") as? ArrayList<String>
-                            if (currentTokens != null) {
-                                if (currentTokens.contains(token)) {
-                                    // 토큰 값이 이미 존재하는 경우 처리
-                                    Log.d("problem", "토큰이 이미 존재합니다 -> main으로 넘어갑니다..")
-                                    val intent = Intent(this@SplashActivity,MainActivity::class.java)
-                                    startActivity(intent)
-                                } else {
-                                    currentTokens.add(token)
-                                    tokenRef.update("title", currentTokens)
-                                    Log.d("problem", "토큰 추가 완료")
-                                    val intent = Intent(this@SplashActivity, AgreeActivity::class.java)
-                                    startActivity(intent)
-                                }
-                            } else {
-                                // 기존에 title 필드가 없는 경우 새로운 리스트 생성
-                                val newTokens = arrayListOf(token)
-                                tokenRef.update("title", newTokens)
-                                Log.d("problem", "토큰 추가 완료")
-                                val intent = Intent(this@SplashActivity, AgreeActivity::class.java)
-                                startActivity(intent)
-                            }
-                        } else {
-                            // 문서가 존재하지 않는 경우 새로운 문서 생성
-                            val newTokens = arrayListOf(token)
-                            tokenRef.set(hashMapOf("title" to newTokens))
-                            Log.d("problem", "토큰 추가 완료")
-                            val intent = Intent(this@SplashActivity, AgreeActivity::class.java)
-                            startActivity(intent)
-                        }
-                    }
-                    .addOnFailureListener { e ->
-                        Log.d("problem", "저장실패: $e")
-                    }
-            } else {
-                // Token이 null인 경우 처리
-            }
-        }
-    }
-        */
-
-        val db = Firebase.firestore //데이터 베이스 읽기.
+        val db = Firebase.firestore //설문 문항 데이터 베이스 읽기.
         for (i in 0..nameList.size - 1) {
             val task=db.collection("${nameList[i]}")
                 .get()
@@ -156,7 +74,6 @@ class SplashActivity : AppCompatActivity() {
                                 document.data["answer"] as MutableMap<String, String>,
                                 false
                             )
-
                         )
                     }
                 }
@@ -165,10 +82,10 @@ class SplashActivity : AppCompatActivity() {
                 }
             tasks.add(task)
         }
+        /*
         Tasks.whenAllSuccess<QuerySnapshot>(tasks)
             .addOnSuccessListener {
                 Log.d("problem","데이터베이스 끝!!")
-                Log.d("problem","${Total.size}")
                 getToken { token ->
                     if (token != null) {
                         val Db = Firebase.firestore
@@ -255,8 +172,19 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-                //Log.w("Data Retrieval Error", exception)
-                Toast.makeText(this,"데이터베이스를 불러오고있습니다..", Toast.LENGTH_SHORT).show()
+                Log.w("Data Retrieval Error", exception)
+            }
+
+         */
+        //여기서 로그인 화면으로 넘어가기.
+        Tasks.whenAllSuccess<QuerySnapshot>(tasks)
+            .addOnSuccessListener {
+                Log.d("problem","데이터불러오기 성공")
+            val intent = Intent(this@SplashActivity,LoginActivity::class.java)
+            startActivity(intent)
+            }
+            .addOnFailureListener {
+                Log.e("problem","실패")
             }
     }
          private fun getToken(completion: (String?) -> Unit){

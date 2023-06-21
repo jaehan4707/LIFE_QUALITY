@@ -130,14 +130,6 @@
                 android:text="영양상태"
                 style="@style/RadioTextStyle"
                 />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="(필수항목)"
-                    android:layout_weight="1"
-                    android:textColor="#FF0000"
-                    style="@style/RadioTextStyle"
-                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -149,14 +141,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:text="정신건강"
-                    style="@style/RadioTextStyle"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="(필수항목)"
-                    android:layout_weight="1"
-                    android:textColor="#FF0000"
                     style="@style/RadioTextStyle"
                     />
             </LinearLayout>
@@ -172,14 +156,6 @@
                     android:text="요실금"
                     style="@style/RadioTextStyle"
                     />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="(필수항목)"
-                    android:layout_weight="1"
-                    android:textColor="#FF0000"
-                    style="@style/RadioTextStyle"
-                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -193,14 +169,6 @@
                     android:text="구강건강"
                     style="@style/RadioTextStyle"
                     />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="(필수항목)"
-                    android:layout_weight="1"
-                    android:textColor="#FF0000"
-                    style="@style/RadioTextStyle"
-                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -212,14 +180,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:text="신체활동"
-                    style="@style/RadioTextStyle"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="(필수항목)"
-                    android:layout_weight="1"
-                    android:textColor="#FF0000"
                     style="@style/RadioTextStyle"
                     />
             </LinearLayout>

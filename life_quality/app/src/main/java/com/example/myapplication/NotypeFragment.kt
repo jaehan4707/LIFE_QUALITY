@@ -61,7 +61,7 @@ class NotypeFragment : Fragment() {
         binding.notypeNumber.text = "문항 " + QuestionMainpage.curCount.toString()
         binding.notypeTitle.text = QuestionMainpage.tempSurvey.title
         Log.d("test", "입력형 프래그먼트에 왔습니다")
-        when (QuestionMainpage.tempSurvey.type.toInt()) {
+        when (tempSurvey.type.toInt()) {
             1 -> { //1이면 시간 레이아웃.
                 binding.numberlayout.visibility = View.GONE
                 binding.timeLayout.visibility = View.VISIBLE

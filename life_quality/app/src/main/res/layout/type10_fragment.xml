@@ -24,6 +24,7 @@
         android:fontFamily="@font/bm_dohyeon"
         android:gravity="center_vertical"
         android:padding="5dp"
+        android:lineSpacingExtra="10dp"
         android:text="넘어지신 이유는 무엇입니까?"
         android:textColor="@color/black"
 
@@ -46,62 +47,62 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"
+                    android:textSize="17sp"
                     />
                 <RadioButton
                     android:id="@+id/rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
             </RadioGroup>
         </LinearLayout>
     </ScrollView>

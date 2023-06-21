@@ -52,21 +52,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
 
                 <RadioButton
                     android:id="@+id/rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/rb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
             </RadioGroup>
 
         </LinearLayout>
