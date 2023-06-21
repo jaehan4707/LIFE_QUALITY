@@ -73,15 +73,29 @@ class ResultLayout : AppCompatActivity() {
         val answerData = hashMapOf(
             "${type}" to answer, // 필요한 다른 필드들도 추가
         )
-        newDateDocument.update(answerData as Map<String, Any>)
-            .addOnSuccessListener { // 문서 추가 성공
-                Log.d("problem","추가성공!!!")
-                Toast.makeText(this, "날짜 문서를 추가했습니다.", Toast.LENGTH_SHORT).show()
+        newDateDocument.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                // 해당 날짜의 문서가 이미 존재하는 경우
+                newDateDocument.update(answerData as Map<String, Any>)
+                    .addOnSuccessListener {
+                        Log.d("problem", "업데이트 성공!!!")
+                        Toast.makeText(this, "날짜 문서를 업데이트했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.d("problem", "업데이트 실패!!")
+                    }
+            } else {
+                // 해당 날짜의 문서가 존재하지 않는 경우
+                newDateDocument.set(answerData as Map<String, Any>)
+                    .addOnSuccessListener {
+                        Log.d("problem", "추가 성공!!!")
+                        Toast.makeText(this, "날짜 문서를 추가했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.d("problem", "추가 실패!!")
+                    }
             }
-            .addOnFailureListener { e -> // 문서 추가 실패
-                //println("날짜 문서 추가 중 오류가 발생했습니다: $e")
-                Log.d("problem","실패!!")
-            }
+        }
         val database = FirebaseDatabase.getInstance()
         val answerRef = database.getReference("User/phone/$phone/$date/$type")
         answerRef.setValue(answer).addOnSuccessListener {
