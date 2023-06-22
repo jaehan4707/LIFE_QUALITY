@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/loginLayout">
 
@@ -74,14 +74,15 @@
 
         <Button
             android:id="@+id/goRegister"
-            android:layout_width="140dp"
+            android:layout_width="170dp"
             android:layout_height="70dp"
-            android:text="정보등록"
-            android:textSize="24sp"
-            android:fontFamily="@font/bm_dohyeon"
+            android:gravity="center"
+            android:layout_gravity="right"
             android:backgroundTint="@color/gray"
+            android:fontFamily="@font/bm_dohyeon"
+            android:text="회원등록"
             android:textColor="@color/black"
-            android:layout_gravity="right"/>
+            android:textSize="24sp" />
     </LinearLayout>
 
 

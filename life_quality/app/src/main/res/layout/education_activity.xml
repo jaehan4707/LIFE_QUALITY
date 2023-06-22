@@ -8,12 +8,12 @@
     android:id="@+id/edu_activity">
 
     <androidx.viewpager.widget.ViewPager
-        android:foregroundGravity="center"
         android:id="@+id/viewPager"
         android:layout_centerInParent="true"
         android:overScrollMode="never"
         android:clipToPadding="false"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:background="@drawable/edu_mouth_1"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"/>
 
 </RelativeLayout>

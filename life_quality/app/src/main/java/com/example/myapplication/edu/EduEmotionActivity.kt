@@ -30,12 +30,27 @@ class EduEmotionActivity : AppCompatActivity() {
         emotion_models.add(R.drawable.edu_emotion_2)
         emotion_models.add(R.drawable.edu_emotion_3)
         emotion_models.add(R.drawable.edu_emotion_4)
-
+        emotion_models.add(R.drawable.edu_emotion_action_01)
+        emotion_models.add(R.drawable.edu_emotion_action_02)
+        emotion_models.add(R.drawable.edu_emotion_action_03)
+        emotion_models.add(R.drawable.edu_emotion_5)
+        emotion_models.add(R.drawable.edu_emotion_6)
+        emotion_models.add(R.drawable.edu_emotion_7)
+        emotion_models.add(R.drawable.edu_emotion_8)
+        emotion_models.add(R.drawable.edu_emotion_9)
 
         emotion_colors.add(getColor(R.color.edu_emotion_color1))
         emotion_colors.add(getColor(R.color.edu_emotion_color2))
         emotion_colors.add(getColor(R.color.edu_emotion_color3))
         emotion_colors.add(getColor(R.color.edu_emotion_color4))
+        emotion_colors.add(getColor(R.color.edu_emotion_color1))
+        emotion_colors.add(getColor(R.color.edu_emotion_color2))
+        emotion_colors.add(getColor(R.color.edu_emotion_color3))
+        emotion_colors.add(getColor(R.color.edu_emotion_color1))
+        emotion_colors.add(getColor(R.color.edu_emotion_color2))
+        emotion_colors.add(getColor(R.color.edu_emotion_color3))
+        emotion_colors.add(getColor(R.color.edu_emotion_color4))
+        emotion_colors.add(getColor(R.color.edu_emotion_color1))
 
 
 
@@ -44,7 +59,6 @@ class EduEmotionActivity : AppCompatActivity() {
         var adapter = EduAdapter(emotion_models, this)
         binding.emotionViewPager.adapter = adapter
         binding.emotionViewPager.clipToPadding = false
-        binding.emotionViewPager.setPadding(50, 0, 50, 0)
         binding.emotionViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 if(position < adapter.count-1 && position < emotion_colors.size - 1) {

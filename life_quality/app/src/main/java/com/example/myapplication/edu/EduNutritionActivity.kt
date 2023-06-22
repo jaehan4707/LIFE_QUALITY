@@ -17,15 +17,18 @@ class EduNutritionActivity : AppCompatActivity() {
 
         var binding = EduNutritionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        nutrition_models.add(R.drawable.edu_nutrition_1)
-        nutrition_models.add(R.drawable.edu_nutrition_2)
-        nutrition_models.add(R.drawable.edu_nutrition_3)
-        nutrition_models.add(R.drawable.edu_nutrition_4)
-        nutrition_models.add(R.drawable.edu_nutrition_5)
-        nutrition_models.add(R.drawable.edu_nutrition_6)
-        nutrition_models.add(R.drawable.edu_nutrition_7)
-        nutrition_models.add(R.drawable.edu_nutrition_8)
-
+        nutrition_models.add(R.drawable.edu_mna_1)
+        nutrition_models.add(R.drawable.edu_mna_2)
+        nutrition_models.add(R.drawable.edu_mna_3)
+        nutrition_models.add(R.drawable.edu_mna_4)
+        nutrition_models.add(R.drawable.edu_mna_5)
+        nutrition_models.add(R.drawable.edu_mna_6)
+        nutrition_models.add(R.drawable.edu_mna_7)
+        nutrition_models.add(R.drawable.edu_mna_8)
+        nutrition_models.add(R.drawable.edu_mna_9)
+        nutrition_models.add(R.drawable.edu_mna_10)
+        nutrition_models.add(R.drawable.edu_mna_11)
+        nutrition_models.add(R.drawable.edu_mna_12)
         nutrition_colors.add(getColor(R.color.edu_nutri_color1))
         nutrition_colors.add(getColor(R.color.edu_nutri_color2))
         nutrition_colors.add(getColor(R.color.edu_nutri_color3))
@@ -34,12 +37,15 @@ class EduNutritionActivity : AppCompatActivity() {
         nutrition_colors.add(getColor(R.color.edu_nutri_color3))
         nutrition_colors.add(getColor(R.color.edu_nutri_color1))
         nutrition_colors.add(getColor(R.color.edu_nutri_color2))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color3))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color1))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color2))
+        nutrition_colors.add(getColor(R.color.edu_nutri_color3))
 
 
         var adapter = EduAdapter(nutrition_models, this)
         binding.nutriViewPager.adapter = adapter
         binding.nutriViewPager.clipToPadding = false
-//        binding.nutriViewPager.setPadding(130, 0, 130, 0)
         binding.nutriViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 if(position < adapter.count-1 && position < nutrition_colors.size - 1) {
@@ -57,11 +63,8 @@ class EduNutritionActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-
             }
-
             override fun onPageScrollStateChanged(state: Int) {
-
             }
 
         })

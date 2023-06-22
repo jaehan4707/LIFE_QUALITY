@@ -40,7 +40,6 @@ class EduYosilActivity : AppCompatActivity() {
         var adapter = EduAdapter(yosil_models, this)
         binding.yosilViewPager.adapter = adapter
         binding.yosilViewPager.clipToPadding = false
-        binding.yosilViewPager.setPadding(50, 0, 50, 0)
         binding.yosilViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 if(position < adapter.count-1 && position < yosil_colors.size - 1) {
@@ -56,13 +55,10 @@ class EduYosilActivity : AppCompatActivity() {
                     binding.yosilViewPager.setBackgroundColor(yosil_colors[yosil_colors.size-1])
                 }
             }
-
             override fun onPageSelected(position: Int) {
-
             }
 
             override fun onPageScrollStateChanged(state: Int) {
-
             }
 
         })
