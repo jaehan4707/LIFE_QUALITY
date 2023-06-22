@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.question
 
 import android.content.Context
 import android.os.Bundle
@@ -20,7 +20,6 @@ import com.example.myapplication.question.QuestionMainpage.Companion.Id
 import com.example.myapplication.databinding.NotypeFragmentBinding
 import com.example.myapplication.model.Bmi
 import com.example.myapplication.model.Time
-import com.example.myapplication.question.QuestionMainpage
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
 import com.example.myapplication.question.QuestionMainpage.Companion.tempSurvey
 import com.example.myapplication.viewModel.QuestionViewModel

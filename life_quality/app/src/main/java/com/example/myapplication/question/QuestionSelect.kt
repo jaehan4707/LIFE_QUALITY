@@ -1,8 +1,13 @@
 package com.example.myapplication.question
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
+import android.view.Window
+import android.view.WindowManager
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -20,6 +25,8 @@ import com.example.myapplication.SplashActivity.Companion.surveyList
 import com.example.myapplication.SplashActivity.Companion.type
 import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityQuestionSelectBinding
+import com.example.myapplication.databinding.AgreeDialogBinding
+import com.example.myapplication.databinding.FallInfoBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.*
@@ -86,14 +93,14 @@ class QuestionSelect : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb1 ->dbid=0 //mna
                 R.id.rb2->dbid=1 //정신건강
-                R.id.rb3->dbid=2 //수면습관
-                R.id.rb4->dbid=3 //구간건강
-                R.id.rb5->dbid=4 //
-                R.id.rb6->dbid=5
-                R.id.rb7->dbid=6
-                R.id.rb8->dbid=7
-                R.id.rb9->dbid=8
-                R.id.rb10->dbid=9
+                R.id.rb3->dbid=2 //요실금
+                R.id.rb4->dbid=3 //구강건강
+                R.id.rb5->dbid=4 //신체활동
+                R.id.rb6->dbid=5 //수면습관
+                R.id.rb7->dbid=6 //노쇠
+                R.id.rb8->dbid=7 //낙상
+                R.id.rb9->dbid=8 //삶의 질
+                R.id.rb10->dbid=9 //사회적 건강
             }
         }
         binding.selectStart.setOnClickListener { //설문 시작하기 버튼 눌렀을 때
@@ -113,9 +120,15 @@ class QuestionSelect : AppCompatActivity() {
                     else if(!check_list[4] && dbid==6){
                         Toast.makeText(this,"노쇠측정을 하기 전에 IPAQ 설문을 진행해주셔야 합니다!",Toast.LENGTH_SHORT).show()
                     }
+                    else if(dbid==7){ //낙상일때
+                        create_dialog()
+//                        go_survey()
+                    }
                     else {
                         Log.d("problem","클릭클릭")
                         Toast.makeText(this@QuestionSelect, "설문시작하기 버튼을 눌렀습니다", Toast.LENGTH_SHORT).show()
+                        go_survey()
+                        /*
                         surveyList.clear()
                         type = nameList[dbid]
                         Log.d("problem","${type}")
@@ -136,6 +149,7 @@ class QuestionSelect : AppCompatActivity() {
                             val intent = Intent(this@QuestionSelect, QuestionMainpage::class.java)
                             startActivity(intent)
                         }
+                        */
                     }
                 }
             }
@@ -146,12 +160,55 @@ class QuestionSelect : AppCompatActivity() {
                 startActivity(intent)
         }
     }
-    fun survey_clear() : Boolean{
-        for(i in 0 ..4){
-            if(!check_list[i])
-                return false
+    private fun go_survey(){
+        surveyList.clear()
+        type = nameList[dbid]
+        Log.d("problem","${type}")
+        Log.d("problem", "Total : ${Total.size}")
+        //카테고리 선택하면 카테고리별로 디비뽑음.
+        CoroutineScope(Dispatchers.Main).launch {
+            val filteredSurveyList = withContext(Dispatchers.IO) {
+                val tempList = mutableListOf<TotalSurvey>()
+                for (i in 0 until Total.size) {
+                    if (SplashActivity.Total[i].surveyType == nameList[dbid]) {
+                        tempList.add(Total[i])
+                    }
+                }
+                tempList
+            }
+            surveyList.addAll(filteredSurveyList)
+            Log.d("problem", "작업 : ${surveyList.size}")
+            val intent = Intent(this@QuestionSelect, QuestionMainpage::class.java)
+            startActivity(intent)
         }
-        return true
+    }
+    fun create_dialog(){
+        val dialogBinding = FallInfoBinding.inflate(layoutInflater)
+        val dialog = Dialog(this)
+        val dialogLayoutParams = WindowManager.LayoutParams().apply {
+            copyFrom(dialog.window?.attributes)
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            height = WindowManager.LayoutParams.MATCH_PARENT
+        }
+        dialog.window?.attributes = dialogLayoutParams
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCancelable(false)
+        val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val screenWidth = displayMetrics.widthPixels
+        val screenHeight = displayMetrics.heightPixels
+        dialog.window?.setLayout(screenWidth, screenHeight)
+        dialog.show()
+
+        dialogBinding.infoNext.setOnClickListener {
+            dialog.dismiss()
+            go_survey()
+        }
+        dialogBinding.close.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
     override fun onBackPressed() {
