@@ -51,7 +51,7 @@ class  FallFragment : Fragment() {
                 val text="높은"
                 val startIndex = text.indexOf("높은")
                 val endIndex = startIndex + "높은".length
-                val colorSpan = ForegroundColorSpan(Color.RED) // 색깔 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red_circle)) // 색깔 지정
                 val spannableString = SpannableString(binding.fallResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.fallResult.text = spannableString

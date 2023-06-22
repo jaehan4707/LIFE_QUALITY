@@ -90,10 +90,12 @@ class MainActivity : AppCompatActivity() {
         binding.qStart.setOnClickListener() {
             showDialog()
         }
+        /*
         binding.redCircle.setOnClickListener {
             val intent = Intent(this, AdminHome::class.java)
             startActivity(intent)
         }
+         */
         binding.edu.setOnClickListener() {
             val intent = Intent(this, EduActivity::class.java)
             startActivity(intent)

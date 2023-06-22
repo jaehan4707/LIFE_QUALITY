@@ -30,71 +30,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/dialog_title"/>
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/info_text"
         android:backgroundTint="@color/main_orange"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.7"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dialog_title">
 
+
         <LinearLayout
-            android:id='@+id/first'
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/info_text"
-            android:padding="2dp"
-            android:orientation="horizontal">
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_weight="0.2"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/bm_dohyeon"
-            android:text="이수연 :"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            />
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_weight="0.4"
-            android:gravity="center_vertical"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/bm_dohyeon"
-            android:text="010-8641-5448"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-        </LinearLayout>
-        <TextView
-            android:layout_marginTop="5dp"
-            android:id="@+id/first_detail"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintTop_toBottomOf="@id/first"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="(오전8시~오후12시)"
-            android:textColor="@color/black"
-            android:fontFamily="@font/bm_dohyeon"
-            android:gravity="end"
-            app:layout_constraintEnd_toEndOf="parent"/>
-        <LinearLayout
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:id="@+id/second"
+            android:padding="15dp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintTop_toBottomOf="@id/first_detail"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/content"
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="horizontal"
             android:background="@drawable/info_text"
@@ -108,7 +64,7 @@
             android:text="이시진 :"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
         <TextView
             android:layout_width="0dp"
             android:layout_weight="0.4"
@@ -117,7 +73,7 @@
             android:text="010-7287-8618"
             android:gravity="center_vertical"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
         </LinearLayout>
 
         <TextView
@@ -135,11 +91,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
         <LinearLayout
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/third"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.1"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="horizontal"
@@ -155,7 +111,7 @@
             android:textColor="@color/black"
             android:layout_weight="0.2"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="24sp"
             />
         <TextView
             android:layout_width="0dp"
@@ -164,7 +120,7 @@
             android:text="010-5141-5544"
             android:gravity="center_vertical"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:layout_weight="0.4"/>
         </LinearLayout>
 
@@ -185,19 +141,20 @@
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:padding="15dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/info_text"
+            android:background="@drawable/result_info"
             app:layout_constraintTop_toBottomOf="@+id/textView5">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/bm_dohyeon"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:text="주어진 시간 내에만 전해주세요!!"
+                android:textSize="24sp"
+                android:text="주어진 시간 내에만 \n전화해주세요!!"
                 android:textColor="@color/black" />
         </LinearLayout>
 

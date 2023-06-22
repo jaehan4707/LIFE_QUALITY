@@ -54,25 +54,31 @@
         <Button
             android:id="@+id/login"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:text="로그인"
+            android:textSize="24sp"
+            android:textColor="@color/black"
             android:backgroundTint="@color/main_orange"
             android:fontFamily="@font/bm_dohyeon"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"/>
-
+            android:layout_marginTop="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="아직 회원이 아니신가요?"
+            android:fontFamily="@font/bm_dohyeon"
+            android:textColor="@color/black"
             android:layout_marginTop="40dp"
             android:layout_gravity="right"/>
+
         <Button
             android:id="@+id/goRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
             android:text="정보등록"
+            android:textSize="24sp"
+            android:fontFamily="@font/bm_dohyeon"
             android:backgroundTint="@color/gray"
             android:textColor="@color/black"
             android:layout_gravity="right"/>

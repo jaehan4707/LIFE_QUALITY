@@ -367,9 +367,9 @@ class ResultLayout : AppCompatActivity() {
                                 weight += answer[i]
                             }
                         }
-                        if (weight < 15.0) //영양 불량
+                        if (weight < 17.0) //영양 불량
                             ans = 1
-                        else if (weight in 15.0..21.5) //영양불량 위험
+                        else if (weight in 17.0..23.5) //영양불량 위험
                             ans = 2
                         else //정상
                             ans = 3

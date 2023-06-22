@@ -50,30 +50,38 @@
                 </LinearLayout>
             </FrameLayout>
 
-            <TextView
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/result_info"
+                android:orientation="vertical">
+            <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="설문결과,"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
-                android:textSize="19sp" />
-
+                android:textSize="25sp" />
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="27dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/bm_dohyeon"
                 android:text="당신의 삶의 질은"
                 android:textColor="@color/black"
-                android:textSize="19sp" />
+                android:textSize="25sp" />
             <TextView
                 android:id="@+id/eq5d_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
-                android:textSize="19sp"
+                android:textSize="25sp"
                 android:text="@string/good_sleep"/>
+            </LinearLayout>
             <TextView
                 android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
@@ -86,8 +94,7 @@
                 android:padding="5dp"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:background="@drawable/textview_round"
-                />
+                android:background="@drawable/textview_round" />
 
             <TextView
                 android:layout_marginTop="40dp"

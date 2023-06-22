@@ -54,32 +54,6 @@
                 </FrameLayout>
 
                 <TextView
-                    android:layout_marginTop="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="설문결과,"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:textColor="@color/black"
-                    android:textSize="19sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="낙상 상태는 "
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:textColor="@color/black"
-                    android:textSize="19sp" />
-                <TextView
-                    android:id="@+id/fall_result"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:textColor="@color/black"
-                    android:textSize="19sp"
-                    android:text="@string/good_sleep"/>
-
-
-                <TextView
                     android:id="@+id/info"
                     android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
@@ -90,6 +64,41 @@
                     android:gravity="center"
                     android:breakStrategy="simple"
                     android:text="이 문항은 점수가 높을수록 낙상에 대한 두려움이 높음을 뜻합니다"/>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/result_info"
+                    android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="설문결과,"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="낙상 자기효능감이 "
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/fall_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:text="낮은 상태입니다"/>
+                </LinearLayout>
                 <TextView
                     android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
@@ -103,27 +112,6 @@
                     android:textSize="19sp"
                     android:background="@drawable/textview_round"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/info_text"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:padding="10dp"
-                    android:text="1.과음을 삼가고, 일어나거나 움직이기 시작할 때 천천히 행동하기\n2.위험장소에는 안전장치 및 밝은\n조명 설치,전선 물건 등 정리하기\n3.근력과 유연성을 높이기 위해서\n꾸준한 운동 실시하기"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:lineSpacingExtra="8dp"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="출처 : 질병관리청 [어르신 낙상 주의] 낙상 사고 \n예방으로 안전생활 하세요"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_marginTop="40dp"

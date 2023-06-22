@@ -27,7 +27,7 @@
         android:text="기력이 좋은 편이십니까?"
         android:lineSpacingExtra="10dp"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="23dp" />
 
     <ScrollView
         android:layout_width="match_parent"

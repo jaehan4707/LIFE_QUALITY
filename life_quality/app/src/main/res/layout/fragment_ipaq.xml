@@ -22,8 +22,8 @@
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/info_text"
-                android:padding="5dp"
+                android:background="@drawable/result_info"
+                android:padding="10dp"
                 android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
                 android:text="설문결과,"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
-                android:textSize="19sp"/>
+                android:textSize="24sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,8 +39,9 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
-                android:textSize="19sp"/>
+                android:textSize="24sp"/>
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -51,14 +52,14 @@
                     android:text="활동군 "
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/main_orange"
-                    android:textSize="19sp"/>
+                    android:textSize="24sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="입니다."
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
-                    android:textSize="19sp"/>
+                    android:textSize="24sp"/>
             </LinearLayout>
             </LinearLayout>
 

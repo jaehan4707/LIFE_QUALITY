@@ -34,6 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <!--
                 <ImageView
                     android:id="@+id/my_inform"
                     android:layout_width="wrap_content"
@@ -43,13 +44,23 @@
                     android:maxWidth="35dp"
                     android:adjustViewBounds="true"
                     android:gravity="right"
-                    android:layout_marginLeft="225dp" />
+                    android:layout_marginLeft="225dp" />-->
+                <ImageView
+                    android:id="@+id/help_noti"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_notification"
+                    android:backgroundTint="@color/white"
+                    android:layout_gravity="right"
+                    android:scaleType="fitCenter" />
+
                 <TextView
+                    android:layout_marginLeft="150dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="내 정보"
+                    android:text="비상연락망"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:layout_marginLeft="220dp"
+                    android:textColor="@color/black"
                     android:layout_marginTop="3dp"/>
             </LinearLayout>
         </LinearLayout>
@@ -71,24 +82,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="해당 설문조사는"
-                android:textSize="20dp"
+                android:textSize="24dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="24dp"
                 android:text="여러분들의 건강 상태를"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="설문조사 형태로 진행해\n 건강상태를 알려줍니다"
-                android:layout_marginTop="5dp"
+                android:textSize="24dp"
+                android:text="설문조사 형태로 진행해\n건강상태를 알려줍니다"
+                android:lineSpacingExtra="8dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"/>
         </LinearLayout>
@@ -97,12 +109,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="10dp">
             <Button
                 android:id="@+id/q_start"
                 android:layout_width="250dp"
                 android:layout_height="60dp"
-                android:text="시작하기"
+                android:text="설문목록"
                 android:textSize="20dp"
                 android:backgroundTint="@color/main_orange"
                 android:textColor="@color/black"
@@ -140,6 +152,7 @@
                 android:fontFamily="@font/bm_dohyeon"/>
             -->
         </LinearLayout>
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -152,7 +165,7 @@
                 android:backgroundTint="@color/white"
                 android:layout_gravity="bottom"
                 android:scaleType="fitCenter" />
-        </LinearLayout>
+        </LinearLayout> -->
 </LinearLayout>
 
 

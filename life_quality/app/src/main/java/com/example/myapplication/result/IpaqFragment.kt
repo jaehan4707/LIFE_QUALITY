@@ -46,7 +46,7 @@ class  IpaqFragment : Fragment() {
         }
         else{
             binding.resultTxt.text="비활동군"
-            binding.resultTxt.setTextColor(Color.parseColor("#FF0000"))
+            binding.resultTxt.setTextColor(Color.parseColor("#800000"))
         }
 
         return binding.root

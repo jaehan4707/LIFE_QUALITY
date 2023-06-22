@@ -29,7 +29,7 @@ class Fragment6 : Fragment() {
         val valueList = arrayOfNulls<String>(6) // 크기가 6인 배열 생성
         var binding = Type6FragmentBinding.inflate(layoutInflater) // 만들어준 xml파일을 binding한다.
         binding.type6Number.text = "문항 " + QuestionMainpage.curCount.toString()
-        binding.type6Title.text = QuestionMainpage.tempSurvey.title.toString()
+        binding.type6Title.text = QuestionMainpage.tempSurvey.title
         Log.d("problem","${tempSurvey.answer}")
         var keyIndex = -1
         for ((key, value) in tempSurvey.answer) {

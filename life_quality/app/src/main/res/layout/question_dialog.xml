@@ -21,6 +21,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_reason"
             android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_height="match_parent"
             android:inputType="textAutoComplete"
             />
@@ -28,27 +30,27 @@
 
     <android.widget.Button
         android:id="@+id/finish"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:text="완료"
         android:fontFamily="@font/bm_dohyeon"
         android:textSize="30sp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/orange_button"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="130dp"
         />
     <android.widget.Button
         android:id="@+id/back"
-        android:layout_marginLeft="50dp"
-        android:layout_width="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="150dp"
         android:text="이전"
         android:fontFamily="@font/bm_dohyeon"
         android:textSize="30sp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/orange_button"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="130dp"
         app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

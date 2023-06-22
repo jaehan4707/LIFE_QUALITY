@@ -44,9 +44,7 @@ class Fragment7 : Fragment() {
             binding.relationship.visibility=View.GONE
         }
         binding.type7Number.text = "문항 " + QuestionMainpage.curCount.toString()
-        //binding.type7Number.text ="문항 " + tempSurvey.id
-        binding.type7Title.text = QuestionMainpage.tempSurvey.title.toString()
-
+        binding.type7Title.text = QuestionMainpage.tempSurvey.title
         for ((key, value) in QuestionMainpage.tempSurvey.answer) {
             keyList.add(key)
             valueList.add(value)

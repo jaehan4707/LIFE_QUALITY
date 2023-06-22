@@ -8,6 +8,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.CardActivity
+import com.example.myapplication.EduActivity
 import com.example.myapplication.MainActivity
 import com.example.myapplication.SplashActivity.Companion.Total
 import com.example.myapplication.SplashActivity.Companion.check_list
@@ -30,12 +31,8 @@ class QuestionSelect : AppCompatActivity() {
     private lateinit var radio_text : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val activityScope = CoroutineScope(Dispatchers.Main)
-        //var binding = ActivityQuestionSelectBinding.inflate(layoutInflater)
         var binding =ActivityQuestionSelectBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val db = Firebase.firestore
-        var tes = mutableListOf<TotalSurvey>()
         for(i in 0 until check_list.size){
             if(check_list[i]){ //이미 완료된 설문이라면
                 when(i){
@@ -145,13 +142,8 @@ class QuestionSelect : AppCompatActivity() {
         }
         //해당 버튼의 해당하는 설문리스트를 불러와야함.
         binding.selectClear.setOnClickListener{
-            if(survey_clear()) { //필수항목을 다 했을 경우. 앱 종료
-                val intent = Intent(this@QuestionSelect,CardActivity::class.java)
+                val intent = Intent(this@QuestionSelect, EduActivity::class.java)
                 startActivity(intent)
-            }
-            else{
-                Toast.makeText(this,"필수 설문 문항을 다 해주셔야 합니다!!",Toast.LENGTH_SHORT).show()
-            }
         }
     }
     fun survey_clear() : Boolean{

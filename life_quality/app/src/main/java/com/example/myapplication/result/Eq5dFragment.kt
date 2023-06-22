@@ -1,10 +1,12 @@
 package com.example.myapplication.result
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,6 +36,7 @@ class Eq5dFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
+    @SuppressLint("ResourceAsColor")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,9 +53,11 @@ class Eq5dFragment : Fragment() {
                 val text="낮은"
                 val startIndex = text.indexOf("낮은")
                 val endIndex = startIndex + "낮은".length
-                val colorSpan = ForegroundColorSpan(Color.RED) // 색깔 지정
+                val colorSpan = BackgroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red_circle)) // 색깔 지정
                 val spannableString = SpannableString(binding.eq5dResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                val cSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.white))
+                spannableString.setSpan(cSpan,startIndex,endIndex,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.eq5dResult.text = spannableString
             }
 
@@ -64,8 +69,10 @@ class Eq5dFragment : Fragment() {
                 val text="보통"
                 val startIndex = text.indexOf("보통")
                 val endIndex = startIndex + "보통".length
-                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.main_orange)) // 색깔 지정
+                val colorSpan = BackgroundColorSpan(ContextCompat.getColor(requireContext(),R.color.main_orange)) // 색깔 지정
                 val spannableString = SpannableString(binding.eq5dResult.text)
+                val cSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.white))
+                spannableString.setSpan(cSpan,startIndex,endIndex,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.eq5dResult.text = spannableString
             }
@@ -77,8 +84,10 @@ class Eq5dFragment : Fragment() {
                 val text="높은"
                 val startIndex = text.indexOf("높은")
                 val endIndex = startIndex + "높은".length
-                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green)) // 색깔 지정
+                val colorSpan = BackgroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green_circle)) // 색깔 지정
                 val spannableString = SpannableString(binding.eq5dResult.text)
+                val cSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.white))
+                spannableString.setSpan(cSpan,startIndex,endIndex,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.eq5dResult.text = spannableString
             }

@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/type10Title"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/textview_grayline"
         android:fontFamily="@font/bm_dohyeon"
@@ -27,8 +27,7 @@
         android:lineSpacingExtra="10dp"
         android:text="넘어지신 이유는 무엇입니까?"
         android:textColor="@color/black"
-
-        android:textSize="18dp" />
+        android:textSize="23dp" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

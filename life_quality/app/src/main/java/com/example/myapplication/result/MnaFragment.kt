@@ -52,7 +52,7 @@ class MnaFragment: Fragment() {
                 val text="영양불량"
                 val startIndex = text.indexOf("영양불량")
                 val endIndex = startIndex + "영양불량".length
-                val colorSpan = ForegroundColorSpan(Color.RED) // 색상 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red_circle)) // 색깔 지정
                 val spannableString = SpannableString(binding.mnaResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.mnaResult.text = spannableString
@@ -78,7 +78,7 @@ class MnaFragment: Fragment() {
                 val text="영양 관리"
                 val startIndex = text.indexOf("영양 관리")
                 val endIndex = startIndex + "영양 관리".length
-                val colorSpan = ForegroundColorSpan(Color.GREEN) // 색상 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green_circle)) // 색깔 지정
                 val spannableString = SpannableString(binding.mnaResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.mnaResult.text = spannableString
