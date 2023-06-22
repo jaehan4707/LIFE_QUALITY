@@ -16,8 +16,11 @@ import com.example.myapplication.edu.EduMouthActivity
 import com.example.myapplication.edu.EduNutritionActivity
 import com.example.myapplication.edu.EduSleepActivity
 import com.example.myapplication.edu.EduYosilActivity
+import com.example.myapplication.edu.EduYosilTrainingActivity
 
 class EduActivity : AppCompatActivity() {
+    lateinit var first_intent : Intent
+    lateinit var second_intent : Intent
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityEduBinding.inflate(layoutInflater)
@@ -55,34 +58,40 @@ class EduActivity : AppCompatActivity() {
             val intent = Intent(this@EduActivity, MainActivity::class.java)
             startActivity(intent)
         }
+        binding.yosil.setOnClickListener {
+            showDialog("yosil")
+        }
     }
     fun showDialog(str:String) {
         var dialogBinding = EduDialogBinding.inflate(layoutInflater)
         var dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(dialogBinding.root)
+
         if(str=="fall") {
             dialogBinding.title.text="낙상"
             dialogBinding.first.text="낙상 건강소식"
             dialogBinding.second.text="낙상 예방체조"
-            dialogBinding.first.setOnClickListener{
-                Log.d("problem","낙상첫번째")
-                var intent = Intent(this, EduFallActivity::class.java)
-                startActivity(intent)
-                dialog.dismiss()
-            }
-            dialogBinding.second.setOnClickListener {
-                Log.d("problem","낙상2번")
-                val intent=Intent(this, EduFallPtActivity::class.java)
-                startActivity(intent)
-                dialog.dismiss()
-            }
-            dialogBinding.close.setOnClickListener {
-                dialog.dismiss()
-            }
+            first_intent=Intent(this@EduActivity,EduFallActivity::class.java)
+            second_intent=Intent(this@EduActivity,EduFallPtActivity::class.java)
         }
         if(str=="yosil"){
-
+            dialogBinding.title.text="요실금"
+            dialogBinding.first.text="골반훈련"
+            dialogBinding.second.text="방광훈련"
+            first_intent=Intent(this@EduActivity,EduYosilActivity::class.java)
+            second_intent=Intent(this@EduActivity,EduYosilTrainingActivity::class.java)
+        }
+        dialogBinding.first.setOnClickListener{
+            startActivity(first_intent)
+            dialog.dismiss()
+        }
+        dialogBinding.second.setOnClickListener {
+            startActivity(second_intent)
+            dialog.dismiss()
+        }
+        dialogBinding.close.setOnClickListener {
+            dialog.dismiss()
         }
         dialog.setCancelable(false)
         dialog.show()
