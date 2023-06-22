@@ -20,7 +20,6 @@ class EduAdapter : PagerAdapter{
     interface BackButtonListenr{
         fun onBackPressed()
     }
-
     private var backButtonListenr : BackButtonListenr?=null
 
     constructor(models: MutableList<Int>, context: Context){
@@ -67,7 +66,7 @@ class EduAdapter : PagerAdapter{
 
         //이미지뷰 가져오기
         var imageView = view.findViewById<ImageView>(R.id.eduImage)
-        val drawable = ContextCompat.getDrawable(context,models[position])
+        //val drawable = ContextCompat.getDrawable(context,models[position])
         imageView.setImageResource(models.get(position))
         //val drawable = ContextCompat.getDrawable(context, R.drawable.my_drawable)
 

@@ -124,7 +124,6 @@ class QuestionMainpage : AppCompatActivity() {
         //supportFragmentManager는 프레그먼트를 관리하는 객체임
         val ft = supportFragmentManager.beginTransaction()
         currentFragment = when (fragNum) {
-            -1 -> FragmentInform()
             0 -> NotypeFragment()
             2 -> Fragment2()
             3 -> Fragment3()

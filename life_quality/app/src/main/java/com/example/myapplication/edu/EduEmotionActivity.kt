@@ -51,12 +51,13 @@ class EduEmotionActivity : AppCompatActivity() {
         emotion_colors.add(getColor(R.color.edu_emotion_color3))
         emotion_colors.add(getColor(R.color.edu_emotion_color4))
         emotion_colors.add(getColor(R.color.edu_emotion_color1))
-
+        Log.d("problem","eeeee")
 
 
         //scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
         var adapter = EduAdapter(emotion_models, this)
+        binding.maxPage.text = adapter.count.toString()
         binding.emotionViewPager.adapter = adapter
         binding.emotionViewPager.clipToPadding = false
         binding.emotionViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
@@ -76,7 +77,8 @@ class EduEmotionActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-
+                binding.currentPage.text = (position+1).toString()+"/"
+                binding.maxPage.text=adapter.count.toString()
             }
 
             override fun onPageScrollStateChanged(state: Int) {

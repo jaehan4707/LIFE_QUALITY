@@ -35,6 +35,7 @@ class EduMouthActivity : AppCompatActivity() {
 
         var adapter = EduAdapter(mouth_models, this)
         binding.mouthViewPager.adapter = adapter
+        binding.maxPage.text = adapter.count.toString()
         binding.mouthViewPager.clipToPadding = false
         binding.mouthViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
@@ -56,7 +57,8 @@ class EduMouthActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-
+                binding.currentPage.text = (position+1).toString()+"/"
+                binding.maxPage.text=adapter.count.toString()
             }
 
             override fun onPageScrollStateChanged(state: Int) {

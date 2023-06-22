@@ -45,6 +45,7 @@ class EduNutritionActivity : AppCompatActivity() {
 
         var adapter = EduAdapter(nutrition_models, this)
         binding.nutriViewPager.adapter = adapter
+        binding.maxPage.text = adapter.count.toString()
         binding.nutriViewPager.clipToPadding = false
         binding.nutriViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
@@ -63,6 +64,8 @@ class EduNutritionActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
+                binding.currentPage.text = (position+1).toString()+"/"
+                binding.maxPage.text=adapter.count.toString()
             }
             override fun onPageScrollStateChanged(state: Int) {
             }

@@ -56,6 +56,8 @@ class EduYosilActivity : AppCompatActivity() {
                 }
             }
             override fun onPageSelected(position: Int) {
+                binding.currentPage.text = (position+1).toString()+"/"
+                binding.maxPage.text=adapter.count.toString()
             }
 
             override fun onPageScrollStateChanged(state: Int) {

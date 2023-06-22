@@ -77,6 +77,12 @@ class EduActivity : AppCompatActivity() {
                 startActivity(intent)
                 dialog.dismiss()
             }
+            dialogBinding.close.setOnClickListener {
+                dialog.dismiss()
+            }
+        }
+        if(str=="yosil"){
+
         }
         dialog.setCancelable(false)
         dialog.show()

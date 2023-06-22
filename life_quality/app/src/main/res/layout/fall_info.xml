@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.9"
+        android:layout_height="wrap_content"
+        android:text="안내문구"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:fontFamily="@font/bm_dohyeon"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.1"
+        android:layout_height="30dp"
+        android:src="@drawable/x_box"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <View
+        android:id="@+id/bar"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/gray"
+        />
+    <TextView
+        android:id="@+id/info_content"
+        android:padding="10dp"
+        android:background="@drawable/info_text"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bar"
+        android:textSize="23sp"
+        android:text="다음은 낙상에 대해 얼마나 \n염려하는지에 대한 몇 가지 질문을 \n하고자 합니다. 다음 각 활동에 대해 \n자신의 의견과 가장 가까운 부분을 \n선택하여 주시기 바랍니다.\n이 중 현재 하지 않는 활동이 있다면\n그것을 했다고 가정하고 넘어 질까 봐 \n염려되는 것에 답해주시기 바랍니다."
+        />
+
+    <Button
+        android:id="@+id/info_next"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/info_content"
+        android:backgroundTint="@color/main_orange"
+        android:text="다음"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:fontFamily="@font/bm_dohyeon"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,7 @@ class EduExcerciseActivity : AppCompatActivity() {
 
 
         var adapter = EduAdapter(excercise_models, this)
+        binding.maxPage.text = adapter.count.toString()
         binding.excerciseViewPager.adapter = adapter
         binding.excerciseViewPager.clipToPadding = false
         binding.excerciseViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
@@ -66,7 +67,8 @@ class EduExcerciseActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-
+                binding.currentPage.text = (position+1).toString()+"/"
+                binding.maxPage.text=adapter.count.toString()
             }
 
             override fun onPageScrollStateChanged(state: Int) {
