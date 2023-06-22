@@ -8,11 +8,9 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.CardActivity
 import com.example.myapplication.EduActivity
 import com.example.myapplication.MainActivity
 import com.example.myapplication.SplashActivity.Companion.Total
@@ -25,10 +23,7 @@ import com.example.myapplication.SplashActivity.Companion.surveyList
 import com.example.myapplication.SplashActivity.Companion.type
 import com.example.myapplication.TotalSurvey
 import com.example.myapplication.databinding.ActivityQuestionSelectBinding
-import com.example.myapplication.databinding.AgreeDialogBinding
 import com.example.myapplication.databinding.FallInfoBinding
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.*
 
 

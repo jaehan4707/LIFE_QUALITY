@@ -53,10 +53,10 @@ class Eq5dFragment : Fragment() {
                 val text="낮은"
                 val startIndex = text.indexOf("낮은")
                 val endIndex = startIndex + "낮은".length
-                val colorSpan = BackgroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red_circle)) // 색깔 지정
+                //val colorSpan = BackgroundColorSpan(ContextCompat.getColor(requireContext(),R.color.pink)) // 색깔 지정
                 val spannableString = SpannableString(binding.eq5dResult.text)
-                spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                val cSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.white))
+                //spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                val cSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red))
                 spannableString.setSpan(cSpan,startIndex,endIndex,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.eq5dResult.text = spannableString
             }
@@ -84,9 +84,9 @@ class Eq5dFragment : Fragment() {
                 val text="높은"
                 val startIndex = text.indexOf("높은")
                 val endIndex = startIndex + "높은".length
-                val colorSpan = BackgroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green_circle)) // 색깔 지정
+                val colorSpan = BackgroundColorSpan(ContextCompat.getColor(requireContext(),R.color.main_orange)) // 색깔 지정
                 val spannableString = SpannableString(binding.eq5dResult.text)
-                val cSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.white))
+                val cSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.black))
                 spannableString.setSpan(cSpan,startIndex,endIndex,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.eq5dResult.text = spannableString

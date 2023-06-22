@@ -42,12 +42,12 @@ class SleepFragment : Fragment() {
 
         //점수를 계산하자.
         if(weight>= 8.5) {//good
-            binding.sleepResult.text="잘 주무시고 계시네요!"
+            binding.sleepResult.setText(R.string.good_sleep)
             binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.green_circle))
         }
         else{
-            binding.sleepResult.text="아래의 수면건강 5계명을 읽어보세요!"
-            binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red_circle))
+            binding.sleepResult.setText(R.string.bad_sleep)
+            binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
         return binding.root
     }

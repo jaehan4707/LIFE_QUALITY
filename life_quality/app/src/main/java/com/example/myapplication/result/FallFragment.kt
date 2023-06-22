@@ -42,6 +42,13 @@ class  FallFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFallBinding.inflate(inflater, container, false)
+        val startIndex = binding.info.text.indexOf("높을수록")
+        val endIndex = binding.info.text.indexOf("높음") + "높음".length
+        val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red)) // 색깔 지정
+        val spannableString = SpannableString(binding.info.text)
+        spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.info.text = spannableString
+
         when(weight.toInt()) {
             in 14 .. 28 -> {
                 binding.redLight.setBackgroundResource(R.drawable.red_circle)
@@ -78,7 +85,7 @@ class  FallFragment : Fragment() {
                 val text="낮은"
                 val startIndex = text.indexOf("낮은")
                 val endIndex = startIndex + "낮은".length
-                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green)) // 색깔 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green_circle)) // 색깔 지정
                 val spannableString = SpannableString(binding.fallResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.fallResult.text = spannableString

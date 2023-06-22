@@ -46,7 +46,7 @@ class ResultLayout : AppCompatActivity() {
         ResultLayoutBinding.inflate(layoutInflater)
     }
     companion object {
-        var traffic : Int =0
+        var traffic : Int =-1
         var weight : Double=0.0
         var flag: Int = 0
     }
@@ -109,7 +109,18 @@ class ResultLayout : AppCompatActivity() {
         flag = 0
         check_list[dbid]=true
         Log.d("problem","type : ${type}")
-        if (type == "Frailty") {
+        if (type == "Frailty") { //realtime 말고 firestore로 불러와야함.
+            newDateDocument.get()
+                .addOnSuccessListener { documentSnapshot->
+                    if(documentSnapshot.exists()){
+                        val answerData = documentSnapshot.data
+                        ipaq_result = answerData?.get("IPAQ") as ArrayList<Double>
+                    }
+                    traffic=result(type)
+                    moveFragment()
+                }
+                .addOnFailureListener { Log.d("problem","IPAQ 불러오기 실패") }
+            /*
             val surveyRef = database.getReference("User/phone/${phone!!}/${date}/IPAQ")
             val result = ArrayList<Double>()
             surveyRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -129,72 +140,79 @@ class ResultLayout : AppCompatActivity() {
                     Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
                 }
             })
+             */
         }
-        when (type) {
-            "EQ5D" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    Eq5dFragment()
-                ).commit()
-                true
-            } //완료
-            "Fall" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    FallFragment()
-                ).commit()
-            }
-            "SleepHabit" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    SleepFragment()
-                ).commit()
-            }
-            "IPAQ" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    IpaqFragment()
-                ).commit()
-            } //완료
-            "MouthHealth" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    MouthHealthFragment()
-                ).commit()
-            }
-            "SGDSK" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    SgdskFragment()
-                ).commit()
+        else{
+            traffic=result(type)
+            moveFragment()
+        }
 
-            }  //완료
-            "MNA" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    MnaFragment()
-                ).commit()
-            } //완료
-            "Yosil" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    YosilFragment()
-                ).commit()
-            } //완료
-            "SocialNetwork"->{
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    SdohFragment()
-                ).commit()
-            }
-            "Frailty"->{
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    FrailtyFragment()
-                ).commit()
-            }
-            else->false
-        }
         binding.nextstage.setOnClickListener { //계속하기 버튼
             var intent = Intent(this, QuestionSelect::class.java)
             startActivity(intent)
         }
         binding.goToEdu.setOnClickListener { //완료하기 버튼
-            var intent = Intent(this, CardActivity::class.java)
+            var intent = Intent(this, EduActivity::class.java)
             startActivity(intent)
         }
-        if(type!="Frailty"){
-            traffic=result(type)
+    }
+    private fun moveFragment(){
+        Log.d("problem","옮길건데 결과 확인 : ${traffic}")
+        if(traffic!=-1){
+            when (type) {
+                "EQ5D" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        Eq5dFragment()
+                    ).commit()
+                } //완료
+                "Fall" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        FallFragment()
+                    ).commit()
+                }
+                "SleepHabit" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        SleepFragment()
+                    ).commit()
+                }
+                "IPAQ" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        IpaqFragment()
+                    ).commit()
+                } //완료
+                "MouthHealth" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        MouthHealthFragment()
+                    ).commit()
+                }
+                "SGDSK" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        SgdskFragment()
+                    ).commit()
+
+                }  //완료
+                "MNA" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        MnaFragment()
+                    ).commit()
+                } //완료
+                "Yosil" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        YosilFragment()
+                    ).commit()
+                } //완료
+                "SocialNetwork"->{
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        SdohFragment()
+                    ).commit()
+                }
+                "Frailty"->{
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        FrailtyFragment()
+                    ).commit()
+                }
+                else->false
+            }
         }
     }
     private fun setPush(){
@@ -226,13 +244,13 @@ class ResultLayout : AppCompatActivity() {
                 in 31 .. 60->2+answer[4]
                 else -> 3+answer[4]
             }
-            var third = when(answer[3].toInt()){ //#4
+            var third = when(answer[3].toInt()/60){ //#4 단위가 시간임.
                 in 0 until 5 -> 3
                 in 5 until 6 ->2
                 in 6 until 7 ->1
                 else ->0
             }
-            var four = when( (answer[3]/(answer[2]-answer[0])*100).toInt()){
+            var four = when(((answer[3]/60)/(answer[2]/60-answer[0]/60)*100).toInt()){
                 in 0 until 65 ->3
                 in 65 .. 74 ->2
                 in 75 .. 84 ->1
@@ -362,7 +380,6 @@ class ResultLayout : AppCompatActivity() {
                                     else -> 3
                                 }
                             }
-
                             else -> {
                                 weight += answer[i]
                             }
@@ -394,6 +411,7 @@ class ResultLayout : AppCompatActivity() {
                                 }
                             }
                             else -> weight += answer[i]
+
                         }
                     }
 
@@ -402,6 +420,7 @@ class ResultLayout : AppCompatActivity() {
                 }
             }
         }
+        Log.d("problem","노쇠 결과 : ${weight}")
         return ans
     }
 }

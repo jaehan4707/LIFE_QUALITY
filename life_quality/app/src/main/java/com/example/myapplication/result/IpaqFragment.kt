@@ -42,13 +42,12 @@ class  IpaqFragment : Fragment() {
         if(weight.toInt()>=150) //활동군
         {
             binding.resultTxt.text="활동군"
-            binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
+            binding.resultTxt.setTextColor(Color.parseColor("#097f09"))
         }
         else{
             binding.resultTxt.text="비활동군"
-            binding.resultTxt.setTextColor(Color.parseColor("#800000"))
+            binding.resultTxt.setTextColor(Color.parseColor("#ff0000"))
         }
-
         return binding.root
     }
     override fun onDestroyView() {

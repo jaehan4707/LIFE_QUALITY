@@ -90,12 +90,6 @@ class MainActivity : AppCompatActivity() {
         binding.qStart.setOnClickListener() {
             showDialog()
         }
-        /*
-        binding.redCircle.setOnClickListener {
-            val intent = Intent(this, AdminHome::class.java)
-            startActivity(intent)
-        }
-         */
         binding.edu.setOnClickListener() {
             val intent = Intent(this, EduActivity::class.java)
             startActivity(intent)
@@ -118,7 +112,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun todo(){
-        Toast.makeText(this,"알람을 받을 수 있습니다!",Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this,"알람을 받을 수 있습니다!",Toast.LENGTH_SHORT).show()
     }
     private fun requestPermission(logic: () -> Unit) {
         TedPermission.create()

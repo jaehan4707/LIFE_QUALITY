@@ -52,14 +52,13 @@
 
             <LinearLayout
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:padding="10dp"
                 android:background="@drawable/result_info"
                 android:orientation="vertical">
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="설문결과,"
@@ -67,6 +66,7 @@
                 android:textColor="@color/black"
                 android:textSize="25sp" />
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bm_dohyeon"
@@ -74,6 +74,7 @@
                 android:textColor="@color/black"
                 android:textSize="25sp" />
             <TextView
+                android:layout_marginTop="10dp"
                 android:id="@+id/eq5d_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

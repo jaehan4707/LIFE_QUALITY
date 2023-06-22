@@ -14,24 +14,28 @@
             android:layout_marginLeft="30dp">
             <View
                 android:id="@+id/red_circle"
-                android:layout_width="30dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="30dp"
                 android:background="@drawable/red_circle"
                 android:layout_gravity="center_vertical"/>
             <View
-                android:layout_width="30dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="30dp"
                 android:background="@drawable/yellow_circle"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"/>
             <View
-                android:layout_width="30dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="30dp"
                 android:background="@drawable/green_circle"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"/>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="8"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <!--
@@ -47,21 +51,19 @@
                     android:layout_marginLeft="225dp" />-->
                 <ImageView
                     android:id="@+id/help_noti"
+                    android:src="@drawable/ic_notification"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_notification"
-                    android:backgroundTint="@color/white"
                     android:layout_gravity="right"
-                    android:scaleType="fitCenter" />
-
+                     />
                 <TextView
-                    android:layout_marginLeft="150dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="비상연락망"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
-                    android:layout_marginTop="3dp"/>
+                    android:textSize="20sp"
+                    android:gravity="right"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
