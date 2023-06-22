@@ -56,7 +56,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         val database = FirebaseDatabase.getInstance()
         fcmReference = FirebaseMessaging.getInstance()
-        user=User("","","","","","","")
+        user=User("","","","","","","","")
         val db = Firebase.firestore //설문 문항 데이터 베이스 읽기.
         for (i in 0..nameList.size - 1) {
             val task=db.collection("${nameList[i]}")

@@ -87,8 +87,16 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                     ||Helath.isEmpty()||Smoke.isEmpty()||Drink.isEmpty()) { // 입력된게 전화번호 형식이면
                         Toast.makeText(this, "빈칸이 있어요!! 선택을 완벽하게 해주세요", Toast.LENGTH_SHORT).show()
                     } else {
-                        user=User(Sex,Age,Family,Study,Helath,Smoke,Drink)
+                        user=User(Sex,Age,Family,Study,Helath,Smoke,Drink,phone)
                         val newUserDoc = userCollectionRef.document(phone)
+                        newUserDoc.set(user)
+                        .addOnSuccessListener {
+                            Log.d("problem","유저정보 저장 성공")
+                        }
+                        .addOnFailureListener {
+                            Log.d("problem","저장 실패")
+                        }
+                    /*
                     val informationCollection = newUserDoc.collection("Information")
                     informationCollection.document("개인정보").set(user)
                         .addOnSuccessListener {
@@ -99,6 +107,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                             // 문서 추가 실패
                             Log.e("Error", "사용자 정보 저장 중 오류 발생: $e")
                         }
+                     */
                     /*
                     newUserDoc.set(user)
                             .addOnSuccessListener {

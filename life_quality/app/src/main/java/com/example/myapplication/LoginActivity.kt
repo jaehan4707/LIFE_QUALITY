@@ -40,6 +40,33 @@ class LoginActivity : AppCompatActivity() {
                 phone = binding.inputPhone.text.toString()
                 Log.d("problem", "휴대폰 번호 : ${phone}")
                 val userDocRef = userCollectionRef.document(phone)
+                userDocRef.get()
+                    .addOnSuccessListener { documentSnapshot ->
+                        if(documentSnapshot.exists()){
+                            val data = documentSnapshot.data
+                            if(data!=null){
+                                user = User(
+                                    data["sex"].toString(), data["age"].toString(),
+                                    data["family_relation"].toString(),
+                                    data["scholarship"].toString(),
+                                    data["medical_insurance"].toString(),
+                                    data["drink"].toString(),
+                                    data["smoke"].toString(),
+                                    data["phone_num"].toString()
+                                )
+                                Log.d("problem", "User : ${user}")
+                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            else {
+                                // 문서가 존재하지 않음
+                                Toast.makeText(this, "휴대폰 번호를 확인해주세요!", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                    .addOnFailureListener { e -> Log.e("problem", "실패") }
+                /*
                 val informationCollection = userDocRef.collection("Information")
                 val personalInfoDocRef = informationCollection.document("개인정보")
                 personalInfoDocRef.get()
@@ -67,8 +94,10 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                     .addOnFailureListener { e -> Log.e("problem", "실패") }
+                      */
             }
         }
+
 
         binding.goRegister.setOnClickListener {
             val intent = Intent(this@LoginActivity,AgreeActivity::class.java)

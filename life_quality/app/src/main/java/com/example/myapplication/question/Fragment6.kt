@@ -30,6 +30,7 @@ class Fragment6 : Fragment() {
         var binding = Type6FragmentBinding.inflate(layoutInflater) // 만들어준 xml파일을 binding한다.
         binding.type6Number.text = "문항 " + QuestionMainpage.curCount.toString()
         binding.type6Title.text = QuestionMainpage.tempSurvey.title.toString()
+        Log.d("problem","${tempSurvey.answer}")
         var keyIndex = -1
         for ((key, value) in tempSurvey.answer) {
             if (tempSurvey.surveyType == "MouthHealth") {
