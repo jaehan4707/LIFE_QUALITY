@@ -3,6 +3,7 @@ package com.example.myapplication.edu
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
+import android.util.Log
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
@@ -58,35 +59,33 @@ class EduAdapter : PagerAdapter{
     }
     fun collapseImage(){
         isImageExpanded=false
-        dialog.dismiss() //다이얼로그 닫기.
+
     }
     @SuppressLint("ResourceType")
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val reusedView = instantiatedViews[position]
         if (reusedView != null) {
+            Log.d("problem","재사용뷰?")
             container.addView(reusedView)
             return reusedView
         }
-
         layoutInflater = LayoutInflater.from(context)
-        var view = layoutInflater.inflate(R.layout.item_education, container, false)
+        val view = layoutInflater.inflate(R.layout.item_education, container, false)
 
-        //이미지뷰 가져오기
-        var imageView = view.findViewById<ImageView>(R.id.eduImage)
-        imageView.setImageResource(models.get(position))
-
+        // 이미지뷰 가져오기
+        val imageView = view.findViewById<ImageView>(R.id.eduImage)
+        imageView.setImageResource(models[position])
+        Log.d("problem","포지션 :${position}")
         container.addView(view, 0)
-
         instantiatedViews.put(position, view)
         return view
     }
-
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         val view = `object` as View
         container.removeView(view)
 
-        // 제거된 View 삭제
         instantiatedViews.remove(position)
+        Log.d("problem","${instantiatedViews.size()}")
     }
 }

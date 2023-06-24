@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center">
@@ -18,8 +19,8 @@
         -->
         <com.example.myapplication.edu.ZoomableImageView
             android:id="@+id/eduImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="400dp"
+            android:layout_height="600dp"
             android:layout_gravity="center"
             android:src="@drawable/edu_mouth_1"
             android:scaleType="matrix"/>

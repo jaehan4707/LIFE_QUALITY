@@ -96,7 +96,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="영양상태 향상을 위한 \n균형 있는 영양섭취!\n이제 '건강관리'의 건강정보를 통해 \n관리 방법을 알아봅시다!"
+                android:text="영양상태 향상을 위한 \n균형 있는 영양섭취!\n이후 준비된 건강정보를\n 통해 관리 방법을 알아봅시다!"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textSize="20sp"
                 android:textColor="@color/black"

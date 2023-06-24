@@ -19,12 +19,11 @@ class ZoomableImageView @JvmOverloads constructor(
     private var startPoint = PointF()
     private var startDistance = 0f
     private var midPoint = PointF()
-    private var zoomSpeed = 0.05f
+    private var zoomSpeed = 0.03f
     private var initialImageDrawable: Drawable? = null
     private val initialMatrix: Matrix = Matrix()
+    private var currentMatrix = Matrix() // 현재 이미지 매트릭스
 
-    private var  offsetX = 0
-    private var  offsetY =0
 
     companion object {
         private const val NONE = 0
@@ -35,12 +34,18 @@ class ZoomableImageView @JvmOverloads constructor(
     init {
         // 원본 이미지를 설정하고 초기 이미지와 초기 행렬을 저장
         setImageDrawable(drawable) // drawable은 원본 이미지 Drawable 객체입니다.
+        viewTreeObserver.addOnGlobalLayoutListener {
+            // 이미지 뷰의 위치 좌표를 가져와서 startPoint에 설정
+            val imageViewLocation = IntArray(2)
+            getLocationOnScreen(imageViewLocation)
+            val imageViewX = imageViewLocation[0].toFloat()
+            val imageViewY = imageViewLocation[1].toFloat()
+            startPoint.set(imageViewX, imageViewY)
+        }
+        Log.d("problem","${startPoint.x}, ${startPoint.y}")
         //initialImageDrawable = drawable
         //initialMatrix.set(imageMatrix)
        // setInitialImageDrawable(drawable)
-        startPoint.x = ((width - drawable.intrinsicWidth) / 2).toFloat()
-        startPoint.y = ((height - drawable.intrinsicHeight) / 2).toFloat()
-
         adjustImageBounds()
     }
     private fun adjustImageBounds() {
@@ -57,8 +62,8 @@ class ZoomableImageView @JvmOverloads constructor(
         val scaledWidth = (drawableWidth * scale).toInt()
         val scaledHeight = (drawableHeight * scale).toInt()
 
-        offsetX = (viewWidth - scaledWidth) / 2
-        offsetY = (viewHeight - scaledHeight) / 2
+        val offsetX = (viewWidth - scaledWidth) / 2
+        val offsetY = (viewHeight - scaledHeight) / 2
 
         val matrix = imageMatrix
         matrix.reset()
@@ -77,11 +82,9 @@ class ZoomableImageView @JvmOverloads constructor(
         setImageDrawable(drawable)
         initialMatrix.set(imageMatrix)
     }
-    /*
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        Log.d("test","터치이벤트")
 
-        //Log.d("test","$startPoint")
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action and MotionEvent.ACTION_MASK) {
             MotionEvent.ACTION_DOWN -> {
                 mode = DRAG
@@ -98,7 +101,7 @@ class ZoomableImageView @JvmOverloads constructor(
                     val dy = event.y - startPoint.y
                     matrix.postTranslate(dx, dy)
                     startPoint.set(event.x, event.y)
-                } else if (mode == ZOOM) {
+                } else if (mode == ZOOM && event.pointerCount == 2) {
                     val currentDistance = calculateDistance(event)
                     if (currentDistance > 10f) {
                         val scale = currentDistance / startDistance
@@ -109,50 +112,8 @@ class ZoomableImageView @JvmOverloads constructor(
                         }
                     }
                 }
-                imageMatrix = matrix
             }
             MotionEvent.ACTION_POINTER_UP, MotionEvent.ACTION_UP -> {
-                mode = NONE
-            }
-        }
-        return true
-    }
-     */
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        when (event.action and MotionEvent.ACTION_MASK) {
-            MotionEvent.ACTION_DOWN -> {
-                Log.d("problem","action down")
-                mode = DRAG
-                //startPoint.set(event.x, event.y)
-            }
-            MotionEvent.ACTION_POINTER_DOWN -> {
-                Log.d("problem","action  pointer down")
-                mode = ZOOM
-                //startDistance = calculateDistance(event)
-                //calculateMidPoint(event)
-            }
-            MotionEvent.ACTION_MOVE -> {
-                if (mode == DRAG) {
-                    Log.d("problem","drag")
-                    val dx = event.x - startPoint.x
-                    val dy = event.y - startPoint.y
-                    matrix.postTranslate(dx, dy)
-                    startPoint.set(event.x, event.y)
-                } else if (mode == ZOOM && event.pointerCount == 2) {
-                    val currentDistance = calculateDistance(event)
-                    if (currentDistance > 10f) {
-                        Log.d("problem","zoom")
-                        val scale = currentDistance / startDistance
-                        matrix.getValues(matrixValues)
-                        val currentScale = matrixValues[Matrix.MSCALE_X]
-                        if (scale * currentScale > 1f && scale * currentScale < 2f) {
-                            matrix.postScale(scale, scale, midPoint.x, midPoint.y)
-                        }
-                    }
-                }
-            }
-            MotionEvent.ACTION_POINTER_UP, MotionEvent.ACTION_UP -> {
-                Log.d("problem","point up")
                 mode = NONE
             }
         }
@@ -160,6 +121,8 @@ class ZoomableImageView @JvmOverloads constructor(
         imageMatrix = matrix
         return true
     }
+
+
 
 
     private fun calculateDistance(event: MotionEvent): Float {
@@ -173,5 +136,9 @@ class ZoomableImageView @JvmOverloads constructor(
         val y = (event.getY(0) + event.getY(1)) / 2 * zoomSpeed
         midPoint.set(x, y)
         //Log.d("test","midpoint: ${midPoint}")
+    }
+    fun resetZoom() {
+        currentMatrix.reset()
+        imageMatrix = currentMatrix
     }
 }

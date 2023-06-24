@@ -15,8 +15,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:overScrollMode="never"
         android:clipToPadding="false"
-        android:layout_width="400dp"
-        android:layout_height="400dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <LinearLayout
         android:id="@+id/page_view"
         android:layout_width="match_parent"

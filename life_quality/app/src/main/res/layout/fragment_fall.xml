@@ -88,7 +88,7 @@
                     android:text="어르신의 낙상 자기효능감이 "
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="22sp" />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/fall_result"

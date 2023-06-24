@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
     <!--주 레이아웃 부분-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/main_activity">
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/main_activity">
         <!--  신호등 표시 들어가는 부분  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
+            android:id="@+id/traffic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="80dp"
             android:layout_marginLeft="30dp">
             <View
@@ -72,6 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/traffic"
             android:layout_marginTop="70dp">
             <Button
                 android:id="@+id/q_start"
@@ -120,6 +130,7 @@
                 android:layout_gravity="bottom"
                 android:scaleType="fitCenter" />
         </LinearLayout> -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
 
 

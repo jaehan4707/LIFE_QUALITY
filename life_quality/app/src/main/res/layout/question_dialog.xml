@@ -30,21 +30,23 @@
 
     <android.widget.Button
         android:id="@+id/finish"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.4"
         android:text="완료"
         android:fontFamily="@font/bm_dohyeon"
         android:textSize="30sp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="30dp"
+        app:layout_constraintStart_toEndOf="@id/back"
         android:background="@drawable/orange_button"
         android:layout_marginBottom="130dp"
         />
     <android.widget.Button
         android:id="@+id/back"
-        android:layout_marginLeft="30dp"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
+        app:layout_constraintEnd_toStartOf="@id/finish"
+        app:layout_constraintWidth_percent="0.4"
         android:text="이전"
         android:fontFamily="@font/bm_dohyeon"
         android:textSize="30sp"
