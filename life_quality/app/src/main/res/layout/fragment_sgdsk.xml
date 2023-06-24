@@ -66,7 +66,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="설문결과,"
+                android:text="측정결과,"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bm_dohyeon"
-                android:text="당신은 "
+                android:text="어르신은 "
                 android:textColor="@color/black"
                 android:textSize="24sp" />
             <TextView
@@ -93,8 +93,9 @@
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="정신건강 향상을 \n위한 올바른 방법!"
+                android:text="정신건강 향상을 \n위한 올바른 방법!\n이후 준비된 건강정보를 통해 \n관리 방법을 알아봅시다!"
                 android:breakStrategy="balanced"
+                android:lineSpacingExtra="7dp"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -103,22 +104,7 @@
                 android:background="@drawable/textview_round"
                 android:padding="10dp"
                 />
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-                android:padding="5dp"
-                android:maxLines="3"
-                android:layout_height="wrap_content"
-                android:text="이제 '건강관리'의 건강정보를 통해 \n관리 방법을 알아봅시다!"
-                android:lineSpacingExtra="8dp"
-                android:fontFamily="@font/bm_dohyeon"
-                android:textSize="19sp"
-                android:textColor="@color/black"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="12sp"
-                android:autoSizeMaxTextSize="19dp"
-                android:gravity="center"
-                />
+
 
             <TextView
                 android:layout_marginTop="40dp"

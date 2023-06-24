@@ -53,7 +53,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="본 설문의 결과는 신체활동 결과와 \n합산되어 나타납니다"
+                android:text="본 측정의 결과는 신체활동 결과와 \n합산되어 나타납니다"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:gravity="center"
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:text="당신은 "
+                    android:text="어르신은 "
                     android:textColor="@color/black"
                     android:textSize="24sp" />
 

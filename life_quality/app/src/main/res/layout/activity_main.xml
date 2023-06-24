@@ -66,92 +66,37 @@
                     android:gravity="right"/>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="30dp"
-            android:layout_marginTop="30dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="안녕하세요?"
-                android:fontFamily="@font/bm_dohyeon"
-                android:textSize="40dp"
-                android:textColor="@color/main_orange"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="해당 설문조사는"
-                android:textSize="24dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/bm_dohyeon"
-                android:textColor="@color/black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text="여러분들의 건강 상태를"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/bm_dohyeon"
-                android:textColor="@color/black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text="설문조사 형태로 파악해\n건강상태를 알려줍니다"
-                android:lineSpacingExtra="8dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/bm_dohyeon"
-                android:textColor="@color/black"/>
-        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="70dp">
             <Button
                 android:id="@+id/q_start"
-                android:layout_width="250dp"
-                android:layout_height="60dp"
-                android:text="설문목록"
-                android:textSize="20dp"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:text="현재 나의\n건강 상태는?"
+                android:textSize="30dp"
+                android:lineSpacingExtra="7dp"
                 android:backgroundTint="@color/main_orange"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:fontFamily="@font/bm_dohyeon"/>
-            <!--
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="설문조사를 진행하여 \n나의 상태를 확인할 수 있습니다."
-                android:layout_gravity="center"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
                 -->
             <Button
                 android:id="@+id/edu"
-                android:layout_width="250dp"
-                android:layout_height="60dp"
-                android:text="건강도우미"
-                android:textSize="20dp"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:text="스스로 배우는\n건강지식!"
+                android:textSize="30dp"
+                android:lineSpacingExtra="7dp"
                 android:backgroundTint="@color/main_orange"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:fontFamily="@font/bm_dohyeon"
                 android:layout_marginTop="30dp"/>
-            <!--
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="건강에 도움이 되는 \n여러가지 방법을 배울 수 있습니다."
-                android:layout_gravity="center"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bm_dohyeon"/>
             -->
         </LinearLayout>
         <!--

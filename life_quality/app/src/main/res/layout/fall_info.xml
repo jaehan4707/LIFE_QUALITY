@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bar"
         android:textSize="23sp"
-        android:text="다음은 낙상에 대해 얼마나 \n염려하는지에 대한 몇 가지 질문을 \n하고자 합니다. 다음 각 활동에 대해 \n자신의 의견과 가장 가까운 부분을 \n선택하여 주시기 바랍니다.\n이 중 현재 하지 않는 활동이 있다면\n그것을 했다고 가정하고 넘어 질까 봐 \n염려되는 것에 답해주시기 바랍니다."
+        android:text="다음은 낙상에 대해 얼마나 염려하는지에 대한 몇 가지 질문을 하고자 합니다. 다음 각 활동에 대해 자신의 의견과 가장 가까운 부분을 선택하여 주시기 바랍니다. 이 중 현재 하지 않는 활동이 있다면 그것을 했다고 가정하고 넘어 질까 봐 염려되는 것에 답해주시기 바랍니다."
         />
 
     <Button

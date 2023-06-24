@@ -62,29 +62,14 @@
         <Button
             android:layout_marginStart="10dp"
             android:id="@+id/nextstage"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:backgroundTint="@color/main_orange"
             android:fontFamily="@font/bm_dohyeon"
-            android:text="설문목록"
+            android:text="이어하기"
             android:textSize="25sp"
             android:textColor="@color/black" />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"/>
-        <Button
-            android:layout_marginEnd="10dp"
-            android:id="@+id/go_to_edu"
-            android:textSize="25sp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="건강관리"
-            android:layout_weight="1"
-            android:fontFamily="@font/bm_dohyeon"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/main_orange"/>
     </LinearLayout>
 </LinearLayout>

@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:text="설문결과,"
+                    android:text="측정결과,"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
 
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:text="당신의 영양상태는"
+                    android:text="어르신의 영양상태는"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
 

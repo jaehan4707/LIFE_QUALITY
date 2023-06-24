@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="설문결과,"
+                android:text="측정결과,"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:textSize="25sp" />
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bm_dohyeon"
-                android:text="당신의 삶의 질은"
+                android:text="어르신의 삶의 질은"
                 android:textColor="@color/black"
                 android:textSize="25sp" />
             <TextView

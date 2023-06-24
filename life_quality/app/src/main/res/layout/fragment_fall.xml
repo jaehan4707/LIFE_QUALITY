@@ -77,7 +77,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="설문결과,"
+                    android:text="측정결과,"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
@@ -85,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="낙상 자기효능감이 "
+                    android:text="어르신의 낙상 자기효능감이 "
                     android:fontFamily="@font/bm_dohyeon"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
