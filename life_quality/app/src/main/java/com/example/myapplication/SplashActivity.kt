@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.model.User
 import com.example.myapplication.databinding.ActivitySplashBinding
+import com.example.myapplication.model.Result
 import com.example.myapplication.viewModel.QuestionViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
@@ -36,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
     companion object     {
         lateinit var user: User
         lateinit var databaseReference: DatabaseReference
-
+        lateinit var _result : Result
         lateinit var fcmReference: FirebaseMessaging
         var token : String? = null
         var nameList = mutableListOf<String>("MNA", "SGDSK", "Yosil","MouthHealth", "IPAQ", "SleepHabit", "Frailty", "Fall","EQ5D","SocialNetwork")
@@ -48,6 +49,7 @@ class SplashActivity : AppCompatActivity() {
         var address : String = " "
         var relation : String = " "
         val check_list = Array<Boolean>(10) { false }
+        var complete = 0
     }
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +59,7 @@ class SplashActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance()
         fcmReference = FirebaseMessaging.getInstance()
         user=User("","","","","","","","")
+        _result=Result("","","","","","","","","")
         val db = Firebase.firestore //설문 문항 데이터 베이스 읽기.
         for (i in 0..nameList.size - 1) {
             val task=db.collection("${nameList[i]}")

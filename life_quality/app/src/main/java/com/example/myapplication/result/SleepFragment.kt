@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.weight
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentEq5dBinding
 import com.example.myapplication.databinding.FragmentSleepBinding
 
@@ -43,10 +44,12 @@ class SleepFragment : Fragment() {
         //점수를 계산하자.
         if(weight>= 8.5) {//good
             binding.sleepResult.setText(R.string.good_sleep)
+            SplashActivity._result.sleep = "잘 주무시고 계십니다"
             binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.green_circle))
         }
         else{
             binding.sleepResult.setText(R.string.bad_sleep)
+            SplashActivity._result.sleep = "잘 못 주무시고 계십니다"
             binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
         return binding.root

@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.weight
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentEq5dBinding
 import com.example.myapplication.databinding.FragmentFallBinding
 
@@ -55,10 +56,11 @@ class  FallFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.fallResult.setText(R.string.red_eq5d)
+                SplashActivity._result.fall ="낮은 상태입니다"
                 val text="높은"
                 val startIndex = text.indexOf("높은")
                 val endIndex = startIndex + "높은".length
-                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red_circle)) // 색깔 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red)) // 색깔 지정
                 val spannableString = SpannableString(binding.fallResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.fallResult.text = spannableString
@@ -69,6 +71,7 @@ class  FallFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.fallResult.setText(R.string.yellow_eq5d)
+                SplashActivity._result.fall ="중간 상태입니다"
                 val text="중간"
                 val startIndex = text.indexOf("중간")
                 val endIndex = startIndex + "중간".length
@@ -82,6 +85,7 @@ class  FallFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.green_circle)
                 binding.fallResult.setText(R.string.green_eq5d)
+                SplashActivity._result.fall ="높은 상태입니다"
                 val text="낮은"
                 val startIndex = text.indexOf("낮은")
                 val endIndex = startIndex + "낮은".length

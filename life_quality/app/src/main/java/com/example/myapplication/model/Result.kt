@@ -1,13 +1,13 @@
 package com.example.myapplication.model
 
 class Result (
-    val mna : String,
-    val sgdsk : String,
-    val yosil : String,
-    val mouth : String,
-    val ipaq : String,
-    val sleep : String,
-    val frailty : String,
-    val fall : String,
-    val eq5d : String
+    var mna : String,
+    var sgdsk : String,
+    var yosil : String,
+    var mouth : String,
+    var ipaq : String,
+    var sleep : String,
+    var frailty : String,
+    var fall : String,
+    var eq5d : String
 )

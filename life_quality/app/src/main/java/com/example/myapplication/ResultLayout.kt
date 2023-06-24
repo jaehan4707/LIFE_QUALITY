@@ -15,6 +15,7 @@ import com.example.myapplication.LoginActivity.Companion.phone
 import com.example.myapplication.LoginActivity.Companion.userCollectionRef
 import com.example.myapplication.SplashActivity.Companion.answer
 import com.example.myapplication.SplashActivity.Companion.check_list
+import com.example.myapplication.SplashActivity.Companion.complete
 import com.example.myapplication.SplashActivity.Companion.dbid
 import com.example.myapplication.SplashActivity.Companion.token
 import com.example.myapplication.SplashActivity.Companion.type
@@ -67,7 +68,9 @@ class ResultLayout : AppCompatActivity() {
         setContentView(binding.root)
         Log.d("test", "설문응답 : ${answer}, dbid : ${dbid}")
         Log.d("problem","설문조사 완료 시간 : $formattedCompletionTime")
-
+        complete++
+        if(complete==10)
+            binding.nextstage.text="전체결과보기"
         val userDocRef = userCollectionRef.document(phone) //phone 경로
         val newDateDocument = userDocRef.collection("Result").document(date.toString())
         val answerData = hashMapOf(
@@ -148,12 +151,14 @@ class ResultLayout : AppCompatActivity() {
         }
 
         binding.nextstage.setOnClickListener { //계속하기 버튼
-            var intent = Intent(this, QuestionSelect::class.java)
-            startActivity(intent)
-        }
-        binding.goToEdu.setOnClickListener { //완료하기 버튼
-            var intent = Intent(this, EduActivity::class.java)
-            startActivity(intent)
+            if(complete==10){
+                val intent = Intent(this@ResultLayout,TotalResultActivity::class.java)
+                startActivity(intent)
+            }
+            else {
+                var intent = Intent(this, QuestionSelect::class.java)
+                startActivity(intent)
+            }
         }
     }
     private fun moveFragment(){

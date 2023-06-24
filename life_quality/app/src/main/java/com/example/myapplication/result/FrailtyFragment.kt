@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.weight
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentFallBinding
 import com.example.myapplication.databinding.FragmentFrailtyBinding
 
@@ -49,6 +50,7 @@ class  FrailtyFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.green_circle)
                 binding.frailtyResult.setText(R.string.green_frailty)
+                SplashActivity._result.frailty ="건강 상태입니다"
                 val text="건강"
                 val startIndex = text.indexOf("건강")
                 val endIndex = startIndex + "건강".length
@@ -63,6 +65,7 @@ class  FrailtyFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                binding.frailtyResult.setText(R.string.yellow_frailty)
+               SplashActivity._result.frailty ="노쇠 전 상태입니다"
                val text="노쇠 전"
                val startIndex = text.indexOf("노쇠 전")
                val endIndex = startIndex + "노쇠 전".length
@@ -76,10 +79,11 @@ class  FrailtyFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.frailtyResult.setText(R.string.red_frailty)
+                SplashActivity._result.frailty ="노쇠 상태입니다"
                 val text="노쇠"
                 val startIndex = text.indexOf("노쇠")
                 val endIndex = startIndex + "노쇠".length
-                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red_circle)) // 색깔 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red)) // 색깔 지정
                 val spannableString = SpannableString(binding.frailtyResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.frailtyResult.text = spannableString

@@ -150,10 +150,6 @@ class QuestionSelect : AppCompatActivity() {
             }
         }
         //해당 버튼의 해당하는 설문리스트를 불러와야함.
-        binding.selectClear.setOnClickListener{
-                val intent = Intent(this@QuestionSelect, EduActivity::class.java)
-                startActivity(intent)
-        }
     }
     private fun go_survey(){
         surveyList.clear()

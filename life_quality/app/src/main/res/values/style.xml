@@ -4,7 +4,6 @@
         <item name="android:background">@drawable/custom_radiobutton</item>
         <item name="android:scaleType">fitXY</item>
         <item name="android:button">@null</item>
-        <item name="android:layout_marginTop">10dp</item>
     </style>
     <style name="RadioTextStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:textSize">16sp</item> <!-- 텍스트 크기를 지정합니다 -->
