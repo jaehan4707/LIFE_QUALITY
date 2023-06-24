@@ -84,8 +84,8 @@ class EduAdapter : PagerAdapter{
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         val view = `object` as View
         container.removeView(view)
-
-        instantiatedViews.remove(position)
         Log.d("problem","${instantiatedViews.size()}")
+        instantiatedViews.remove(position)
+
     }
 }
