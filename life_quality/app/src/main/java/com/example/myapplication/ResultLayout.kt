@@ -107,7 +107,7 @@ class ResultLayout : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("problem", "answer 저장 실패", exception)
             }
-        setPush() //알림보내기.
+        //setPush() //알림보내기.
         weight = 0.0
         flag = 0
         check_list[dbid]=true

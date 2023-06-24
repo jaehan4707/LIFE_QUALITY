@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.EduActivity
+import com.example.myapplication.LoginActivity.Companion.edu_lock
 import com.example.myapplication.R
 import com.example.myapplication.SplashActivity.Companion._result
 import com.example.myapplication.databinding.ActivityTotalResultBinding
@@ -13,7 +14,7 @@ class TotalResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTotalResultBinding.inflate(layoutInflater)
-
+        edu_lock=true
         binding.eq5dResult.text=_result.eq5d
         binding.mnaResult.text= _result.mna
         binding.yosilResult.text= _result.yosil

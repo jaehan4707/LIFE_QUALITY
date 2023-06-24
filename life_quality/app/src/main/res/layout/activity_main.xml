@@ -84,20 +84,27 @@
                 android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:fontFamily="@font/bm_dohyeon"/>
-                -->
-            <Button
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:background="@color/main_orange"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/edu"
                 android:layout_width="300dp"
                 android:layout_height="150dp"
                 android:text="스스로 배우는\n건강지식!"
                 android:textSize="30dp"
+                android:background="@color/main_orange"
+                android:gravity="center"
                 android:lineSpacingExtra="7dp"
-                android:backgroundTint="@color/main_orange"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:fontFamily="@font/bm_dohyeon"
-                android:layout_marginTop="30dp"/>
-            -->
+            />
+            </LinearLayout>
         </LinearLayout>
         <!--
         <LinearLayout

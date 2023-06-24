@@ -44,12 +44,18 @@ class SleepFragment : Fragment() {
         //점수를 계산하자.
         if(weight>= 8.5) {//good
             binding.sleepResult.setText(R.string.good_sleep)
+            binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+            binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+            binding.greenLight.setBackgroundResource(R.drawable.green_circle)
             SplashActivity._result.sleep = "잘 주무시고 계십니다"
             binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.green_circle))
         }
         else{
             binding.sleepResult.setText(R.string.bad_sleep)
             SplashActivity._result.sleep = "잘 못 주무시고 계십니다"
+            binding.redLight.setBackgroundResource(R.drawable.red_circle)
+            binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+            binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
             binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
         return binding.root

@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import com.example.myapplication.LoginActivity.Companion.edu_lock
 import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.admin.AdminHome
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
@@ -43,9 +44,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        requestPermission {
-            todo()
-        }
+//        requestPermission {
+//            todo()
+//        }
         /*
         //데이터 읽기.
         val db = Firebase.firestore
@@ -90,9 +91,17 @@ class MainActivity : AppCompatActivity() {
         binding.qStart.setOnClickListener() {
             showDialog()
         }
-        binding.edu.setOnClickListener() {
-            val intent = Intent(this, EduActivity::class.java)
-            startActivity(intent)
+        if(edu_lock) {
+            binding.edu.setOnClickListener() {
+                val intent = Intent(this, EduActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        else
+        {
+            binding.edu.isEnabled=false
+            binding.edu.setBackgroundResource(R.drawable.baseline_lock_24)
+            binding.edu.text="스스로 배우는 \n건강지식"
         }
         binding.helpNoti.setOnClickListener {
             Log.d("test", "test testtest")

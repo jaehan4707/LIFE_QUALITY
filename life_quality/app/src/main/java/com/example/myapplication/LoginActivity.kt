@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         val Db = Firebase.firestore
         val userCollectionRef = Db.collection("User")
         var phone: String = ""
+        var edu_lock : Boolean = false
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
                                     data["smoke"].toString(),
                                     data["phone_num"].toString()
                                 )
+                                edu_lock=true
                                 Log.d("problem", "User : ${user}")
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 startActivity(intent)

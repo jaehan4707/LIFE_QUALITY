@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".result.SleepFragment">
 
+
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,9 +19,46 @@
             android:orientation="vertical"
             android:padding="15dp">
 
+            <FrameLayout
+                android:layout_width="200dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_trafficlight">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
+
+                    <View
+                        android:id="@+id/redLight"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/red_circle" />
+
+                    <View
+                        android:id="@+id/yellowLight"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/gray_circle" />
+
+                    <View
+                        android:id="@+id/greenLight"
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/gray_circle" />
+                </LinearLayout>
+            </FrameLayout>
+
 
             <LinearLayout
                 android:padding="10dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/result_info"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
@@ -53,31 +91,20 @@
             </LinearLayout>
 
             <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="오늘부터 수면건강을 위한 \n5계명을 지켜봐요!"
+                android:text="수면 건강을 위한 지침서!\n이후 준비된 건강정보를 통해 \n관리 방법을 알아봅시다!"
                 android:fontFamily="@font/bm_dohyeon"
+                android:lineSpacingExtra="7dp"
                 android:textColor="@color/black"
                 android:padding="5dp"
-                android:textSize="19sp"
+                android:textSize="22sp"
                 android:layout_gravity="center"
                 android:background="@drawable/textview_round"
                 android:gravity="center"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/info_text"
-                android:fontFamily="@font/bm_dohyeon"
-                android:gravity="center"
-                android:lineSpacingExtra="8dp"
-                android:padding="5dp"
-                android:text="1.자기 30분 전에는 스마트폰을 멀리한다\n2.아침 기상 알람은 스마트폰 대신 \n자명종 시계를 이용한다.\n3.카페인 섭취를 줄인다.\n4.잠자리는 빛을 최대한 없애 어둡게 한다.\n5.기상 시간을 일정하게 한다."
-                android:textColor="@color/black"
-                android:textSize="19sp" />
 
             <TextView
                 android:layout_marginTop="70dp"
