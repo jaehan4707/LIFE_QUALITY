@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/back"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.6"
             android:layout_height="40dp"
             android:src="@drawable/baseline_arrow_back_24"
             android:background="@color/gray"
@@ -26,17 +26,12 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="건강관리"
+            android:text="스스로 배우는 건강지식"
             android:fontFamily="@font/bm_dohyeon"
             android:textSize="30sp"
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_weight="5"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            />
     </LinearLayout>
 
     <View

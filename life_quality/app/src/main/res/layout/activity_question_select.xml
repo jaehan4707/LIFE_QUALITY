@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -110,7 +111,7 @@
             <LinearLayout
                 android:id="@+id/text_layout"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 app:layout_constraintHeight_percent="0.8"
                 android:orientation="vertical"
                 app:layout_constraintStart_toEndOf="@id/group"
@@ -176,12 +177,13 @@
                     style="@style/RadioTextStyle"
                     />
                 <TextView
+                    style="@style/RadioTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:textSize="25sp"
                     android:text="삶의 질"
-                    style="@style/RadioTextStyle"
-                    />
+                    android:textSize="25sp"
+                    tools:layout_editor_absoluteX="49dp"
+                    tools:layout_editor_absoluteY="802dp" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
@@ -189,9 +191,9 @@
                     android:text="사회적건강"
                     style="@style/RadioTextStyle"
                     />
-
-
             </LinearLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
