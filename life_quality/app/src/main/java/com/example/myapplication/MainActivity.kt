@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import com.example.myapplication.LoginActivity.Companion.edu_lock
 import com.example.myapplication.SplashActivity.Companion.user
 import com.example.myapplication.admin.AdminHome
 import com.example.myapplication.question.QuestionMainpage.Companion.curCount
@@ -36,48 +37,16 @@ import com.gun0912.tedpermission.normal.TedPermission
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding : ActivityMainBinding
-    var waitTime : Long = 0
-    val tasks = mutableListOf<Task<QuerySnapshot>>()
-
+    lateinit var binding: ActivityMainBinding
+    var waitTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //질문 개수와 질문 리스트 초기화하고 다시 받아와야함.
-        curCount = 0
 
-            //Log.d("problem","user : ${user}")
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            //해당 앱에서의 권한은 알림권한밖에 없음.
-            // 이미 권한이 허용된 경우 처리할 로직
-            Log.d("problem", "알림권한이 있습니다")
-        } else { //권한이 없을 경우 권한을 요청함.
-            TedPermission.create()
-                .setPermissionListener(object : PermissionListener {
-                    override fun onPermissionGranted() {
-                        //Toast.makeText(this@MainActivity, "권한 요청", Toast.LENGTH_SHORT).show()
-                        Log.d("problem", "권한요청")
-                    }
-
-                    override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
-                        //Toast.makeText(this@MainActivity, "권한 거부", Toast.LENGTH_SHORT).show()
-                        Log.d("problem", "권한거부")
-                    }
-                })
-                .setDeniedMessage("알림 권한을 거절하신다면\n알림 기능을 사용할 수 없습니다")
-                .setPermissions(
-                    Manifest.permission.POST_NOTIFICATIONS,
-                    Manifest.permission.SCHEDULE_EXACT_ALARM,
-                    Manifest.permission.USE_EXACT_ALARM,
-                    Manifest.permission.RECEIVE_BOOT_COMPLETED
-                )
-                .check()
-        }
+//        requestPermission {
+//            todo()
+//        }
         /*
         //데이터 읽기.
         val db = Firebase.firestore
@@ -122,17 +91,22 @@ class MainActivity : AppCompatActivity() {
         binding.qStart.setOnClickListener() {
             showDialog()
         }
-        binding.redCircle.setOnClickListener {
-            val intent = Intent(this, AdminHome::class.java)
-            startActivity(intent)
+        if(edu_lock) {
+            binding.edu.setOnClickListener() {
+                val intent = Intent(this, EduActivity::class.java)
+                startActivity(intent)
+            }
         }
-        binding.edu.setOnClickListener() {
-            val intent = Intent(this, EduActivity::class.java)
-            startActivity(intent)
+        else
+        {
+            binding.edu.isEnabled=false
+            binding.edu.setBackgroundResource(R.drawable.baseline_lock_24)
+            binding.edu.text="스스로 배우는 \n건강지식"
         }
         binding.helpNoti.setOnClickListener {
             Log.d("test", "test testtest")
-            val dialogView = LayoutInflater.from(this@MainActivity).inflate(R.layout.noti_dialog, null)
+            val dialogView =
+                LayoutInflater.from(this@MainActivity).inflate(R.layout.noti_dialog, null)
             val dialogBinding = NotiDialogBinding.inflate(layoutInflater)
             val dialog = Dialog(this)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -146,25 +120,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun requestPermission(logic : () -> Unit){
+    fun todo(){
+        //Toast.makeText(this,"알람을 받을 수 있습니다!",Toast.LENGTH_SHORT).show()
+    }
+    private fun requestPermission(logic: () -> Unit) {
         TedPermission.create()
             .setPermissionListener(object : PermissionListener {
                 override fun onPermissionGranted() {
                     logic()
                 }
                 override fun onPermissionDenied(deniedPermissions: List<String>) {
-                    Toast.makeText(this@MainActivity,
-                        "권한을 허가해주세요.",
-                        Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(this@MainActivity, "권한을 허가해주세요.", Toast.LENGTH_SHORT).show()
                 }
             })
-            .setDeniedMessage("권한을 허용해주세요. [설정] > [앱 및 알림] > [고급] > [앱 권한]")
             .setPermissions(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.READ_CALENDAR )
+                Manifest.permission.POST_NOTIFICATIONS,
+                Manifest.permission.SCHEDULE_EXACT_ALARM,
+                Manifest.permission.RECEIVE_BOOT_COMPLETED
+            )
+            .setDeniedMessage("권한을 허용해주세요. [설정] > [앱 및 알림] > [고급] > [앱 권한]")
             .check()
     }
+
     //커스텀 다이얼로그 띄우는 부분
     fun showDialog() {
         var dialogBinding = DialogStartBinding.inflate(layoutInflater)
@@ -188,12 +165,39 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         //뒤로가기 버튼 클릭
-        if(System.currentTimeMillis() - waitTime >= 2000) {
+        if (System.currentTimeMillis() - waitTime >= 2000) {
             waitTime = System.currentTimeMillis()
-            Snackbar.make(binding.mainActivity,"뒤로가기 버튼을 한번 더 누르면 종료됩니다.",Snackbar.LENGTH_LONG).show()
-        }
-        else {
+            Snackbar.make(binding.mainActivity, "뒤로가기 버튼을 한번 더 누르면 종료됩니다.", Snackbar.LENGTH_LONG)
+                .show()
+        } else {
             finish() //종료
+        }
+    }
+
+    fun a() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            Log.d("problem", "알림권한이 있습니다")
+        } else { //권한이 없을 경우 권한을 요청함.
+            TedPermission.create()
+                .setPermissionListener(object : PermissionListener {
+                    override fun onPermissionGranted() {
+                        Log.d("problem", "권한요청")
+                    }
+                    override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                        Log.d("problem", "권한거부")
+                    }
+                })
+                .setPermissions(
+                    Manifest.permission.POST_NOTIFICATIONS,
+                    Manifest.permission.SCHEDULE_EXACT_ALARM,
+                    Manifest.permission.RECEIVE_BOOT_COMPLETED
+                )
+                .setDeniedMessage("알림 권한을 거절하신다면\n알림 기능을 사용할 수 없습니다")
+                .check()
         }
     }
 }

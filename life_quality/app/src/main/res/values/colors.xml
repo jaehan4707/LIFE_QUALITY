@@ -8,9 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_orange">#EE913B</color>
-    <color name="red_circle">#EE3B3B</color>
+    <color name="red_circle">#800000</color>
     <color name="yellow_circle">#FECA13</color>
-    <color name="green_circle">#18EA46</color>
+    <color name="green_circle">#097f09</color>
     <color name="gray">#D9D9D9</color>
 
     <!--영양관리-->

@@ -3,13 +3,17 @@ package com.example.myapplication.result
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.weight
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentEq5dBinding
 import com.example.myapplication.databinding.FragmentSleepBinding
 
@@ -39,12 +43,20 @@ class SleepFragment : Fragment() {
 
         //점수를 계산하자.
         if(weight>= 8.5) {//good
-            binding.sleepResult.text="잘 주무시고 계시네요!"
-            binding.sleepResult.setTextColor(Color.GREEN)
+            binding.sleepResult.setText(R.string.good_sleep)
+            binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+            binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+            binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+            SplashActivity._result.sleep = "잘 주무시고 계십니다"
+            binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.green_circle))
         }
         else{
-            binding.sleepResult.text="아래의 수면건강 5계명을 읽어보세요!"
-            binding.sleepResult.setTextColor(Color.RED)
+            binding.sleepResult.setText(R.string.bad_sleep)
+            SplashActivity._result.sleep = "잘 못 주무시고 계십니다"
+            binding.redLight.setBackgroundResource(R.drawable.red_circle)
+            binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+            binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+            binding.sleepResult.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
         return binding.root
     }

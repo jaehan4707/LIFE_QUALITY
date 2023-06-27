@@ -27,7 +27,7 @@ class Fragment5 : Fragment() {
         var valueList = mutableListOf<String>()
         var binding = Type5FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         binding.type5Number.text = "문항 " + QuestionMainpage.curCount.toString()
-        binding.type5Title.text = QuestionMainpage.tempSurvey.title.toString()
+        binding.type5Title.text = QuestionMainpage.tempSurvey.title
         for((key, value) in QuestionMainpage.tempSurvey.answer) {
             keyList.add(key)
             valueList.add(value)

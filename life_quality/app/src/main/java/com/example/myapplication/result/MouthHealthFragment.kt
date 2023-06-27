@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.weight
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentEq5dBinding
 import com.example.myapplication.databinding.FragmentMouthHealthBinding
 
@@ -53,7 +54,7 @@ class MouthHealthFragment : Fragment() {
         val spannableString = SpannableString(binding.info.text)
         spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.info.text = spannableString
-
+        SplashActivity._result.mouth ="${progressValue}/${maxValue}점\n(점수가 높을수록 좋음)"
         binding.root.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 val progressBarWidth = binding.progressbar.width

@@ -24,6 +24,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".result.TotalResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu.EduYosilTrainingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu.EduFallPtActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu.EduFallActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu.EduSleepActivity"
+            android:exported="false" />
+        <activity
             android:name=".EduActivity"
             android:exported="false" />
         <activity
@@ -136,20 +151,6 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".FinishRegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

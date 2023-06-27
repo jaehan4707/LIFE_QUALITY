@@ -23,10 +23,11 @@
         android:background="@drawable/textview_grayline"
         android:fontFamily="@font/bm_dohyeon"
         android:gravity="center_vertical"
+        android:lineSpacingExtra="10dp"
         android:padding="5dp"
         android:text="이동성"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="23dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,35 +52,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/rb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/rb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
 
                 <RadioButton
                     android:id="@+id/rb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
             </RadioGroup>
 
         </LinearLayout>

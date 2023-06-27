@@ -117,15 +117,14 @@ class Fragment4 : Fragment() {
         dialog?.setContentView(dialogBinding.root)
         dialog?.setCancelable(false)
 
-        dialogBinding.finish.setOnClickListener{ //닫기버튼
-            val result = dialogBinding.searchText.text.toString() //결과
+        dialogBinding.finish.setOnClickListener{ //완료
+            val result = dialogBinding.inputReason.text.toString() //결과
             dialog?.dismiss()
         }
-        dialogBinding.finish.setOnClickListener { //완료버튼
+        dialogBinding.back.setOnClickListener { //이전
             dialog?.dismiss()
         }
         dialog?.show()
-        dialogBinding.close
         dialog?.window?.setLayout(1000, 1000)
     }
 }

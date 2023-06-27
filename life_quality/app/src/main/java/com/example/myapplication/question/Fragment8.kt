@@ -26,8 +26,7 @@ class Fragment8 : Fragment() {
         var valueList = mutableListOf<String>()
         var binding = Type8FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         binding.type8Number.text = "문항 " + QuestionMainpage.curCount.toString()
-        binding.type8Title.text = QuestionMainpage.tempSurvey.title.toString()
-
+        binding.type8Title.text = QuestionMainpage.tempSurvey.title
         for((key, value) in QuestionMainpage.tempSurvey.answer) {
             keyList.add(key)
             valueList.add(value)

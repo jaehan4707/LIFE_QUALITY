@@ -24,7 +24,6 @@ class EduMouthActivity : AppCompatActivity() {
         mouth_models.add(R.drawable.edu_mouth_5)
         mouth_models.add(R.drawable.edu_mouth_6)
         mouth_models.add(R.drawable.edu_mouth_7)
-        Log.d("test", "구강관")
 
         mouth_colors.add(getColor(R.color.edu_mouth_color1))
         mouth_colors.add(getColor(R.color.edu_mouth_color2))
@@ -36,8 +35,8 @@ class EduMouthActivity : AppCompatActivity() {
 
         var adapter = EduAdapter(mouth_models, this)
         binding.mouthViewPager.adapter = adapter
+        binding.maxPage.text = adapter.count.toString()
         binding.mouthViewPager.clipToPadding = false
-        binding.mouthViewPager.setPadding(50, 0, 50, 0)
         binding.mouthViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
@@ -58,7 +57,8 @@ class EduMouthActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-
+                binding.currentPage.text = (position+1).toString()+"/"
+                binding.maxPage.text=adapter.count.toString()
             }
 
             override fun onPageScrollStateChanged(state: Int) {

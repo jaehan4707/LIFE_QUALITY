@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.weight
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentFallBinding
 import com.example.myapplication.databinding.FragmentIpaqBinding
 
@@ -42,13 +43,14 @@ class  IpaqFragment : Fragment() {
         if(weight.toInt()>=150) //활동군
         {
             binding.resultTxt.text="활동군"
-            binding.resultTxt.setTextColor(Color.parseColor("#18EA46"))
+            SplashActivity._result.ipaq ="활동군입니다"
+            binding.resultTxt.setTextColor(Color.parseColor("#097f09"))
         }
         else{
             binding.resultTxt.text="비활동군"
-            binding.resultTxt.setTextColor(Color.parseColor("#FF0000"))
+            SplashActivity._result.ipaq ="비활동군입니다"
+            binding.resultTxt.setTextColor(Color.parseColor("#ff0000"))
         }
-
         return binding.root
     }
     override fun onDestroyView() {

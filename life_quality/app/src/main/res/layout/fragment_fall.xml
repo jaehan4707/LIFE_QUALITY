@@ -21,68 +21,37 @@
                 android:layout_weight="7"
                 android:orientation="vertical"
                 android:padding="15dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-
-                    <ProgressBar
-                        android:id="@+id/progressbar"
+                <FrameLayout
+                    android:layout_width="200dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/round_trafficlight"
+                    android:layout_gravity="center">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:layout_gravity="center"
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:max="28"
-                        android:progress="20"
-                        android:scaleY="0.4"
-                        android:progressDrawable="@drawable/progress_result" />
-
-                    <ImageView
-                        android:id="@+id/currentPositionImage"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:src="@drawable/ic_location_on_24" />
-
-                    <TextView
-                        android:id="@+id/progressText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/bm_dohyeon"
-                        android:textColor="@color/black"
-                        android:layout_below="@id/progressbar"
-                        android:layout_marginTop="10dp" />
-
-                    <TextView
-                        android:id="@+id/startText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/progressbar"
-                        android:layout_alignTop="@id/progressbar"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="4dp"
-                        android:text="0"
-                        android:fontFamily="@font/bm_dohyeon"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:id="@+id/endText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@id/progressbar"
-                        android:layout_alignTop="@id/progressbar"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginTop="4dp"
-                        android:text="28"
-                        android:fontFamily="@font/bm_dohyeon"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
+                        android:padding="3dp">
+                        <View
+                            android:id="@+id/redLight"
+                            android:layout_width="58dp"
+                            android:layout_height="58dp"
+                            android:background="@drawable/red_circle"
+                            android:layout_gravity="center_vertical"/>
+                        <View
+                            android:id="@+id/yellowLight"
+                            android:layout_width="58dp"
+                            android:layout_height="58dp"
+                            android:background="@drawable/gray_circle"
+                            android:layout_gravity="center_vertical"/>
+                        <View
+                            android:id="@+id/greenLight"
+                            android:layout_width="58dp"
+                            android:layout_height="58dp"
+                            android:background="@drawable/gray_circle"
+                            android:layout_gravity="center_vertical"/>
+                    </LinearLayout>
+                </FrameLayout>
 
                 <TextView
                     android:id="@+id/info"
@@ -95,6 +64,41 @@
                     android:gravity="center"
                     android:breakStrategy="simple"
                     android:text="이 문항은 점수가 높을수록 낙상에 대한 두려움이 높음을 뜻합니다"/>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/result_info"
+                    android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="측정결과,"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="어르신의 낙상 자기효능감이 "
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/fall_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:text="낮은 상태입니다"/>
+                </LinearLayout>
                 <TextView
                     android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
@@ -108,27 +112,6 @@
                     android:textSize="19sp"
                     android:background="@drawable/textview_round"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:background="@drawable/info_text"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:padding="10dp"
-                    android:text="1.과음을 삼가고, 일어나거나 움직이기 시작할 때 천천히 행동하기\n2.위험장소에는 안전장치 및 밝은\n조명 설치,전선 물건 등 정리하기\n3.근력과 유연성을 높이기 위해서\n꾸준한 운동 실시하기"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:lineSpacingExtra="8dp"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="출처 : 질병관리청 [어르신 낙상 주의] 낙상 사고 \n예방으로 안전생활 하세요"
-                    android:fontFamily="@font/bm_dohyeon"
-                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_marginTop="40dp"

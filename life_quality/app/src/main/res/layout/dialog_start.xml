@@ -48,7 +48,8 @@
 
         <android.widget.Button
             android:id="@+id/dialog_start"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="시작하기"
             android:textSize="15dp"
@@ -58,7 +59,8 @@
             android:layout_marginRight="40dp"/>
         <android.widget.Button
             android:id="@+id/dialog_back"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="돌아가기"
             android:textSize="15dp"

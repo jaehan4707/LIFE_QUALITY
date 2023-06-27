@@ -9,10 +9,13 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.AgreeActivity.Companion.phone
+import com.example.myapplication.LoginActivity.Companion.phone
+import com.example.myapplication.LoginActivity.Companion.userCollectionRef
 import com.example.myapplication.SplashActivity.Companion.answer
 import com.example.myapplication.SplashActivity.Companion.check_list
+import com.example.myapplication.SplashActivity.Companion.complete
 import com.example.myapplication.SplashActivity.Companion.dbid
 import com.example.myapplication.SplashActivity.Companion.token
 import com.example.myapplication.SplashActivity.Companion.type
@@ -44,7 +47,7 @@ class ResultLayout : AppCompatActivity() {
         ResultLayoutBinding.inflate(layoutInflater)
     }
     companion object {
-        var traffic : Int =0
+        var traffic : Int =-1
         var weight : Double=0.0
         var flag: Int = 0
     }
@@ -65,8 +68,38 @@ class ResultLayout : AppCompatActivity() {
         setContentView(binding.root)
         Log.d("test", "설문응답 : ${answer}, dbid : ${dbid}")
         Log.d("problem","설문조사 완료 시간 : $formattedCompletionTime")
+        complete++
+        if(complete==10)
+            binding.nextstage.text="전체결과보기"
+        val userDocRef = userCollectionRef.document(phone) //phone 경로
+        val newDateDocument = userDocRef.collection("Result").document(date.toString())
+        val answerData = hashMapOf(
+            "${type}" to answer, // 필요한 다른 필드들도 추가
+        )
+        newDateDocument.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                // 해당 날짜의 문서가 이미 존재하는 경우
+                newDateDocument.update(answerData as Map<String, Any>)
+                    .addOnSuccessListener {
+                        Log.d("problem", "업데이트 성공!!!")
+                        Toast.makeText(this, "날짜 문서를 업데이트했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.d("problem", "업데이트 실패!!")
+                    }
+            } else {
+                // 해당 날짜의 문서가 존재하지 않는 경우
+                newDateDocument.set(answerData as Map<String, Any>)
+                    .addOnSuccessListener {
+                        Log.d("problem", "추가 성공!!!")
+                        Toast.makeText(this, "날짜 문서를 추가했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.d("problem", "추가 실패!!")
+                    }
+            }
+        }
         val database = FirebaseDatabase.getInstance()
-        //val answerRef = database.getReference("User/phone/${phone}/information/${date}/${type}/answer").push()
         val answerRef = database.getReference("User/phone/$phone/$date/$type")
         answerRef.setValue(answer).addOnSuccessListener {
             Log.d("problem", "answer 저장 성공")
@@ -74,12 +107,23 @@ class ResultLayout : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("problem", "answer 저장 실패", exception)
             }
-        setPush() //알림보내기.
+        //setPush() //알림보내기.
         weight = 0.0
         flag = 0
         check_list[dbid]=true
         Log.d("problem","type : ${type}")
-        if (type == "Frailty") {
+        if (type == "Frailty") { //realtime 말고 firestore로 불러와야함.
+            newDateDocument.get()
+                .addOnSuccessListener { documentSnapshot->
+                    if(documentSnapshot.exists()){
+                        val answerData = documentSnapshot.data
+                        ipaq_result = answerData?.get("IPAQ") as ArrayList<Double>
+                    }
+                    traffic=result(type)
+                    moveFragment()
+                }
+                .addOnFailureListener { Log.d("problem","IPAQ 불러오기 실패") }
+            /*
             val surveyRef = database.getReference("User/phone/${phone!!}/${date}/IPAQ")
             val result = ArrayList<Double>()
             surveyRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -99,77 +143,82 @@ class ResultLayout : AppCompatActivity() {
                     Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
                 }
             })
+             */
         }
-        when (type) {
-            "EQ5D" -> {
-                Log.d("problem","EQ5D")
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    Eq5dFragment()
-                ).commit()
-                true
-            } //완료
-            "Fall" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    FallFragment()
-                ).commit()
-            }
-            "SleepHabit" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    SleepFragment()
-                ).commit()
-            }
-            "IPAQ" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    IpaqFragment()
-                ).commit()
-            } //완료
-            "MouthHealth" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    MouthHealthFragment()
-                ).commit()
-            }
-            "SGDSK" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    SgdskFragment()
-                ).commit()
-
-            }  //완료
-            "MNA" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    MnaFragment()
-                ).commit()
-            } //완료
-            "Yosil" -> {
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    YosilFragment()
-                ).commit()
-            } //완료
-            "SocialNetwork"->{
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    SdohFragment()
-                ).commit()
-            }
-            "Frailty"->{
-                Log.d("problem","노쇠측정")
-                supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
-                    FrailtyFragment()
-                ).commit()
-            }
-            else->false
+        else{
+            traffic=result(type)
+            moveFragment()
         }
 
         binding.nextstage.setOnClickListener { //계속하기 버튼
-            var intent = Intent(this, QuestionSelect::class.java)
-            startActivity(intent)
+            if(complete==10){
+                val intent = Intent(this@ResultLayout,TotalResultActivity::class.java)
+                startActivity(intent)
+            }
+            else {
+                var intent = Intent(this, QuestionSelect::class.java)
+                startActivity(intent)
+            }
         }
-        binding.goToEdu.setOnClickListener { //완료하기 버튼
-            var intent = Intent(this, CardActivity::class.java)
-            startActivity(intent)
+    }
+    private fun moveFragment(){
+        Log.d("problem","옮길건데 결과 확인 : ${traffic}")
+        if(traffic!=-1){
+            when (type) {
+                "EQ5D" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        Eq5dFragment()
+                    ).commit()
+                } //완료
+                "Fall" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        FallFragment()
+                    ).commit()
+                }
+                "SleepHabit" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        SleepFragment()
+                    ).commit()
+                }
+                "IPAQ" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        IpaqFragment()
+                    ).commit()
+                } //완료
+                "MouthHealth" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        MouthHealthFragment()
+                    ).commit()
+                }
+                "SGDSK" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        SgdskFragment()
+                    ).commit()
+
+                }  //완료
+                "MNA" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        MnaFragment()
+                    ).commit()
+                } //완료
+                "Yosil" -> {
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        YosilFragment()
+                    ).commit()
+                } //완료
+                "SocialNetwork"->{
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        SdohFragment()
+                    ).commit()
+                }
+                "Frailty"->{
+                    supportFragmentManager.beginTransaction().replace(binding.resultFrame.id,
+                        FrailtyFragment()
+                    ).commit()
+                }
+                else->false
+            }
         }
-        if(type!="Frailty"){
-            traffic=result(type)
-        }
-    //traffic= result(type) //결과값구하기.
     }
     private fun setPush(){
         Log.d("problem","알람 시간 : ${triggerFormat}")
@@ -189,11 +238,6 @@ class ResultLayout : AppCompatActivity() {
         )
         alarmManager.set(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent)
     }
-    private fun processResults(ipaqResultList: List<Double>, infoResultList: List<String>) {
-        // 결과를 사용하여 원하는 작업을 수행합니다.
-        // 예: RecyclerView에 값을 표시하거나 다른 처리를 수행합니다.
-        Log.d("problem","${ipaqResultList}, ${infoResultList}")
-    }
     fun result(type: String) : Int {
         Log.d("test", "${type}")
         var ans: Int = 0
@@ -205,13 +249,13 @@ class ResultLayout : AppCompatActivity() {
                 in 31 .. 60->2+answer[4]
                 else -> 3+answer[4]
             }
-            var third = when(answer[3].toInt()){ //#4
+            var third = when(answer[3].toInt()/60){ //#4 단위가 시간임.
                 in 0 until 5 -> 3
                 in 5 until 6 ->2
                 in 6 until 7 ->1
                 else ->0
             }
-            var four = when( (answer[3]/(answer[2]-answer[0])*100).toInt()){
+            var four = when(((answer[3]/60)/(answer[2]/60-answer[0]/60)*100).toInt()){
                 in 0 until 65 ->3
                 in 65 .. 74 ->2
                 in 75 .. 84 ->1
@@ -341,14 +385,13 @@ class ResultLayout : AppCompatActivity() {
                                     else -> 3
                                 }
                             }
-
                             else -> {
                                 weight += answer[i]
                             }
                         }
-                        if (weight < 15.0) //영양 불량
+                        if (weight < 17.0) //영양 불량
                             ans = 1
-                        else if (weight in 15.0..21.5) //영양불량 위험
+                        else if (weight in 17.0..23.5) //영양불량 위험
                             ans = 2
                         else //정상
                             ans = 3
@@ -361,7 +404,6 @@ class ResultLayout : AppCompatActivity() {
                             2 -> {
                                 //격렬한 활동은 list[0] * list[1] //0은 일수, 1은 분
                                 var Met: Double = 0.0
-                                //Log.d("problem", "user : ${user}")
                                 Log.d("problem","list : ${ipaq_result}")
                                 Met += (ipaq_result[0] *ipaq_result[1] * 8 + ipaq_result[2] * ipaq_result[3]* 4 + ipaq_result[4] * ipaq_result[5] * 3.3 + ipaq_result[6]) * 0.0035 * answer[i] * 5
                                 //해당 칼로리.
@@ -374,6 +416,7 @@ class ResultLayout : AppCompatActivity() {
                                 }
                             }
                             else -> weight += answer[i]
+
                         }
                     }
 
@@ -382,6 +425,7 @@ class ResultLayout : AppCompatActivity() {
                 }
             }
         }
+        Log.d("problem","노쇠 결과 : ${weight}")
         return ans
     }
 }

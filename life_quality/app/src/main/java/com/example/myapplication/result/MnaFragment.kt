@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.traffic
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentEq5dBinding
 import com.example.myapplication.databinding.FragmentMnaBinding
 
@@ -49,10 +50,11 @@ class MnaFragment: Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.mnaResult.setText(R.string.red_mna) //영양불량을 빨간색으로!
+                SplashActivity._result.mna ="영양불량 상태입니다"
                 val text="영양불량"
                 val startIndex = text.indexOf("영양불량")
                 val endIndex = startIndex + "영양불량".length
-                val colorSpan = ForegroundColorSpan(Color.RED) // 색상 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red)) // 색깔 지정
                 val spannableString = SpannableString(binding.mnaResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.mnaResult.text = spannableString
@@ -62,6 +64,7 @@ class MnaFragment: Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.mnaResult.setText(R.string.yellow_mna)
+                SplashActivity._result.mna ="영양불량 위험상태입니다"
                 val text="영양불량"
                 val startIndex = text.indexOf("영양불량")
                 val endIndex = startIndex + "영양불량".length
@@ -75,10 +78,11 @@ class MnaFragment: Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.green_circle)
                 binding.mnaResult.setText(R.string.green_mna)
+                SplashActivity._result.mna ="정상입니다"
                 val text="영양 관리"
                 val startIndex = text.indexOf("영양 관리")
                 val endIndex = startIndex + "영양 관리".length
-                val colorSpan = ForegroundColorSpan(Color.GREEN) // 색상 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green_circle)) // 색깔 지정
                 val spannableString = SpannableString(binding.mnaResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.mnaResult.text = spannableString

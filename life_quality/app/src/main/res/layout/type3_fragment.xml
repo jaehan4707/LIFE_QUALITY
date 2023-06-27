@@ -27,7 +27,7 @@
         android:text="지난 3개월 동안 밥맛이 없거나, 소화가 잘 안되거나, 씹고 삼키는
 것이 어려워서 식사량이 줄었습니까?"
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="23dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -52,21 +52,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
 
                 <RadioButton
                     android:id="@+id/rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/rb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
             </RadioGroup>
 
         </LinearLayout>

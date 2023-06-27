@@ -18,39 +18,38 @@ class EduExcerciseActivity : AppCompatActivity() {
 
         var binding = EduExcerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        excercise_models.add(R.drawable.edu_excercise_1)
-        excercise_models.add(R.drawable.edu_excercise_2)
-        excercise_models.add(R.drawable.edu_excercise_3)
-        excercise_models.add(R.drawable.edu_excercise_4)
-        excercise_models.add(R.drawable.edu_excercise_5)
-
-
+        excercise_models.add(R.drawable.edu_ipaq_1)
+        excercise_models.add(R.drawable.edu_ipaq_2)
+        excercise_models.add(R.drawable.edu_ipaq_3)
+        excercise_models.add(R.drawable.edu_ipaq_4)
+        excercise_models.add(R.drawable.edu_ipaq_5)
+        excercise_models.add(R.drawable.edu_ipaq_6)
+        excercise_models.add(R.drawable.edu_ipaq_7)
+        excercise_models.add(R.drawable.edu_ipaq_8)
+        excercise_models.add(R.drawable.edu_ipaq_9)
+        excercise_models.add(R.drawable.edu_ipaq_10)
+        excercise_models.add(R.drawable.edu_ipaq_11)
+        excercise_models.add(R.drawable.edu_ipaq_12)
+        excercise_models.add(R.drawable.edu_ipaq_13)
         excercise_colors.add(getColor(R.color.edu_excercise_color1))
         excercise_colors.add(getColor(R.color.edu_excercise_color2))
         excercise_colors.add(getColor(R.color.edu_excercise_color3))
         excercise_colors.add(getColor(R.color.edu_excercise_color4))
         excercise_colors.add(getColor(R.color.edu_excercise_color5))
+        excercise_colors.add(getColor(R.color.edu_excercise_color1))
+        excercise_colors.add(getColor(R.color.edu_excercise_color2))
+        excercise_colors.add(getColor(R.color.edu_excercise_color3))
+        excercise_colors.add(getColor(R.color.edu_excercise_color4))
+        excercise_colors.add(getColor(R.color.edu_excercise_color5))
+        excercise_colors.add(getColor(R.color.edu_excercise_color1))
+        excercise_colors.add(getColor(R.color.edu_excercise_color2))
+        excercise_colors.add(getColor(R.color.edu_excercise_color3))
 
 
         var adapter = EduAdapter(excercise_models, this)
-        /*
-        adapter.setBackBussttonListener(object:EduAdapter.BackButtonListenr{
-            override fun onBackPressed() {
-                Log.d("test","뒤로가기를 눌렀스빈다")
-                if(adapter.isImageExpanded){ //뒤로가기를 누르고 확장된 상태라면.
-                    Log.d("test","뒤로가기 눌렀고, 확장된 상태라 이미지 원상복구")
-                    adapter.collapseImage() //원상복구
-                }
-                else{
-                    Log.d("test","뒤로가기를 눌럿지만 이미지 확대는 안된 상태")
-                }
-
-            }
-        })
-        */
+        binding.maxPage.text = adapter.count.toString()
         binding.excerciseViewPager.adapter = adapter
         binding.excerciseViewPager.clipToPadding = false
-        binding.excerciseViewPager.setPadding(50, 0, 50, 0)
         binding.excerciseViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 if(position < adapter.count-1 && position < excercise_colors.size - 1) {
@@ -68,7 +67,8 @@ class EduExcerciseActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-
+                binding.currentPage.text = (position+1).toString()+"/"
+                binding.maxPage.text=adapter.count.toString()
             }
 
             override fun onPageScrollStateChanged(state: Int) {

@@ -18,32 +18,37 @@
         <ImageView
             android:id="@+id/back"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:background="@drawable/baseline_arrow_back_24"
+            android:layout_weight="0.6"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:background="@color/gray"
             />
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="건강관리"
+            android:text="스스로 배우는 건강지식"
+            android:fontFamily="@font/bm_dohyeon"
             android:textSize="30sp"
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_weight="5"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            />
     </LinearLayout>
 
+    <View
+        android:id="@+id/line_view"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        app:layout_constraintTop_toBottomOf="@id/top"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top">
+        app:layout_constraintTop_toBottomOf="@id/line_view">
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -77,7 +82,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"
@@ -91,7 +96,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.4"
                 android:background="@drawable/info_text"
-                android:backgroundTint="#0BECB0"
+                android:backgroundTint="#097f09"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -113,7 +118,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"
@@ -148,7 +153,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"
@@ -183,7 +188,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"
@@ -220,7 +225,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"
@@ -255,7 +260,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"
@@ -271,6 +276,7 @@
                 android:background="@drawable/info_text"
                 android:backgroundTint="#F1D3F1"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_margin="10dp"
@@ -288,7 +294,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"
@@ -321,7 +327,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"
@@ -331,6 +337,7 @@
 
             <LinearLayout
                 android:id="@+id/eq5d"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.4"
@@ -354,7 +361,7 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="3"/>
                 <View
                     android:layout_width="0dp"

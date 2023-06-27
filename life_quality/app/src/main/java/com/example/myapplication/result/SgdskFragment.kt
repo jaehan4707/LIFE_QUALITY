@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.traffic
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentEq5dBinding
 import com.example.myapplication.databinding.FragmentSgdskBinding
 
@@ -52,6 +53,7 @@ class SgdskFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.sgdskResult.setText(R.string.red_sgdsk)
+                SplashActivity._result.sgdsk = "심한우울 상태입니다"
                 val text="심한우울"
                 val startIndex = text.indexOf("심한우울")
                 val endIndex = startIndex + "심한우울".length
@@ -59,14 +61,13 @@ class SgdskFragment : Fragment() {
                 val spannableString = SpannableString(binding.sgdskResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.sgdskResult.text = spannableString
-
             }
-
             2 -> {
                 binding.redLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.sgdskResult.setText(R.string.yellow_sgdsk)
+                SplashActivity._result.sgdsk = "가벼운 우울 상태입니다"
                 val text="가벼운 우울"
                 val startIndex = text.indexOf("가벼운 우울")
                 val endIndex = startIndex + "가벼운 우울".length
@@ -81,10 +82,11 @@ class SgdskFragment : Fragment() {
                 binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
                 binding.greenLight.setBackgroundResource(R.drawable.green_circle)
                 binding.sgdskResult.setText(R.string.green_sgdsk)
+                SplashActivity._result.sgdsk = "정상입니다"
                 val text="정상"
                 val startIndex = text.indexOf(text)
                 val endIndex = startIndex + "정상".length
-                val colorSpan = ForegroundColorSpan(Color.GREEN) // 색깔 지정
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green_circle)) // 색깔 지정
                 val spannableString = SpannableString(binding.sgdskResult.text)
                 spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.sgdskResult.text = spannableString

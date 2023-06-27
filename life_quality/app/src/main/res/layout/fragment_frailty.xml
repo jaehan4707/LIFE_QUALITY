@@ -53,7 +53,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="본 설문의 결과는 신체활동 결과와 \n합산되어 나타납니다"
+                android:text="본 측정의 결과는 신체활동 결과와 \n합산되어 나타납니다"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:gravity="center"
@@ -61,23 +61,33 @@
                 android:breakStrategy="balanced"
                 android:textSize="19sp" />
 
-            <TextView
+            <LinearLayout
                 android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="27dp"
-                android:fontFamily="@font/bm_dohyeon"
-                android:text="당신은 "
-                android:textColor="@color/black"
-                android:textSize="19sp" />
-            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/result_info"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:text="어르신은 "
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                android:layout_marginTop="10dp"
                 android:id="@+id/frailty_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
-                android:textSize="19sp"
+                android:textSize="24sp"
                 android:text="@string/good_sleep"/>
-
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,18 +102,18 @@
                 android:textSize="19sp" />
 
             <TextView
-                android:background="@drawable/info_text"
-                android:layout_marginTop="30dp"
-                android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/info_text"
                 android:fontFamily="@font/bm_dohyeon"
-                android:textSize="19sp"
-                android:textAlignment="center"
                 android:lineSpacingExtra="8dp"
-                android:textColor="@color/black"
+                android:padding="5dp"
                 android:text="1.건강하게 마음 다스리기\n2.강한 치아 만들기\n3.가려먹지 말고 충분히 식사하기\n4.화를 높이는 담배를 멀리하기\n5.만성 질환 관리하기\n6.사람들과 자주 어울리기\n7.성실하게 운동하기"
-                />
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"

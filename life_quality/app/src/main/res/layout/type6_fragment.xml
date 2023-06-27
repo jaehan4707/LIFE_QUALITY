@@ -9,8 +9,7 @@
     <TextView
         android:id="@+id/type6Number"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/bm_dohyeon"
         android:text="문항 4"
         android:textColor="@color/black"
@@ -19,8 +18,8 @@
     <TextView
         android:id="@+id/type6Title"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="200dp"
+        android:lineSpacingExtra="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/textview_grayline"
         android:fontFamily="@font/bm_dohyeon"
@@ -29,7 +28,7 @@
         android:text="최근 1주일동안 기구를 사용하는 근력운동(아령, 역기, 철봉, 탄성밴드 스트레칭), 팔굽혀펴기,윗몸일으키기,스쿼트(앉았다 일어서기)등의
 근력운동을 한 날은 며칠입니까?"
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="23dp" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -50,37 +49,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
-                    android:textSize="15sp"/>
+                    android:textSize="17sp"/>
             </RadioGroup>
         </LinearLayout>
     </ScrollView>

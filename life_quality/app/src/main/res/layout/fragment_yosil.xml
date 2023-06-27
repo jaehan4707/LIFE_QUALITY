@@ -95,30 +95,25 @@
                 android:textColor="@color/black"
                 android:textSize="18dp"/>
 
-            <TextView
-                android:layout_marginTop="30dp"
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="요실금 관리를 위한 올바른 방법"
-                android:fontFamily="@font/bm_dohyeon"
-                android:background="@drawable/textview_round"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                />
-
-
-            <TextView
-                android:layout_marginTop="70dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="필수 설문 문항을 마친 후,\n'건강 도우미'에 준비된 '요실금 관리법'을 통해 배워봅시다"
-                android:fontFamily="@font/bm_dohyeon"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="19sp"/>
+                android:orientation="vertical"
+                android:layout_marginTop="30dp">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/textview_round"
+                    android:fontFamily="@font/bm_dohyeon"
+                    android:gravity="center"
+                    android:lineSpacingExtra="10dp"
+                    android:padding="5dp"
+                    android:text="요실금 관리를 위한 올바른 방법\n이후 준비된 건강정보를 통해 \n관리 방법을 알아봅시다!"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
             <TextView
                 android:layout_marginTop="70dp"
                 android:layout_width="match_parent"

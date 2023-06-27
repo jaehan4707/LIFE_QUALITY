@@ -1,6 +1,7 @@
 package com.example.myapplication.result
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -15,6 +16,7 @@ import androidx.core.content.ContextCompat
 import com.example.myapplication.R
 import com.example.myapplication.ResultLayout
 import com.example.myapplication.ResultLayout.Companion.weight
+import com.example.myapplication.SplashActivity
 import com.example.myapplication.databinding.FragmentEq5dBinding
 import com.example.myapplication.databinding.FragmentFallBinding
 
@@ -41,11 +43,6 @@ class  FallFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFallBinding.inflate(inflater, container, false)
-
-        val maxValue = binding.progressbar.max
-        val progressValue = weight.toInt()
-
-        binding.progressbar.progress = progressValue
         val startIndex = binding.info.text.indexOf("높을수록")
         val endIndex = binding.info.text.indexOf("높음") + "높음".length
         val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red)) // 색깔 지정
@@ -53,23 +50,53 @@ class  FallFragment : Fragment() {
         spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.info.text = spannableString
 
-        binding.root.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                val progressBarWidth = binding.progressbar.width
-                val progress = (progressValue.toFloat() / maxValue.toFloat()) * progressBarWidth.toFloat()
-
-                val params = binding.currentPositionImage.layoutParams as RelativeLayout.LayoutParams
-                params.marginStart = progress.toInt() - binding.currentPositionImage.width / 2
-                binding.currentPositionImage.layoutParams = params
-                val textParams = binding.progressText.layoutParams as RelativeLayout.LayoutParams
-                textParams.addRule(RelativeLayout.BELOW, R.id.progressbar)
-                textParams.addRule(RelativeLayout.CENTER_HORIZONTAL)
-                binding.progressText.layoutParams = textParams
-                binding.progressText.text = progressValue.toString() + "점"
-                // 레이아웃 리스너를 제거합니다.
-                binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
+        when(weight.toInt()) {
+            in 14 .. 28 -> {
+                binding.redLight.setBackgroundResource(R.drawable.red_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.fallResult.setText(R.string.red_eq5d)
+                SplashActivity._result.fall ="낮은 상태입니다"
+                val text="높은"
+                val startIndex = text.indexOf("높은")
+                val endIndex = startIndex + "높은".length
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.red)) // 색깔 지정
+                val spannableString = SpannableString(binding.fallResult.text)
+                spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                binding.fallResult.text = spannableString
             }
-        })
+
+            in 9 .. 13-> {
+                binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.yellow_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.fallResult.setText(R.string.yellow_eq5d)
+                SplashActivity._result.fall ="중간 상태입니다"
+                val text="중간"
+                val startIndex = text.indexOf("중간")
+                val endIndex = startIndex + "중간".length
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.main_orange)) // 색깔 지정
+                val spannableString = SpannableString(binding.fallResult.text)
+                spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                binding.fallResult.text = spannableString
+            }
+            in 7 .. 8 -> {
+                binding.redLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.yellowLight.setBackgroundResource(R.drawable.gray_circle)
+                binding.greenLight.setBackgroundResource(R.drawable.green_circle)
+                binding.fallResult.setText(R.string.green_eq5d)
+                SplashActivity._result.fall ="높은 상태입니다"
+                val text="낮은"
+                val startIndex = text.indexOf("낮은")
+                val endIndex = startIndex + "낮은".length
+                val colorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(),R.color.green_circle)) // 색깔 지정
+                val spannableString = SpannableString(binding.fallResult.text)
+                spannableString.setSpan(colorSpan, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                binding.fallResult.text = spannableString
+            }
+
+            else -> false
+        }
         return binding.root
     }
     override fun onDestroyView() {

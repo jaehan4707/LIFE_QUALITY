@@ -16,6 +16,8 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.LoginActivity.Companion.Db
+import com.example.myapplication.LoginActivity.Companion.phone
 import com.example.myapplication.SplashActivity.Companion.Total
 import com.example.myapplication.SplashActivity.Companion.token
 import com.example.myapplication.SplashActivity.Companion.user
@@ -38,80 +40,18 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
         var Helath: String = ""
         var Smoke: String = ""
         var Drink: String = ""
-        var phone: String = ""
+
     }
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val intent = Intent(this, MainActivity::class.java) //intent
         val database = FirebaseDatabase.getInstance()
-        //val phoneRef = database.getReference("User/phone") //toekn 경로에 저장한다.
         setContentView(binding.root)
         Log.d("problem", "FCM token is ${token}")
-        val Db = Firebase.firestore
-        val phnumRef = Db.collection("User").document(token!!)
+        val userCollectionRef = Db.collection("User")
         Log.d("problem","tototot : ${Total.size}")
-        //만약 토큰이 없다면 여기로 와야함.
-        //User에는 휴대폰 번호를 넣고 그 다음에 informatiuon을 넣고싶음.
-        /*
-        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    Log.d("problem", "해당 token 값이 이미 존재합니다. 작업을 멈추고, MainActivity로 이동합니다.")
-                    val userInfoRef = database.getReference("User/token/$token/infomation")
-                    userInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            if (dataSnapshot.exists()) {
-                                Log.d("problem", "해당 info 값이 이미 존재합니다. 작업을 멈추고, MainActivity로 이동합니다.")
-                                val infoType = object : GenericTypeIndicator<Map<String, String>>() {}
-                                val info = dataSnapshot.getValue(infoType)
-                                if (info != null) {
-                                    // info에 저장된 정보를 사용합니다.
-                                    for ((key, value) in info) {
-                                        Log.d("problem", "Key: $key, Value: $value")
-                                        when(key){
-                                            "age"->Age=value
-                                            "smoke"->Smoke=value
-                                            "family_relation"->Family=value
-                                            "Drink"->Drink=value
-                                            "sex"->Sex=value
-                                            "medical_insurance"->Helath=value
-                                            "phone"->phone=value
-                                            "scholarship"->Study=value
-                                        }
-                                    }
-                                }
-                            }
-                            user=User(Sex,Age,Family,Study,Helath,Smoke,Drink,phone)
-                            Log.d("problem", "user : ${user}")
-                        }
-                        override fun onCancelled(databaseError: DatabaseError) {
-                            Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
-                        }
-                    })
-                    startActivity(intent)
-                    setContentView(binding.root)
-                    return
-                }
-                setContentView(binding.root)
-                // 해당 token 값이 존재하지 않으므로 작업을 계속 진행합니다.
-                userRef.setValue(SplashActivity.token)
-                    .addOnSuccessListener {
-                        Log.d("problem", "token 저장 성공")
-                        // 작업을 진행할 코드를 추가하세요
-                    }
-                    .addOnFailureListener {
-                        Log.d("problem", "token 저장 실패")
-                    }
-            }
-            override fun onCancelled(databaseError: DatabaseError) {
-                // 읽기 작업이 취소된 경우에 호출됩니다.
-                Log.d("problem", "데이터베이스 읽기 작업이 취소되었습니다.", databaseError.toException())
-            }
-        })
-        */
         binding.yes.setOnClickListener {
-            //val dialogView = LayoutInflater.from(this@AgreeActivity).inflate(R.layout.agree_dialog, null)
             val dialogBinding = AgreeDialogBinding.inflate(layoutInflater)
             val dialog = Dialog(this)
             val dialogLayoutParams = WindowManager.LayoutParams().apply {
@@ -147,18 +87,36 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
                     ||Helath.isEmpty()||Smoke.isEmpty()||Drink.isEmpty()) { // 입력된게 전화번호 형식이면
                         Toast.makeText(this, "빈칸이 있어요!! 선택을 완벽하게 해주세요", Toast.LENGTH_SHORT).show()
                     } else {
-                        user=User(Sex,Age,Family,Study,Helath,Smoke,Drink)
-                        val updates = hashMapOf<String, Any>(
-                            "phone" to phone // 여기에 원하는 휴대폰 번호 값을 입력하세요
-                        )
-                    phnumRef.update(updates) //이 코드는 파이어스토어에 추가함.
+                        user=User(Sex,Age,Family,Study,Helath,Smoke,Drink,phone)
+                        val newUserDoc = userCollectionRef.document(phone)
+                        newUserDoc.set(user)
                         .addOnSuccessListener {
-                            Log.d("problem", "phone 필드 추가 완료")
-                            // 추가 작업 완료 후 수행할 코드를 여기에 작성하세요
+                            Log.d("problem","유저정보 저장 성공")
+                        }
+                        .addOnFailureListener {
+                            Log.d("problem","저장 실패")
+                        }
+                    /*
+                    val informationCollection = newUserDoc.collection("Information")
+                    informationCollection.document("개인정보").set(user)
+                        .addOnSuccessListener {
+                            // 문서 추가 성공
+                            Toast.makeText(this, "사용자 정보를 저장했습니다.", Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { e ->
-                            Log.d("problem", "phone 필드 추가 실패: $e")
+                            // 문서 추가 실패
+                            Log.e("Error", "사용자 정보 저장 중 오류 발생: $e")
                         }
+                     */
+                    /*
+                    newUserDoc.set(user)
+                            .addOnSuccessListener {
+                                Log.d("problem","유저정보 저장 성공")
+                            }
+                            .addOnFailureListener {
+                                Log.d("problem","저장 실패")
+                            }
+                     */
                     val infoRef = database.getReference("User/phone/${phone}/information/") //toekn 경로에 저장한다.
                     infoRef.setValue(user).addOnSuccessListener {
                         Log.d("problem", "info 저장 성공")

@@ -29,7 +29,7 @@ class Fragment2 : Fragment() {
         val valueList = ArrayList<String>(2) // 초기 용량(capacity)이 2인 ArrayList 생성
         var binding = Type2FragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         binding.type2Number.text = "문항 " + curCount.toString()
-        binding.type2Title.text = tempSurvey.title.toString()
+        binding.type2Title.text= tempSurvey.title
         var keyIndex = -1
         for ((key, value) in tempSurvey.answer) {
             if (value == "예") {
