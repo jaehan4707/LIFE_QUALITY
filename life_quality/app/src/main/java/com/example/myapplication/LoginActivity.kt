@@ -64,7 +64,12 @@ class LoginActivity : AppCompatActivity() {
                             else {
                                 // 문서가 존재하지 않음
                                 Toast.makeText(this, "휴대폰 번호를 확인해주세요!", Toast.LENGTH_SHORT).show()
+                                Log.d("problem","실패")
                             }
+                        }
+                        else{
+                            Toast.makeText(this, "휴대폰 번호를 확인해주세요!", Toast.LENGTH_SHORT).show()
+                            Log.d("problem","실패")
                         }
                     }
                     .addOnFailureListener { e -> Log.e("problem", "실패") }
