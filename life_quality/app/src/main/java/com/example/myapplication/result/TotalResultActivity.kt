@@ -24,7 +24,7 @@ class TotalResultActivity : AppCompatActivity() {
         binding.mouthhealthResult.text= _result.mouth
         binding.ipaqResult.text= _result.ipaq
         binding.frailtyResult.text= _result.frailty
-
+        binding.bmiResult.text = _result.bmi
         setContentView(binding.root)
 
         binding.edu.setOnClickListener {

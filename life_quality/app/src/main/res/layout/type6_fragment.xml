@@ -38,12 +38,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="40dp">
             <RadioGroup
                 android:id="@+id/group_f6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_height="wrap_content">
                 <RadioButton
                     android:id="@+id/rb1"
                     android:layout_width="match_parent"
@@ -52,30 +51,35 @@
                     android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb2"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb3"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb4"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb5"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textSize="17sp"/>
                 <RadioButton
                     android:id="@+id/rb6"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bm_dohyeon"

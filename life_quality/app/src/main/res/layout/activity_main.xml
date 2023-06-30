@@ -22,21 +22,18 @@
             android:layout_marginLeft="30dp">
             <View
                 android:id="@+id/red_circle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/red_circle"
                 android:layout_gravity="center_vertical"/>
             <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/yellow_circle"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"/>
             <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/green_circle"
                 android:layout_marginLeft="10dp"
@@ -57,6 +54,7 @@
                     android:adjustViewBounds="true"
                     android:gravity="right"
                     android:layout_marginLeft="225dp" />-->
+                <!--   비상연락망
                 <ImageView
                     android:id="@+id/help_noti"
                     android:src="@drawable/ic_notification"
@@ -72,6 +70,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:gravity="right"/>
+                    -->
             </LinearLayout>
         </LinearLayout>
 
@@ -80,7 +79,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/traffic"
             android:layout_marginTop="70dp">
             <Button
@@ -89,32 +87,26 @@
                 android:layout_height="150dp"
                 android:text="현재 나의\n건강 상태는?"
                 android:textSize="30dp"
-                android:lineSpacingExtra="7dp"
+                android:lineSpacingExtra="20dp"
                 android:backgroundTint="@color/main_orange"
+                android:fontFamily="@font/bm_dohyeon"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:fontFamily="@font/bm_dohyeon"/>
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:background="@color/main_orange"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                />
             <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginTop="20dp"
                 android:id="@+id/edu"
                 android:layout_width="300dp"
+                android:fontFamily="@font/bm_dohyeon"
                 android:layout_height="150dp"
                 android:text="스스로 배우는\n건강지식!"
                 android:textSize="30dp"
                 android:background="@color/main_orange"
                 android:gravity="center"
-                android:lineSpacingExtra="7dp"
+                android:lineSpacingExtra="20dp"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:fontFamily="@font/bm_dohyeon"
             />
-            </LinearLayout>
         </LinearLayout>
         <!--
         <LinearLayout

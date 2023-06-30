@@ -59,7 +59,7 @@ class SplashActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance()
         fcmReference = FirebaseMessaging.getInstance()
         user=User("","","","","","","","")
-        _result=Result("","","","","","","","","")
+        _result=Result("","","","","","","","","","")
         val db = Firebase.firestore //설문 문항 데이터 베이스 읽기.
         for (i in 0..nameList.size - 1) {
             val task=db.collection("${nameList[i]}")

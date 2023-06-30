@@ -9,5 +9,6 @@ class Result (
     var sleep : String,
     var frailty : String,
     var fall : String,
-    var eq5d : String
+    var eq5d : String,
+    var bmi : String
 )
