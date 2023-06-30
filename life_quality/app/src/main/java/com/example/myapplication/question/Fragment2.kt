@@ -72,9 +72,6 @@ class Fragment2 : Fragment() {
         }
         return binding.root
     }
-
-
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         callback = object : OnBackPressedCallback(true) {

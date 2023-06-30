@@ -77,7 +77,7 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             clickRadio(dialogBinding.rgDrink, "Drink")
             clickRadio(dialogBinding.rgSmoke, "Smoke")
 
-            closeDialog(dialogBinding)
+           closeDialog(dialogBinding)
             dialogBinding.agreeClear.setOnClickListener { //완료하기 버튼.
                 phone = dialogBinding.editPhone.text.toString()
                 Age = dialogBinding.editAge.text.toString()
@@ -137,6 +137,17 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             }
         }
     private fun closeDialog(dialogBinding: AgreeDialogBinding){
+        dialogBinding.scrollView.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                // 터치 이벤트가 발생하면 키보드를 숨깁니다.
+                Log.d("problem","터치이벤트가 발생해서 키보드르 숨깁니다.")
+                val inputMethodManager =
+                    this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(dialogBinding.root.windowToken, 0)
+                dialogBinding.root.clearFocus()
+            }
+            false
+        }
         dialogBinding.root.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 // 터치 이벤트가 발생하면 키보드를 숨깁니다.
@@ -149,6 +160,17 @@ class AgreeActivity : AppCompatActivity() { //개인정보 동의하는 액티�
             false
         }
     }
+    /*
+    private fun closeDialog(dialog: Dialog, dialogBinding: AgreeDialogBinding) : Boolean 얌{
+            Log.d("problem","터퍄")
+            val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+            return true
+    }
+     */
+
+
+
 
     private fun clickRadio(radioGroup: RadioGroup, str: String) {
         radioGroup.setOnCheckedChangeListener { _, checkedId -> // 라디오 버튼의 선택 상태가 변경되었을 때 호출되는 메서드입니다.

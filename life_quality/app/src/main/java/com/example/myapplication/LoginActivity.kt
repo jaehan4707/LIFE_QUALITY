@@ -73,35 +73,6 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                     .addOnFailureListener { e -> Log.e("problem", "실패") }
-                /*
-                val informationCollection = userDocRef.collection("Information")
-                val personalInfoDocRef = informationCollection.document("개인정보")
-                personalInfoDocRef.get()
-                    .addOnSuccessListener { documentSnapshot ->
-                        if (documentSnapshot.exists()) {
-                            Log.d("problem", "있다있어")
-                            val data = documentSnapshot.data
-                            if (data != null) { // User 객체 생성
-                                val user = User(
-                                    data["sex"].toString(), data["age"].toString(),
-                                    data["family_relation"].toString(),
-                                    data["scholarship"].toString(),
-                                    data["medical_insurance"].toString(),
-                                    data["drink"].toString(),
-                                    data["smoke"].toString()
-                                )
-                                Log.d("problem", "User : ${user}")
-                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
-                        } else {
-                            // 문서가 존재하지 않음
-                            Toast.makeText(this, "휴대폰 번호를 확인해주세요!", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                    .addOnFailureListener { e -> Log.e("problem", "실패") }
-                      */
             }
         }
 

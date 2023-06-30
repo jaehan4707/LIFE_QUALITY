@@ -57,6 +57,7 @@
                     android:adjustViewBounds="true"
                     android:gravity="right"
                     android:layout_marginLeft="225dp" />-->
+                <!--   비상연락망
                 <ImageView
                     android:id="@+id/help_noti"
                     android:src="@drawable/ic_notification"
@@ -72,6 +73,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:gravity="right"/>
+                    -->
             </LinearLayout>
         </LinearLayout>
 
@@ -80,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintTop_toBottomOf="@id/traffic"
             android:layout_marginTop="70dp">
             <Button
@@ -93,7 +95,7 @@
                 android:backgroundTint="@color/main_orange"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:fontFamily="@font/bm_dohyeon"/>
+                />
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="300dp"
@@ -112,7 +114,6 @@
                 android:lineSpacingExtra="7dp"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:fontFamily="@font/bm_dohyeon"
             />
             </LinearLayout>
         </LinearLayout>

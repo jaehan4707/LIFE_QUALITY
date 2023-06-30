@@ -45,6 +45,7 @@ class NotypeFragment : Fragment() {
         var binding = NotypeFragmentBinding.inflate(layoutInflater) //만들어준 xml파일을 binding한다.
         val rootView = binding.root
 
+        //터치 이벤트 ->
         rootView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 // 터치 이벤트가 발생하면 키보드를 숨깁니다.
@@ -98,13 +99,6 @@ class NotypeFragment : Fragment() {
                     Log.d("viewModel","bmi : ${Id}")
                 }
             }
-            /*
-            4 -> {
-                binding.numberlayout.visibility = View.GONE
-                binding.timeLayout.visibility = View.GONE
-                binding.BmiLayout.visibility = View.GONE
-            }
-             */
         }
         runBlocking {
             val job = CoroutineScope(Dispatchers.IO).launch {

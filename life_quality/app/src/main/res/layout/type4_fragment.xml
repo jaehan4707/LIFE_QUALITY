@@ -41,8 +41,7 @@
             <RadioGroup
                 android:id="@+id/group_f4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_height="wrap_content">
 
                 <RadioButton
                     android:id="@+id/rb1"
@@ -55,6 +54,7 @@
                     android:id="@+id/rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textSize="17sp" />
 
@@ -62,6 +62,7 @@
                     android:id="@+id/rb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textSize="17sp" />
 
@@ -69,10 +70,10 @@
                     android:id="@+id/rb4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/bm_dohyeon"
                     android:textSize="17sp" />
             </RadioGroup>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

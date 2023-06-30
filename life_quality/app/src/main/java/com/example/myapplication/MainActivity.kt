@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity() {
             binding.edu.setBackgroundResource(R.drawable.baseline_lock_24)
             binding.edu.text="스스로 배우는 \n건강지식"
         }
+        /*  --> 비상연락망
         binding.helpNoti.setOnClickListener {
             Log.d("test", "test testtest")
             val dialogView =
@@ -118,6 +119,7 @@ class MainActivity : AppCompatActivity() {
             dialog.show()
             dialog.window?.setLayout(1000, 1400)
         }
+         */
     }
 
     fun todo(){
