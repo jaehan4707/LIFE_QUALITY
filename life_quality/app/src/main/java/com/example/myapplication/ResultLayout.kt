@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.LoginActivity.Companion.phone
 import com.example.myapplication.LoginActivity.Companion.userCollectionRef
+import com.example.myapplication.SplashActivity.Companion._result
 import com.example.myapplication.SplashActivity.Companion.answer
 import com.example.myapplication.SplashActivity.Companion.check_list
 import com.example.myapplication.SplashActivity.Companion.complete
@@ -377,13 +378,15 @@ class ResultLayout : AppCompatActivity() {
                     }// } //weight 는 MET -> 이제 여기서 판단을 해야함. 완료
                     "MNA" -> {
                         when (i) {
-                            5 -> {
+                            5 -> { //bmi
                                 weight += when (answer[i].toInt()) {
                                     in 0 until 19 -> 0
                                     in 19 until 21 -> 1
                                     in 21 until 23 -> 2
                                     else -> 3
                                 }
+                                _result.bmi=answer[i].toString()
+                                Log.d("problem","bmi : ${_result.bmi}")
                             }
                             else -> {
                                 weight += answer[i]

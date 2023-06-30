@@ -2,6 +2,7 @@ package com.example.myapplication.viewModel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.SplashActivity.Companion._result
 import com.example.myapplication.model.Bmi
 import com.example.myapplication.model.Time
 
